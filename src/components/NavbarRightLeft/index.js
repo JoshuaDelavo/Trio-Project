@@ -14,8 +14,6 @@ const NavbarRightLeft = ({ toggle, hamburgerOpen }) => {
                 {hamburgerOpen ? '' : <FaBars onClick={toggle}></FaBars>}
             </NavBurgerIcon>
             <NavbarContainer>
-                <NavLogo to='/'><img src={LogoAnthem} alt="close icon"></img>
-                </NavLogo>
                 <NavMenu>
                     <NavItem>
                         <ScrollLink
@@ -77,6 +75,8 @@ const NavbarRightLeft = ({ toggle, hamburgerOpen }) => {
                         {/* <NavLinkRoute to='/Shop'>Contact</NavLinkRoute> */}
                     </NavItem>
                 </NavMenu>
+                <NavLogo to='/'><img src={LogoAnthem} alt="close icon"></img>
+                </NavLogo>
                 {/* <NavButton>
                     <Button to='/signup'>Sign Up</Button>
                 </NavButton> */}

@@ -7,10 +7,10 @@ export const Nav = styled.nav`
     position:fixed;
     width:100%;
     top:0;
-    background:white;
-    //border-bottom:1px solid white;
+    border-bottom:1px solid white;
+    margin-left: 20px;
     padding:40px 10px;
-    background:black;
+    background:tarnsparament;
     z-index:100;
     height:auto;
 `
