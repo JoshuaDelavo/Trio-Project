@@ -1,0 +1,39 @@
+
+
+.section-text-medium{
+    font-style: normal;
+    font-weight: 300;
+    font-size: 40px;
+    /* identical to box height, or 140% */
+
+    text-align: center;
+
+    /* Sebastian's White */
+
+    color: #FFFFFF;
+}
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+@media (min-width: 576px) {
+}
+
+@media (max-width: 768px) {
+    .section-text-medium{
+        font-size: 30px;
+    }
+}
+
+@media(min-width:960px) {
+}
+
+@media(min-width:1100px) {
+}
+
+@media(min-width:1200px) {
+}
+@media(min-width:1500px) {
+    
+}
