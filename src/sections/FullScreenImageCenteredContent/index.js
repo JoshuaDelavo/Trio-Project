@@ -27,7 +27,7 @@ const FullScreenImageCenteredContent = () => {
 
     return (
         <Element id='about-us' name='about-us'>
-            <div className="container-image" style={{ backgroundImage: `url("${baseURL}${celeb.photo[0].url}")` }}>
+            <div className="container-image" style={{ backgroundImage: `url("${baseURL}${homeTopCover.backgroundImage[0].url}")` }}>
                 <div className="container-text">
                     <SectionTextSmall value={homeTopCover.smallTitle}></SectionTextSmall>
                     <SectionTextBig value={homeTopCover.bigTitle}></SectionTextBig>
