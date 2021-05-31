@@ -58,6 +58,10 @@ export const NavLogo = styled(LinkR)`
     text-transform: uppercase;
     font-weight:bold;
     z-index:2;
+
+    @media screen and (max-width:1024px){
+        padding-left:0%;
+    }
     
     > img {
         height:50px;
