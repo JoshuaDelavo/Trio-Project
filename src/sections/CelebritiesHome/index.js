@@ -8,6 +8,7 @@ import { Grid } from '@material-ui/core';
 import './CelebritiesHome.css';
 import CelebritiesApi from '../../config/CelebritiesApi';
 import { useState } from 'react';
+import ClientCarousel from '../../components/ClientCarousel';
 
 const CelebritiesHome = () => {
     const [homeCelebrities, setHomeCelebrities] = useState([]);
@@ -37,6 +38,7 @@ const CelebritiesHome = () => {
                 <br />
                 <SectionParagraph value={homeCelebrities.description}
                 ></SectionParagraph>
+                 <ClientCarousel />
             </div>
         </Element>
     )
