@@ -8,7 +8,7 @@ const Sidebar = ({ toggle, hamburgerOpen }) => {
     return (
         <Nav hamburgerOpen={hamburgerOpen} onClick={toggle}>
             <NavBurgerIcon onClick={toggle}>
-                {hamburgerOpen ? <FaTimes onClick={toggle}>Close</FaTimes> : <FaBars onClick={toggle}></FaBars>}
+                {hamburgerOpen ? <FaTimes onClick={toggle}>Close</FaTimes> : ''}
             </NavBurgerIcon>
             <SidebarMenu>
                 <SidebarItem>
