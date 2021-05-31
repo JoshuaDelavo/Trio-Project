@@ -7,12 +7,13 @@ export const Nav = styled.nav`
     position:fixed;
     width:100%;
     top:0;
-    border-bottom:1px solid white;
+    border-bottom:2px solid white;
     margin-left: 20px;
     padding:40px 10px;
     background:tarnsparament;
     z-index:100;
     height:auto;
+
 `
 
 export const NavbarContainer = styled.div`
@@ -26,10 +27,31 @@ export const NavbarContainer = styled.div`
         height:60px;
     }
 `
+export const NavTulisan = styled.div`
+    @media screen and (min-width:1024px){
+    color:white;
+    font-size:16px;
+    padding-right: 5%;
+    }
+    @media screen and (max-width:1024px){
+        display :none;
+    }
+`
+export const NavEditIcon = styled.div`
+    color:white;
+    display:none;
+    position: flex;
+    @media screen and (max-width:1024px){
+        padding-right: 5%;
+        font-size: 30px;
+        display :flex;
+    }
+    `
+
 
 export const NavLogo = styled(LinkR)`
     display:flex;
-    margin:0 24px;
+    padding-left:11%;
     color:white;
     text-decoration:none;
     font-size: 1.5rem;
@@ -47,12 +69,12 @@ export const NavLogo = styled(LinkR)`
 
 export const NavBurgerIcon = styled.div`
     display:flex;
-    position:fixed;
-    right:15px;
+    position:flex;
+    left:15px;
     top:22px;
     color:white;
 
-    @media screen and (min-width:768px){
+    @media screen and (min-width:2000px){
         display:none;
     } 
 
@@ -65,60 +87,7 @@ export const NavMenu = styled.div`
     display:flex;
     justify-content:end;
 
-    @media screen and (max-width:768px){
-        display:none;
-    } 
-`
-
-export const NavItem = styled.div`
-    display:flex;
-    justify-content:space-around;
-    padding:0 25px;
-    font-weight:lighter;
-`
-
-export const NavLink = styled.div`
-    font-size:0.9rem;
-    white-space:nowrap;
-    color:white;
-    z-index:2;
-    transition:0.1s all ease-in;
-
-    &:hover{
-        /* font-size:1.2rem; */
-        transition:0.1s all ease-in;
-        cursor:pointer;
-        font-weight:normal;
-        /* color:gray; */
-        border-bottom: 1px solid white;
-        text-decoration:none;
-        color:white;
-    }
-`
-export const NavLinkRoute = styled.div`
-    font-size:0.9rem;
-    white-space:nowrap;
-    color:white;
-    z-index:2;
-    transition:0.1s all ease-in;
-    text-decoration:none;
-
-    &:hover{
-        /* font-size:1.2rem; */
-        transition:0.1s all ease-in;
-        cursor:pointer;
-        font-weight:normal;
-        /* color:gray; */
-        border-bottom: 1px solid white;
-        text-decoration:none;
-        color:white;
-    }
-`
-export const NavButton = styled.div`
-    white-space:nowrap;
-    color:white;
-
-    @media screen and (max-width:768px){
+    @media screen and (max-width:2000px){
         display:none;
     } 
 `

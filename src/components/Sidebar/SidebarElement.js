@@ -1,33 +1,36 @@
 import styled from 'styled-components'
-import {Link as LinkR} from 'react-router-dom'
-import {Link as LinkS} from 'react-scroll'
+import { Link as LinkR } from 'react-router-dom'
+import { Link as LinkS } from 'react-scroll'
 
 export const Nav = styled.nav` 
     display:flex; 
-    background:black;
+    background:rgba(1, 1, 1, 0.8);
     height:100vh;
-    width:100%;
+    width:30%;
     position:fixed;
-    transition: 0.5s all ease-in-out;
+    transition: 0.5s  linear;
     z-index:500;
     top:0;
     ${({ hamburgerOpen }) => !hamburgerOpen && `
     height:0vh; margin-top:-100vh;`}
     
-    @media screen and (min-width:768px){
+    @media screen and (max-width:1024px){
+            width:100%;
+    }
+    @media screen and (min-width:2000px){
         display:none;
     }
 `
 export const NavBurgerIcon = styled.div`
     display:flex;
-    position:fixed;
-    right:15px;
+    position:flex;
+    left :15px;
     top:22px;
     color:white;
     height:100%;
     
 
-    @media screen and (min-width:768px){
+    @media screen and (min-width:2000px){
         display:none;
     } 
 
@@ -51,19 +54,6 @@ export const SidebarItem = styled.div`
     
 `
 
-export const SidebarLink = styled.div`
-    display:flex;
-    text-decoration:none;
-    color:white;
-    text-transform:uppercase;
-    padding: 35px 0px;
-
-    &:hover{
-        cursor:pointer;
-        text-decoration:none;
-        color:white;
-    }
-`
 export const SidebarLinkRoute = styled.div`
     display:flex;
     text-decoration:none;
@@ -75,14 +65,5 @@ export const SidebarLinkRoute = styled.div`
         cursor:pointer;
         text-decoration:none;
         color:white;
-    }
-`
-export const ButtonContainer = styled.div`
-    display:flex;
-    justify-content:center;
-    margin-top:60px;
-    
-    &>a{
-        padding:17px 60px;
     }
 `
