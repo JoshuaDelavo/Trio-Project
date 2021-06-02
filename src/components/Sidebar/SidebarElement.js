@@ -6,13 +6,13 @@ export const Nav = styled.nav`
     display:flex; 
     background:rgba(1, 1, 1, 0.8);
     height:100vh;
-    width:30%;
+    width:50%;
     position:fixed;
     transition: 0.5s  linear;
     z-index:500;
     top:0;
     ${({ hamburgerOpen }) => !hamburgerOpen && `
-    height:0vh; margin-top:-100vh;`}
+    width:0%; margin-left:-200vh;`}
     
     @media screen and (max-width:1024px){
             width:100%;
@@ -21,22 +21,32 @@ export const Nav = styled.nav`
         display:none;
     }
 `
+export const Text = styled.div`
+    color:#FFFFFF;
+    font-size:14px;
+`
 export const NavBurgerIcon = styled.div`
-    display:flex;
-    position:flex;
-    left :15px;
-    top:22px;
+    display:absolute;
+    justify-content:center;
+    width: 100%;
+    height:20%;
+    padding-top: 6%;
+    padding-left:20%;
     color:white;
-    height:100%;
-    
+    font-size:16px;
+    @media screen and (max-width:1024px){
+        padding-top:23%;
+        padding-left:8%;
+    }
 
     @media screen and (min-width:2000px){
-        display:none;
-    } 
+        visibility:hidden;
+    }
 
     > svg {
-        font-size:25px;
+        font-size:16px;
     }
+
 `
 export const SidebarMenu = styled.div`
     margin-left: 30px;
@@ -50,7 +60,11 @@ export const SidebarMenu = styled.div`
 
 export const SidebarItem = styled.div`
     display:flex;
-    justify-content:center;
+    padding-right:30%;
+    justify-content:flex-end;
+    @media screen and (max-width:1024px){
+        justify-content:center;
+    }
     
 `
 
@@ -58,6 +72,8 @@ export const SidebarLinkRoute = styled.div`
     display:flex;
     text-decoration:none;
     color:white;
+    justify-content:flex-end;
+    text-align: right;
     text-transform:uppercase;
     padding: 35px 0px;
 
