@@ -5,17 +5,12 @@ import Button from '../../components/Button/index';
 import SectionTextSmall from '../../components/SectionTextSmall/index';
 import SectionTextBig from '../../components/SectionTextBig/index';
 import HomeTopCoverApi from '../../config/HomeTopCoverApi';
-import CelebritiesApi from '../../config/CelebritiesApi';
-import CompanyApi from '../../config/CompanyApi';
-import ColectionApi from '../../config/CollectionsApi';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { baseURL } from '../../config/';
 
 const FullScreenImageCenteredContent = () => {
     const [homeTopCover, setHomeTopCover] = useState({ backgroundImage: [''] });
-    const [celeb, setCeleb] = useState([]);
-    const [logo, setLogo] = useState({ logo: [''] });
 
     useEffect(() => {
         HomeTopCoverApi.find().then(res => {

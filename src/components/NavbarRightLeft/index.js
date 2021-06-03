@@ -23,7 +23,7 @@ const NavbarRightLeft = ({ toggle, hamburgerOpen }) => {
                 <NavBurgerIcon onClick={toggle}>
                     {hamburgerOpen ? '' : <FaBars onClick={toggle}></FaBars>}
                 </NavBurgerIcon>
-                <NavLogo to='/'><img src={baseURL + logo.logo.url} alt="close icon"></img>
+                <NavLogo to='/'><img src={baseURL + logo.logo.url} alt="Logo"></img>
                 </NavLogo>
                 <NavTulisan>THE CONCIERGE <BiEditAlt></BiEditAlt></NavTulisan>
                 <NavEditIcon><BiEditAlt></BiEditAlt></NavEditIcon>

@@ -1,4 +1,4 @@
-import React,{ useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { CarouselContainer, FirstCaption, ClientLogo, SecondCaption, Button, ImageBackgroundContainer, ImageBackground, ImageCrop, ImageCrop2, ColCustom, RowCustom } from './CarouselElement'
 import HavillaLogo from '../../images/havilla_logo.svg'
 import HavillaLaptop from '../../images/havilla_laptop.png'
@@ -12,36 +12,47 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { baseURL } from '../../config/';
 const ClientCarousel = () => {
-    const [celeb, setCeleb] = useState({ photo: [''] });
+    const [celeb, setCeleb] = useState([]);
     useEffect(() => {
         CelebritiesApi.find().then(res => {
-            setCeleb(res[0]);
+            setCeleb(res);
             console.log(celeb);
-
-        })},[])
+        })
+    }, [])
     return (
         <Element id='works' name='works'>
             <Carousel>
-            
-                <CarouselContainer>
-                    <ImageCrop>
-                    </ImageCrop>
-                    <ImageCrop2>
-                    </ImageCrop2>
-                    <FirstCaption>POWERED BY ANTHEM</FirstCaption>
-                    <RowCustom>
-                        <ColCustom xs={12} lg={4} lg={{ order: 'first' }}>
-                            <ClientLogo src={HavillaLogo} style={{ width: '300px' }}></ClientLogo>
-                            <SecondCaption>Create Your <br /> Own Tea Blend,<br /> Digitally</SecondCaption>
-                            <Button to='/story'>
-                                Read Stories
-                            </Button>
-                        </ColCustom>
-                        <Col xs={12} lg={8} xs={{ order: 'first' }}>
-                            <ImageBackground src={ `url("${baseURL}${celeb.photo[0].url}")`} className="d-block mx-auto img-fluid"></ImageBackground>
-                        </Col>
-                    </RowCustom>
-                </CarouselContainer>
+
+
+
+                {
+                    celeb.map((cek, i) => {
+                        return (
+                            <CarouselContainer>
+                                <ImageCrop>
+                                </ImageCrop>
+                                <ImageCrop2>
+                                </ImageCrop2>
+                                <FirstCaption>POWERED BY ANTHEM</FirstCaption>
+                                <RowCustom>
+                                    <ColCustom xs={12} lg={4} lg={{ order: 'first' }}>
+                                        <ClientLogo src={HavillaLogo} style={{ width: '300px' }}></ClientLogo>
+                                        <SecondCaption>Create Your <br /> Own Tea Blend,<br /> Digitally</SecondCaption>
+                                        <Button to='/story'>
+                                            Read Stories
+                                        </Button>
+                                    </ColCustom>
+                                    <Col xs={12} lg={8} xs={{ order: 'first' }}>
+                                        <ImageBackground src={baseURL + (cek.photo[0].url)} className="d-block mx-auto img-fluid"></ImageBackground>
+                                    </Col>
+                                </RowCustom>
+                            </CarouselContainer>
+
+                        )
+                    })
+                }
+
+
                 <CarouselContainer>
                     <ImageCrop>
                     </ImageCrop>
@@ -62,7 +73,7 @@ const ClientCarousel = () => {
                     </RowCustom>
                 </CarouselContainer>
             </Carousel>
-        </Element>
+        </Element >
     )
 }
 
