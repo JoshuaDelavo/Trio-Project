@@ -1,18 +1,21 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, Component } from 'react'
 import { CarouselContainer, FirstCaption, ClientLogo, SecondCaption, Button, ImageBackgroundContainer, ImageBackground, ImageCrop, ImageCrop2, ColCustom, RowCustom } from './CarouselElement'
 import HavillaLogo from '../../images/havilla_logo.svg'
 import HavillaLaptop from '../../images/havilla_laptop.png'
-import { Col } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 import Flickity from 'react-flickity-component'
 // import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-// import { Carousel } from 'react-responsive-carousel';
+import { Carousel } from 'react-responsive-carousel';
 import { Element } from 'react-scroll'
 import CelebritiesApi from '../../config/CelebritiesApi';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { baseURL } from '../../config/';
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
+//import Carousel from "react-multi-carousel";
+//import "react-multi-carousel/lib/styles.css";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 const ClientCarousel = () => {
     const [celeb, setCeleb] = useState([]);
     useEffect(() => {
@@ -22,69 +25,34 @@ const ClientCarousel = () => {
         })
     }, [])
 
-    const responsive = {
-        desktop: {
-            breakpoint: { max: 3000, min: 1024 },
-            items: 5,
-            slidesToSlide: 5 // optional, default to 1.
-        },
-        tablet: {
-            breakpoint: { max: 1024, min: 464 },
-            items: 2,
-            slidesToSlide: 2 // optional, default to 1.
-        },
-        mobile: {
-            breakpoint: { max: 464, min: 0 },
-            items: 1,
-            slidesToSlide: 1 // optional, default to 1.
-        }
-    };
+    const settings = {
+        dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 2,
+      slidesToScroll: 1,
+      centerMode: true,
+      infinite: true,
+      centerPadding: "60px",
+      };
 
 
     return (
         <Element id='works' name='works'>
-            <Carousel swipeable={false}
-                draggable={false}
-                showDots={true}
-                responsive={responsive}
-                ssr={true} // means to render carousel on server-side.
-                infinite={true}
-                autoPlaySpeed={1000}
-                keyBoardControl={true}
-                customTransition="all .5"
-                transitionDuration={500}
-                containerClass="carousel-container"
-                removeArrowOnDeviceType={["tablet", "mobile"]}
-                dotListClass="custom-dot-list-style"
-                itemClass="carousel-item-padding-40-px">
-
-
-
+            <Slider {...settings}>
                 {
                     celeb.map((cek, i) => {
                         return (
 
-                            <Col xs={12} lg={8} xs={{ order: 'first' }}>
+                              <Col xs={12} lg={8} xs={{ order: 'first' }}>
                                 <ImageBackground src={baseURL + (cek.photo[0].url)} className="d-block mx-auto img-fluid"></ImageBackground>
-                            </Col>
+                               </Col>
 
                         )
                     })
                 }
-                {
-                    celeb.map((cek, i) => {
-                        return (
-
-                            <Col xs={12} lg={8} xs={{ order: 'first' }}>
-                                <ImageBackground src={baseURL + (cek.photo[0].url)} className="d-block mx-auto img-fluid"></ImageBackground>
-                            </Col>
-
-                        )
-                    })
-                }
-
-
-            </Carousel>
+                
+            </Slider>
         </Element >
     )
 }
