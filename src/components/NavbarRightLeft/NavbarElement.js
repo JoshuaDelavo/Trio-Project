@@ -19,7 +19,7 @@ export const NavbarContainer = styled.div`
     position: center;
     justify-content:space-between;
     align-items:center;
-    border-bottom:1px solid white;
+    border-bottom:1px solid rgba(111,111,111,0.5);
     padding-bottom:2%;
     height:100%;
     width:100%;
