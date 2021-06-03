@@ -235,3 +235,8 @@ export const RowCustom = styled(Row)`
     // Extra large devices (large desktops, 1200px and up)
     @media (min-width: 1200px) {}
 `
+export const Tulisan = styled.div
+`
+color:white;
+text-alignment:center;
+`

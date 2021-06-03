@@ -1,5 +1,5 @@
 import React, { useEffect, Component } from 'react'
-import { CarouselContainer, FirstCaption, ClientLogo, SecondCaption, Button, ImageBackgroundContainer, ImageBackground, ImageCrop, ImageCrop2, ColCustom, RowCustom } from './CarouselElement'
+import { CarouselContainer, FirstCaption, ClientLogo, SecondCaption, Button, ImageBackgroundContainer, ImageBackground, ImageCrop, ImageCrop2, ColCustom, RowCustom, Tulisan } from './CarouselElement'
 import HavillaLogo from '../../images/havilla_logo.svg'
 import HavillaLaptop from '../../images/havilla_laptop.png'
 import { Col, Row } from 'react-bootstrap';
@@ -14,8 +14,11 @@ import { baseURL } from '../../config/';
 //import Carousel from "react-multi-carousel";
 //import "react-multi-carousel/lib/styles.css";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css"; 
-import "slick-carousel/slick/slick-theme.css";
+import './Carousel.css';
+import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
+import SectionTextSmall from '../../components/SectionTextSmall/index';
+
+
 const ClientCarousel = () => {
     const [celeb, setCeleb] = useState([]);
     useEffect(() => {
@@ -25,35 +28,53 @@ const ClientCarousel = () => {
         })
     }, [])
 
-    const settings = {
-        dots: true,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 2,
-      slidesToScroll: 1,
-      centerMode: true,
-      infinite: true,
-      centerPadding: "60px",
+    const NextArrow = ({ onClick }) => {
+        return (
+          <div className="arrow next" onClick={onClick}>
+            <FaArrowRight />
+          </div>
+        );
+      };
+    
+      const PrevArrow = ({ onClick }) => {
+        return (
+          <div className="arrow prev" onClick={onClick}>
+            <FaArrowLeft />
+          </div>
+        );
+      };
+    
+      const [imageIndex, setImageIndex] = useState(1);
+    
+      const settings = {
+        dots:true,
+        infinite: true,
+        speed: 300,
+        slidesToShow: 3,
+        centerMode: true,
+        beforeChange: (current, next) => setImageIndex(next),
       };
 
-
     return (
-        <Element id='works' name='works'>
+        <div className="app">
             <Slider {...settings}>
                 {
                     celeb.map((cek, i) => {
                         return (
 
-                              <Col xs={12} lg={8} xs={{ order: 'first' }}>
-                                <ImageBackground src={baseURL + (cek.photo[0].url)} className="d-block mx-auto img-fluid"></ImageBackground>
-                               </Col>
+                              <div className={i === imageIndex ? "slide activeSlide" : "slide"}>
+                                <img src={baseURL + (cek.photo[0].url)} ></img>
+                                <SectionTextSmall value={cek.name}></SectionTextSmall>
+                               </div>
+                              
 
                         )
                     })
                 }
                 
             </Slider>
-        </Element >
+           
+        </div >
     )
 }
 
