@@ -42,9 +42,9 @@ export const NavTulisan = styled.div`
 export const NavEditIcon = styled.div`
     color:white;
     display:none;
-    position: flex;
+    position: flex-end;
     @media screen and (max-width:1024px){
-        padding-right: 5%;
+        
         font-size: 30px;
         display :flex;
     }
