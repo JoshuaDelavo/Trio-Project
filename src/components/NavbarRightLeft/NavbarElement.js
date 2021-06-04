@@ -44,7 +44,6 @@ export const NavEditIcon = styled.div`
     display:none;
     position: flex-end;
     @media screen and (max-width:1024px){
-        
         font-size: 30px;
         display :flex;
     }

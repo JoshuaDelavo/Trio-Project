@@ -19,15 +19,24 @@ import SectionParagraph from '../../components/SectionParagraph/index';
 
 const ClientCarousel = () => {
   const [celeb, setCeleb] = useState([]);
+  const [Slide, setSlide] = useState(5);
+  const [imageIndex, setImageIndex] = useState(0);
+  const showButton = () => {
+    if (window.innerWidth <= 960) {
+      setSlide(1)
+    }
+    else {
+      setSlide(5)
+    }
+  };
   useEffect(() => {
     CelebritiesApi.find().then(res => {
       setCeleb(res);
       console.log(celeb);
+      showButton();
     })
   }, [])
 
-  const [imageIndex, setImageIndex] = useState(0);
-  const [Slide, setSlide] = useState(5);
 
   const settings = {
     dots: true,
@@ -38,14 +47,7 @@ const ClientCarousel = () => {
     beforeChange: (current, next) => setImageIndex(next),
   };
 
-  const showButton = () => {
-    if (window.innerWidth <= 960) {
-      setSlide(1)
-    }
-    else {
-      setSlide(5)
-    }
-  };
+
 
   window.addEventListener('resize', showButton)
 
