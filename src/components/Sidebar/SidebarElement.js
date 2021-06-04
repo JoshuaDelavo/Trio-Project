@@ -5,6 +5,7 @@ import { Link as LinkS } from 'react-scroll'
 export const Nav = styled.nav` 
     display:flex; 
     background:rgba(1, 1, 1, 0.8);
+    backdrop-filter: blur(5px);
     height:100vh;
     width:50%;
     position:fixed;
@@ -30,10 +31,11 @@ export const NavBurgerIcon = styled.div`
     justify-content:center;
     width: 100%;
     height:20%;
-    padding-top: 6%;
-    padding-left:20%;
+    padding-top: 6.6%;
+    padding-left:5%;
     color:white;
     font-size:16px;
+    
     @media screen and (max-width:1024px){
         padding-top:23%;
         padding-left:8%;
