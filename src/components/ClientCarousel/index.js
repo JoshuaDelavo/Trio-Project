@@ -18,57 +18,52 @@ import SectionParagraph from '../../components/SectionParagraph/index';
 
 
 const ClientCarousel = () => {
-    const [celeb, setCeleb] = useState([]);
-    useEffect(() => {
-        CelebritiesApi.find().then(res => {
-            setCeleb(res);
-            console.log(celeb);
+  const [celeb, setCeleb] = useState([]);
+  useEffect(() => {
+    CelebritiesApi.find().then(res => {
+      setCeleb(res);
+      console.log(celeb);
+    })
+  }, [])
+
+  const [imageIndex, setImageIndex] = useState(0);
+  const [Slide, setSlide] = useState(5);
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 300,
+    slidesToShow: Slide,
+    centerMode: true,
+    beforeChange: (current, next) => setImageIndex(next),
+  };
+
+  const showButton = () => {
+    if (window.innerWidth <= 960) {
+      setSlide(1)
+    }
+    else {
+      setSlide(5)
+    }
+  };
+
+  window.addEventListener('resize', showButton)
+
+  return (
+    <div className="app">
+      <Slider {...settings}>{
+        celeb.map((cek, i) => {
+          return (
+            <div className={i === imageIndex ? "slide activeSlide" : "slide"}>
+              <img src={baseURL + (cek.photo[0].url)} ></img>
+              <SectionParagraph value={cek.name}></SectionParagraph>
+            </div>
+          )
         })
-    }, [])
-
-    const NextArrow = ({ onClick }) => {
-        return (
-          <div className="arrow next" onClick={onClick}>
-            <FaArrowRight />
-          </div>
-        );
-      };
-    
-      const PrevArrow = ({ onClick }) => {
-        return (
-          <div className="arrow prev" onClick={onClick}>
-            <FaArrowLeft />
-          </div>
-        );
-      };
-    
-      const [imageIndex, setImageIndex] = useState(0);
-    
-      const settings = {
-        dots:true,
-        infinite: true,
-        speed: 300,
-        slidesToShow: 5,
-        centerMode: true,
-        beforeChange: (current, next) => setImageIndex(next),
-      };
-
-    return (
-      <div className="app">
-        <Slider {...settings}>{
-              celeb.map((cek, i) => {
-                return (
-                  <div className={i === imageIndex ? "slide activeSlide" : "slide"}>
-                  <img src={baseURL + (cek.photo[0].url)} ></img>
-                  <br></br>
-                  <SectionParagraph value={cek.name}></SectionParagraph>
-                  </div>
-                )
-              })
-            } 
-        </Slider>
-      </div >
-    )
+      }
+      </Slider>
+    </div >
+  )
 }
 
 export default ClientCarousel

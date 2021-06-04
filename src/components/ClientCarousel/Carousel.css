@@ -63,3 +63,14 @@ p {
   left: 0%;
   top: 50%;
 }
+@media only screen and (max-width: 1024px) {
+
+  .slide img {
+  width: 13.5rem;
+  /* width: 292px;
+  height: 387px; */
+  padding: 25px;
+  margin: 0 -28px;
+}
+        
+}
