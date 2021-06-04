@@ -25,6 +25,7 @@ const ClientCarousel = () => {
       setSlide(5)
     }
   };
+  
   useEffect(() => {
     CelebritiesApi.find().then(res => {
       setCeleb(res);
@@ -32,7 +33,6 @@ const ClientCarousel = () => {
       showButton();
     })
   }, [])
-
 
   const settings = {
     dots: true,
@@ -42,8 +42,6 @@ const ClientCarousel = () => {
     centerMode: true,
     beforeChange: (current, next) => setImageIndex(next),
   };
-
-
 
   window.addEventListener('resize', showButton)
 
