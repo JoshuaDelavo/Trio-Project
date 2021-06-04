@@ -2,14 +2,14 @@ import React from 'react'
 import { Nav, NavBurgerIcon, SidebarMenu, SidebarItem, SidebarLinkRoute } from './SidebarElement'
 import { FaTimes, FaBars } from 'react-icons/fa'
 import Scroll from 'react-scroll'
-import { GrClose } from "react-icons/gr";
+import { AiOutlineClose } from "react-icons/ai";
 const ScrollLink = Scroll.Link
 
 const Sidebar = ({ toggle, hamburgerOpen }) => {
     return (
         <Nav hamburgerOpen={hamburgerOpen} onClick={toggle}>
             <NavBurgerIcon onClick={toggle}>
-                {hamburgerOpen ? <GrClose onClick={toggle}></GrClose> : ''} CLOSE
+                {hamburgerOpen ? <AiOutlineClose onClick={toggle} size={25}></AiOutlineClose> : ''} CLOSE
             </NavBurgerIcon>
             <SidebarMenu>
                 <SidebarItem>
