@@ -4,15 +4,12 @@ import HavillaLogo from '../../images/havilla_logo.svg'
 import HavillaLaptop from '../../images/havilla_laptop.png'
 import { Col, Row } from 'react-bootstrap';
 import Flickity from 'react-flickity-component'
-// import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import { Element } from 'react-scroll'
 import CelebritiesApi from '../../config/CelebritiesApi';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { baseURL } from '../../config/';
-//import Carousel from "react-multi-carousel";
-//import "react-multi-carousel/lib/styles.css";
 import Slider from "react-slick";
 import './Carousel.css';
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
@@ -44,7 +41,7 @@ const ClientCarousel = () => {
         );
       };
     
-      const [imageIndex, setImageIndex] = useState(1);
+      const [imageIndex, setImageIndex] = useState(0);
     
       const settings = {
         dots:true,
@@ -56,25 +53,19 @@ const ClientCarousel = () => {
       };
 
     return (
-        <div className="app">
-            <Slider {...settings}>
-                {
-                    celeb.map((cek, i) => {
-                        return (
-
-                              <div className={i === imageIndex ? "slide activeSlide" : "slide"}>
-                                <img src={baseURL + (cek.photo[0].url)} ></img>
-                                <SectionTextSmall value={cek.name}></SectionTextSmall>
-                               </div>
-                              
-
-                        )
-                    })
-                }
-                
-            </Slider>
-           
-        </div >
+      <div className="app">
+        <Slider {...settings}>{
+              celeb.map((cek, i) => {
+                return (
+                  <div className={i === imageIndex ? "slide activeSlide" : "slide"}>
+                  <img src={baseURL + (cek.photo[0].url)} ></img>
+                  <SectionTextSmall value={cek.name}></SectionTextSmall>
+                  </div>
+                )
+              })
+            } 
+        </Slider>
+      </div >
     )
 }
 

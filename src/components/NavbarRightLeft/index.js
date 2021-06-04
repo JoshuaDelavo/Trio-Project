@@ -19,7 +19,6 @@ const NavbarRightLeft = ({ toggle, hamburgerOpen }) => {
     return (
         <Nav>
             <NavbarContainer>
-
                 <NavBurgerIcon onClick={toggle}>
                     {hamburgerOpen ? '' : <FaBars onClick={toggle}></FaBars>}
                 </NavBurgerIcon>
