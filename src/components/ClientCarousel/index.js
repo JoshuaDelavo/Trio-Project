@@ -14,6 +14,7 @@ import Slider from "react-slick";
 import './Carousel.css';
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import SectionTextSmall from '../../components/SectionTextSmall/index';
+import SectionParagraph from '../../components/SectionParagraph/index';
 
 
 const ClientCarousel = () => {
@@ -47,7 +48,7 @@ const ClientCarousel = () => {
         dots:true,
         infinite: true,
         speed: 300,
-        slidesToShow: 3,
+        slidesToShow: 5,
         centerMode: true,
         beforeChange: (current, next) => setImageIndex(next),
       };
@@ -59,7 +60,8 @@ const ClientCarousel = () => {
                 return (
                   <div className={i === imageIndex ? "slide activeSlide" : "slide"}>
                   <img src={baseURL + (cek.photo[0].url)} ></img>
-                  <SectionTextSmall value={cek.name}></SectionTextSmall>
+                  <br></br>
+                  <SectionParagraph value={cek.name}></SectionParagraph>
                   </div>
                 )
               })

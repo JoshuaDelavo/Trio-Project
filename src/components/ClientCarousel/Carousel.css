@@ -20,8 +20,8 @@ li {
   width: 20rem;
   /* width: 292px;
   height: 387px; */
-  margin: 0 auto;
-  
+  padding: 25px;
+  margin: 0 -28px;
 }
 
 p {
