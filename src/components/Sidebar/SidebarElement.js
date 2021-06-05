@@ -65,7 +65,7 @@ export const SidebarItem = styled.div`
     padding-right:30%;
     justify-content:flex-end;
     @media screen and (max-width:1024px){
-        justify-content:center;
+        justify-content:flex-end;
     }
     
 `
