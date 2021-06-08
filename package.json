@@ -18,6 +18,7 @@
     "react-flickity-component": "^3.6.0",
     "react-gsap": "^2.2.1",
     "react-icons": "^4.1.0",
+    "react-masonry": "^0.1.6",
     "react-masonry-css": "^1.0.16",
     "react-multi-carousel": "^2.6.3",
     "react-responsive-carousel": "^3.2.18",

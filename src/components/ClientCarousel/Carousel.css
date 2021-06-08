@@ -11,9 +11,10 @@ body {
   height: 570px;
 }
 
-li {
-  background-color: white;
-  border-radius: 50%;
+.slick-dots li button:before {
+  color: white;
+  font-size: 15px;
+  line-height: 20px;
 }
 
 .slide img {
@@ -63,9 +64,8 @@ p {
 }
 @media only screen and (max-width: 1024px) {
   .slide img {
-  width: 13.5rem;
-  padding: 25px;
-  margin: 0 -28px;
-}
-        
+    width: 13.5rem;
+    padding: 25px;
+    margin: 0 -28px;
+  }
 }

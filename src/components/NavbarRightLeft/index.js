@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Nav, NavTulisan, NavbarContainer, NavLogo, NavBurgerIcon, NavEditIcon } from './NavbarElement'
 import { FaBars } from 'react-icons/fa'
+import { RiMenu2Line } from 'react-icons/ri'
 import LogoAnthem from "../../images/logo_anthem.svg";
 import Scroll from 'react-scroll'
 import { BiEditAlt } from "react-icons/bi";
@@ -38,7 +39,7 @@ const NavbarRightLeft = ({ toggle, hamburgerOpen }) => {
             <Fade in={imgLoaded}>
                 <NavbarContainer>
                     <NavBurgerIcon onClick={toggle}>
-                        {hamburgerOpen ? '' : <FaBars onClick={toggle}></FaBars>}
+                        {hamburgerOpen ? '' : <RiMenu2Line onClick={toggle}></RiMenu2Line>}
                     </NavBurgerIcon>
                     <NavLogo to='/'><img src={baseURL + logo.logo.url} alt=""></img>
                     </NavLogo>
