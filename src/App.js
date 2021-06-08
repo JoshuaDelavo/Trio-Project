@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 
 
-import Header from './pages/Header';
+import Header from './components/Header/Header';
 import Collections from './pages/Collections';
 import CollectionsDetail from './pages/CollectionsDetail';
 import Home from './pages/Home';

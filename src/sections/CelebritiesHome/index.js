@@ -16,14 +16,14 @@ const CelebritiesHome = () => {
 
     useEffect(() => {
         CelebritiesApi.home().then(res => {
-            console.log(res);
+            // console.log(res);
             setHomeCelebrities(res);
         })
     }, [])
 
     useEffect(() => {
         CelebritiesApi.find().then(res => {
-            console.log(res);
+            // console.log(res);
             setCelebrities(res);
         })
     }, [])
@@ -31,7 +31,7 @@ const CelebritiesHome = () => {
 
     return (
         <Element id='about-us' name='about-us'>
-            <div className="container-campaign">
+            <div className="container-celebrities">
                 <SectionTextSmall value={homeCelebrities.smallTitle}></SectionTextSmall>
                 <SectionTextMedium value={homeCelebrities.bigTitle}></SectionTextMedium>
                 <hr style={{ border: '1px solid white', width: '45px', margin: 'auto' }}></hr>

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { Link as LinkR } from 'react-router-dom'
-import { Link as LinkS } from 'react-scroll'
+// import { Link as LinkR } from 'react-router-dom'
+// import { Link as LinkS } from 'react-scroll'
 
 export const Nav = styled.nav` 
     display:flex; 
@@ -35,6 +35,11 @@ export const NavBurgerIcon = styled.div`
     padding-left:5%;
     color:white;
     font-size:16px;
+
+    &:hover {
+        cursor:pointer;
+    }
+
     
     @media screen and (max-width:1024px){
         padding-top:23%;

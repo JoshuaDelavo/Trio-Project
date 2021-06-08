@@ -81,6 +81,10 @@ export const NavBurgerIcon = styled.div`
     top:22px;
     color:white;
 
+    &:hover {
+        cursor:pointer;
+    }
+
     @media screen and (min-width:2000px){
         visibility:hidden;
     } 

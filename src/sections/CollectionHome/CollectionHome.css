@@ -1,19 +1,183 @@
 .container-campaign{
-    height:100vh;
+    height:100%;
     width:100%;
     background:black;
     padding:100px 55px;
+    
+}
+/* pengaturean tinggu dan lebar */
+.image1{
+    width: 891px;
+    height: 503px; 
+}
+
+.image2{
+    width: 692.33px;
+    height: 390px;
+}
+.image3{
+    width: 492px;
+    height: 738px;
 }
 
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
+@media (min-width: 300px) {
+    .image1{
+        width: 150%;
+        height: auto;
+        margin-top: 0%;
+        margin-left: -25%;
+        margin-right: auto;
+        margin-bottom: auto;
+    }
+    
+    .image2{
+        width: 150%;
+        height: auto;
+        margin-top: 5%;
+        margin-left: -25%;
+        margin-right: auto;
+        margin-bottom: 5%;
 
-@media (min-width: 576px) {
+    }
+    .image3{
+        width: 150%;
+        height: auto;
+        margin-top: 10%;
+        margin-left: -25%;
+        margin-right: auto;
+        margin-bottom: auto;
+    }
+
+   
 }
 
-@media (max-width: 768px) {
+@media (min-width: 350px) {
+    .image1{
+        width: 145%;
+        height: auto;
+        margin-top: 0%;
+        margin-left: -25%;
+        margin-right: auto;
+        margin-bottom: auto;
+    }
     
+    .image2{
+        width: 145%;
+        height: auto;
+        margin-top: 5%;
+        margin-left: -25%;
+        margin-right: auto;
+        margin-bottom: 5%;
+
+    }
+    .image3{
+        width: 145%;
+        height: auto;
+        margin-top: 10%;
+        margin-left: -25%;
+        margin-right: auto;
+        margin-bottom: auto;
+    }
+
+   
+}
+
+@media (min-width: 370px) {
+    .image1{
+        width: 135%;
+        height: auto;
+        margin-top: 0%;
+        margin-left: -20%;
+        margin-right: auto;
+        margin-bottom: auto;
+    }
+    
+    .image2{
+        width: 140%;
+        height: auto;
+        margin-top: 5%;
+        margin-left: -20%;
+        margin-right: auto;
+        margin-bottom: 5%;
+
+    }
+    .image3{
+        width: 150%;
+        height: auto;
+        margin-top: 10%;
+        margin-left: -20%;
+        margin-right: auto;
+        margin-bottom: auto;
+    }
+
+   
+}
+
+@media (min-width: 400px) {
+    .image1{
+        width: 135%;
+        height: auto;
+        margin-top: 0%;
+        margin-left: -20%;
+        margin-right: auto;
+        margin-bottom: auto;
+    }
+    
+    .image2{
+        width: 138%;
+        height: auto;
+        margin-top: 30%;
+        margin-left: -20%;
+        margin-right: auto;
+        margin-bottom: 5%;
+
+    }
+    .image3{
+        width: auto;
+        height: 77%;
+        margin-top: 10%;
+        margin-left: -20%;
+        margin-right: auto;
+        margin-bottom: auto;
+    }
+
+   
+}
+
+@media (min-width: 760px) {
+
+    /* untuk pengaturean responsive dari img */
+    .image1{
+        width: 65%;
+        height: auto;
+        margin-top: 0%;
+        margin-left: -10%;
+        margin-right: auto;
+        margin-bottom: auto;
+    }
+    
+    .image2{
+        width: 50%;
+        height: auto;
+        margin-top: -20%;
+        margin-left: 0%;
+        margin-right: auto;
+        margin-bottom: 5%;
+
+    }
+    .image3{
+        width: 30%;
+        height: auto;
+        margin-top: 13%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: auto;
+    }
+
+
 } 
 
 @media(min-width:960px) {
@@ -21,13 +185,44 @@
         width: 750px; 
         margin: auto
     }
+    /* untuk pengaturean responsive dari img */
+    .image1{
+        width: 65%;
+        height: auto;
+        margin-top: 0%;
+        margin-left: -5%;
+        margin-right: auto;
+        margin-bottom: auto;
+    }
+    
+    .image2{
+        width: 50%;
+        height: auto;
+        margin-top: -20%;
+        margin-left: 3%;
+        margin-right: auto;
+        margin-bottom: 5%;
+
+    }
+    .image3{
+        width: 30%;
+        height: auto;
+        margin-top: 13%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: auto;
+    }
+
 }
 
 @media(min-width:1100px) {
+    
 }
 
 @media(min-width:1200px) {
+    
 }
 @media(min-width:1500px) {
+   
     
 }

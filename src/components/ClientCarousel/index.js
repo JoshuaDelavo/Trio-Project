@@ -1,8 +1,7 @@
-import React, { useEffect, Component } from 'react'
+import React, { useEffect } from 'react'
 
 import CelebritiesApi from '../../config/CelebritiesApi';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { baseURL } from '../../config/';
 import Slider from "react-slick";
 import './Carousel.css';
@@ -29,7 +28,7 @@ const ClientCarousel = () => {
   useEffect(() => {
     CelebritiesApi.find().then(res => {
       setCeleb(res);
-      console.log(celeb);
+      // console.log(celeb);
       showButton();
     })
   }, [])

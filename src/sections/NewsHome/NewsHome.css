@@ -1,0 +1,157 @@
+.container-campaign{
+    height:100%;
+    width:100%;
+    background:black;
+    padding:100px 55px;
+}
+.container-text-news{
+    font-style: normal;
+    font-weight: 300;
+    font-size: 35px;
+    /* identical to box height, or 140% */
+
+    text-align: left;
+
+    /* Sebastian's White */
+
+    color: #FFFFFF;
+}
+
+.container-text-time{
+    font-style: normal;
+    font-weight: 150;
+    font-size: 20px;
+    /* identical to box height, or 140% */
+
+    text-align: left;
+
+    /* Sebastian's White */
+
+    color: #FFFFFF;
+}
+
+.my-masonry-grid {
+    display: -webkit-box; /* Not needed if autoprefixing */
+    display: -ms-flexbox; /* Not needed if autoprefixing */
+    display: flex;
+    margin-left: -30px; /* gutter size offset */
+    width: auto;
+}
+.my-masonry-grid_column {
+    padding-left: 80px; /* gutter size */
+    background-clip: padding-box;
+}
+  
+  /* Style your items */
+.my-masonry-grid_column > div { /* change div to reference your elements you put in <Masonry> */
+    background: black;
+    margin-bottom: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.imgnews{
+   width: 120%;
+}
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+@media (min-width: 300px) {
+  .my-masonry-grid {
+    margin-left: -20%; /* gutter size offset */
+  }
+  .my-masonry-grid_column {
+    padding-left: 5%; /* gutter size */
+  }
+  
+  /* Style your items */
+  .my-masonry-grid_column > div { /* change div to reference your elements you put in <Masonry> */
+    margin-left: 2%;
+    margin-right: 8%;
+  }
+
+}
+
+@media (min-width: 400px) {
+  .my-masonry-grid {
+    margin-left: -20%; /* gutter size offset */
+  }
+  .my-masonry-grid_column {
+    padding-left: 5%; /* gutter size */
+  }
+  
+  /* Style your items */
+  .my-masonry-grid_column > div { /* change div to reference your elements you put in <Masonry> */
+    margin-left: 2%;
+    margin-right: 8%;
+  }
+
+}
+
+@media (min-width: 700px) {
+  .my-masonry-grid {
+    margin-left: -50px; /* gutter size offset */
+  }
+  .my-masonry-grid_column {
+    padding-left: 50px; /* gutter size */
+  }
+  
+  /* Style your items */
+  .my-masonry-grid_column > div { /* change div to reference your elements you put in <Masonry> */
+    margin-left: 5%;
+    margin-right: 20%;
+  }
+
+}
+
+@media (max-width: 768px) {
+    .container-text-news{
+        font-size: 30px;
+    }
+
+    .container-text-time{
+    font-style: normal;
+    font-weight: 150;
+    font-size: 20px;
+    /* identical to box height, or 140% */
+
+    text-align: left;
+
+    /* Sebastian's White */
+
+    color: #FFFFFF;
+  }
+
+}
+
+@media(min-width:960px) {
+  .btn-containerNews{
+    width: 750px; 
+    margin: auto
+  }
+
+  .my-masonry-grid {
+    margin-left: -50px; /* gutter size offset */
+  }
+  .my-masonry-grid_column {
+    padding-left: 50px; /* gutter size */
+  }
+  
+  /* Style your items */
+  .my-masonry-grid_column > div { /* change div to reference your elements you put in <Masonry> */
+    margin-left: 5%;
+    margin-right: 20%;
+  }
+
+}
+
+@media(min-width:1100px) {
+}
+
+@media(min-width:1200px) {
+}
+@media(min-width:1500px) {
+    
+}

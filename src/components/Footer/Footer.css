@@ -1,0 +1,148 @@
+.container-footer{
+    height:100%;
+    width:100%;
+    background:black;
+    padding:20px 90px;
+}
+
+.container-p{
+
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 24px;
+
+    display: flex;
+    align-items: center;
+    font-style: normal;
+    font-weight: 300;
+    text-align: center;
+    justify-content:center;
+
+    color: #FFFFFF;
+
+}
+
+.container-pfoot1{
+
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+
+    color: #FFFFFF;
+
+}
+
+.container-pfoot2{
+
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+
+    color: #FFFFFF;
+
+}
+
+.anthem-link, .anthem-link:focus, .anthem-link:hover{
+    color:white;
+    text-decoration: underline;
+}
+
+.container-link{
+
+    text-decoration-line: underline;
+
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 24px;
+
+    display: flex;
+    align-items: center;
+    font-style: normal;
+    font-weight: 300;
+    text-align: center;
+    justify-content:center;
+
+    color: #FFFFFF;
+
+}
+
+
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+@media (min-width: 300px) {
+    
+}
+
+@media (max-width: 768px) {
+
+    .container-pfoot1{
+
+        font-size: 6px;
+        text-align: center;
+    
+    }
+
+    .container-pfoot2{
+
+        font-size: 6px;
+        text-align: center;
+    
+    }
+
+    .logo-contact{
+        padding: 10px;
+        width: 25%;
+    }
+    .logo-container{
+        margin-left: 0%;
+        margin-right: auto;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+
+}
+
+@media(min-width:960px) {
+    .logo-contact{
+        padding: 20px;
+        width: 10%;
+    }
+    .logo-container{
+        width: 50%;
+        margin-left: 40%;
+        margin-right: auto;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+
+    .container-pfoot1{
+
+        text-align: left;
+    
+    }
+
+    .container-pfoot2{
+
+        text-align: right;
+    
+    }
+    
+}
+
+@media(min-width:1100px) {
+}
+
+@media(min-width:1200px) {
+}
+@media(min-width:1500px) {
+    
+}
