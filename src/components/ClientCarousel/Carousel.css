@@ -12,11 +12,16 @@ body {
 }
 
 .slick-dots li button:before {
-  color: white;
+  color: rgb(209, 201, 201);
+
   font-size: 15px;
   line-height: 20px;
 }
 
+.slick-dots li.slick-active button:before {
+  color: white;
+  font-size: 20px;
+}
 .slide img {
   width: 20rem;
   padding: 25px;
