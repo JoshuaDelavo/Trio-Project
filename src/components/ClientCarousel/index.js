@@ -6,8 +6,7 @@ import { baseURL } from '../../config/';
 import Slider from "react-slick";
 import './Carousel.css';
 import SectionParagraph from '../../components/SectionParagraph/index';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+
 
 const ClientCarousel = () => {
   const [celeb, setCeleb] = useState([]);
@@ -40,8 +39,6 @@ const ClientCarousel = () => {
     speed: 300,
     slidesToShow: Slide,
     centerMode: true,
-    backgroundColor: 'white',
-    outline: '0',
     beforeChange: (current, next) => setImageIndex(next),
   };
 

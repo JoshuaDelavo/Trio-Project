@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Nav, NavTulisan, NavbarContainer, NavLogo, NavBurgerIcon, NavEditIcon } from './NavbarElement'
 import { FaBars } from 'react-icons/fa'
-import { RiMenu2Line } from 'react-icons/ri'
 import LogoAnthem from "../../images/logo_anthem.svg";
 import Scroll from 'react-scroll'
+import { RiMenu2Line } from 'react-icons/ri'
 import { BiEditAlt } from "react-icons/bi";
 import CompanyApi from '../../config/CompanyApi';
 import { baseURL } from '../../config/';

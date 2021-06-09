@@ -13,7 +13,6 @@ body {
 
 .slick-dots li button:before {
   color: rgb(209, 201, 201);
-
   font-size: 15px;
   line-height: 20px;
 }
@@ -22,6 +21,7 @@ body {
   color: white;
   font-size: 20px;
 }
+
 .slide img {
   width: 20rem;
   padding: 25px;
@@ -67,10 +67,11 @@ p {
   left: 0%;
   top: 50%;
 }
+
 @media only screen and (max-width: 1024px) {
   .slide img {
     width: 13.5rem;
     padding: 25px;
     margin: 0 -28px;
-  }
+  }        
 }

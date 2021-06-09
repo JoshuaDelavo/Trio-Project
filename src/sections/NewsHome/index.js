@@ -49,10 +49,9 @@ const NewsHomeContent = () => {
                                 <h2 className="container-text-news">{newsHome.article}</h2>
                                 <br/>
                                 <br/>
-                                <p className="container-text-time">{newsHome.published_at}</p>
+                                <p className="container-text-time">{new Date(newsHome.published_at).toLocaleDateString()}</p>
                             </div>
-                        </React.Fragment>             
-                                            
+                        </React.Fragment>
                     })
                 }
                 </Masonry>            
