@@ -11,6 +11,7 @@ const ScrollLink = Scroll.Link
 
 const Sidebar = ({ toggle2, conciergeOpen }) => {
     const [events, setEvents] = useState([]);
+    const paragraph = "Fashion Concierge is interactive way to send your inquiry to Sebastian Gunawan and team. Tell us what you have in mind. Your color preferences, your style preferences, or even upload your rough sketches about the art piece of your dream";
     useEffect(() => {
         Concierge.findBudgets().then(res => {
             setEvents(res);
@@ -28,8 +29,8 @@ const Sidebar = ({ toggle2, conciergeOpen }) => {
                     <SectionTextMedium value="WELCOME TO THE FASHION CONCIERGE" ></SectionTextMedium>
                     <hr style={{ border: '1px solid white', width: '45px', margin: 'auto' }}></hr>
                     <br />
-                    <SectionParagraph
-                    > Fashion Concierge is interactive way to send your inquiry to Sebastian Gunawan and team. Tell us what you have in mind.</SectionParagraph>
+                    <SectionParagraph value={paragraph}
+                    > </SectionParagraph>
                 </div>
             </SidebarMenu>
         </Nav>
