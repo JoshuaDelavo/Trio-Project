@@ -12,7 +12,7 @@ body {
 }
 
 .slick-dots li button:before {
-  color: grey;
+  color: lightgray;
   font-size: 10px;
 }
 
