@@ -11,6 +11,7 @@ import {
 import Header from './components/Header/Header';
 import Collections from './pages/Collections';
 import CollectionsDetail from './pages/CollectionsDetail';
+import Concierge from './pages/Concierge';
 import Home from './pages/Home';
 
 function App() {
@@ -27,6 +28,9 @@ function App() {
           </Route>
           <Route path='/collections'>
             <Collections />
+          </Route>
+          <Route path='/concierge'>
+            <Concierge />
           </Route>
         </Switch>
       </div>

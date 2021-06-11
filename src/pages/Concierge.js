@@ -1,6 +1,6 @@
 import React from "react";
 
-const CollectionsDetail = () => {
+const Concierge = () => {
   return (
     <div>
       <br />
@@ -11,9 +11,9 @@ const CollectionsDetail = () => {
       <br />
       <br />
       <br />
-      CollectionsDetail Page
+      Concierge Page
     </div>
   );
 };
 
-export default CollectionsDetail;
+export default Concierge;

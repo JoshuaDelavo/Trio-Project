@@ -1,54 +1,69 @@
-import React, { useState, useEffect } from 'react'
-import { Nav, NavTulisan, NavbarContainer, NavLogo, NavBurgerIcon, NavEditIcon } from './NavbarElement'
-import { FaBars } from 'react-icons/fa'
+import React, { useState, useEffect } from "react";
+import {
+  Nav,
+  NavTulisan,
+  NavbarContainer,
+  NavLogo,
+  NavBurgerIcon,
+  NavEditIcon,
+} from "./NavbarElement";
+import { FaBars } from "react-icons/fa";
 import LogoAnthem from "../../images/logo_anthem.svg";
-import Scroll from 'react-scroll'
-import { RiMenu2Line } from 'react-icons/ri'
+import Scroll from "react-scroll";
+import { RiMenu2Line } from "react-icons/ri";
 import { BiEditAlt } from "react-icons/bi";
-import CompanyApi from '../../config/CompanyApi';
-import { baseURL } from '../../config/';
-import { Fade } from '@material-ui/core';
-const ScrollLink = Scroll.Link
+import CompanyApi from "../../config/CompanyApi";
+import { baseURL } from "../../config/";
+import { Fade } from "@material-ui/core";
+import { Link } from "react-router-dom";
+const ScrollLink = Scroll.Link;
 
 const NavbarRightLeft = ({ toggle, hamburgerOpen }) => {
-    const [logo, setLogo] = useState({ logo: [''] });
-    const [imgLoaded, setImgLoaded] = useState(false);
+  const [logo, setLogo] = useState({ logo: [""] });
+  const [imgLoaded, setImgLoaded] = useState(false);
 
-    useEffect(() => {
-        CompanyApi.find().then(res => {
-            new Promise((resolve, reject) => {
-                const loadImg = new Image()
+  useEffect(() => {
+    CompanyApi.find().then((res) => {
+      new Promise((resolve, reject) => {
+        const loadImg = new Image();
 
-                loadImg.src = baseURL + res.logo.url
+        loadImg.src = baseURL + res.logo.url;
 
-                loadImg.onload = () => {
-                    resolve(baseURL + res.logo.url)
-                }
+        loadImg.onload = () => {
+          resolve(baseURL + res.logo.url);
+        };
 
-                loadImg.onerror = err => reject(err)
-            }).then(() => setImgLoaded(true))
-                .catch(err => console.log("Failed to load images", err))
+        loadImg.onerror = (err) => reject(err);
+      })
+        .then(() => setImgLoaded(true))
+        .catch((err) => console.log("Failed to load images", err));
 
+      // console.log(res);
+      setLogo(res);
+    });
+  }, []);
+  return (
+    <Nav>
+      <Fade in={imgLoaded}>
+        <NavbarContainer>
+          <NavBurgerIcon onClick={toggle}>
+            {hamburgerOpen ? "" : <RiMenu2Line onClick={toggle}></RiMenu2Line>}
+          </NavBurgerIcon>
+          <NavLogo to="/">
+            <img src={baseURL + logo.logo.url} alt=""></img>
+          </NavLogo>
+          <Link to="../../pages/Concierge">
+            <NavTulisan>
+              THE CONCIERGE <BiEditAlt></BiEditAlt>
+            </NavTulisan>
+            <NavEditIcon>
+              <BiEditAlt></BiEditAlt>
+            </NavEditIcon>
+          </Link>
+        </NavbarContainer>
+      </Fade>
+    </Nav>
+  );
+};
 
-            // console.log(res);
-            setLogo(res);
-        });
-    }, [])
-    return (
-        <Nav>
-            <Fade in={imgLoaded}>
-                <NavbarContainer>
-                    <NavBurgerIcon onClick={toggle}>
-                        {hamburgerOpen ? '' : <RiMenu2Line onClick={toggle}></RiMenu2Line>}
-                    </NavBurgerIcon>
-                    <NavLogo to='/'><img src={baseURL + logo.logo.url} alt=""></img>
-                    </NavLogo>
-                    <NavTulisan>THE CONCIERGE <BiEditAlt></BiEditAlt></NavTulisan>
-                    <NavEditIcon><BiEditAlt></BiEditAlt></NavEditIcon>
-                </NavbarContainer>
-            </Fade>
-        </Nav >
-    )
-}
-
-export default NavbarRightLeft
+export default NavbarRightLeft;
