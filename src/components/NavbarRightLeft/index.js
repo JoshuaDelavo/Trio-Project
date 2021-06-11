@@ -16,6 +16,8 @@ import CompanyApi from "../../config/CompanyApi";
 import { baseURL } from "../../config/";
 import { Fade } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import SectionTextSmall from "../../components/SectionTextSmall/index";
+import SectionTextMedium from "../../components/SectionTextMedium/index";
 const ScrollLink = Scroll.Link;
 
 const NavbarRightLeft = ({ toggle, toggle2, hamburgerOpen, conciergeOpen }) => {
@@ -47,13 +49,20 @@ const NavbarRightLeft = ({ toggle, toggle2, hamburgerOpen, conciergeOpen }) => {
       <Fade in={imgLoaded}>
         <NavbarContainer>
           <NavBurgerIcon onClick={toggle}>
-            {hamburgerOpen ? "" : <RiMenu2Line onClick={toggle}></RiMenu2Line>}
+            {hamburgerOpen ? (
+              ""
+            ) : (
+              <NavTulisan>
+                <RiMenu2Line onClick={toggle}></RiMenu2Line> MENU
+              </NavTulisan>
+            )}
           </NavBurgerIcon>
           <NavLogo to="/">
             <img src={baseURL + logo.logo.url} alt=""></img>
           </NavLogo>
           <NavTulisan onClick={toggle2}>
-            THE CONCIERGE {conciergeOpen ? "" : <BiEditAlt onClick={toggle2}></BiEditAlt>}
+            THE CONCIERGE{" "}
+            {conciergeOpen ? "" : <BiEditAlt onClick={toggle2}></BiEditAlt>}
           </NavTulisan>
           <NavEditIcon onClick={toggle2}>
             {conciergeOpen ? "" : <BiEditAlt onClick={toggle2}></BiEditAlt>}
