@@ -18,7 +18,7 @@ import { Fade } from "@material-ui/core";
 import { Link } from "react-router-dom";
 const ScrollLink = Scroll.Link;
 
-const NavbarRightLeft = ({ toggle, hamburgerOpen }) => {
+const NavbarRightLeft = ({ toggle, toggle2, hamburgerOpen, conciergeOpen }) => {
   const [logo, setLogo] = useState({ logo: [""] });
   const [imgLoaded, setImgLoaded] = useState(false);
 
@@ -52,14 +52,12 @@ const NavbarRightLeft = ({ toggle, hamburgerOpen }) => {
           <NavLogo to="/">
             <img src={baseURL + logo.logo.url} alt=""></img>
           </NavLogo>
-          <Link to="../../pages/Concierge">
-            <NavTulisan>
-              THE CONCIERGE <BiEditAlt></BiEditAlt>
-            </NavTulisan>
-            <NavEditIcon>
-              <BiEditAlt></BiEditAlt>
-            </NavEditIcon>
-          </Link>
+          <NavTulisan onClick={toggle2}>
+            THE CONCIERGE {conciergeOpen ? "" : <BiEditAlt onClick={toggle2}></BiEditAlt>}
+          </NavTulisan>
+          <NavEditIcon onClick={toggle2}>
+            {conciergeOpen ? "" : <BiEditAlt onClick={toggle2}></BiEditAlt>}
+          </NavEditIcon>
         </NavbarContainer>
       </Fade>
     </Nav>
