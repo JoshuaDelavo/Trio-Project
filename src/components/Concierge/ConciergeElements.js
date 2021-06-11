@@ -7,7 +7,7 @@ export const Nav = styled.nav`
     background:black;
     height:100vh;
     width:100%;
-    position:fixed;
+    position:absolute;
     transition: 0.5s  linear;
     z-index:500;
     top:0;
@@ -23,10 +23,11 @@ export const Text = styled.div`
     font-size:14px;
 `
 export const NavBurgerIcon = styled.div`
-    display:absolute;
-    justify-content:center;
-    width: 100%;
-    height:20%;
+    display:flex;
+    justify-content:flex-end;
+    width: 90%;
+    height:10%;
+    position:flex-end;
     padding-top: 6.6%;
     padding-left:5%;
     color:white;
