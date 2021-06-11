@@ -8,6 +8,7 @@ export const Nav = styled.nav`
     height:100vh;
     width:100%;
     position:absolute;
+    justify-content:center;
     transition: 0.5s  linear;
     z-index:500;
     top:0;
@@ -25,11 +26,11 @@ export const Text = styled.div`
 export const NavBurgerIcon = styled.div`
     display:flex;
     justify-content:flex-end;
-    width: 90%;
+    width: 100%;
     height:10%;
     position:flex-end;
     padding-top: 6.6%;
-    padding-left:5%;
+    padding-right:5%;
     color:white;
     font-size:16px;
 
@@ -53,7 +54,6 @@ export const NavBurgerIcon = styled.div`
 
 `
 export const SidebarMenu = styled.div`
-    margin-left: 30px;
     margin-top:-30px;
     display:flex;
     width:100%;
