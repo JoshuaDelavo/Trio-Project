@@ -7,13 +7,13 @@ export const Nav = styled.nav`
     background:black;
     height:100vh;
     width:100%;
-    position:absolute;
+    position:fixed;
     justify-content:center;
     transition: 0.5s  linear;
     z-index:500;
     top:0;
     ${({ conciergeOpen }) => !conciergeOpen && `
-    width:0%; margin-left:-200vh;`}
+    width:0%; margin-left:-300vh;`}
     
     @media screen and (max-width:1024px){
             width:100%;
@@ -27,7 +27,7 @@ export const NavBurgerIcon = styled.div`
     display:flex;
     justify-content:flex-end;
     width: 100%;
-    height:10%;
+    height:5%;
     position:flex-end;
     padding-top: 6.6%;
     padding-right:5%;
@@ -54,36 +54,45 @@ export const NavBurgerIcon = styled.div`
 
 `
 export const SidebarMenu = styled.div`
-    margin-top:-30px;
-    display:flex;
-    width:100%;
+    position: absolute;
+    margin-top: 10%;
+    width:50%;
+    height:auto;
     justify-content:center;
-    padding:20px 0px;
-    flex-direction:column;
 `
 
 export const SidebarItem = styled.div`
     display:flex;
-    padding-right:30%;
-    justify-content:flex-end;
+    width: 100%;
+    margin-top:30px;
+    justify-content:center;
     @media screen and (max-width:1024px){
-        justify-content:flex-end;
+        justify-content:center;
+    }
+    
+`
+export const ButtonText = styled.button`
+    backgroun-color:white;
+    width:40%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    padding:32px 16px;
+    @media screen and (max-width:1024px){
+        justify-content:center;
+    }
+    
+`
+export const BottomIcon = styled.div`
+    color:white;
+    justify-content: flex-start;
+    font-size: 40px;
+    width:100%
+    @media screen and (max-width:1024px){
+        justify-content:center;
     }
     
 `
 
-export const SidebarLinkRoute = styled.div`
-    display:flex;
-    text-decoration:none;
-    color:white;
-    justify-content:flex-end;
-    text-align: right;
-    text-transform:uppercase;
-    padding: 35px 0px;
 
-    &:hover{
-        cursor:pointer;
-        text-decoration:none;
-        color:white;
-    }
-`
