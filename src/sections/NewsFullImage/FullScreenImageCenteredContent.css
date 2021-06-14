@@ -1,0 +1,52 @@
+.container-image{
+    height:100vh;
+    width:100%;
+    /* background-image: url('../../images/signature/main_image.png'); */
+    
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    text-align:center;
+    position: absolute;
+}
+.container-image-2{
+    height:100vh;
+    width:100%;
+    /* background-image: url('../../images/signature/main_image.png'); */
+    
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    text-align:center;
+}
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+@media (min-width: 576px) {
+}
+
+@media (max-width: 768px) {
+    .container-image{
+        background-position: -145px 0;
+    }
+    
+}
+
+@media(min-width:960px) {
+}
+
+@media(min-width:1100px) {
+}
+
+@media(min-width:1200px) {
+}
+@media(min-width:1500px) {
+    
+}

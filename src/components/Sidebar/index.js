@@ -2,6 +2,8 @@ import React from 'react'
 import { Nav, NavBurgerIcon, SidebarMenu, SidebarItem, SidebarLinkRoute } from './SidebarElement'
 import { FaTimes, FaBars } from 'react-icons/fa'
 import Scroll from 'react-scroll'
+import { Link } from '@material-ui/icons'
+import { Link as Links } from 'react-router-dom'
 const ScrollLink = Scroll.Link
 
 const Sidebar = ({ toggle, hamburgerOpen }) => {
@@ -22,17 +24,22 @@ const Sidebar = ({ toggle, hamburgerOpen }) => {
                         <SidebarLinkRoute onClick={toggle}>Collections</SidebarLinkRoute>
                     </ScrollLink>
                 </SidebarItem>
+
                 <SidebarItem>
+
                     <ScrollLink
-                        to="products"
+                        to="/News"
                         spy={true}
                         smooth={true}
                         duration={500}
                         offset={-100}
                     >
-                        <SidebarLinkRoute onClick={toggle}>News</SidebarLinkRoute>
+                        <Links to='/News'>
+                            <SidebarLinkRoute to="/News" onClick={toggle}>News</SidebarLinkRoute>
+                        </Links>
                     </ScrollLink>
                 </SidebarItem>
+
                 <SidebarItem>
                     <ScrollLink
                         to="works"
@@ -56,7 +63,7 @@ const Sidebar = ({ toggle, hamburgerOpen }) => {
                     </ScrollLink>
                 </SidebarItem>
             </SidebarMenu>
-        </Nav>
+        </Nav >
     )
 }
 

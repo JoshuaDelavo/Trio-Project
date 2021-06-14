@@ -13,6 +13,7 @@ import Collections from './pages/Collections';
 import CollectionsDetail from './pages/CollectionsDetail';
 import Concierge from './pages/Concierge';
 import Home from './pages/Home';
+import News from './pages/News';
 
 function App() {
   return (
@@ -31,6 +32,9 @@ function App() {
           </Route>
           <Route path='/concierge'>
             <Concierge />
+          </Route>
+          <Route path='/News'>
+            <News />
           </Route>
         </Switch>
       </div>
