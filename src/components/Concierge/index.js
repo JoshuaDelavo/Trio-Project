@@ -6,9 +6,11 @@ import SectionTextSmall from '../../components/SectionTextSmall/index';
 import SectionTextMedium from '../../components/SectionTextMedium/index';
 import SectionParagraph from '../../components/SectionParagraph/index';
 import Scroll from 'react-scroll'
+import Page2 from './Page2'
 import Concierge from "../../config/ConciergeApi";
 import { AiOutlineInstagram, AiOutlineWhatsApp, AiOutlinePhone } from "react-icons/ai";
 import { IoMailOutline } from "react-icons/io5";
+import { Button, TextField } from '@material-ui/core';
 const ScrollLink = Scroll.Link
 
 const Sidebar = ({ toggle2, conciergeOpen }) => {
@@ -25,7 +27,7 @@ const Sidebar = ({ toggle2, conciergeOpen }) => {
             <NavBurgerIcon onClick={toggle2}>
                 {conciergeOpen ? <FaTimes onClick={toggle2}></FaTimes> : ''} CLOSE
             </NavBurgerIcon>
-            <SidebarMenu>
+            <SidebarMenu >
                 <SidebarItem>
                     <div >
                         <SectionTextMedium value="WELCOME TO THE FASHION CONCIERGE" ></SectionTextMedium>
@@ -51,6 +53,43 @@ const Sidebar = ({ toggle2, conciergeOpen }) => {
                     </BottomIcon>
                 </SidebarItem>
             </SidebarMenu>
+            <SidebarMenu hidden>
+                <SidebarItem>
+                    <Page2></Page2>
+                </SidebarItem>
+                <SidebarItem>
+
+
+                </SidebarItem>
+                <SidebarItem>
+                    <Button>
+                        SUBMIT
+                    </Button>
+                </SidebarItem>
+                <SidebarItem>
+                    <SectionParagraph value='ANY SPECIAL NOTES?'>
+
+                        <input type="textarea"></input>
+                        <Button>
+                            RESTART
+                        </Button>
+                        <Button>
+                            FINISH
+                        </Button>
+                    </SectionParagraph>
+                </SidebarItem>
+                <SidebarItem>
+                    <SectionParagraph>
+                        THANK YOU
+                        Your Response has been recorded. We will reach out to you soon after our initial assessment.
+                        <Button>
+                            BACK TO DASHBOARD
+                        </Button>
+                    </SectionParagraph>
+                </SidebarItem>
+
+            </SidebarMenu>
+
         </Nav>
     )
 }

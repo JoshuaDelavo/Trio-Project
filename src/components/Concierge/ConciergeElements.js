@@ -64,6 +64,7 @@ export const SidebarMenu = styled.div`
 export const SidebarItem = styled.div`
     display:flex;
     width: 100%;
+    color: white;
     margin-top:30px;
     justify-content:center;
     @media screen and (max-width:1024px){
