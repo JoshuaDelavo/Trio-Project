@@ -19,12 +19,13 @@ const NewsHomeContent = () => {
         1100: 2,
         700: 1,
         500: 0
-      };
+    };
     useEffect(() => {
         NewsApi.findLatest().then(res => {
-            // console.log("news",res);
+            console.log("news", res);
             setNewsHome(res);
         })
+
     }, [])
 
     return (
@@ -33,31 +34,31 @@ const NewsHomeContent = () => {
                 <SectionTextMedium value="OUR LATEST UPDATE"></SectionTextMedium>
                 <hr style={{ border: '1px solid white', width: '45px', margin: 'auto' }}></hr>
                 <br />
-                <br/>     
+                <br />
                 <Masonry
                     breakpointCols={breakpointColumnsObj}
                     className="my-masonry-grid"
                     columnClassName="my-masonry-grid_column"
                 >
-                {
-                    newsHome.map((newsHome, i) => {
-                        return <React.Fragment key={newsHome.id}>
-                            <div>
-                                <img src={baseURL+ newsHome.coverImage.url} className="imgnews"></img>
-                                <br/>
-                                <br/>
-                                <h2 className="container-text-news">{newsHome.article}</h2>
-                                <br/>
-                                <br/>
-                                <p className="container-text-time">{new Date(newsHome.published_at).toLocaleDateString()}</p>
-                            </div>
-                        </React.Fragment>
-                    })
-                }
-                </Masonry>            
-                <br/>
-                <br/>
-                <br/>
+                    {
+                        newsHome.map((newsHome, i) => {
+                            return <React.Fragment key={newsHome.id}>
+                                <div>
+                                    <img src={baseURL + newsHome.coverImage.url} className="imgnews"></img>
+                                    <br />
+                                    <br />
+                                    <h2 className="container-text-news">{newsHome.article}</h2>
+                                    <br />
+                                    <br />
+                                    <p className="container-text-time">{new Date(newsHome.published_at).toLocaleDateString()}</p>
+                                </div>
+                            </React.Fragment>
+                        })
+                    }
+                </Masonry>
+                <br />
+                <br />
+                <br />
                 <div className="btn-containerNews">
                     <Grid container={true} spacing={2}>
                         <Grid item xs={1} md={2}>
