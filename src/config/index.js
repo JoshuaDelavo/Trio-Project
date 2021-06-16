@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const baseURL = 'http://216.244.94.171:1337'
+export const baseURL = 'https://sebastiangunawansignature.com/api'
 
 const api = axios.create({
     baseURL: baseURL
