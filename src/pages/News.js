@@ -1,6 +1,6 @@
 import React from 'react'
 import FullScreenImageCenteredContent from '../sections/NewsFullImage'
-import NewsHome from '../sections/NewsHome'
+import NewsHome from '../sections/NewsLanding'
 import Footer from '../components/Footer/index';
 
 const News = () => {

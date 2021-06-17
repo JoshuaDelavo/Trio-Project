@@ -14,6 +14,7 @@ import CollectionsDetail from './pages/CollectionsDetail';
 import Concierge from './pages/Concierge';
 import Home from './pages/Home';
 import News from './pages/News';
+import NewsDetail from './pages/NewsDetail';
 
 function App() {
   return (
@@ -26,6 +27,9 @@ function App() {
           </Route>
           <Route path='/collections/:id'>
             <CollectionsDetail />
+          </Route>
+          <Route path='/News/:id'>
+            <NewsDetail />
           </Route>
           <Route path='/collections'>
             <Collections />

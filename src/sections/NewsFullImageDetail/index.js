@@ -7,7 +7,7 @@ import SectionTextBig from '../../components/SectionTextBig/index';
 import HomeTopCoverApi from '../../config/HomeTopCoverApi';
 import NewsApi from '../../config/NewsApi';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { baseURL } from '../../config';
 import { Fade } from '@material-ui/core';
 
@@ -16,6 +16,7 @@ const FullScreenImageCenteredContent = () => {
     const [imgLoaded, setImgLoaded] = useState(false);
     const [apiLoaded, setApiLoaded] = useState(false);
     const [cover, setCover] = useState([]);
+    const { id } = useParams();
 
     useEffect(() => {
         HomeTopCoverApi.find().then(res => {
@@ -36,8 +37,8 @@ const FullScreenImageCenteredContent = () => {
             setApiLoaded(true);
         })
 
-        NewsApi.detail(4).then(res => {
-            setCover(res.coverImage);
+        NewsApi.detail(id).then(res => {
+            setCover(res.coverImage.formats.thumbnail);
             console.log("detailed", res);
         })
 
@@ -51,14 +52,8 @@ const FullScreenImageCenteredContent = () => {
 
     return (
         <Element id='about-us' name='about-us'>
-            <Fade in={apiLoaded}>
-                <div className="container-image">
-                    {textAndButton}
-                </div>
-            </Fade>
             <Fade in={imgLoaded}>
                 <div className="container-image-2" style={{ backgroundImage: `url("${baseURL}${cover.url}")` }}>
-                    {textAndButton}
                 </div>
             </Fade>
         </Element>
