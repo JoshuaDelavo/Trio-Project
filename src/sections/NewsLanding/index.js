@@ -155,7 +155,7 @@ const OurCollections = () => {
                             <LazyLoad height={400} offset={100}>
                                 <Fade in={checked} appear>
                                     <Link to={`/News/${data.id}`}>
-                                        <div>
+                                        <div className="conterContent">
                                             <img src={baseURL + data.coverImage.url} className="imgnews"></img>
                                             <br />
                                             <br />

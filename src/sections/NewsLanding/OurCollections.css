@@ -57,6 +57,7 @@
     /* Sebastian's White */
 
     color: #FFFFFF;
+    
 }
 
 .container-text-time-col{
@@ -137,7 +138,9 @@
 }
 
 @media (max-width: 768px) {
-   
+   .container-text-col{
+        margin-left:1.5em;
+   }
 
 }
 
