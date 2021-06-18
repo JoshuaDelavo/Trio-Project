@@ -1,14 +1,10 @@
 import React, { useEffect } from 'react'
 import { Element } from 'react-scroll'
-import SectionTextSmall from '../../components/SectionTextSmall/index';
 import SectionTextMedium from '../../components/SectionTextMediumNews/index';
 import SectionParagraph from '../../components/SectionParagraphNews/index';
-import Button from '../../components/Button/index';
-import { Grid } from '@material-ui/core';
 import './Detail.css';
 import NewsApi from '../../config/NewsApi';
 import { useState } from 'react';
-import ClientCarousel from '../../components/ClientCarousel';
 import { useParams, Link } from 'react-router-dom';
 import { IoIosArrowBack } from "react-icons/io";
 import { GrTwitter } from "react-icons/gr";
@@ -26,19 +22,12 @@ const NewsDetails = () => {
         })
     }, [])
 
-    // useEffect(() => {
-    //     CelebritiesApi.find().then(res => {
-    //         // console.log(res);
-    //         setCelebrities(res);
-    //     })
-    // }, [])
-
     let iconStyles = { color: "white", fontSize: "1.5em", marginLeft: "1em" };
     let arrow = { color: "white", fontSize: "1.5em", marginRight: "0.5em" };
 
     return (
         <Element id='about-us' name='about-us'>
-            <div className="container-celebrities">
+            <div className="container-news">
                 <Link to="/News">
                     <p className="backToArticles"><IoIosArrowBack style={arrow}> </IoIosArrowBack>back to all articles</p>
                 </Link>
@@ -48,8 +37,7 @@ const NewsDetails = () => {
                 <br />
                 <div class="underTitle">
                     <div class="posted">
-                        <SectionParagraph value={"Posted on : " + new Date(detail.published_at)}
-                        ></SectionParagraph>
+                        <SectionParagraph value={"Posted on : " + new Date(detail.published_at)}></SectionParagraph>
                     </div>
                     <div class="iconContainer">
                         <GrTwitter style={iconStyles}></GrTwitter>

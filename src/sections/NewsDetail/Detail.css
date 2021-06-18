@@ -11,8 +11,9 @@
 }
 .iconContainer{
     text-align: right;
+    margin-top: -48px;
 }
-.container-celebrities{
+.container-news{
     padding-top: 2em;
     width: 80%;
     margin: auto;
