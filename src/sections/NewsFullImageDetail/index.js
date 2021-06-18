@@ -4,6 +4,7 @@ import './FullScreenImageCenteredContent.css';
 import SectionTextBig from '../../components/SectionTextBig/index';
 import HomeTopCoverApi from '../../config/HomeTopCoverApi';
 import NewsApi from '../../config/NewsApi';
+import NewsTopCoverApi from '../../config/NewsTopCoverApi';
 import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { baseURL } from '../../config';
@@ -35,9 +36,9 @@ const FullScreenImageCenteredContent = () => {
             setApiLoaded(true);
         })
 
-        NewsApi.detail(id).then(res => {
-            setCover(res.coverImage.formats.thumbnail);
-            console.log("detailed", res);
+        NewsTopCoverApi.find().then(res => {
+            setCover(res.image);
+            console.log("top cover", res);
         })
 
     }, [])
