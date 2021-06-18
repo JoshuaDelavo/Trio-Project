@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Element } from 'react-scroll'
 import SectionTextSmall from '../../components/SectionTextSmall/index';
-import SectionTextMedium from '../../components/SectionTextMedium/index';
+import SectionTextMedium from '../../components/SectionTextMediumNews/index';
 import SectionParagraph from '../../components/SectionParagraphNews/index';
 import Button from '../../components/Button/index';
 import { Grid } from '@material-ui/core';
@@ -35,7 +35,7 @@ const NewsDetails = () => {
 
     let iconStyles = { color: "white", fontSize: "1.5em", marginLeft: "1em" };
     let arrow = { color: "white", fontSize: "1.5em", marginRight: "0.5em" };
-    let title = { textAlign: "Justify"};
+
     return (
         <Element id='about-us' name='about-us'>
             <div className="container-celebrities">
@@ -44,12 +44,18 @@ const NewsDetails = () => {
                 </Link>
                 <br />
                 <br />
-                <SectionTextMedium style={title} value={detail.title}></SectionTextMedium>
+                <SectionTextMedium value={detail.title}></SectionTextMedium>
                 <br />
-                <div class="iconContainer">
-                    <GrTwitter style={iconStyles}></GrTwitter>
-                    <RiFacebookCircleFill style={iconStyles}></RiFacebookCircleFill>
-                    <IoMdCopy style={iconStyles}></IoMdCopy>
+                <div class="underTitle">
+                    <div class="posted">
+                        <SectionParagraph value={"Posted on : " + new Date(detail.published_at)}
+                        ></SectionParagraph>
+                    </div>
+                    <div class="iconContainer">
+                        <GrTwitter style={iconStyles}></GrTwitter>
+                        <RiFacebookCircleFill style={iconStyles}></RiFacebookCircleFill>
+                        <IoMdCopy style={iconStyles}></IoMdCopy>
+                    </div>
                 </div>
                 <br />
                 <SectionParagraph value={detail.article}

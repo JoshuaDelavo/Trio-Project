@@ -1,13 +1,19 @@
 .backToArticles{
     text-align: left;
-    padding-top: 50px;
     justify-content:space-between ;
+}
+.underTitle{
+    width: 100%;
+    justify-content: space-between;
+}
+.posted{
+    text-align: left;
 }
 .iconContainer{
     text-align: right;
-    justify-content: space-between;
 }
 .container-celebrities{
+    padding-top: 2em;
     width: 80%;
     margin: auto;
     text-align: center;
