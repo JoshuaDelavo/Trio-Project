@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react'
 import { Element } from 'react-scroll'
 import './FullScreenImageCenteredContent.css';
-import Button from '../../components/Button/index';
-import SectionTextSmall from '../../components/SectionTextSmall/index';
 import SectionTextBig from '../../components/SectionTextBig/index';
 import HomeTopCoverApi from '../../config/HomeTopCoverApi';
 import NewsApi from '../../config/NewsApi';

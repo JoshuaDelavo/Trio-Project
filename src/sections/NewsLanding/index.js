@@ -71,7 +71,6 @@ const OurCollections = () => {
                     setData(sorted2);
                     console.log("Sorted2", sorted2);
                 }
-
             };
             sortArray(sortType);
             setOurCollections(res);
@@ -97,37 +96,24 @@ const OurCollections = () => {
 
     const classes = useStyles();
     const [open, setOpen] = useState(false);
-
-
     const handleClose = () => {
         setOpen(false);
     };
-
     const handleOpen = () => {
         setOpen(true);
     };
-
     const refreshPage = () => {
         window.location.reload();
     }
-
-    {/* <img src={baseURL + ourCollections['picture'+ourCollections.coverPictureNo].url}></img> */ }
     return (
         <Element id='news' name='news'>
             {
                 ourCollections.map((ourCollections, i) => {
                     return <React.Fragment key={ourCollections.id}>
-                        {/* <Fade in={checked}>
-                            <div className="container-image-2-collection" style={{backgroundImage: `url("${baseURL}${ourCollections.coverImage.url}")`}}>
-                                <SectionTextMedium value={"OUR COLLECTION"}></SectionTextMedium>
-                            </div>
-                        </Fade> */}
                     </React.Fragment>
-
                 })
             }
             <div className="container-campaign">
-
                 <FormControl className={classes.formControl}>
                     <InputLabel id="select-type" className="select-selected2">
                         <SectionTextSmall value="Sort by:">
@@ -148,7 +134,6 @@ const OurCollections = () => {
                             fontStyle: "normal",
                             fontWeight: 300,
                             letterSpacing: 0.32,
-                            // textAlign: "center",
                             width: 200,
                         }}
                     >
@@ -159,60 +144,40 @@ const OurCollections = () => {
 
                 <br />
                 <br />
-                {/* <InfiniteScroll
-                    pullDownToRefresh={true}
-                    pullDownToRefreshContent={
-                        <h3 style={{textAlign: 'center'}}>&#8595; Pull down to refresh</h3>
-                    }
-                    releaseToRefreshContent={
-                        <h3 style={{textAlign: 'center'}}>&#8593; Release to refresh</h3>
-                    }
-                    refreshFunction={refreshPage}
-                    next={ourCollectionsAll.coverPictureNo}
-                    hasMore={true}
-                    loader={<h4>Loading...</h4>}
-                    endMessage={
-                        <p style={{textAlign: 'center'}}>
-                        <b>Yay! You have seen it all</b>
-                        </p>
-                    }
-                    dataLength={4}
-                > */}
                 <Masonry
                     breakpointCols={breakpointColumnsObj}
                     className="my-masonry-grid"
                     columnClassName="my-masonry-grid_column"
                 >
-                    {
-                        data.map((data, i) => {
-                            return <React.Fragment key={data.id}>
-                                <LazyLoad height={400} offset={100}>
-                                    <Fade in={checked} appear>
-                                        <Link to={`/News/${data.id}`}>
-                                            <div>
-                                                <img src={baseURL + data.coverImage.url} className="imgnews"></img>
+                {
+                    data.map((data, i) => {
+                        return <React.Fragment key={data.id}>
+                            <LazyLoad height={400} offset={100}>
+                                <Fade in={checked} appear>
+                                    <Link to={`/News/${data.id}`}>
+                                        <div>
+                                            <img src={baseURL + data.coverImage.url} className="imgnews"></img>
+                                            <br />
+                                            <br />
+                                            <div className="btn-container-col">
+                                                <h2 className="container-text-col">{data.title}</h2>
                                                 <br />
-                                                <br />
-                                                <div className="btn-container-col">
-                                                    <h2 className="container-text-col">{data.title}</h2>
-                                                    <br />
-                                                    <Grid container={true}
-                                                        spacing={2} justify="center">
-                                                        <Grid item xs={12} md={6} >
-                                                        </Grid>
+                                                <Grid container={true}
+                                                    spacing={2} justify="center">
+                                                    <Grid item xs={12} md={6} >
                                                     </Grid>
-                                                </div>
-                                                <br />
-                                                <br />
+                                                </Grid>
                                             </div>
-                                        </Link>
-                                    </Fade>
-                                </LazyLoad>
-                            </React.Fragment>
-                        })
-                    }
+                                            <br />
+                                            <br />
+                                        </div>
+                                    </Link>
+                                </Fade>
+                            </LazyLoad>
+                        </React.Fragment>
+                    })
+                }
                 </Masonry>
-                {/* </InfiniteScroll> */}
             </div>
         </Element>
     )

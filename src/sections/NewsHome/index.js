@@ -10,10 +10,7 @@ import Masonry from 'react-masonry-css'
 import { baseURL } from '../../config';
 
 const NewsHomeContent = () => {
-    // This is REact HOOK (State) 
-    // Like Mounted, Created in Vue JS
     const [newsHome, setNewsHome] = useState([]);
-
     const breakpointColumnsObj = {
         default: 3,
         1100: 2,

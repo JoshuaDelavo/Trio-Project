@@ -1,8 +1,6 @@
 .container-image{
     height:50vh;
     width:100%;
-    /* background-image: url('../../images/signature/main_image.png'); */
-    
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -15,8 +13,6 @@
 .container-image-2{
     height:50vh;
     width:100%;
-    /* background-image: url('../../images/signature/main_image.png'); */
-    
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
