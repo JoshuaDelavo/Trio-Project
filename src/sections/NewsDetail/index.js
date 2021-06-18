@@ -21,6 +21,15 @@ const NewsDetails = () => {
             setDetail(res);
         })
     }, [])
+    function copy() {
+        const el = document.createElement('input');
+        el.value = window.location.href;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+        alert("URL Copied");
+    }
 
     let iconStyles = { color: "white", fontSize: "1.5em", marginLeft: "1em" };
     let arrow = { color: "white", fontSize: "1.5em", marginRight: "0.5em" };
@@ -40,9 +49,13 @@ const NewsDetails = () => {
                         <SectionParagraph value={"Posted on : " + new Date(detail.published_at)}></SectionParagraph>
                     </div>
                     <div class="iconContainer">
-                        <GrTwitter style={iconStyles}></GrTwitter>
-                        <RiFacebookCircleFill style={iconStyles}></RiFacebookCircleFill>
-                        <IoMdCopy style={iconStyles}></IoMdCopy>
+                        <a href='https://twitter.com/' target="_blank">
+                            <GrTwitter style={iconStyles}></GrTwitter>
+                        </a>
+                        <a href='https://facebook.com/' target="_blank">
+                            <RiFacebookCircleFill style={iconStyles}></RiFacebookCircleFill>
+                        </a>
+                        <IoMdCopy style={iconStyles} onClick={copy} ></IoMdCopy>
                     </div>
                 </div>
                 <br />
