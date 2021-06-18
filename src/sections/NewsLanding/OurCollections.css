@@ -29,12 +29,10 @@
 .my-masonry-grid {
     display: -webkit-box; /* Not needed if autoprefixing */
     display: -ms-flexbox; /* Not needed if autoprefixing */
-    display: flex;
-    margin-left: -30px; /* gutter size offset */
+    display: flex;/* gutter size offset */
     width: auto;
 }
-.my-masonry-grid_column {
-    padding-left: 80px; /* gutter size */
+.my-masonry-grid_column { /* gutter size */
     background-clip: padding-box;
 }
   
@@ -42,8 +40,6 @@
 .my-masonry-grid_column > div { /* change div to reference your elements you put in <Masonry> */
     background: black;
     margin-bottom: 30px;
-    margin-left: 30px;
-    margin-right: 30px;
 }
 
 .imgnews{
@@ -94,6 +90,11 @@
     border-color: #fff transparent transparent transparent;
     margin-left: 50%;
   }
+  .container-campaign{
+    height:100%;
+    width:100%;
+    background:black;
+}
 
   .select-selected::before {
     position:absolute;

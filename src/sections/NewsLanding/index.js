@@ -149,7 +149,7 @@ const OurCollections = () => {
                             fontWeight: 300,
                             letterSpacing: 0.32,
                             // textAlign: "center",
-                            width:200,
+                            width: 200,
                         }}
                     >
                         <MenuItem value={"published_at"}>Latest to Oldest</MenuItem>
@@ -184,32 +184,32 @@ const OurCollections = () => {
                     columnClassName="my-masonry-grid_column"
                 >
                     {
-                    data.map((data, i) => {
-                        return <React.Fragment key={data.id}>
-                            <LazyLoad height={400} offset={100}>
-                                <Fade in={checked} appear>
-                                    <Link to={`/News/${data.id}`}>
-                                        <div>
-                                            <img src={baseURL + data.coverImage.url} className="imgnews"></img>
-                                            <br />
-                                            <br />
-                                            <div className="btn-container-col">
-                                                <h2 className="container-text-col">{data.title}</h2>
+                        data.map((data, i) => {
+                            return <React.Fragment key={data.id}>
+                                <LazyLoad height={400} offset={100}>
+                                    <Fade in={checked} appear>
+                                        <Link to={`/News/${data.id}`}>
+                                            <div>
+                                                <img src={baseURL + data.coverImage.url} className="imgnews"></img>
                                                 <br />
-                                                <Grid container={true}
-                                                    spacing={2} justify="center">
-                                                    <Grid item xs={12} md={6} >
+                                                <br />
+                                                <div className="btn-container-col">
+                                                    <h2 className="container-text-col">{data.title}</h2>
+                                                    <br />
+                                                    <Grid container={true}
+                                                        spacing={2} justify="center">
+                                                        <Grid item xs={12} md={6} >
+                                                        </Grid>
                                                     </Grid>
-                                                </Grid>
+                                                </div>
+                                                <br />
+                                                <br />
                                             </div>
-                                            <br />
-                                            <br />
-                                        </div>
-                                    </Link>
-                                </Fade>
-                            </LazyLoad>
-                        </React.Fragment>
-                    })
+                                        </Link>
+                                    </Fade>
+                                </LazyLoad>
+                            </React.Fragment>
+                        })
                     }
                 </Masonry>
                 {/* </InfiniteScroll> */}
