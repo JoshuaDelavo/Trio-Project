@@ -1,0 +1,15 @@
+.backToArticles{
+    text-align: left;
+    padding-top: 50px;
+    justify-content:space-between ;
+}
+.iconContainer{
+    text-align: right;
+    justify-content: space-between;
+}
+.container-celebrities{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    justify-content: center;
+}

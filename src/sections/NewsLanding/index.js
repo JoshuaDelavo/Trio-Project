@@ -4,6 +4,7 @@ import { Element } from 'react-scroll'
 import './OurCollections.css';
 import Button from '../../components/Button/index';
 import SectionTextSmall from '../../components/SectionTextSmall/index';
+import SectionParagraph from '../../components/SectionParagraph/index';
 import NewsApi from '../../config/NewsApi';
 import { Link } from 'react-router-dom';
 import Masonry from 'react-masonry-css'
@@ -128,7 +129,10 @@ const OurCollections = () => {
             <div className="container-campaign">
 
                 <FormControl className={classes.formControl}>
-                    <InputLabel id="select-type" className="select-selected2"><SectionTextSmall value="Sort by:"></SectionTextSmall></InputLabel>
+                    <InputLabel id="select-type" className="select-selected2">
+                        <SectionTextSmall value="Sort by:">
+                        </SectionTextSmall>
+                    </InputLabel>
                     <Select
                         labelId="select-type"
                         id="select-type-id"
@@ -145,10 +149,11 @@ const OurCollections = () => {
                             fontWeight: 300,
                             letterSpacing: 0.32,
                             // textAlign: "center",
+                            width:200,
                         }}
                     >
-                        <MenuItem value={"published_at"}>Newest</MenuItem>
-                        <MenuItem value={"id"}>Oldest</MenuItem>
+                        <MenuItem value={"published_at"}>Latest to Oldest</MenuItem>
+                        <MenuItem value={"id"}>Oldest to Latest</MenuItem>
                     </Select>
                 </FormControl>
 
@@ -179,32 +184,32 @@ const OurCollections = () => {
                     columnClassName="my-masonry-grid_column"
                 >
                     {
-                        data.map((data, i) => {
-                            return <React.Fragment key={data.id}>
-                                <LazyLoad height={400} offset={100}>
-                                    <Fade in={checked} appear>
-                                        <Link to={`/News/${data.id}`}>
-                                            <div>
-                                                <img src={baseURL + data.coverImage.url} className="imgnews"></img>
+                    data.map((data, i) => {
+                        return <React.Fragment key={data.id}>
+                            <LazyLoad height={400} offset={100}>
+                                <Fade in={checked} appear>
+                                    <Link to={`/News/${data.id}`}>
+                                        <div>
+                                            <img src={baseURL + data.coverImage.url} className="imgnews"></img>
+                                            <br />
+                                            <br />
+                                            <div className="btn-container-col">
+                                                <h2 className="container-text-col">{data.title}</h2>
                                                 <br />
-                                                <br />
-                                                <div className="btn-container-col">
-                                                    <h2 className="container-text-col">{data.title}</h2>
-                                                    <br />
-                                                    <Grid container={true}
-                                                        spacing={2} justify="center">
-                                                        <Grid item xs={12} md={6} >
-                                                        </Grid>
+                                                <Grid container={true}
+                                                    spacing={2} justify="center">
+                                                    <Grid item xs={12} md={6} >
                                                     </Grid>
-                                                </div>
-                                                <br />
-                                                <br />
+                                                </Grid>
                                             </div>
-                                        </Link>
-                                    </Fade>
-                                </LazyLoad>
-                            </React.Fragment>
-                        })
+                                            <br />
+                                            <br />
+                                        </div>
+                                    </Link>
+                                </Fade>
+                            </LazyLoad>
+                        </React.Fragment>
+                    })
                     }
                 </Masonry>
                 {/* </InfiniteScroll> */}
