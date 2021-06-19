@@ -62,6 +62,7 @@ const NewsDetails = () => {
   };
 
   let iconStyles = { color: "white", fontSize: "1.5em", marginLeft: "1em" };
+  let iconStyles2 = { color: "white", fontSize: "1.5em" };
   let arrow = { color: "white", fontSize: "1.5em", marginRight: "0.5em" };
 
   return (
@@ -76,13 +77,13 @@ const NewsDetails = () => {
         <br />
         <SectionTextMedium value={detail.title}></SectionTextMedium>
         <br />
-        <div class="underTitle">
-          <div class="posted">
+        <div className="underTitle">
+          <div className="posted">
             <SectionParagraph
               value={"Posted on : " + new Date(detail.published_at)}
             ></SectionParagraph>
           </div>
-          <div class="iconContainer">
+          <div className="iconContainer">
             <TwitterShareButton
               url="https://twitter.com/"
               title="Belajar React"
@@ -106,6 +107,30 @@ const NewsDetails = () => {
               </Alert>
             </Snackbar>
           </div>
+        </div>
+        <div className="iconContainer2">
+          <TwitterShareButton
+            url="https://twitter.com/"
+            title="Belajar React"
+            hashtag="#react"
+          >
+            <GrTwitter style={iconStyles2}></GrTwitter>
+          </TwitterShareButton>
+
+          <FacebookShareButton
+            url="https://facebook.com/"
+            quote={"Belajar React"}
+            hashtag="#react"
+          >
+            <RiFacebookCircleFill style={iconStyles}></RiFacebookCircleFill>
+          </FacebookShareButton>
+
+          <IoMdCopy style={iconStyles} onClick={handleClick}></IoMdCopy>
+          <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+            <Alert onClose={handleClose} severity="success">
+              {"" + window.location.href}
+            </Alert>
+          </Snackbar>
         </div>
         <br />
         <SectionParagraph value={detail.article}></SectionParagraph>
