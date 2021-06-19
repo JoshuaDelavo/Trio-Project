@@ -1,15 +1,15 @@
 import React from 'react'
 import './SectionParagraph.css';
 
-const SectionParagraph = (props) => {
+const SectionParagraphNews = (props) => {
 
     return (
         <React.Fragment>
             {
-                <p className="section-paragraph">{props.value}</p>
+                <p className="section-paragraph-news">{props.value}</p>
             }
         </React.Fragment>
     )
 }
 
-export default SectionParagraph
+export default SectionParagraphNews

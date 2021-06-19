@@ -161,9 +161,6 @@ const OurCollections = () => {
                           effect="blur"
                           src={baseURL + data.coverImage.url}
                           className="imgnews"
-                          placeholderSrc={
-                            process.env.PUBLIC_URL + "/logo192.png"
-                          }
                         ></LazyLoadImage>
                         <br />
                         <br />

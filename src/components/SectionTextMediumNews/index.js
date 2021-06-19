@@ -1,15 +1,15 @@
 import React from 'react'
 import './SectionTextMedium.css';
 
-const SectionTextMedium = (props) => {
+const SectionTextMediumNews = (props) => {
 
     return (
         <React.Fragment>
             {
-                <p className="section-text-medium">{props.value}</p>
+                <p className="section-text-medium-news">{props.value}</p>
             }
         </React.Fragment>
     )
 }
 
-export default SectionTextMedium
+export default SectionTextMediumNews

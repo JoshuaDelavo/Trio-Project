@@ -61,7 +61,7 @@ const NewsHomeContent = () => {
                         <Grid item xs={1} md={2}>
                         </Grid>
                         <Grid item xs={10} md={8}>
-                            <Link to={`/collections/`}>
+                            <Link to={`/News/`}>
                                 <Button value="SEE ALL NEWS" ></Button>
                             </Link>
                         </Grid>

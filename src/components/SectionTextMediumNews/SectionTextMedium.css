@@ -1,6 +1,6 @@
 
 
-.section-text-medium{
+.section-text-medium-news{
     font-style: normal;
     font-weight: 300;
     font-size: 40px;
@@ -21,7 +21,7 @@
 }
 
 @media (max-width: 768px) {
-    .section-text-medium{
+    .section-text-medium-news{
         font-size: 30px;
     }
 }

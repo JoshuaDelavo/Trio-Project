@@ -1,6 +1,6 @@
 
 
-.section-paragraph{
+.section-paragraph-news{
     color:white;
     font-size: 16px;
     font-style: normal;
@@ -18,7 +18,7 @@
 }
 
 @media (max-width: 768px) {
-    .section-paragraph{
+    .section-paragraph-news{
         font-size: 16px;
     }
 }
