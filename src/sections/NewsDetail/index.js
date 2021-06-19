@@ -14,6 +14,7 @@ import { FacebookShareButton, TwitterShareButton } from "react-share";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import { makeStyles } from "@material-ui/core/styles";
+import { data } from "flickity";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -64,6 +65,7 @@ const NewsDetails = () => {
   let iconStyles = { color: "white", fontSize: "1.5em", marginLeft: "1em" };
   let iconStyles2 = { color: "white", fontSize: "1.5em" };
   let arrow = { color: "white", fontSize: "1.5em", marginRight: "0.5em" };
+  var dateFormat = require('dateformat');
 
   return (
     <Element id="about-us" name="about-us">
@@ -80,7 +82,7 @@ const NewsDetails = () => {
         <div className="underTitle">
           <div className="posted">
             <SectionParagraph
-              value={"Posted on : " + new Date(detail.published_at)}
+              value={"Posted on : " + dateFormat(detail.published_at, "dS mmmm yyyy, H:MM ")}
             ></SectionParagraph>
           </div>
           <div className="iconContainer">
