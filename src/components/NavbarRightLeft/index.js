@@ -56,6 +56,9 @@ const NavbarRightLeft = ({ toggle, toggle2, hamburgerOpen, conciergeOpen }) => {
                 <RiMenu2Line onClick={toggle}></RiMenu2Line> MENU
               </NavTulisan>
             )}
+            <NavEditIcon >
+              <RiMenu2Line onClick={toggle}></RiMenu2Line>
+            </NavEditIcon>
           </NavBurgerIcon>
           <NavLogo to="/">
             <img src={baseURL + logo.logo.url} alt=""></img>
