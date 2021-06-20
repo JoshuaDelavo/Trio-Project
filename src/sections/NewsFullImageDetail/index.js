@@ -9,7 +9,7 @@ import { Link, useParams } from 'react-router-dom';
 import { baseURL } from '../../config';
 import { Fade } from '@material-ui/core';
 
-const FullScreenImageCenteredContent = () => {
+const FullScreenImageCenteredContentNewsDetail = () => {
     const [homeTopCover, setHomeTopCover] = useState({ backgroundImage: [''] });
     const [imgLoaded, setImgLoaded] = useState(false);
     const [apiLoaded, setApiLoaded] = useState(false);
@@ -51,11 +51,11 @@ const FullScreenImageCenteredContent = () => {
     return (
         <Element id='about-us' name='about-us'>
             <Fade in={imgLoaded}>
-                <div className="container-image-2" style={{ backgroundImage: `url("${baseURL}${cover.url}")` }}>
+                <div className="container-image-2-news-detail" style={{ backgroundImage: `url("${baseURL}${cover.url}")` }}>
                 </div>
             </Fade>
         </Element>
     )
 }
 
-export default FullScreenImageCenteredContent
+export default FullScreenImageCenteredContentNewsDetail

@@ -1,4 +1,4 @@
-.container-image{
+.container-image-news{
     height:50vh;
     width:100%;
     /* background-image: url('../../images/signature/main_image.png'); */
@@ -12,7 +12,7 @@
     text-align:center;
     position: absolute;
 }
-.container-image-2{
+.container-image-2-news{
     height:50vh;
     width:100%;
     /* background-image: url('../../images/signature/main_image.png'); */
@@ -33,7 +33,7 @@
 }
 
 @media (max-width: 768px) {
-    .container-image{
+    .container-image-news{
         background-position: -145px 0;
     }
     

@@ -52,12 +52,12 @@ const FullScreenImageCenteredContent = () => {
     return (
         <Element id='about-us' name='about-us'>
             <Fade in={apiLoaded}>
-                <div className="container-image">
+                <div className="container-image-news">
                     {textAndButton}
                 </div>
             </Fade>
             <Fade in={imgLoaded}>
-                <div className="container-image-2" style={{ backgroundImage: `url("${baseURL}${cover.url}")` }}>
+                <div className="container-image-2-news" style={{ backgroundImage: `url("${baseURL}${cover.url}")` }}>
                     {textAndButton}
                 </div>
             </Fade>
