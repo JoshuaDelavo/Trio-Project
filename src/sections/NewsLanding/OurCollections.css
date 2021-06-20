@@ -102,6 +102,13 @@
 .style-sort{
     width: auto;
 }
+
+.container-text-col{
+    text-align:left;
+}
+.tanggal{
+    text-align:left;  
+}
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
@@ -131,7 +138,6 @@
 @media(min-width:960px) {
   .btn-container-col{
       width:105%;
-      margin-left: 7%;
   }
 }
 
