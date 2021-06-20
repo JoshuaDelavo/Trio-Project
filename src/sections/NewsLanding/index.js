@@ -150,7 +150,7 @@ const OurCollections = () => {
               <React.Fragment key={data.id}>
                 <LazyLoad height={400} offset={100}>
                   <Fade in={checked} appear>
-                    <Link to={`/News/${data.id}`}>
+                    <Link to={`/News/${data.id}`}style={{textDecoration: 'none'}}>
                       <div className="conterContent">
                         <LazyLoadImage
                           effect="blur"
