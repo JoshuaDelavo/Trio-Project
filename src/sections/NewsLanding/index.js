@@ -104,6 +104,7 @@ const OurCollections = () => {
   const refreshPage = () => {
     window.location.reload();
   };
+  var dateFormat = require('dateformat');
   return (
     <Element id="news" name="news">
       {ourCollections.map((ourCollections, i) => {
@@ -161,6 +162,7 @@ const OurCollections = () => {
                         <div className="btn-container-col">
                           <h2 className="container-text-col">{data.title}</h2>
                           <br />
+                          <p>{dateFormat(data.published_at, "dS mmmm yyyy")}</p>
                           <Grid container={true} spacing={2} justify="center">
                             <Grid item xs={12} md={6}></Grid>
                           </Grid>
