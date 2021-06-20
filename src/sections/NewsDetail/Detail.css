@@ -16,6 +16,12 @@
 .iconContainer2{
     display: none;
 }
+.article-container img{
+    max-width: 100%;
+}
+.article-container p{
+    text-align: justify;
+}
 @media (max-width: 768px) {
     .iconContainer{
         display:none ;

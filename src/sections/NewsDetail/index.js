@@ -14,7 +14,8 @@ import { FacebookShareButton, TwitterShareButton } from "react-share";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import { makeStyles } from "@material-ui/core/styles";
-import { data } from "flickity";
+import ReactMarkdown from "react-markdown"
+import { render } from 'react-dom'
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -105,7 +106,7 @@ const NewsDetails = () => {
             <IoMdCopy style={iconStyles} onClick={handleClick}></IoMdCopy>
             <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
               <Alert onClose={handleClose} severity="success">
-                {"" + window.location.href}
+                {"Link Copied! " + window.location.href}
               </Alert>
             </Snackbar>
           </div>
@@ -135,7 +136,9 @@ const NewsDetails = () => {
           </Snackbar>
         </div>
         <br />
-        <SectionParagraph value={detail.article}></SectionParagraph>
+        <div className="article-container">
+          <ReactMarkdown>{detail.article}</ReactMarkdown>
+        </div>
       </div>
     </Element>
   );
