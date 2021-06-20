@@ -22,7 +22,6 @@ const NewsHomeContent = () => {
             console.log("news", res);
             setNewsHome(res);
         })
-
     }, [])
 
     return (

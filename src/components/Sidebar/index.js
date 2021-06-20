@@ -2,7 +2,6 @@ import React from 'react'
 import { Nav, NavBurgerIcon, SidebarMenu, SidebarItem, SidebarLinkRoute } from './SidebarElement'
 import { FaTimes, FaBars } from 'react-icons/fa'
 import Scroll from 'react-scroll'
-import { Link } from '@material-ui/icons'
 import { Link as Links } from 'react-router-dom'
 const ScrollLink = Scroll.Link
 

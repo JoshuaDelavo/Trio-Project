@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-
 import CelebritiesApi from '../../config/CelebritiesApi';
 import { useState } from 'react';
 import { baseURL } from '../../config/';
@@ -28,7 +27,6 @@ const ClientCarousel = () => {
   useEffect(() => {
     CelebritiesApi.find().then(res => {
       setCeleb(res);
-      // console.log(celeb);
       showButton();
     })
   }, [])

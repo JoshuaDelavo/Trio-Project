@@ -7,8 +7,6 @@ import {
   NavBurgerIcon,
   NavEditIcon,
 } from "./NavbarElement";
-import { FaBars } from "react-icons/fa";
-import LogoAnthem from "../../images/logo_anthem.svg";
 import Scroll from "react-scroll";
 import { RiMenu2Line } from "react-icons/ri";
 import { BiEditAlt } from "react-icons/bi";
@@ -16,8 +14,7 @@ import CompanyApi from "../../config/CompanyApi";
 import { baseURL } from "../../config/";
 import { Fade } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import SectionTextSmall from "../../components/SectionTextSmall/index";
-import SectionTextMedium from "../../components/SectionTextMedium/index";
+
 const ScrollLink = Scroll.Link;
 
 const NavbarRightLeft = ({ toggle, toggle2, hamburgerOpen, conciergeOpen }) => {
@@ -40,7 +37,6 @@ const NavbarRightLeft = ({ toggle, toggle2, hamburgerOpen, conciergeOpen }) => {
         .then(() => setImgLoaded(true))
         .catch((err) => console.log("Failed to load images", err));
 
-      // console.log(res);
       setLogo(res);
     });
   }, []);

@@ -31,7 +31,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 const NewsDetails = () => {
   const [detail, setDetail] = useState([]);
-  const [celebrities, setCelebrities] = useState([]);
   const { id } = useParams();
   useEffect(() => {
     NewsApi.detail(id).then((res) => {
@@ -46,13 +45,13 @@ const NewsDetails = () => {
     el.select();
     document.execCommand("copy");
     document.body.removeChild(el);
-    alert("URL Copied");
   }
 
   const [open, setOpen] = React.useState(false);
 
   const handleClick = () => {
-    setOpen(true);
+    setOpen(true); 
+    copy();
   };
 
   const handleClose = (event, reason) => {
@@ -92,7 +91,7 @@ const NewsDetails = () => {
               title="Belajar React"
               hashtag="#react"
             >
-              <GrTwitter style={iconStyles}></GrTwitter>
+            <GrTwitter style={iconStyles}></GrTwitter>
             </TwitterShareButton>
 
             <FacebookShareButton
@@ -100,7 +99,7 @@ const NewsDetails = () => {
               quote={"Belajar React"}
               hashtag="#react"
             >
-              <RiFacebookCircleFill style={iconStyles}></RiFacebookCircleFill>
+            <RiFacebookCircleFill style={iconStyles}></RiFacebookCircleFill>
             </FacebookShareButton>
 
             <IoMdCopy style={iconStyles} onClick={handleClick}></IoMdCopy>
@@ -117,7 +116,7 @@ const NewsDetails = () => {
             title="Belajar React"
             hashtag="#react"
           >
-            <GrTwitter style={iconStyles2}></GrTwitter>
+          <GrTwitter style={iconStyles2}></GrTwitter>
           </TwitterShareButton>
 
           <FacebookShareButton
@@ -125,7 +124,7 @@ const NewsDetails = () => {
             quote={"Belajar React"}
             hashtag="#react"
           >
-            <RiFacebookCircleFill style={iconStyles}></RiFacebookCircleFill>
+          <RiFacebookCircleFill style={iconStyles}></RiFacebookCircleFill>
           </FacebookShareButton>
 
           <IoMdCopy style={iconStyles} onClick={handleClick}></IoMdCopy>

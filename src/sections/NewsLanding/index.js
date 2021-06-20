@@ -20,8 +20,6 @@ import LazyLoad from "react-lazyload";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
 const OurCollections = () => {
-  // This is REact HOOK (State)
-  // Like Mounted, Created in Vue JS
   const [ourCollections, setOurCollections] = useState([]);
   const [checked, setChecked] = useState(false);
   const [checkedApi, setCheckedApi] = useState(false);
@@ -38,18 +36,14 @@ const OurCollections = () => {
   };
   useEffect(() => {
     NewsApi.find().then((res) => {
-      // console.log("news",res);
       console.log("col", res);
       res.map((res, i) => {
         new Promise((resolve, reject) => {
           const loadImg = new Image();
-
           loadImg.src = baseURL + res.coverImage.url;
-
           loadImg.onload = () => {
             resolve(baseURL + res.coverImage.url);
           };
-
           loadImg.onerror = (err) => reject(err);
         })
           .then(() => setChecked(true))
