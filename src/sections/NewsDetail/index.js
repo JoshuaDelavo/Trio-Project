@@ -8,14 +8,19 @@ import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { IoIosArrowBack } from "react-icons/io";
 import { GrTwitter } from "react-icons/gr";
+import { SiWhatsapp } from "react-icons/si";
 import { RiFacebookCircleFill } from "react-icons/ri";
 import { IoMdCopy } from "react-icons/io";
-import { FacebookShareButton, TwitterShareButton } from "react-share";
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+} from "react-share";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import { makeStyles } from "@material-ui/core/styles";
-import ReactMarkdown from "react-markdown"
-import { render } from 'react-dom'
+import ReactMarkdown from "react-markdown";
+import { render } from "react-dom";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -65,12 +70,12 @@ const NewsDetails = () => {
   let iconStyles = { color: "white", fontSize: "1.5em", marginLeft: "1em" };
   let iconStyles2 = { color: "white", fontSize: "1.5em" };
   let arrow = { color: "white", fontSize: "1.5em", marginRight: "0.5em" };
-  var dateFormat = require('dateformat');
+  var dateFormat = require("dateformat");
 
   return (
     <Element id="about-us" name="about-us">
       <div className="container-news">
-        <Link to="/News" style={{ textDecoration: 'none' }}>
+        <Link to="/News" style={{ textDecoration: "none" }}>
           <p className="backToArticles">
             <IoIosArrowBack style={arrow}> </IoIosArrowBack>back to all articles
           </p>
@@ -82,17 +87,20 @@ const NewsDetails = () => {
         <div className="underTitle">
           <div className="posted">
             <SectionParagraph
-              value={"Posted on : " + dateFormat(detail.published_at, "dS mmmm yyyy, H:MM ")}
+              value={
+                "Posted on : " +
+                dateFormat(detail.published_at, "dS mmmm yyyy, H:MM ")
+              }
             ></SectionParagraph>
           </div>
           <div className="iconContainer">
-            <TwitterShareButton
-              url="https://twitter.com/"
-              title="Belajar React"
-              hashtag="#react"
+            <WhatsappShareButton
+              message="Testing function of react"
+              title="React"
+              url="https://reactjs.org/"
             >
-              <GrTwitter style={iconStyles}></GrTwitter>
-            </TwitterShareButton>
+              <SiWhatsapp style={iconStyles}></SiWhatsapp>
+            </WhatsappShareButton>
 
             <FacebookShareButton
               url="https://facebook.com/"
@@ -111,13 +119,13 @@ const NewsDetails = () => {
           </div>
         </div>
         <div className="iconContainer2">
-          <TwitterShareButton
-            url="https://twitter.com/"
-            title="Belajar React"
-            hashtag="#react"
+          <WhatsappShareButton
+            message="Testing function of react"
+            title="React"
+            url="https://reactjs.org/"
           >
-            <GrTwitter style={iconStyles2}></GrTwitter>
-          </TwitterShareButton>
+            <SiWhatsapp style={iconStyles}></SiWhatsapp>
+          </WhatsappShareButton>
 
           <FacebookShareButton
             url="https://facebook.com/"
