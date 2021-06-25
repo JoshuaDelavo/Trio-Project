@@ -7,6 +7,7 @@ import SectionTextMedium from '../../components/SectionTextMedium/index';
 import SectionParagraph from '../../components/SectionParagraph/index';
 import Scroll from 'react-scroll'
 import Page2 from './Page2'
+import Thanks from './Thanks'
 import Concierge from "../../config/ConciergeApi";
 import { AiOutlineInstagram, AiOutlineWhatsApp, AiOutlinePhone } from "react-icons/ai";
 import { IoMailOutline } from "react-icons/io5";
@@ -30,7 +31,7 @@ const Consiegre = ({ toggle2, conciergeOpen }) => {
             <NavBurgerIcon onClick={toggle2}>
                 {conciergeOpen ? <FaTimes onClick={toggle2}></FaTimes> : ''} CLOSE
             </NavBurgerIcon>
-            <ConMenu hidden>
+            <ConMenu hidden >
                 <ConItem>
                     <div >
                         <SectionTextMedium value="WELCOME TO" ></SectionTextMedium>
@@ -61,7 +62,7 @@ const Consiegre = ({ toggle2, conciergeOpen }) => {
                     </BottomIcon>
                 </ConItem>
             </ConMenu>
-            <ConMenu >
+            <ConMenu hidden >
                 <ConItem>
                     <Page2></Page2>
                 </ConItem>
@@ -92,6 +93,11 @@ const Consiegre = ({ toggle2, conciergeOpen }) => {
                             BACK TO DASHBOARD
                         </Button>
                     </SectionParagraph>
+                </ConItem>
+            </ConMenu>
+            <ConMenu >
+                <ConItem>
+                    <Thanks></Thanks>
                 </ConItem>
             </ConMenu>
         </NavCon>

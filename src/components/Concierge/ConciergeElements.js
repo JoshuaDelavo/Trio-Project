@@ -101,5 +101,42 @@ export const BottomIcon = styled.div`
     }
     
 `
+export const ThanksMenu = styled.div`
+    position: absolute;
+    margin-top: 20%;
+    width:60%;
+    height:auto;
+    justify-content:center;
+
+    @media screen and (max-width:1024px){
+        padding-top:10%;
+    }
+`
+export const ThanksItem = styled.div`
+    display:flex;
+    width: 100%;
+    color: white;
+    margin-top:30px;
+    justify-content:center;
+    @media screen and (max-width:1024px){
+        justify-content:center;
+    }
+    
+`
+export const ButtonThanks = styled.button`
+    backgroun-color:white;
+    width:50%;
+    height:50px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    
+    @media screen and (max-width:1024px){
+        justify-content:center;
+        width:100%;
+    }
+    
+`
 
 

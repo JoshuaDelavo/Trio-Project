@@ -19,7 +19,7 @@ const useStyles = makeStyles({
         fontSize: 15,
         '& > span': {
             marginRight: 10,
-            fontSize: 18,
+            fontSize: 12,
         },
     },
 });
@@ -30,7 +30,7 @@ export default function CountrySelect() {
     return (
         <Autocomplete
             id="country-select-demo"
-            style={{ width: 300 }}
+            style={{ width: 150, color: 'white' }}
             options={countries}
             classes={{
                 option: classes.option,
@@ -45,6 +45,7 @@ export default function CountrySelect() {
             )}
             renderInput={(params) => (
                 <TextField
+                    style={{ color: 'white' }}
                     {...params}
                     label="Choose Region"
                     variant="outlined"

@@ -19,6 +19,7 @@ import {
     KeyboardTimePicker,
     KeyboardDatePicker,
 } from '@material-ui/pickers';
+import { NavCon, NavBurgerIcon, ConMenu, ConItem, ButtonText, BottomIcon } from './ConciergeElements'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -88,7 +89,7 @@ const Page2 = () => {
     };
 
     return (
-        <form className={classes.root} noValidate autoComplete="off">
+        <div>
             My Name is
             <TextField id="filled-basic" label="Name" variant="filled" />
             I'm
@@ -127,22 +128,7 @@ const Page2 = () => {
                 </Select>
             </FormControl>
             and I need a dress for
-            <FormControl className={classes1.formControl}>
-                <Select
-                    value={event}
-                    onChange={handleChangeEvent}
-                    displayEmpty
-                    className={classes.selectEmpty}
-                    inputProps={{ 'aria-label': 'Without label' }}
-                >
-                    <MenuItem value="" disabled>
-                        Event
-                    </MenuItem>
-                    <MenuItem value={'Casual'}>Casual</MenuItem>
-                    <MenuItem value={'Party'}>Party</MenuItem>
-                    <MenuItem value={'Dinas'}>Dinas</MenuItem>
-                </Select>
-            </FormControl>
+            <Countries></Countries>
             I want it looks
             <FormControl className={classes1.formControl}>
                 <Select
@@ -213,7 +199,7 @@ const Page2 = () => {
                 </Select>
             </FormControl>
             you can reach me at <TextField id="filled-basic" label="Phone Number" variant="filled" />
-            on <Countries></Countries>
+            on
 
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
                 <KeyboardDatePicker
@@ -231,8 +217,12 @@ const Page2 = () => {
                 />
             </MuiPickersUtilsProvider>
 
+            <ConItem>
+                <ButtonText value="Start">Submit</ButtonText>
+            </ConItem>
+        </div>
 
-        </form>
+
 
 
 
