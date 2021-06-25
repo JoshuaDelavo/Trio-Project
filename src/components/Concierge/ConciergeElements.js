@@ -29,7 +29,7 @@ export const NavBurgerIcon = styled.div`
     width: 100%;
     height:5%;
     position:flex-end;
-    padding-top: 2%;
+    padding-top: 3.5%;
     padding-right:5%;
     color:white;
     font-size:16px;
