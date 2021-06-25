@@ -40,8 +40,7 @@ export const NavBurgerIcon = styled.div`
 
     
     @media screen and (max-width:1024px){
-        padding-top:23%;
-        padding-left:8%;
+        padding-top:10%;
     }
 
     @media screen and (min-width:2000px){
@@ -59,6 +58,10 @@ export const ConMenu = styled.div`
     width:50%;
     height:auto;
     justify-content:center;
+
+    @media screen and (max-width:1024px){
+        padding-top:10%;
+    }
 `
 
 export const ConItem = styled.div`
@@ -74,7 +77,7 @@ export const ConItem = styled.div`
 `
 export const ButtonText = styled.button`
     backgroun-color:white;
-    width:40%;
+    width:35%;
     height:50px;
     text-align: center;
     text-decoration: none;
@@ -83,6 +86,7 @@ export const ButtonText = styled.button`
     
     @media screen and (max-width:1024px){
         justify-content:center;
+        width:100%;
     }
     
 `
