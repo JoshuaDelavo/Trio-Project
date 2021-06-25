@@ -9,7 +9,8 @@ import { Link } from 'react-router-dom';
 import Masonry from 'react-masonry-css'
 import { baseURL } from '../../config';
 
-const NewsHomeContent = () => {
+const NewsHome = () => {
+    var dateFormat = require('dateformat');
     const [newsHome, setNewsHome] = useState([]);
     const breakpointColumnsObj = {
         default: 3,
@@ -40,13 +41,14 @@ const NewsHomeContent = () => {
                         newsHome.map((newsHome, i) => {
                             return <React.Fragment key={newsHome.id}>
                                 <div>
-                                    <img src={baseURL + newsHome.coverImage.url} className="imgnews"></img>
-                                    <br />
-                                    <br />
-                                    <h2 className="container-text-news">{newsHome.article}</h2>
-                                    <br />
-                                    <br />
-                                    <p className="container-text-time">{new Date(newsHome.published_at).toLocaleDateString()}</p>
+                                    <Link to={`/news/${newsHome.id}`} style={{ textDecoration: 'none' }}>
+                                        <img src={baseURL + newsHome.coverImage.url} className="imgnews"></img>
+                                        <br />
+                                        <br />
+                                        <h2 className="container-text-news">{newsHome.title}</h2>
+                                        <br />
+                                        <p className="container-text-time">{dateFormat(newsHome.published_at, "dS mmmm yyyy")}</p>
+                                    </Link>
                                 </div>
                             </React.Fragment>
                         })
@@ -73,4 +75,4 @@ const NewsHomeContent = () => {
     )
 }
 
-export default NewsHomeContent
+export default NewsHome

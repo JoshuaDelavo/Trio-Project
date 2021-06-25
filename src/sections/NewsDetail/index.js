@@ -50,7 +50,7 @@ const NewsDetails = () => {
   const [open, setOpen] = React.useState(false);
 
   const handleClick = () => {
-    setOpen(true); 
+    setOpen(true);
     copy();
   };
 
@@ -70,14 +70,14 @@ const NewsDetails = () => {
   return (
     <Element id="about-us" name="about-us">
       <div className="container-news">
-        <Link to="/News">
+        <Link to="/News" style={{ textDecoration: 'none' }}>
           <p className="backToArticles">
             <IoIosArrowBack style={arrow}> </IoIosArrowBack>back to all articles
           </p>
         </Link>
         <br />
         <br />
-        <SectionTextMedium value={detail.title}></SectionTextMedium>
+        <p className="article-title">{detail.title}</p>
         <br />
         <div className="underTitle">
           <div className="posted">
@@ -91,7 +91,7 @@ const NewsDetails = () => {
               title="Belajar React"
               hashtag="#react"
             >
-            <GrTwitter style={iconStyles}></GrTwitter>
+              <GrTwitter style={iconStyles}></GrTwitter>
             </TwitterShareButton>
 
             <FacebookShareButton
@@ -99,7 +99,7 @@ const NewsDetails = () => {
               quote={"Belajar React"}
               hashtag="#react"
             >
-            <RiFacebookCircleFill style={iconStyles}></RiFacebookCircleFill>
+              <RiFacebookCircleFill style={iconStyles}></RiFacebookCircleFill>
             </FacebookShareButton>
 
             <IoMdCopy style={iconStyles} onClick={handleClick}></IoMdCopy>
@@ -116,7 +116,7 @@ const NewsDetails = () => {
             title="Belajar React"
             hashtag="#react"
           >
-          <GrTwitter style={iconStyles2}></GrTwitter>
+            <GrTwitter style={iconStyles2}></GrTwitter>
           </TwitterShareButton>
 
           <FacebookShareButton
@@ -124,7 +124,7 @@ const NewsDetails = () => {
             quote={"Belajar React"}
             hashtag="#react"
           >
-          <RiFacebookCircleFill style={iconStyles}></RiFacebookCircleFill>
+            <RiFacebookCircleFill style={iconStyles}></RiFacebookCircleFill>
           </FacebookShareButton>
 
           <IoMdCopy style={iconStyles} onClick={handleClick}></IoMdCopy>

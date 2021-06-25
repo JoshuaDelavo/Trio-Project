@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Grid, Fade, colors } from "@material-ui/core";
 import { Element } from "react-scroll";
-import "./OurCollections.css";
-import Button from "../../components/Button/index";
-import SectionTextSmall from "../../components/SectionTextSmall/index";
-import SectionParagraph from "../../components/SectionParagraph/index";
+import "./NewsLanding.css";
 import NewsApi from "../../config/NewsApi";
 import { Link } from "react-router-dom";
 import Masonry from "react-masonry-css";
 import { baseURL } from "../../config";
-import InfiniteScroll from "react-infinite-scroll-component";
 import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -19,7 +15,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import LazyLoad from "react-lazyload";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
-const OurCollections = () => {
+const NewsLanding = () => {
   const [ourCollections, setOurCollections] = useState([]);
   const [checked, setChecked] = useState(false);
   const [checkedApi, setCheckedApi] = useState(false);
@@ -88,7 +84,6 @@ const OurCollections = () => {
       marginTop: theme.spacing(2),
     },
     formControl: {
-      margin: theme.spacing(2),
       width: 200,
     },
   }));
@@ -111,9 +106,10 @@ const OurCollections = () => {
         return <React.Fragment key={ourCollections.id}></React.Fragment>;
       })}
       <div className="container-campaign">
+        <div className="form">
         <FormControl className={classes.formControl}>
           <InputLabel id="select-type" className="select-selected2">
-            <SectionTextSmall value="Sort by:"></SectionTextSmall>
+            <span style={{color:'lightgray'}}>Sort By : </span>
           </InputLabel>
           <Select
             labelId="select-type"
@@ -125,8 +121,8 @@ const OurCollections = () => {
             onChange={(e) => setSortType(e.target.value)}
             className="select-selected"
             style={{
-              color: "lightgray ",
-              fontSize: 12,
+              color: "lightgray",
+              fontSize: 13,
               fontStyle: "normal",
               fontWeight: 300,
               letterSpacing: 0.32,
@@ -137,7 +133,7 @@ const OurCollections = () => {
             <MenuItem value={"id"}>Oldest to Latest</MenuItem>
           </Select>
         </FormControl>
-
+        </div>
         <br />
         <br />
         <Masonry
@@ -150,7 +146,7 @@ const OurCollections = () => {
               <React.Fragment key={data.id}>
                 <LazyLoad height={400} offset={100}>
                   <Fade in={checked} appear>
-                    <Link to={`/News/${data.id}`}style={{textDecoration: 'none'}}>
+                    <Link to={`/News/${data.id}`} style={{ textDecoration: 'none' }}>
                       <div className="conterContent">
                         <LazyLoadImage
                           effect="blur"
@@ -167,8 +163,7 @@ const OurCollections = () => {
                             <Grid item xs={12} md={6}></Grid>
                           </Grid>
                         </div>
-                        <br />
-                        <br />
+                      
                       </div>
                     </Link>
                   </Fade>
@@ -182,4 +177,4 @@ const OurCollections = () => {
   );
 };
 
-export default OurCollections;
+export default NewsLanding;

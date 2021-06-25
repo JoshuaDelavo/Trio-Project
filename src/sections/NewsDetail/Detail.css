@@ -1,39 +1,57 @@
-.backToArticles{
+.backToArticles {
     text-align: left;
-    justify-content:space-between ;
+    justify-content: space-between;
+    font-weight: 300;
 }
-.underTitle{
+
+.underTitle {
     width: 100%;
     justify-content: space-between;
 }
-.posted{
+
+.posted {
     text-align: left;
 }
-.iconContainer{
+
+.article-title {
+    text-align: left;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 40px;
+    color: white;
+}
+
+.iconContainer {
     text-align: right;
     margin-top: -48px;
 }
-.iconContainer2{
+
+.iconContainer2 {
     display: none;
 }
-.article-container img{
+
+.article-container img {
+    width: 100%;
     max-width: 100%;
 }
-.article-container p{
+
+.article-container p {
+    font-weight: 100;
     text-align: justify;
 }
-@media (max-width: 768px) {
-    .iconContainer{
-        display:none ;
 
+@media (max-width: 768px) {
+    .iconContainer {
+        display: none;
     }
-    .iconContainer2{
-        display:flex ;
+    .iconContainer2 {
+        display: flex;
         position: flex-start;
     }
-    
 }
-.container-news{
+
+.container-news {
     padding-top: 2em;
     width: 80%;
     margin: auto;

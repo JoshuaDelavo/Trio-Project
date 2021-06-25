@@ -15,10 +15,12 @@ import Concierge from './pages/Concierge';
 import Home from './pages/Home';
 import News from './pages/News';
 import NewsDetail from './pages/NewsDetail';
+import ScrollToTop from "./pages/ScrollToTop";
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div>
         <Header />
         <Switch>
