@@ -15,7 +15,10 @@ const ScrollLink = Scroll.Link
 
 const Sidebar = ({ toggle2, conciergeOpen }) => {
     const [events, setEvents] = useState([]);
-    const paragraph = "Fashion Concierge is interactive way to send your inquiry to Sebastian Gunawan and team. Tell us what you have in mind. Your color preferences, your style preferences, or even upload your rough sketches about the art piece of your dream";
+    const paragraph = "Fashion Concierge is interactive way to send your inquiry to";
+    const paragraph2 = "Sebastian Gunawan and team. Tell us what you have in mind. Your color";
+    const paragraph3 = "preferences, your style preferences, or even upload your";
+    const paragraph4 = "rough sketches about the art piece of your dream";
     useEffect(() => {
         Concierge.findBudgets().then(res => {
             setEvents(res);
@@ -23,33 +26,38 @@ const Sidebar = ({ toggle2, conciergeOpen }) => {
         })
     }, [])
     return (
-        <Nav conciergeOpen={conciergeOpen} >
+        <Nav conciergeOpen={conciergeOpen}>
             <NavBurgerIcon onClick={toggle2}>
                 {conciergeOpen ? <FaTimes onClick={toggle2}></FaTimes> : ''} CLOSE
             </NavBurgerIcon>
             <SidebarMenu >
                 <SidebarItem>
                     <div >
-                        <SectionTextMedium value="WELCOME TO THE FASHION CONCIERGE" ></SectionTextMedium>
+                        <SectionTextMedium value="WELCOME TO" ></SectionTextMedium>
+                        <SectionTextMedium value="THE FASHION CONCIERGE" ></SectionTextMedium>
                         <hr style={{ border: '1px solid white', width: '45px', margin: 'auto' }}></hr>
                         <br />
-                        <SectionParagraph value={paragraph}
-                        > </SectionParagraph>
+                        <SectionParagraph value={paragraph}> </SectionParagraph>
+                        <SectionParagraph value={paragraph2}> </SectionParagraph>
+                        <SectionParagraph value={paragraph3}> </SectionParagraph>
+                        <SectionParagraph value={paragraph4}> </SectionParagraph>
                     </div>
 
                 </SidebarItem>
                 <SidebarItem>
                     <ButtonText value="Start">START THE EXPERIENCE</ButtonText>
                 </SidebarItem>
+                <br />
+                <br />
                 <SidebarItem>
                     <SectionTextSmall value='Need connect fast ? We are available here' ></SectionTextSmall>
                 </SidebarItem>
                 <SidebarItem>
                     <BottomIcon>
                         <AiOutlineInstagram ></AiOutlineInstagram>
-                        <AiOutlineWhatsApp style={{ marginLeft: '5rem' }}></AiOutlineWhatsApp>
-                        <IoMailOutline style={{ marginLeft: '5rem' }}></IoMailOutline>
-                        <AiOutlinePhone style={{ marginLeft: '5rem' }}></AiOutlinePhone>
+                        <AiOutlineWhatsApp style={{ marginLeft: '2rem' }}></AiOutlineWhatsApp>
+                        <IoMailOutline style={{ marginLeft: '2rem' }}></IoMailOutline>
+                        <AiOutlinePhone style={{ marginLeft: '2rem' }}></AiOutlinePhone>
                     </BottomIcon>
                 </SidebarItem>
             </SidebarMenu>
@@ -58,8 +66,6 @@ const Sidebar = ({ toggle2, conciergeOpen }) => {
                     <Page2></Page2>
                 </SidebarItem>
                 <SidebarItem>
-
-
                 </SidebarItem>
                 <SidebarItem>
                     <Button>
@@ -87,9 +93,7 @@ const Sidebar = ({ toggle2, conciergeOpen }) => {
                         </Button>
                     </SectionParagraph>
                 </SidebarItem>
-
             </SidebarMenu>
-
         </Nav>
     )
 }

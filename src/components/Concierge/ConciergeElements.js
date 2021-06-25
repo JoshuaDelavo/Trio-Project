@@ -29,7 +29,7 @@ export const NavBurgerIcon = styled.div`
     width: 100%;
     height:5%;
     position:flex-end;
-    padding-top: 6.6%;
+    padding-top: 2%;
     padding-right:5%;
     color:white;
     font-size:16px;
@@ -55,7 +55,7 @@ export const NavBurgerIcon = styled.div`
 `
 export const SidebarMenu = styled.div`
     position: absolute;
-    margin-top: 10%;
+    margin-top: 5%;
     width:50%;
     height:auto;
     justify-content:center;
@@ -75,11 +75,12 @@ export const SidebarItem = styled.div`
 export const ButtonText = styled.button`
     backgroun-color:white;
     width:40%;
+    height:50px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 20px;
-    padding:32px 16px;
+    font-size: 15px;
+    
     @media screen and (max-width:1024px){
         justify-content:center;
     }
@@ -88,7 +89,8 @@ export const ButtonText = styled.button`
 export const BottomIcon = styled.div`
     color:white;
     justify-content: flex-start;
-    font-size: 40px;
+    font-size: 30px;
+    margin-top: -30px;
     width:100%
     @media screen and (max-width:1024px){
         justify-content:center;
