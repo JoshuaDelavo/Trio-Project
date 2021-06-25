@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Nav, NavBurgerIcon, SidebarMenu, SidebarItem, ButtonText, BottomIcon } from './ConciergeElements'
+import { ConNav, NavBurgerIcon, ConMenu, ConItem, ButtonText, BottomIcon } from './ConciergeElements'
 import { FaTimes, FaBars } from 'react-icons/fa'
 import { Element } from 'react-scroll'
 import SectionTextSmall from '../../components/SectionTextSmall/index';
@@ -13,7 +13,7 @@ import { IoMailOutline } from "react-icons/io5";
 import { Button, TextField } from '@material-ui/core';
 const ScrollLink = Scroll.Link
 
-const Sidebar = ({ toggle2, conciergeOpen }) => {
+const Consiegre = ({ toggle2, conciergeOpen }) => {
     const [events, setEvents] = useState([]);
     const paragraph = "Fashion Concierge is interactive way to send your inquiry to Sebastian Gunawan and team. Tell us what you have in mind. Your color preferences, your style preferences, or even upload your rough sketches about the art piece of your dream";
     useEffect(() => {
@@ -23,12 +23,12 @@ const Sidebar = ({ toggle2, conciergeOpen }) => {
         })
     }, [])
     return (
-        <Nav conciergeOpen={conciergeOpen} >
+        <ConNav conciergeOpen={conciergeOpen} >
             <NavBurgerIcon onClick={toggle2}>
                 {conciergeOpen ? <FaTimes onClick={toggle2}></FaTimes> : ''} CLOSE
             </NavBurgerIcon>
-            <SidebarMenu >
-                <SidebarItem>
+            <ConMenu >
+                <ConItem>
                     <div >
                         <SectionTextMedium value="WELCOME TO THE FASHION CONCIERGE" ></SectionTextMedium>
                         <hr style={{ border: '1px solid white', width: '45px', margin: 'auto' }}></hr>
@@ -37,36 +37,36 @@ const Sidebar = ({ toggle2, conciergeOpen }) => {
                         > </SectionParagraph>
                     </div>
 
-                </SidebarItem>
-                <SidebarItem>
+                </ConItem>
+                <ConItem>
                     <ButtonText value="Start">START THE EXPERIENCE</ButtonText>
-                </SidebarItem>
-                <SidebarItem>
+                </ConItem>
+                <ConItem>
                     <SectionTextSmall value='Need connect fast ? We are available here' ></SectionTextSmall>
-                </SidebarItem>
-                <SidebarItem>
+                </ConItem>
+                <ConItem>
                     <BottomIcon>
                         <AiOutlineInstagram ></AiOutlineInstagram>
                         <AiOutlineWhatsApp style={{ marginLeft: '5rem' }}></AiOutlineWhatsApp>
                         <IoMailOutline style={{ marginLeft: '5rem' }}></IoMailOutline>
                         <AiOutlinePhone style={{ marginLeft: '5rem' }}></AiOutlinePhone>
                     </BottomIcon>
-                </SidebarItem>
-            </SidebarMenu>
-            <SidebarMenu hidden>
-                <SidebarItem>
+                </ConItem>
+            </ConMenu>
+            <ConMenu hidden>
+                <ConItem>
                     <Page2></Page2>
-                </SidebarItem>
-                <SidebarItem>
+                </ConItem>
+                <ConItem>
 
 
-                </SidebarItem>
-                <SidebarItem>
+                </ConItem>
+                <ConItem>
                     <Button>
                         SUBMIT
                     </Button>
-                </SidebarItem>
-                <SidebarItem>
+                </ConItem>
+                <ConItem>
                     <SectionParagraph value='ANY SPECIAL NOTES?'>
 
                         <input type="textarea"></input>
@@ -77,8 +77,8 @@ const Sidebar = ({ toggle2, conciergeOpen }) => {
                             FINISH
                         </Button>
                     </SectionParagraph>
-                </SidebarItem>
-                <SidebarItem>
+                </ConItem>
+                <ConItem>
                     <SectionParagraph>
                         THANK YOU
                         Your Response has been recorded. We will reach out to you soon after our initial assessment.
@@ -86,12 +86,12 @@ const Sidebar = ({ toggle2, conciergeOpen }) => {
                             BACK TO DASHBOARD
                         </Button>
                     </SectionParagraph>
-                </SidebarItem>
+                </ConItem>
 
-            </SidebarMenu>
+            </ConMenu>
 
-        </Nav>
+        </ConNav>
     )
 }
 
-export default Sidebar
+export default Consiegre

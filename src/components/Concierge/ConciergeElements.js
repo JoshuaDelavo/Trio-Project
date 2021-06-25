@@ -2,7 +2,7 @@ import styled from 'styled-components'
 // import { Link as LinkR } from 'react-router-dom'
 // import { Link as LinkS } from 'react-scroll'
 
-export const Nav = styled.nav` 
+export const NavCon = styled.nav` 
     display:flex; 
     background:black;
     height:100vh;
@@ -53,7 +53,7 @@ export const NavBurgerIcon = styled.div`
     }
 
 `
-export const SidebarMenu = styled.div`
+export const ConMenu = styled.div`
     position: absolute;
     margin-top: 10%;
     width:50%;
@@ -61,7 +61,7 @@ export const SidebarMenu = styled.div`
     justify-content:center;
 `
 
-export const SidebarItem = styled.div`
+export const ConItem = styled.div`
     display:flex;
     width: 100%;
     color: white;
