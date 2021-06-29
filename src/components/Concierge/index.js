@@ -31,7 +31,7 @@ const Consiegre = ({ toggle2, conciergeOpen }) => {
             <NavBurgerIcon onClick={toggle2}>
                 {conciergeOpen ? <FaTimes onClick={toggle2}></FaTimes> : ''} CLOSE
             </NavBurgerIcon>
-            <ConMenu hidden >
+            <ConMenu hidden>
                 <ConItem>
                     <div >
                         <SectionTextMedium value="WELCOME TO" ></SectionTextMedium>
@@ -62,7 +62,7 @@ const Consiegre = ({ toggle2, conciergeOpen }) => {
                     </BottomIcon>
                 </ConItem>
             </ConMenu>
-            <ConMenu hidden >
+            <ConMenu  >
                 <ConItem>
                     <Page2></Page2>
                 </ConItem>
@@ -95,7 +95,7 @@ const Consiegre = ({ toggle2, conciergeOpen }) => {
                     </SectionParagraph>
                 </ConItem>
             </ConMenu>
-            <ConMenu >
+            <ConMenu hidden>
                 <ConItem>
                     <Thanks></Thanks>
                 </ConItem>
