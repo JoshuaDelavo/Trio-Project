@@ -6,7 +6,7 @@ import SectionTextSmall from '../../components/SectionTextSmall/index';
 import SectionTextMedium from '../../components/SectionTextMedium/index';
 import SectionParagraph from '../../components/SectionParagraph/index';
 import Scroll from 'react-scroll'
-import Page2 from './Page2'
+import Page3 from './page3'
 import Thanks from './Thanks'
 import Concierge from "../../config/ConciergeApi";
 import { AiOutlineInstagram, AiOutlineWhatsApp, AiOutlinePhone } from "react-icons/ai";
@@ -20,12 +20,12 @@ const Consiegre = ({ toggle2, conciergeOpen }) => {
     const paragraph2 = "Sebastian Gunawan and team. Tell us what you have in mind. Your color";
     const paragraph3 = "preferences, your style preferences, or even upload your";
     const paragraph4 = "rough sketches about the art piece of your dream";
-    useEffect(() => {
-        Concierge.findBudgets().then(res => {
-            setEvents(res);
-            console.log(res);
-        })
-    }, [])
+    // useEffect(() => {
+    //     Concierge.findBudgets().then(res => {
+    //         setEvents(res);
+    //         console.log(res);
+    //     })
+    // }, [])
     return (
         <NavCon conciergeOpen={conciergeOpen} >
             <NavBurgerIcon onClick={toggle2}>
@@ -64,7 +64,7 @@ const Consiegre = ({ toggle2, conciergeOpen }) => {
             </ConMenu>
             <ConMenu  >
                 <ConItem>
-                    <Page2></Page2>
+                    <Page3></Page3>
                 </ConItem>
                 <ConItem>
                 </ConItem>
