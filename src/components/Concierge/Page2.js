@@ -38,12 +38,10 @@ const useStyles = makeStyles((theme) => ({
   root: {
     "& > * .MuiFormLabel-root ": {
       background: "none",
-      margin: theme.spacing(1),
-      marginBottom: theme.spacing(2),
       width: "auto",
       color: "grey",
       borderColor: "white",
-      height: "auto",
+      height: "2em",
     },
     "& > * .MuiInputBase-root ": {
       background: "none",
@@ -51,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
       width: "auto",
       color: "white",
       borderColor: "white",
-      height: "auto",
+      height: "2em",
       borderColor: "blue",
     },
     "& > * .MuiFormControl-root ": {
@@ -59,23 +57,20 @@ const useStyles = makeStyles((theme) => ({
     },
 
     "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-      borderColor: "white",
+      borderColor: "transparent",
     },
     "& label.Mui-focused": {
       color: "green",
     },
     "& .MuiInput-underline:after": {
-      borderBottomColor: "green",
+      borderBottomColor: "transparent",
     },
     "& .MuiOutlinedInput-root": {
       "& fieldset": {
-        borderColor: "red",
       },
       "&:hover fieldset": {
-        borderColor: "yellow",
       },
       "&.Mui-focused fieldset": {
-        borderColor: "green",
       },
     },
     "&.MuiTextField-root": {
@@ -163,13 +158,13 @@ const Page2 = () => {
       },
       "& .MuiOutlinedInput-root": {
         "& fieldset": {
-          borderColor: "red",
+          borderColor: "transparent",
         },
         "&:hover fieldset": {
-          borderColor: "yellow",
+          borderColor: "transparent",
         },
         "&.Mui-focused fieldset": {
-          borderColor: "green",
+          borderColor: "transparent",
         },
       },
       "& > * .MuiFormControl-root ": {
@@ -271,12 +266,14 @@ const Page2 = () => {
           className: classes.input,
         }}
       /> */}
-      <CssTextField
-        className={classes1.formControl}
-        id="custom-css-outlined-input"
-        variant="outlined"
-        label="Custom CSS"
-      />
+      <FormControl className={classes1.formControl}>
+        <CssTextField
+          className={classes.margin}
+          id="custom-css-outlined-input"
+          variant="outlined"
+          label="Input name"
+        />
+      </FormControl>
       I'm
       <FormControl className={classes1.formControl}>
         <Select
