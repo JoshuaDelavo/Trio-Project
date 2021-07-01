@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, TextField } from "@material-ui/core";
+import { Button, TextField, TextFieldProps } from "@material-ui/core";
 import { makeStyles, withTheme } from "@material-ui/core/styles";
 import pickers from "@material-ui/pickers";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -17,6 +17,7 @@ import Countries from "../Countries";
 import { createMuiTheme, withStyles, fade } from "@material-ui/core/styles";
 import InputBase from "@material-ui/core/InputBase";
 import { green } from "@material-ui/core/colors";
+import { OutlinedInputProps } from "@material-ui/core/OutlinedInput";
 import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
@@ -31,6 +32,7 @@ import {
   BottomIcon,
 } from "./ConciergeElements";
 import "./Concierge.css";
+import { Block } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -52,6 +54,10 @@ const useStyles = makeStyles((theme) => ({
       height: "auto",
       borderColor: "blue",
     },
+    "& > * .MuiFormControl-root ": {
+      verticalAlign: "baseline",
+    },
+
     "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
       borderColor: "white",
     },
@@ -72,6 +78,12 @@ const useStyles = makeStyles((theme) => ({
         borderColor: "green",
       },
     },
+    "&.MuiTextField-root": {
+      marginTop: 40,
+    },
+    formControl: {
+      verticalAlign: "baseline",
+    },
   },
   input: {
     color: "white",
@@ -82,8 +94,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 const useStyles1 = makeStyles((theme) => ({
   formControl: {
-    margin: theme.spacing(1),
+    padding: theme.spacing(1),
     minWidth: 120,
+    display: "initial",
+    verticalAlign: "middle",
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
@@ -157,6 +171,9 @@ const Page2 = () => {
         "&.Mui-focused fieldset": {
           borderColor: "green",
         },
+      },
+      "& > * .MuiFormControl-root ": {
+        verticalAlign: "none",
       },
     },
   })(TextField);
@@ -255,7 +272,7 @@ const Page2 = () => {
         }}
       /> */}
       <CssTextField
-        className={classes.margin}
+        className={classes1.formControl}
         id="custom-css-outlined-input"
         variant="outlined"
         label="Custom CSS"
@@ -278,12 +295,14 @@ const Page2 = () => {
         </Select>
       </FormControl>
       and I'm{" "}
-      <CssTextField
-        className={classes.margin}
-        id="custom-css-outlined-input"
-        variant="outlined"
-        label="Age"
-      />{" "}
+      <FormControl className={classes1.formControl}>
+        <CssTextField
+          className={classes.margin}
+          id="custom-css-outlined-input"
+          variant="outlined"
+          label="Age"
+        />{" "}
+      </FormControl>
       years old My favourite color is
       <FormControl className={classes1.formControl}>
         <Select
