@@ -13,7 +13,7 @@ import SectionTextSmall from "../../components/SectionTextSmall/index";
 import SectionTextMedium from "../../components/SectionTextMedium/index";
 import SectionParagraph from "../../components/SectionParagraph/index";
 import Scroll from "react-scroll";
-import Page2 from "./Page2";
+import Page3 from "./page3";
 import Thanks from "./Thanks";
 import Concierge from "../../config/ConciergeApi";
 import {
@@ -84,7 +84,7 @@ const Consiegre = ({ toggle2, conciergeOpen }) => {
       </ConMenu>
       <ConMenu>
         <ConItem>
-          <Page2></Page2>
+          <Page3></Page3>
         </ConItem>
         <ConItem></ConItem>
         <ConItem>

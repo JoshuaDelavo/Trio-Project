@@ -10,7 +10,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
-import Test from '../Countries/Test'
+import Test from '../Countries'
 import Select from '@material-ui/core/Select';
 import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
@@ -42,8 +42,10 @@ class Page3 extends Component {
             budget: '',
             email: '',
             phone_code: '',
-            number: ''
+            number: '',
+            now: 1
         };
+        this.handleChangeColor = this.handleChangeColor.bind(this);
     }
 
     useStyles1 = makeStyles((theme) => ({
@@ -68,16 +70,18 @@ class Page3 extends Component {
     }));
 
     handleChangeColor(event) {
-        this.setState({ color: event })
+        this.setState({ name: event.target.value })
+        document.getElementById(this.state.now).className = "show"
+        console.log(this.state.name)
     };
 
     render() {
         return <div>
             <div id='0'>
                 My Name is
-                <TextField id="filled-basic" label="Name" variant="filled" />
+                <TextField onChange={this.handleChangeColor} id="filled-basic" label="Name" variant="filled" />
             </div>
-            <div id='1'>
+            <div id='1' className="hide">
                 and I'm
                 <TextField id="filled-basic" label="Name" variant="filled" />
                 years old

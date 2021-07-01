@@ -8,3 +8,9 @@
 body {
   background-color: rgb(34, 34, 34);
 }
+.hide{
+  display: none;
+}
+.show{
+  display: inline;
+}
