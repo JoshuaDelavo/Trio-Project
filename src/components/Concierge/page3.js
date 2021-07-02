@@ -23,6 +23,7 @@ import {
 import { NavCon, NavBurgerIcon, ConMenu, ConItem, ButtonText, BottomIcon } from './ConciergeElements'
 import { useStyles } from '@material-ui/pickers/views/Calendar/SlideTransition';
 import dateFormat from 'dateformat';
+import { id } from 'date-fns/locale';
 
 
 
@@ -60,7 +61,10 @@ class Page3 extends Component {
         this.handleChangeEmail = this.handleChangeEmail.bind(this);
         this.handleChangePhoneCode = this.handleChangePhoneCode.bind(this);
         this.handleChangeNumber = this.handleChangeNumber.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSubmitBudget = this.handleSubmitBudget.bind(this);
+        this.handleSubmitCancelBudget = this.handleSubmitCancelBudget.bind(this);
+        this.handleChangeBudget2 = this.handleChangeBudget2.bind(this);
 
     }
 
@@ -139,7 +143,13 @@ class Page3 extends Component {
         console.log(reader.result);
     };
     handleChangeBudget(event) {
-        this.setState({ budget: event.target.value })
+        if (event.target.value == 'others') {
+            document.getElementById('budget').className = "show"
+            document.getElementById('utama').className = "hide"
+        }
+        else {
+            this.setState({ budget: event.target.value })
+        }
         document.getElementById(8).className = "show"
         console.log(this.state.budget)
     };
@@ -159,175 +169,200 @@ class Page3 extends Component {
     };
     handleSubmit() {
         console.log(this.state.datess, this.state.sizes)
+        document.getElementById('second').hidden = true
+        document.getElementById('third').hidden = false
+    };
+    handleChangeBudget2(event) {
+        this.setState({ budget: event.target.value })
+    }
+    handleSubmitBudget() {
+        document.getElementById('utama').className = "show";
+        document.getElementById('budget').className = "hide";
+    };
+    handleSubmitCancelBudget() {
+        this.setState({ budget: '' })
+        document.getElementById('utama').className = "show";
+        document.getElementById('budget').className = "hide";
     };
 
     render() {
-        return <div>
-            <div id='0'>
-                My Name is
-                <TextField onChange={this.handleChangeName} id="filled-basic" label="Name" variant="filled" />
-            </div>
-            <div id='1' className="hide" >
-                and I'm
-                <TextField type="number" onChange={this.handleChangeAge} id="filled-basic" label="Name" variant="filled" />
-                years old
-            </div>
-            <div id='2' className="hide">
-                My favourite color is
-                <FormControl className={this.useStyles1.formControl}>
-                    <Select
-                        value={this.state.color}
-                        displayEmpty
-                        className={this.useStyles.selectEmpty}
-                        inputProps={{ 'aria-label': 'Without label' }}
-                        onChange={this.handleChangeColor}
-                    >
-                        <MenuItem value="" disabled>
-                            Color
-                        </MenuItem>
-                        <MenuItem value={'Red'}>Red</MenuItem>
-                        <MenuItem value={'Blue'}>Blue</MenuItem>
-                        <MenuItem value={'Yellow'}>Yellow</MenuItem>
-                    </Select>
-                </FormControl>
-            </div>
-            <div id='3' className="hide">
-                and my dress size is
-                <FormControl className={this.useStyles1.formControl}>
-                    <Select
-                        displayEmpty
-                        className={this.useStyles.selectEmpty}
-                        inputProps={{ 'aria-label': 'Without label' }}
-                        onChange={this.handleChangeSize}
-                    >
-                        <MenuItem value="" disabled>
-                            Size
-                        </MenuItem>
-                        <MenuItem value={'1'}>1</MenuItem>
-                        <MenuItem value={'2'}>2</MenuItem>
-                        <MenuItem value={'3'}>3</MenuItem>
-                    </Select>
-                </FormControl>
-                <FormControl className={this.useStyles1.formControl}>
-                    <Select
-                        displayEmpty
-                        className={this.useStyles.selectEmpty}
-                        inputProps={{ 'aria-label': 'Without label' }}
-                        onChange={this.handleChangeCode}
-                    >
-                        <MenuItem value="" disabled>
-                            code
-                        </MenuItem>
-                        <MenuItem value={'Euro'}>EU</MenuItem>
-                        <MenuItem value={'US'}>US</MenuItem>
-                        <MenuItem value={'JPN'}>JPN</MenuItem>
-                    </Select>
-                </FormControl>
-            </div>
-            <div id='4' className="hide">
-                I live in
-                <FormControl className={this.useStyles1.formControl}>
-                    <Select
-                        displayEmpty
-                        className={this.useStyles.selectEmpty}
-                        inputProps={{ 'aria-label': 'Without label' }}
-                        onChange={this.handleChangeCity}
-                    >
-                        <MenuItem value="" disabled>
-                            City
-                        </MenuItem>
-                        <MenuItem value={'Sanghai'}>Sanghai</MenuItem>
-                        <MenuItem value={'Beijing'}>Beijing</MenuItem>
-                        <MenuItem value={'TaiPei'}>Tai Pei</MenuItem>
-                    </Select>
-                </FormControl>
-                <FormControl className={this.useStyles1.formControl}>
-                    <Select
-                        displayEmpty
-                        className={this.useStyles.selectEmpty}
-                        inputProps={{ 'aria-label': 'Without label' }}
-                        onChange={this.handleChangeCountries}
-                    >
-                        <MenuItem value="" disabled>
-                            Countries
-                        </MenuItem>
-                        <MenuItem value={'Indonesia'}>Indonesia</MenuItem>
-                        <MenuItem value={'China'}>China</MenuItem>
-                        <MenuItem value={'United State'}>United State</MenuItem>
-                    </Select>
-                </FormControl>
-            </div>
-            <div id='5' className="hide">
-                and I need to use this dress at
-                <MuiPickersUtilsProvider
-                    onChange={this.handleChangeDate}
-                    utils={DateFnsUtils}>
-                    <KeyboardDatePicker
-                        disableToolbar
-                        variant="inline"
-                        format="MM/dd/yyyy"
-                        value={this.state.datess}
+        return <div >
+            <div id='utama'>
+                <div id='0'>
+                    My Name is
+                    <TextField onChange={this.handleChangeName} id="filled-basic" label="Name" variant="filled" />
+                </div>
+                <div id='1' className="hide" >
+                    and I'm
+                    <TextField type="number" onChange={this.handleChangeAge} id="filled-basic" label="Name" variant="filled" />
+                    years old
+                </div>
+                <div id='2' className="hide">
+                    My favourite color is
+                    <FormControl className={this.useStyles1.formControl}>
+                        <Select
+                            value={this.state.color}
+                            displayEmpty
+                            className={this.useStyles.selectEmpty}
+                            inputProps={{ 'aria-label': 'Without label' }}
+                            onChange={this.handleChangeColor}
+                        >
+                            <MenuItem value="" disabled>
+                                Color
+                            </MenuItem>
+                            <MenuItem value={'Red'}>Red</MenuItem>
+                            <MenuItem value={'Blue'}>Blue</MenuItem>
+                            <MenuItem value={'Yellow'}>Yellow</MenuItem>
+                        </Select>
+                    </FormControl>
+                </div>
+                <div id='3' className="hide">
+                    and my dress size is
+                    <FormControl className={this.useStyles1.formControl}>
+                        <Select
+                            displayEmpty
+                            className={this.useStyles.selectEmpty}
+                            inputProps={{ 'aria-label': 'Without label' }}
+                            onChange={this.handleChangeSize}
+                        >
+                            <MenuItem value="" disabled>
+                                Size
+                            </MenuItem>
+                            <MenuItem value={'1'}>1</MenuItem>
+                            <MenuItem value={'2'}>2</MenuItem>
+                            <MenuItem value={'3'}>3</MenuItem>
+                        </Select>
+                    </FormControl>
+                    <FormControl className={this.useStyles1.formControl}>
+                        <Select
+                            displayEmpty
+                            className={this.useStyles.selectEmpty}
+                            inputProps={{ 'aria-label': 'Without label' }}
+                            onChange={this.handleChangeCode}
+                        >
+                            <MenuItem value="" disabled>
+                                code
+                            </MenuItem>
+                            <MenuItem value={'Euro'}>EU</MenuItem>
+                            <MenuItem value={'US'}>US</MenuItem>
+                            <MenuItem value={'JPN'}>JPN</MenuItem>
+                        </Select>
+                    </FormControl>
+                </div>
+                <div id='4' className="hide">
+                    I live in
+                    <FormControl className={this.useStyles1.formControl}>
+                        <Select
+                            displayEmpty
+                            className={this.useStyles.selectEmpty}
+                            inputProps={{ 'aria-label': 'Without label' }}
+                            onChange={this.handleChangeCity}
+                        >
+                            <MenuItem value="" disabled>
+                                City
+                            </MenuItem>
+                            <MenuItem value={'Sanghai'}>Sanghai</MenuItem>
+                            <MenuItem value={'Beijing'}>Beijing</MenuItem>
+                            <MenuItem value={'TaiPei'}>Tai Pei</MenuItem>
+                        </Select>
+                    </FormControl>
+                    <FormControl className={this.useStyles1.formControl}>
+                        <Select
+                            displayEmpty
+                            className={this.useStyles.selectEmpty}
+                            inputProps={{ 'aria-label': 'Without label' }}
+                            onChange={this.handleChangeCountries}
+                        >
+                            <MenuItem value="" disabled>
+                                Countries
+                            </MenuItem>
+                            <MenuItem value={'Indonesia'}>Indonesia</MenuItem>
+                            <MenuItem value={'China'}>China</MenuItem>
+                            <MenuItem value={'United State'}>United State</MenuItem>
+                        </Select>
+                    </FormControl>
+                </div>
+                <div id='5' className="hide">
+                    and I need to use this dress at
+                    <MuiPickersUtilsProvider
                         onChange={this.handleChangeDate}
-                        margin="normal"
-                        id="date-picker-inline"
-                        label="Date picker inline"
-                        KeyboardButtonProps={{
-                            'aria-label': 'change date',
-                        }}
-                    />
-                </MuiPickersUtilsProvider>
+                        utils={DateFnsUtils}>
+                        <KeyboardDatePicker
+                            disableToolbar
+                            variant="inline"
+                            format="MM/dd/yyyy"
+                            value={this.state.datess}
+                            onChange={this.handleChangeDate}
+                            margin="normal"
+                            id="date-picker-inline"
+                            label="Date picker inline"
+                            KeyboardButtonProps={{
+                                'aria-label': 'change date',
+                            }}
+                        />
+                    </MuiPickersUtilsProvider>
+                </div>
+                <div id='6' className="hide">
+                    I have preferance for my dress
+                    <input type="file" accept="image/png, image/jpeg,file/pdf"></input>
+                </div>
+                <div id='7' className="hide">
+                    my budget is
+                    <FormControl className={this.useStyles1.formControl}>
+                        <Select
+                            displayEmpty
+                            className={this.useStyles.selectEmpty}
+                            inputProps={{ 'aria-label': 'Without label' }}
+                            onChange={this.handleChangeBudget}
+                        >
+                            <MenuItem value="" disabled>
+                                Budget
+                            </MenuItem>
+                            <MenuItem value={'2000'}>starting from 2000(USD)</MenuItem>
+                            <MenuItem value={'10000'}>starting from 10000(USD)</MenuItem>
+                            <MenuItem value={'100000'} >starting from 100000(USD)</MenuItem>
+                            <MenuItem value={'others'} >Others</MenuItem>
+                        </Select>
+                    </FormControl>
+                </div>
+                <div id='8' className="hide">
+                    you can email me at
+                    <TextField id="filled-basic" type="email" onChange={this.handleChangeEmail} label="Name" variant="filled" type="email" />
+                </div>
+                <div id='9' className="hide">
+                    or WhatsApp me at
+                    <FormControl className={this.useStyles1.formControl}>
+                        <Select
+                            displayEmpty
+                            className={this.useStyles.selectEmpty}
+                            inputProps={{ 'aria-label': 'Without label' }}
+                            onChange={this.handleChangePhoneCode}
+                        >
+                            <MenuItem value="" disabled>
+                                Budget
+                            </MenuItem>
+                            <MenuItem value={'62'}>+62</MenuItem>
+                            <MenuItem value={'73'}>+73</MenuItem>
+                            <MenuItem value={'01'} >+01</MenuItem>
+                        </Select>
+                    </FormControl>
+                    <TextField id="filled-basic" type="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" onChange={this.handleChangeNumber} label="Name" variant="filled" type="text" />
+                </div>
+                <div id="10" className="hide" >
+                    <button onClick={this.handleSubmit} > Submit</button>
+                </div>
             </div>
-            <div id='6' className="hide">
-                I have preferance for my dress
-                <input type="file" accept="image/png, image/jpeg,file/pdf"></input>
+            <div id='budget' className='hide'>
+                My Prefer Budget
+                <TextField onChange={this.handleChangeBudget2} id="filled-basic" type='number' label="Name" variant="filled" />
+                USD
+                <div >
+                    <button onClick={this.handleSubmitBudget} >Enter</button>
+                    <button onClick={this.handleSubmitCancelBudget} > Cancle</button>
+                </div>
             </div>
-            <div id='7' className="hide">
-                my budget is
-                <FormControl className={this.useStyles1.formControl}>
-                    <Select
-                        displayEmpty
-                        className={this.useStyles.selectEmpty}
-                        inputProps={{ 'aria-label': 'Without label' }}
-                        onChange={this.handleChangeBudget}
-                    >
-                        <MenuItem value="" disabled>
-                            Budget
-                        </MenuItem>
-                        <MenuItem value={'2000'}>starting from 2000(USD)</MenuItem>
-                        <MenuItem value={'10000'}>starting from 10000(USD)</MenuItem>
-                        <MenuItem value={'100000'} >starting from 100000(USD)</MenuItem>
-                    </Select>
-                </FormControl>
-            </div>
-            <div id='8' className="hide">
-                you can email me at
-                <TextField id="filled-basic" type="email" onChange={this.handleChangeEmail} label="Name" variant="filled" type="email" />
-            </div>
-            <div id='9' className="hide">
-                or WhatsApp me at
-                <FormControl className={this.useStyles1.formControl}>
-                    <Select
-                        displayEmpty
-                        className={this.useStyles.selectEmpty}
-                        inputProps={{ 'aria-label': 'Without label' }}
-                        onChange={this.handleChangePhoneCode}
-                    >
-                        <MenuItem value="" disabled>
-                            Budget
-                        </MenuItem>
-                        <MenuItem value={'62'}>+62</MenuItem>
-                        <MenuItem value={'73'}>+73</MenuItem>
-                        <MenuItem value={'01'} >+01</MenuItem>
-                    </Select>
-                </FormControl>
-                <TextField id="filled-basic" type="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" onChange={this.handleChangeNumber} label="Name" variant="filled" type="text" />
-            </div>
-            <div id="10" className="hide" >
-                <button onClick={this.handleSubmit} ></button>
-            </div>
-
-
-        </div>;
+        </div>
+            ;
     }
 }
 

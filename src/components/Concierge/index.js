@@ -39,13 +39,24 @@ const Consiegre = ({ toggle2, conciergeOpen }) => {
   //     console.log(res);
   //   });
   // }, []);
+  const handleonProps = () => {
+    document.getElementById('first').className = 'hide';
+    document.getElementById('second').className = 'hide';
+    document.getElementById('third').className = 'show';
+  }
+  const goPage2 = () => {
+    document.getElementById('first').hidden = true;
+    document.getElementById('second').hidden = false;
+    document.getElementById('third').hidden = true;
+  }
   return (
     <NavCon conciergeOpen={conciergeOpen}>
       <NavBurgerIcon onClick={toggle2}>
         {conciergeOpen ? <FaTimes onClick={toggle2}></FaTimes> : ""} CLOSE
       </NavBurgerIcon>
-      <ConMenu>
-        <ConItem hidden>
+
+      <ConMenu id='first' className='show'>
+        <ConItem >
           <div>
             <SectionTextMedium value="WELCOME TO"></SectionTextMedium>
             <SectionTextMedium value="THE FASHION CONCIERGE"></SectionTextMedium>
@@ -63,15 +74,15 @@ const Consiegre = ({ toggle2, conciergeOpen }) => {
             <SectionParagraph value={paragraph4}> </SectionParagraph>
           </div>
         </ConItem>
-        <ConItem hidden>
-          <ButtonText value="Start">START THE EXPERIENCE</ButtonText>
+        <ConItem >
+          <ButtonText value="Start" onClick={goPage2} >START THE EXPERIENCE</ButtonText>
         </ConItem>
         <br />
         <br />
-        <ConItem hidden>
+        <ConItem >
           <SectionTextSmall value="Need connect fast ? We are available here"></SectionTextSmall>
         </ConItem>
-        <ConItem hidden>
+        <ConItem >
           <BottomIcon>
             <AiOutlineInstagram></AiOutlineInstagram>
             <AiOutlineWhatsApp
@@ -82,32 +93,14 @@ const Consiegre = ({ toggle2, conciergeOpen }) => {
           </BottomIcon>
         </ConItem>
       </ConMenu>
-      <ConMenu>
+      <ConMenu id='second' hidden >
         <ConItem>
-          <Page3></Page3>
-        </ConItem>
-        <ConItem></ConItem>
-        <ConItem>
-          <Button>SUBMIT</Button>
-        </ConItem>
-        <ConItem>
-          <SectionParagraph value="ANY SPECIAL NOTES?">
-            <input type="textarea"></input>
-            <Button>RESTART</Button>
-            <Button>FINISH</Button>
-          </SectionParagraph>
-        </ConItem>
-        <ConItem>
-          <SectionParagraph>
-            THANK YOU Your Response has been recorded. We will reach out to you
-            soon after our initial assessment.
-            <Button>BACK TO DASHBOARD</Button>
-          </SectionParagraph>
+          <Page3 ></Page3>
         </ConItem>
       </ConMenu>
-      <ConMenu hidden>
+      <ConMenu id='third' hidden>
         <ConItem>
-          <Thanks></Thanks>
+          <Thanks ></Thanks>
         </ConItem>
       </ConMenu>
     </NavCon>

@@ -14,3 +14,6 @@ body {
 .show{
   display: inline;
 }
+.showConcierge{
+  display: initial;
+}

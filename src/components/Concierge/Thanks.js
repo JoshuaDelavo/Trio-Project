@@ -11,11 +11,15 @@ import Concierge from "../../config/ConciergeApi";
 import { AiOutlineInstagram, AiOutlineWhatsApp, AiOutlinePhone } from "react-icons/ai";
 import { IoMailOutline } from "react-icons/io5";
 import { Button, TextField } from '@material-ui/core';
+import { Link } from 'react-router-dom'
 const ScrollLink = Scroll.Link
 
-const Thanks = () => {
+const Thanks = (toggle) => {
     const paragraph = "Your Response has been recorded. We will reach out to you soon";
     const paragraph2 = "after our initial assessment.";
+    const handleonclick = () => {
+        window.location.reload();
+    }
 
 
     return (
@@ -33,7 +37,7 @@ const Thanks = () => {
 
             </ThanksItem>
             <ThanksItem>
-                <ButtonThanks value="Start">BACK TO DASHBOARD</ButtonThanks>
+                <ButtonThanks onClick={handleonclick} value="Start">BACK TO DASHBOARD</ButtonThanks>
             </ThanksItem>
         </ThanksMenu>
     )
