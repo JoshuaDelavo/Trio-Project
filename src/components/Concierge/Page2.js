@@ -1,14 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, TextField, TextFieldProps } from "@material-ui/core";
 import { makeStyles, withTheme } from "@material-ui/core/styles";
-import pickers from "@material-ui/pickers";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Typography from "@material-ui/core/Typography";
-import Container from "@material-ui/core/Container";
-import Concierge from "../../config/ConciergeApi";
-import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
-import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import "date-fns";
@@ -17,22 +10,16 @@ import Countries from "../Countries";
 import { createMuiTheme, withStyles, fade } from "@material-ui/core/styles";
 import InputBase from "@material-ui/core/InputBase";
 import { green } from "@material-ui/core/colors";
-import { OutlinedInputProps } from "@material-ui/core/OutlinedInput";
 import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
   KeyboardDatePicker,
 } from "@material-ui/pickers";
 import {
-  NavCon,
-  NavBurgerIcon,
-  ConMenu,
   ConItem,
   ButtonText,
-  BottomIcon,
 } from "./ConciergeElements";
 import "./Concierge.css";
-import { Block } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -103,12 +90,6 @@ const Page2 = () => {
   const [events, setEvents] = useState([]);
   const paragraph =
     "Fashion Concierge is interactive way to send your inquiry to Sebastian Gunawan and team. Tell us what you have in mind. Your color preferences, your style preferences, or even upload your rough sketches about the art piece of your dream";
-  //   useEffect(() => {
-  //     Concierge.findBudgets().then((res) => {
-  //       setEvents(res);
-  //       console.log(res);
-  //     });
-  //   }, []);
   const [selectedDate, setSelectedDate] = React.useState(
     new Date("2014-08-18T21:11:54"),
   );
@@ -188,7 +169,6 @@ const Page2 = () => {
       width: "auto",
       padding: "10px 12px",
       transition: theme.transitions.create(["border-color", "box-shadow"]),
-      // Use the system font instead of the default Roboto font.
       fontFamily: [
         "-apple-system",
         "BlinkMacSystemFont",
@@ -239,7 +219,7 @@ const Page2 = () => {
       },
       "& input:valid:focus + fieldset": {
         borderLeftWidth: 6,
-        padding: "4px !important", // override inline-style
+        padding: "4px !important",
       },
     },
   })(TextField);
@@ -253,19 +233,7 @@ const Page2 = () => {
   return (
     <form className={classes.root} noValidate autoComplete="off">
       My Name is
-      {/* <TextField
-        color="secondary"
-        id="filled-basic"
-        label="Name"
-        variant="filled"
-        theme={theme}
-        tintColor="#51bc8a"
-        textColor="#51bc8a"
-        baseColor="#FFFFFF"
-        InputProps={{
-          className: classes.input,
-        }}
-      /> */}
+      {}
       <FormControl className={classes1.formControl}>
         <CssTextField
           className={classes.margin}

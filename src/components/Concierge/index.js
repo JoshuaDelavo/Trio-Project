@@ -8,14 +8,12 @@ import {
   BottomIcon,
 } from "./ConciergeElements";
 import { FaTimes, FaBars } from "react-icons/fa";
-import { Element } from "react-scroll";
 import SectionTextSmall from "../../components/SectionTextSmall/index";
 import SectionTextMedium from "../../components/SectionTextMedium/index";
 import SectionParagraph from "../../components/SectionParagraph/index";
 import Scroll from "react-scroll";
 import Page3 from "./page3";
 import Thanks from "./Thanks";
-import Concierge from "../../config/ConciergeApi";
 import {
   AiOutlineInstagram,
   AiOutlineWhatsApp,
@@ -33,12 +31,6 @@ const Consiegre = ({ toggle2, conciergeOpen }) => {
     "Sebastian Gunawan and team. Tell us what you have in mind. Your color";
   const paragraph3 = "preferences, your style preferences, or even upload your";
   const paragraph4 = "rough sketches about the art piece of your dream";
-  // useEffect(() => {
-  //   Concierge.findBudgets().then((res) => {
-  //     setEvents(res);
-  //     console.log(res);
-  //   });
-  // }, []);
   const handleonProps = () => {
     document.getElementById('first').className = 'hide';
     document.getElementById('second').className = 'hide';
