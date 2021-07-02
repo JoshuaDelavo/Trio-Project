@@ -15,10 +15,7 @@ import {
   KeyboardTimePicker,
   KeyboardDatePicker,
 } from "@material-ui/pickers";
-import {
-  ConItem,
-  ButtonText,
-} from "./ConciergeElements";
+import { ConItem, ButtonText } from "./ConciergeElements";
 import "./Concierge.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -53,12 +50,9 @@ const useStyles = makeStyles((theme) => ({
       borderBottomColor: "transparent",
     },
     "& .MuiOutlinedInput-root": {
-      "& fieldset": {
-      },
-      "&:hover fieldset": {
-      },
-      "&.Mui-focused fieldset": {
-      },
+      "& fieldset": {},
+      "&:hover fieldset": {},
+      "&.Mui-focused fieldset": {},
     },
     "&.MuiTextField-root": {
       marginTop: 40,
@@ -235,11 +229,12 @@ const Page2 = () => {
       My Name is
       {}
       <FormControl className={classes1.formControl}>
-        <CssTextField
-          className={classes.margin}
-          id="custom-css-outlined-input"
-          variant="outlined"
-          label="Input name"
+        <input
+          onChange={this.handleChangeColor}
+          id="name"
+          placeholder="Name"
+          type="text"
+          name="name"
         />
       </FormControl>
       I'm
