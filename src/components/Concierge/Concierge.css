@@ -36,7 +36,7 @@ body {
   outline: 0;
   border-width: 0 0 2px;
   border-color: rgb(251, 251, 252);
-  background-color: rgba(177, 175, 175, 0.76);
+  background-color: transparent;
   color: rgb(224, 218, 218);
   margin-left: 10px;
 }
@@ -44,7 +44,7 @@ body {
   outline: 0;
   border-width: 0 0 2px;
   border-color: rgb(251, 251, 252);
-  background-color: rgba(177, 175, 175, 0.76);
+  background-color: transparent;
   color: rgb(224, 218, 218);
   margin-left: 10px;
 }
@@ -52,7 +52,7 @@ body {
   outline: 0;
   border-width: 0 0 2px;
   border-color: rgb(251, 251, 252);
-  background-color: rgba(177, 175, 175, 0.76);
+  background-color: transparent;
   color: rgb(224, 218, 218);
   margin-left: 10px;
 }
@@ -60,7 +60,7 @@ body {
   outline: 0;
   border-width: 0 0 2px;
   border-color: rgb(251, 251, 252);
-  background-color: rgba(177, 175, 175, 0.76);
+  background-color: transparent;
   color: rgb(224, 218, 218);
   margin-left: 10px;
 }
@@ -68,7 +68,7 @@ body {
   outline: 0;
   border-width: 0 0 2px;
   border-color: rgb(251, 251, 252);
-  background-color: rgba(177, 175, 175, 0.76);
+  background-color: transparent;
   color: rgb(224, 218, 218);
   margin-left: 10px;
 }
@@ -88,6 +88,14 @@ body {
   color: rgb(224, 218, 218);
   margin-left: 10px;
 }
+select option {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: rgb(251, 251, 252);
+  background-color: rgb(121, 117, 117);
+  color: rgb(224, 218, 218);
+  margin-left: 10px;
+}
 #email {
   outline: 0;
   border-width: 0 0 2px;
@@ -96,6 +104,7 @@ body {
   color: rgb(197, 187, 187);
   margin-left: 10px;
   max-width: 100px;
+  max-width: 50%;
 }
 #phoneCode {
   outline: 0;
@@ -104,15 +113,18 @@ body {
   background-color: transparent;
   color: rgb(224, 218, 218);
   margin-left: 10px;
+  max-width: 50%;
 }
+
 #tel {
   outline: 0;
   border-width: 0 0 2px;
   border-color: rgb(251, 251, 252);
   background-color: transparent;
   color: rgb(197, 187, 187);
-  margin-left: 10px;
-  max-width: 200px;
+  max-width: 180px;
+  margin-left: -40px;
+  margin-bottom: 10px;
 }
 #submit {
   border: none;
@@ -153,5 +165,54 @@ body {
 }
 #pembatas {
   justify-content: space-between;
-  padding: 14px;
 }
+#utama {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 300;
+  text-align: center;
+  justify-content: center;
+}
+#barisPertama{
+  display: inline-flex;
+
+}
+#barisKedua{
+  display: inline-flex;
+}
+#barisKetiga{
+  display: inline-flex;
+
+}
+#barisKeempat{
+  display: inline-flex;
+
+}
+#barisKelima{
+  display: inline-flex;
+
+}
+#barisKeenam{
+  display: inline-flex;
+
+}
+#barisKetujuh{
+  display: inline-flex;
+
+}
+#barisKedelapan{
+  display: inline-flex;
+
+}
+#date{
+  display: inline-flex;
+}
+#budget2{
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 300;
+  text-align: center;
+  justify-content: center;
+}
+
+

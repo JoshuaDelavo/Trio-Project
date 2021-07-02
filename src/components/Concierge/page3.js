@@ -10,7 +10,6 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
-import Test from "../Countries";
 import Select from "@material-ui/core/Select";
 import "date-fns";
 import DateFnsUtils from "@date-io/date-fns";
@@ -194,160 +193,183 @@ class Page3 extends Component {
         return (
             <div>
                 <div id="utama">
-                    <div id="0">
-                        My Name is
-                        <input
-                            onChange={this.handleChangeName}
-                            id="name"
-                            placeholder="Name"
-                            type="text"
-                            name="name"
-                        />
+                    <div id="barisPertama">
+                        <div id="0">
+                            My Name is
+                            <input
+                                onChange={this.handleChangeName}
+                                id="name"
+                                placeholder="Name"
+                                type="text"
+                                name="name"
+                            />
+                        </div>
+                        <div id="1" className='hide' style={{marginLeft:"5px"}}>
+                            and I'm
+                            <input
+                                onChange={this.handleChangeAge}
+                                id="age"
+                                placeholder="Age"
+                                type="number"
+                                name="age"
+                            />
+                            years old
+                        </div>
                     </div>
-                    <div id="1" className='hide'>
-                        and I'm
-                        <input
-                            onChange={this.handleChangeAge}
-                            id="age"
-                            placeholder="Age"
-                            type="number"
-                            name="age"
-                        />
-                        years old
+                    < br/>< br/>
+                    <div id="barisKedua">
+                        <div id="2" className='hide'>
+                            My favourite color is
+                            <FormControl className={this.useStyles1.formControl}>
+                                <select name="color" id="color" onChange={this.handleChangeColor}>
+                                    <option value="" >
+                                        Color
+                                    </option>
+                                    <option value="Blue">Blue</option>
+                                    <option value="Red">Red</option>
+                                    <option value="Green">Green</option>
+                                </select>
+                            </FormControl>
+                        </div>
+                        <div id="3" className='hide'>
+                            and my dress size is
+                            <FormControl className={this.useStyles1.formControl}>
+                                <select name="size" id="size" onChange={this.handleChangeSize}>
+                                    <option value="" >
+                                        Size
+                                    </option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                            </FormControl>
+                            <FormControl className={this.useStyles1.formControl}>
+                                <select name="code" id="code" onChange={this.handleChangeCode}>
+                                    <option value="" >
+                                        Code
+                                    </option>
+                                    <option value="Euro">Euro</option>
+                                    <option value="US">US</option>
+                                    <option value="JPN">JPN</option>
+                                </select>
+                            </FormControl>
+                        </div>
                     </div>
-                    <div id="2" className='hide'>
-                        My favourite color is
-                        <FormControl className={this.useStyles1.formControl}>
-                            <select name="color" id="color" onChange={this.handleChangeColor}>
-                                <option value="" >
-                                    Color
-                                </option>
-                                <option value="Blue">Blue</option>
-                                <option value="Red">Red</option>
-                                <option value="Green">Green</option>
-                            </select>
-                        </FormControl>
+                    < br/>< br/>
+                    <div id="barisKetiga">
+                        <div id="4" className='hide' >
+                            I live in
+                            <FormControl className={this.useStyles1.formControl}>
+                                <select name="kota" id="kota" onChange={this.handleChangeCity}>
+                                    <option value="" >
+                                        City
+                                    </option>
+                                    <option value="Taipe">Taipe</option>
+                                    <option value="Jakarta">Jakarta</option>
+                                    <option value="Malvoch">Malvoch</option>
+                                </select>
+                            </FormControl>
+                            <FormControl className={this.useStyles1.formControl}>
+                                <select name="negara" id="negara" onChange={this.handleChangeCountries}>
+                                    <option value="" >
+                                        Contry
+                                    </option>
+                                    <option value="China">China</option>
+                                    <option value="Thailand">Thailand</option>
+                                    <option value="German">German</option>
+                                </select>
+                            </FormControl>
+                        </div>
                     </div>
-                    <div id="3" className='hide'>
-                        and my dress size is
-                        <FormControl className={this.useStyles1.formControl}>
-                            <select name="size" id="size" onChange={this.handleChangeSize}>
-                                <option value="" >
-                                    Size
-                                </option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select>
-                        </FormControl>
-                        <FormControl className={this.useStyles1.formControl}>
-                            <select name="code" id="code" onChange={this.handleChangeCode}>
-                                <option value="" >
-                                    Code
-                                </option>
-                                <option value="Euro">Euro</option>
-                                <option value="US">US</option>
-                                <option value="JPN">JPN</option>
-                            </select>
-                        </FormControl>
+                    < br/>< br/>
+                    <div id="barisKeempat">
+                        <div id="5" className='hide'>
+                            and I need to use this dress at
+                            <form name="date" id="date">
+                                <input onChange={this.handleChangeDate} type="date" id="birthday" name="birthday" />
+                            </form>
+                        </div>
                     </div>
-                    <div id="4" className='hide' >
-                        I live in
-                        <FormControl className={this.useStyles1.formControl}>
-                            <select name="kota" id="kota" onChange={this.handleChangeCity}>
-                                <option value="" >
-                                    City
-                                </option>
-                                <option value="Taipe">Taipe</option>
-                                <option value="Jakarta">Jakarta</option>
-                                <option value="Malvoch">Malvoch</option>
-                            </select>
-                        </FormControl>
-                        <FormControl className={this.useStyles1.formControl}>
-                            <select name="negara" id="negara" onChange={this.handleChangeCountries}>
-                                <option value="" >
-                                    Contry
-                                </option>
-                                <option value="China">China</option>
-                                <option value="Thailand">Thailand</option>
-                                <option value="German">German</option>
-                            </select>
-                        </FormControl>
+                    < br/>< br/>
+                    <div id="barisKelima">
+                        <div id="6" className='hide'>
+                            I have preferance for my dress
+                            <input
+                                type="file"
+                                id="file"
+                                accept="image/png, image/jpeg,file/pdf"
+                                style={{backgroundColor:"black"}}
+                            ></input>
+                        </div>
                     </div>
-                    <div id="5" className='hide'>
-                        and I need to use this dress at
-                        <form name="date" id="date">
-                            <input onChange={this.handleChangeDate} type="date" id="birthday" name="birthday" />
-                        </form>
+                    < br/>< br/>
+                    <div id="barisKeenam">
+                        <div id="7" className='hide'>
+                            my budget is
+                            <FormControl className={this.useStyles1.formControl}>
+                                <select
+                                    name="budget"
+                                    id="budget"
+                                    onChange={this.handleChangeBudget}
+                                >
+                                    <option value="">
+                                        Budget
+                                    </option>
+                                    <option value="2000">starting from 2000(USD)</option>
+                                    <option value="10000">starting from 10000(USD)</option>
+                                    <option value="100000">starting from 100000(USD)</option>
+                                    <option value="others">Others</option>
+                                </select>
+                            </FormControl>
+                        </div>
                     </div>
-                    <div id="6" className='hide'>
-                        I have preferance for my dress
-                        <input
-                            type="file"
-                            id="file"
-                            accept="image/png, image/jpeg,file/pdf"
-                        ></input>
+                    < br/>< br/>
+                    <div id="barisKetujuh">
+                        <div id="8" className='hide'>
+                            you can email me at
+                            <input
+                                onChange={this.handleChangeEmail}
+                                id="email"
+                                placeholder="Email"
+                                type="email"
+                                name="email"
+                            />
+                        </div>
                     </div>
-                    <div id="7" className='hide'>
-                        my budget is
-                        <FormControl className={this.useStyles1.formControl}>
-                            <select
-                                name="budget"
-                                id="budget"
-                                onChange={this.handleChangeBudget}
-                            >
-                                <option value="">
-                                    Budget
-                                </option>
-                                <option value="2000">starting from 2000(USD)</option>
-                                <option value="10000">starting from 10000(USD)</option>
-                                <option value="100000">starting from 100000(USD)</option>
-                                <option value="others">Others</option>
-                            </select>
-                        </FormControl>
+                    < br/>< br/>
+                    <div id="barisKedelapan">
+                        <div id="9" className='hide'>
+                            or WhatsApp me at
+                            <FormControl style={{width:"30%"}}>
+                                <select
+                                    name="phoneCode"
+                                    id="phoneCode"
+                                    onChange={this.handleChangePhoneCode}
+                                >
+                                    <option value="" >
+                                        PhoneCode
+                                    </option>
+                                    <option value="62">+62</option>
+                                    <option value="73">+73</option>
+                                    <option value="13">+13</option>
+                                </select>
+                            </FormControl>
+                            <input
+                                onChange={this.handleChangeNumber}
+                                id="tel"
+                                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+                                placeholder="Number Whatsapp"
+                                type="tel"
+                                name="tel"
+                            />
+                        </div>
                     </div>
-                    <div id="8" className='hide'>
-                        you can email me at
-                        <input
-                            onChange={this.handleChangeEmail}
-                            id="email"
-                            placeholder="Email"
-                            type="email"
-                            name="email"
-                        />
-                    </div>
-                    <div id="9" className='hide'>
-                        or WhatsApp me at
-                        <FormControl className={this.useStyles1.formControl}>
-                            <select
-                                name="phoneCode"
-                                id="phoneCode"
-                                onChange={this.handleChangePhoneCode}
-                            >
-                                <option value="" >
-                                    PhoneCode
-                                </option>
-                                <option value="62">+62</option>
-                                <option value="73">+73</option>
-                                <option value="13">+13</option>
-                            </select>
-                        </FormControl>
-                        <input
-                            onChange={this.handleChangeNumber}
-                            id="tel"
-                            pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-                            placeholder="Number Whatsapp"
-                            type="tel"
-                            name="tel"
-                        />
-                    </div>
+                    < br/>< br/>
                     <div id="10" className='hide'>
-                        <button id="submit" onClick={this.handleSubmit}>
-                            {" "}
-                            Submit
-                        </button>
+                        <ButtonText onClick={this.handleSubmit} >SUBMIT MY REQUEST</ButtonText>
                     </div>
                 </div>
+                < br/>< br/>< br/>< br/>< br/>< br/>< br/>< br/>
                 <div id="budget2" className='hide'>
                     My Prefer Budget
                     <input
@@ -359,14 +381,10 @@ class Page3 extends Component {
                         name="prefB"
                     />
                     USD
+                    < br/>
                     <div id="pembatas">
-                        <button id="enter" onClick={this.handleSubmitBudget}>
-                            Enter
-                        </button>
-                        <button id="cancel" onClick={this.handleSubmitCancelBudget}>
-                            {" "}
-                            Cancel
-                        </button>
+                        <ButtonText onClick={this.handleSubmitBudget} >ENTER</ButtonText>
+                        <ButtonText style={{margin:"30px", backgroundColor:"black", color:"white"}} onClick={this.handleSubmitCancelBudget} >CANCEL</ButtonText>
                     </div>
                 </div>
             </div>
