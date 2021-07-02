@@ -281,7 +281,11 @@ class Page3 extends Component {
           </div>
           <div id="6">
             I have preferance for my dress
-            <input type="file" accept="image/png, image/jpeg,file/pdf"></input>
+            <input
+              type="file"
+              id="file"
+              accept="image/png, image/jpeg,file/pdf"
+            ></input>
           </div>
           <div id="7">
             my budget is
