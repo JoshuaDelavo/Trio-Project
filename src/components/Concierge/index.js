@@ -12,7 +12,7 @@ import SectionTextSmall from "../../components/SectionTextSmall/index";
 import SectionTextMedium from "../../components/SectionTextMedium/index";
 import SectionParagraph from "../../components/SectionParagraph/index";
 import Scroll from "react-scroll";
-import Page3 from "./page3";
+import Question from "./Question";
 import Thanks from "./Thanks";
 import {
   AiOutlineInstagram,
@@ -87,7 +87,7 @@ const Consiegre = ({ toggle2, conciergeOpen }) => {
       </ConMenu>
       <ConMenu id='second' hidden >
         <ConItem>
-          <Page3 ></Page3>
+          <Question ></Question>
         </ConItem>
       </ConMenu>
       <ConMenu id='third' hidden>

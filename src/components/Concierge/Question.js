@@ -32,7 +32,7 @@ import dateFormat from "dateformat";
 import { id } from "date-fns/locale";
 import "./Concierge.css";
 
-class Page3 extends Component {
+class Question extends Component {
     constructor() {
         super();
         this.state = {
@@ -379,4 +379,4 @@ class Page3 extends Component {
     }
 }
 
-export default Page3;
+export default Question;
