@@ -71,7 +71,6 @@ class Page3 extends Component {
         this.handleSubmitCancelBudget = this.handleSubmitCancelBudget.bind(this);
         this.handleChangeBudget2 = this.handleChangeBudget2.bind(this);
     }
-
     useStyles1 = makeStyles((theme) => ({
         formControl: {
             margin: theme.spacing(1),
@@ -92,7 +91,6 @@ class Page3 extends Component {
             },
         },
     }));
-
     handleChangeName(event) {
         this.setState({ nama: event.target.value });
         document.getElementById(1).className = "show";
@@ -193,7 +191,7 @@ class Page3 extends Component {
         return (
             <div>
                 <div id="utama">
-                    <div id="barisPertama">
+                    <div id="segaris">
                         <div id="0">
                             My Name is
                             <input
@@ -204,32 +202,36 @@ class Page3 extends Component {
                                 name="name"
                             />
                         </div>
-                        <div id="1" className='hide' style={{marginLeft:"5px"}}>
+                        <div id="1" className='hide' style={{marginLeft:"10px"}}>
                             and I'm
-                            <input
-                                onChange={this.handleChangeAge}
-                                id="age"
-                                placeholder="Age"
-                                type="number"
-                                name="age"
-                            />
+                            <div id="umur">
+                                <input
+                                    onChange={this.handleChangeAge}
+                                    id="age"
+                                    placeholder="Age"
+                                    type="number"
+                                    name="age"
+                                />
+                            </div>
                             years old
                         </div>
                     </div>
                     < br/>< br/>
-                    <div id="barisKedua">
+                    <div id="segaris">
                         <div id="2" className='hide'>
                             My favourite color is
-                            <FormControl className={this.useStyles1.formControl}>
-                                <select name="color" id="color" onChange={this.handleChangeColor}>
-                                    <option value="" >
-                                        Color
-                                    </option>
-                                    <option value="Blue">Blue</option>
-                                    <option value="Red">Red</option>
-                                    <option value="Green">Green</option>
-                                </select>
-                            </FormControl>
+                            <div id="warna">
+                                <FormControl className={this.useStyles1.formControl}>
+                                    <select name="color" id="color" onChange={this.handleChangeColor}>
+                                        <option value="" >
+                                            Color
+                                        </option>
+                                        <option value="Blue">Blue</option>
+                                        <option value="Red">Red</option>
+                                        <option value="Green">Green</option>
+                                    </select>
+                                </FormControl>
+                            </div>
                         </div>
                         <div id="3" className='hide'>
                             and my dress size is
@@ -256,7 +258,7 @@ class Page3 extends Component {
                         </div>
                     </div>
                     < br/>< br/>
-                    <div id="barisKetiga">
+                    <div id="segaris">
                         <div id="4" className='hide' >
                             I live in
                             <FormControl className={this.useStyles1.formControl}>
@@ -282,16 +284,16 @@ class Page3 extends Component {
                         </div>
                     </div>
                     < br/>< br/>
-                    <div id="barisKeempat">
+                    <div id="segaris">
                         <div id="5" className='hide'>
                             and I need to use this dress at
                             <form name="date" id="date">
-                                <input onChange={this.handleChangeDate} type="date" id="birthday" name="birthday" />
+                                <input onChange={this.handleChangeDate} type="date" id="birthday" name="birthday"></input>
                             </form>
                         </div>
                     </div>
                     < br/>< br/>
-                    <div id="barisKelima">
+                    <div id="segaris">
                         <div id="6" className='hide'>
                             I have preferance for my dress
                             <input
@@ -303,18 +305,12 @@ class Page3 extends Component {
                         </div>
                     </div>
                     < br/>< br/>
-                    <div id="barisKeenam">
+                    <div id="segaris">
                         <div id="7" className='hide'>
                             my budget is
                             <FormControl className={this.useStyles1.formControl}>
-                                <select
-                                    name="budget"
-                                    id="budget"
-                                    onChange={this.handleChangeBudget}
-                                >
-                                    <option value="">
-                                        Budget
-                                    </option>
+                                <select name="budget" id="budget" onChange={this.handleChangeBudget}>
+                                    <option value=""> Budget </option>
                                     <option value="2000">starting from 2000(USD)</option>
                                     <option value="10000">starting from 10000(USD)</option>
                                     <option value="100000">starting from 100000(USD)</option>
@@ -324,28 +320,18 @@ class Page3 extends Component {
                         </div>
                     </div>
                     < br/>< br/>
-                    <div id="barisKetujuh">
+                    <div id="segaris">
                         <div id="8" className='hide'>
                             you can email me at
-                            <input
-                                onChange={this.handleChangeEmail}
-                                id="email"
-                                placeholder="Email"
-                                type="email"
-                                name="email"
-                            />
+                            <input onChange={this.handleChangeEmail} id="email" placeholder="Email" type="email" name="email"/>
                         </div>
                     </div>
                     < br/>< br/>
-                    <div id="barisKedelapan">
+                    <div id="segaris">
                         <div id="9" className='hide'>
                             or WhatsApp me at
                             <FormControl style={{width:"30%"}}>
-                                <select
-                                    name="phoneCode"
-                                    id="phoneCode"
-                                    onChange={this.handleChangePhoneCode}
-                                >
+                                <select name="phoneCode" id="phoneCode" onChange={this.handleChangePhoneCode}>
                                     <option value="" >
                                         PhoneCode
                                     </option>
@@ -384,7 +370,8 @@ class Page3 extends Component {
                     < br/>
                     <div id="pembatas">
                         <ButtonText onClick={this.handleSubmitBudget} >ENTER</ButtonText>
-                        <ButtonText style={{margin:"30px", backgroundColor:"black", color:"white"}} onClick={this.handleSubmitCancelBudget} >CANCEL</ButtonText>
+                        <ButtonText style={{margin:"30px", backgroundColor:"black", color:"white"}} 
+                                    onClick={this.handleSubmitCancelBudget} >CANCEL</ButtonText>
                     </div>
                 </div>
             </div>

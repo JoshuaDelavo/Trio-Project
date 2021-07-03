@@ -21,7 +21,12 @@ body {
   background-color: transparent;
   color: rgb(197, 187, 187);
   margin-left: 10px;
-  max-width: 100px;
+  max-width:100px;
+}
+#umur{
+  display: inline-flex;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 #age {
   outline: 0;
@@ -29,8 +34,12 @@ body {
   border-color: rgb(251, 251, 252);
   background-color: transparent;
   color: rgb(197, 187, 187);
-  margin-left: 10px;
-  max-width: 50px;
+  max-width: 52px;
+  text-align: center;
+}
+#warna{
+  display: inline-flex;
+  margin-right: 10px;
 }
 #color {
   outline: 0;
@@ -73,10 +82,7 @@ body {
   margin-left: 10px;
 }
 #date {
-  outline: 0;
-  border-width: 0 0 2px;
   border-color: rgb(251, 251, 252);
-  background-color: transparent;
   color: rgb(224, 218, 218);
   margin-left: 10px;
 }
@@ -173,37 +179,10 @@ select option {
   text-align: center;
   justify-content: center;
 }
-#barisPertama{
+#segaris{
   display: inline-flex;
+}
 
-}
-#barisKedua{
-  display: inline-flex;
-}
-#barisKetiga{
-  display: inline-flex;
-
-}
-#barisKeempat{
-  display: inline-flex;
-
-}
-#barisKelima{
-  display: inline-flex;
-
-}
-#barisKeenam{
-  display: inline-flex;
-
-}
-#barisKetujuh{
-  display: inline-flex;
-
-}
-#barisKedelapan{
-  display: inline-flex;
-
-}
 #date{
   display: inline-flex;
 }
@@ -214,5 +193,6 @@ select option {
   text-align: center;
   justify-content: center;
 }
+
 
 

@@ -59,6 +59,8 @@ export const ConMenu = styled.div`
 
     @media screen and (max-width:1024px){
         padding-top:10%;
+        width:100%;
+        justify-content:left;
     }
 `
 
