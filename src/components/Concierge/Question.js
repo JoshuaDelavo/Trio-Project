@@ -12,6 +12,7 @@ import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import "date-fns";
+import ConciergeApi from "../../config/ConciergeApi";
 import DateFnsUtils from "@date-io/date-fns";
 import Countries from "../Countries";
 import {
@@ -28,30 +29,14 @@ import {
     BottomIcon,
 } from "./ConciergeElements";
 import { useStyles } from "@material-ui/pickers/views/Calendar/SlideTransition";
-import dateFormat from "dateformat";
 import { id } from "date-fns/locale";
 import "./Concierge.css";
+import dateFormat from "dateformat";
 
 class Question extends Component {
     constructor() {
         super();
         this.state = {
-            data: {
-                name: "React",
-                nama: "",
-                age: "",
-                color: "",
-                sizes: "",
-                code_size: "",
-                city: "",
-                country: "",
-                datess: new Date(),
-                photo: "",
-                budget: "",
-                email: "",
-                phone_code: "",
-                number: "",
-            },
         };
         this.handleChangeName = this.handleChangeName.bind(this);
         this.handleChangeAge = this.handleChangeAge.bind(this);
@@ -92,60 +77,47 @@ class Question extends Component {
         },
     }));
     handleChangeName(event) {
-        this.setState({ nama: event.target.value });
+        this.setState({ name: event.target.value });
         document.getElementById(1).className = "show";
-        console.log(this.state.nama);
+
     }
     handleChangeAge(event) {
         this.setState({ age: event.target.value });
         document.getElementById(2).className = "show";
-        console.log(this.state.age);
+
     }
     handleChangeColor(event) {
-        this.setState({ color: event.target.value });
+        this.setState({ favouriteColor: event.target.value });
         document.getElementById(3).className = "show";
-        console.log(this.state.color);
+
     }
     handleChangeSize(event) {
-        this.setState({ sizes: event.target.value });
-        console.log(this.state.sizes);
+        this.setState({ size: event.target.value });
     }
     handleChangeCode(event) {
-        this.setState({ code_size: event.target.value });
+        this.setState({ sizeType: event.target.value });
         document.getElementById(4).className = "show";
-        console.log(this.state.code_size);
     }
     handleChangeCity(event) {
         this.setState({ city: event.target.value });
-        console.log(this.state.city);
     }
     handleChangeCountries(event) {
         this.setState({ country: event.target.value });
         document.getElementById(5).className = "show";
-        console.log(this.state.country);
     }
     handleChangeDate(date) {
-        ;
+        this.setState({ needToUseAt: date.target.value });
+        document.getElementById(6).className = "show";
+        // document.getElementById('birthday').value = ''
+        // document.getElementById('birthday').placeholder = dateFormat(date.target.value, "dS mmmm yyyy")
 
-        this.setState({ datess: date });
-        document.getElementById(6).className = "show";
-        document.getElementById(7).className = "show";
-        console.log(this.state.datess);
+
     }
-    handleChangeFile(file, cb) {
-        document.getElementById(6).className = "show";
-        let reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = function () {
-            cb(reader.result);
-        };
-        reader.onerror = function (error) {
-            console.log("Error: ", error);
-        };
-        console.log(reader.result);
+    handleChangeFile(event) {
+        document.getElementById(7).className = "show";
+        this.setState({ photo: event.target.files[0] })
     }
     handleChangeBudget(event) {
-        console.log('test', event.target.value)
         if (event.target.value == "others") {
             document.getElementById("budget2").className = "show";
             document.getElementById("utama").className = "hide";
@@ -153,24 +125,27 @@ class Question extends Component {
             this.setState({ budget: event.target.value });
         }
         document.getElementById(8).className = "show";
-        console.log(this.state.budget);
     }
     handleChangeEmail(event) {
         this.setState({ email: event.target.value });
         document.getElementById(9).className = "show";
-        console.log(this.state.email);
     }
     handleChangePhoneCode(event) {
         this.setState({ phone_code: event.target.value });
         console.log(this.state.phone_code);
     }
     handleChangeNumber(event) {
-        this.setState({ number: event.target.value });
+        this.setState({ waPhoneNumber: '+' + this.state.phone_code + event.target.value });
         document.getElementById(10).className = "show";
         console.log(this.state.number);
     }
     handleSubmit() {
-        console.log(this.state.datess, this.state.sizes);
+        console.log(this.state);
+        var formData = new FormData();
+        const stateObj = this.state;
+        formData.append('data', JSON.stringify(stateObj));
+        formData.append('file.imageReferance', stateObj.photo);
+        ConciergeApi.create(formData);
         document.getElementById("second").hidden = true;
         document.getElementById("third").hidden = false;
     }
@@ -202,7 +177,7 @@ class Question extends Component {
                                 name="name"
                             />
                         </div>
-                        <div id="1" className='hide' style={{marginLeft:"10px"}}>
+                        <div id="1" className='hide' style={{ marginLeft: "10px" }}>
                             and I'm
                             <div id="umur">
                                 <input
@@ -216,7 +191,7 @@ class Question extends Component {
                             years old
                         </div>
                     </div>
-                    < br/>< br/>
+                    < br />< br />
                     <div id="segaris">
                         <div id="2" className='hide'>
                             My favourite color is
@@ -257,7 +232,7 @@ class Question extends Component {
                             </FormControl>
                         </div>
                     </div>
-                    < br/>< br/>
+                    < br />< br />
                     <div id="segaris">
                         <div id="4" className='hide' >
                             I live in
@@ -283,7 +258,7 @@ class Question extends Component {
                             </FormControl>
                         </div>
                     </div>
-                    < br/>< br/>
+                    < br />< br />
                     <div id="segaris">
                         <div id="5" className='hide'>
                             and I need to use this dress at
@@ -292,19 +267,20 @@ class Question extends Component {
                             </form>
                         </div>
                     </div>
-                    < br/>< br/>
+                    < br />< br />
                     <div id="segaris">
                         <div id="6" className='hide'>
                             I have preferance for my dress
                             <input
                                 type="file"
                                 id="file"
+                                onChange={this.handleChangeFile}
                                 accept="image/png, image/jpeg,file/pdf"
-                                style={{backgroundColor:"black"}}
+                                style={{ backgroundColor: "black" }}
                             ></input>
                         </div>
                     </div>
-                    < br/>< br/>
+                    < br />< br />
                     <div id="segaris">
                         <div id="7" className='hide'>
                             my budget is
@@ -319,18 +295,18 @@ class Question extends Component {
                             </FormControl>
                         </div>
                     </div>
-                    < br/>< br/>
+                    < br />< br />
                     <div id="segaris">
                         <div id="8" className='hide'>
                             you can email me at
-                            <input onChange={this.handleChangeEmail} id="email" placeholder="Email" type="email" name="email"/>
+                            <input onChange={this.handleChangeEmail} id="email" placeholder="Email" type="email" name="email" />
                         </div>
                     </div>
-                    < br/>< br/>
+                    < br />< br />
                     <div id="segaris">
                         <div id="9" className='hide'>
                             or WhatsApp me at
-                            <FormControl style={{width:"30%"}}>
+                            <FormControl style={{ width: "30%" }}>
                                 <select name="phoneCode" id="phoneCode" onChange={this.handleChangePhoneCode}>
                                     <option value="" >
                                         PhoneCode
@@ -350,12 +326,12 @@ class Question extends Component {
                             />
                         </div>
                     </div>
-                    < br/>< br/>
+                    < br />< br />
                     <div id="10" className='hide'>
                         <ButtonText onClick={this.handleSubmit} >SUBMIT MY REQUEST</ButtonText>
                     </div>
                 </div>
-                < br/>< br/>< br/>< br/>< br/>< br/>< br/>< br/>
+                < br />< br />< br />< br />< br />< br />< br />< br />
                 <div id="budget2" className='hide'>
                     My Prefer Budget
                     <input
@@ -367,11 +343,11 @@ class Question extends Component {
                         name="prefB"
                     />
                     USD
-                    < br/>
+                    < br />
                     <div id="pembatas">
                         <ButtonText onClick={this.handleSubmitBudget} >ENTER</ButtonText>
-                        <ButtonText style={{margin:"30px", backgroundColor:"black", color:"white"}} 
-                                    onClick={this.handleSubmitCancelBudget} >CANCEL</ButtonText>
+                        <ButtonText style={{ margin: "30px", backgroundColor: "black", color: "white" }}
+                            onClick={this.handleSubmitCancelBudget} >CANCEL</ButtonText>
                     </div>
                 </div>
             </div>
