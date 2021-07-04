@@ -38,7 +38,7 @@ export const NavBurgerIcon = styled.div`
 
     
     @media screen and (max-width:1024px){
-        padding-top:10%;
+        padding-top: 5%;
     }
 
     @media screen and (min-width:2000px){
@@ -59,6 +59,7 @@ export const ConMenu = styled.div`
 
     @media screen and (max-width:1024px){
         padding-top:10%;
+        margin-top: 10%;
         width:100%;
         justify-content:left;
     }
