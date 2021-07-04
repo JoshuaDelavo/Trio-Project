@@ -1,3 +1,4 @@
+@import url("https://cdn.syncfusion.com/ej2/material.css");
 .MuiInput-underline-24:hover:not(.MuiInput-disabled-23):not(.MuiInput-focused-22):not(.MuiInput-error-25):before {
   border-bottom: 2px solid rgb(255, 255, 255) !important;
 }
@@ -21,9 +22,9 @@ body {
   background-color: transparent;
   color: rgb(197, 187, 187);
   margin-left: 10px;
-  max-width:100px;
+  max-width: 100px;
 }
-#umur{
+#umur {
   display: inline-flex;
   margin-left: 10px;
   margin-right: 10px;
@@ -37,7 +38,7 @@ body {
   max-width: 52px;
   text-align: center;
 }
-#warna{
+#warna {
   display: inline-flex;
   margin-right: 10px;
 }
@@ -179,52 +180,64 @@ select option {
   text-align: center;
   justify-content: center;
 }
-#segaris{
+#segaris {
   display: inline-flex;
 }
 
-#date{
-  display: inline-flex;
+/* .date {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: rgb(251, 251, 252);
+  justify-content: center;
+  background-color: transparent;
+  color: white;
 }
-#budget2{
+.date input {
+  color: white;
+}
+.date button {
+  color: white;
+}
+}*/
+#budget2 {
   font-size: 20px;
   font-style: normal;
   font-weight: 300;
   text-align: center;
   justify-content: center;
 }
-#m6{
+#m6 {
   margin-left: -230px;
 }
-#m62{
+#m62 {
   margin-top: -32px;
   margin-left: 500px;
 }
-#m7{
+#m7 {
   margin-left: -420px;
 }
-#m72{
+#m72 {
   margin-top: -32px;
   margin-left: 700px;
 }
-#m8{
+#m8 {
   margin-left: -270px;
 }
-#m82{
+#m82 {
   margin-top: -28px;
   margin-left: 400px;
 }
-#m9{
+#m9 {
   margin-left: -220px;
 }
-#m92{
+#m92 {
   margin-top: -30px;
   margin-left: 380px;
 }
-#m10{
+#m10 {
   margin-left: -190px;
 }
-#m102{
+#m102 {
   margin-top: -33px;
   margin-left: 450px;
 }
@@ -241,83 +254,93 @@ select option {
   background-color: rgb(223, 221, 221);
 }
 @media only screen and (max-width: 1024px) {
-  #utama{
+  #utama {
     width: 350px;
   }
-  #m1{
+  #m1 {
     margin-left: -130px;
-    position:relative;
+    position: relative;
   }
-  #m2{
-    margin-top:35px;
-    position:absolute;
+  #m2 {
+    margin-top: 35px;
+    position: absolute;
     margin-left: -140px;
   }
-  #m3{
-    position:relative;
+  #m3 {
+    position: relative;
     margin-left: -70px;
-    margin-top:10px;
+    margin-top: 10px;
   }
-  #m4{
-    position:absolute;
-    margin-top:45px;
+  #m4 {
+    position: absolute;
+    margin-top: 45px;
     margin-left: -70px;
   }
-  #m5{
-    position:relative;
-    margin-top:10px;
+  #m5 {
+    position: relative;
+    margin-top: 10px;
     margin-left: -60px;
   }
-  #m6{
-    position:absolute;
+  #m6 {
+    position: absolute;
     margin-left: -175px;
     margin-top: -45px;
   }
-  #m62{
+  #m62 {
     margin-left: -60px;
     margin-top: 10px;
   }
-  #m7{
-    position:relative;
+  #m7 {
+    position: relative;
     margin-left: -139px;
   }
-  #m72{
-    margin-top:5px;
+  #m72 {
+    margin-top: 5px;
     margin-left: 128px;
   }
-  #m8{
-    position:absolute;
-    margin-top:-45px;
+  #m8 {
+    position: absolute;
+    margin-top: -45px;
     margin-left: -325px;
   }
-  #m82{
-    margin-top:10px;
+  #m82 {
+    margin-top: 10px;
     margin-left: 140px;
   }
-  #m9{
-    position:relative;
+  #m9 {
+    position: relative;
     margin-left: -160px;
   }
-  #m92{
+  #m92 {
     margin-top: 5px;
-    margin-left:-5px;
+    margin-left: -5px;
   }
-  #m10{
-    position:absolute;
-    margin-top:-40px;
-    margin-left:-197px;
+  #m10 {
+    position: absolute;
+    margin-top: -40px;
+    margin-left: -197px;
   }
-  #m102{
+  #m102 {
     margin-top: 5px;
     margin-left: -50px;
   }
-  #m11{
-    position:relative;
+  #m11 {
+    position: relative;
     margin-top: 40px;
     margin-left: 35px;
     width: 80%;
   }
 }
 
+#ej2-datepicker_0 {
+  color: white;
+  text-align: center;
+  font-size: 15px;
+  margin-right: 50px;
+}
 
-
+.e-input-group-icon,
+.e-date-icon,
+.e-icons::before {
+  background-color: rgb(223, 221, 221);
+}
