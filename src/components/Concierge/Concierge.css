@@ -255,10 +255,11 @@ select option {
   }
   #m1 {
     position: relative;
+    margin-left: -158px;
   }
   #m2 {
     margin-top: 40px;
-    margin-left: -11px;
+    margin-left: -169px;
     position: absolute;
   }
   #m3 {
@@ -320,11 +321,11 @@ select option {
   #m10 {
     position: absolute;
     margin-top: -40px;
-    margin-left: -197px;
+    margin-left: -175px;
   }
   #m102 {
     margin-top: 5px;
-    margin-left: -50px;
+    margin-left: -65px;
   }
   #m11 {
     position: relative;

@@ -134,7 +134,7 @@ class Question extends Component {
     document.getElementById(9).className = "show";
     var test = document.getElementById('email');
     var length = test.value.length
-    test.style.width = length * 12 + 'px';
+    test.style.width = length * 13 + 'px';
     console.log(length)
   }
   handleChangePhoneCode(event) {
