@@ -180,7 +180,7 @@ class Question extends Component {
                             </div>
                         </div>
                         <div id="m2">
-                            <div id="1" className='hide' style={{marginLeft:"10px"}}>
+                            <div id="1" className='hide' style={{ marginLeft: "10px" }}>
                                 and I'm
                                 <div id="umur">
                                     <input
@@ -288,10 +288,11 @@ class Question extends Component {
                                 I have preferance for my dress
                                 <div id="m72">
                                     <input
+                                        onChange={this.handleChangeFile}
                                         type="file"
                                         id="file"
                                         accept="image/png, image/jpeg,file/pdf"
-                                        style={{backgroundColor:"black"}}
+                                        style={{ backgroundColor: "black" }}
                                     ></input>
                                 </div>
                             </div>
@@ -322,7 +323,7 @@ class Question extends Component {
                             <div id="8" className='hide'>
                                 you can email me at
                                 <div id="m92">
-                                    <input onChange={this.handleChangeEmail} id="email" placeholder="Email" type="email" name="email"/>
+                                    <input onChange={this.handleChangeEmail} id="email" placeholder="Email" type="email" name="email" />
                                 </div>
                             </div>
                         </div>
@@ -332,7 +333,7 @@ class Question extends Component {
                         <div id="m10">
                             <div id="9" className='hide'>
                                 or WhatsApp me at
-                                <FormControl style={{width:"30%"}}>
+                                <FormControl style={{ width: "30%" }}>
                                     <select name="phoneCode" id="phoneCode" onChange={this.handleChangePhoneCode}>
                                         <option value="" >
                                             PhoneCode
@@ -355,7 +356,7 @@ class Question extends Component {
                             </div>
                         </div>
                     </div>
-                    < br/>< br/>
+                    < br />< br />
                     <div id="m11">
                         <div id="10" className='hide'>
                             <ButtonText onClick={this.handleSubmit} >SUBMIT MY REQUEST</ButtonText>
