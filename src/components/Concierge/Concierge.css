@@ -1,3 +1,4 @@
+@import url("https://cdn.syncfusion.com/ej2/material.css");
 .MuiInput-underline-24:hover:not(.MuiInput-disabled-23):not(.MuiInput-focused-22):not(.MuiInput-error-25):before {
   border-bottom: 2px solid rgb(255, 255, 255) !important;
 }
@@ -21,9 +22,9 @@ body {
   background-color: transparent;
   color: rgb(197, 187, 187);
   margin-left: 10px;
-  max-width:100px;
+  max-width: 100px;
 }
-#umur{
+#umur {
   display: inline-flex;
   margin-left: 10px;
   margin-right: 10px;
@@ -37,7 +38,7 @@ body {
   max-width: 52px;
   text-align: center;
 }
-#warna{
+#warna {
   display: inline-flex;
   margin-right: 10px;
 }
@@ -179,20 +180,41 @@ select option {
   text-align: center;
   justify-content: center;
 }
-#segaris{
+#segaris {
   display: inline-flex;
 }
 
-#date{
-  display: inline-flex;
+/* .date {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: rgb(251, 251, 252);
+  justify-content: center;
+  background-color: transparent;
+  color: white;
 }
-#budget2{
+.date input {
+  color: white;
+}
+.date button {
+  color: white;
+}
+#budget2 {
   font-size: 20px;
   font-style: normal;
   font-weight: 300;
   text-align: center;
   justify-content: center;
+} */
+
+#ej2-datepicker_0 {
+  color: white;
+  text-align: center;
+  font-size: 15px;
+  margin-right: 50px;
 }
 
-
-
+.e-input-group-icon,
+.e-date-icon,
+.e-icons::before {
+  background-color: rgb(223, 221, 221);
+}
