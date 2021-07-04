@@ -80,6 +80,9 @@ class Question extends Component {
   handleChangeName(event) {
     this.setState({ name: event.target.value });
     document.getElementById(1).className = "show";
+    var test = document.getElementById('name');
+    var length = test.value.length
+    test.style.width = length * 12 + 'px';
   }
   handleChangeAge(event) {
     this.setState({ age: event.target.value });
@@ -113,6 +116,9 @@ class Question extends Component {
     document.getElementById(7).className = "show";
     this.setState({ photo: event.target.files[0] });
     document.getElementById("namaFile").value = event.target.files[0].name;
+    var test = document.getElementById('namaFile');
+    var length = test.value.length
+    test.style.width = length * 12 + 'px';
   }
   handleChangeBudget(event) {
     if (event.target.value == "others") {
@@ -126,6 +132,10 @@ class Question extends Component {
   handleChangeEmail(event) {
     this.setState({ email: event.target.value });
     document.getElementById(9).className = "show";
+    var test = document.getElementById('email');
+    var length = test.value.length
+    test.style.width = length * 12 + 'px';
+    console.log(length)
   }
   handleChangePhoneCode(event) {
     this.setState({ phone_code: event.target.value });
@@ -136,7 +146,9 @@ class Question extends Component {
       waPhoneNumber: "+" + this.state.phone_code + event.target.value,
     });
     document.getElementById(10).className = "show";
-    console.log(this.state.number);
+    var test = document.getElementById('tel');
+    var length = test.value.length
+    test.style.width = length * 12 + 'px';
   }
   handleSubmit() {
     console.log(this.state);
@@ -178,7 +190,7 @@ class Question extends Component {
                   placeholder="Name"
                   type="text"
                   name="name"
-                  onkeypress={this.adjust}
+                  required
                 />
               </div>
             </div>
@@ -192,6 +204,9 @@ class Question extends Component {
                     placeholder="Age"
                     type="number"
                     name="age"
+                    max="120"
+                    min="1"
+                    required
                   />
                 </div>
                 years old
@@ -210,6 +225,7 @@ class Question extends Component {
                       name="color"
                       id="color"
                       onChange={this.handleChangeColor}
+                      required
                     >
                       <option value="">Color</option>
                       <option value="Blue">Blue</option>
@@ -228,6 +244,7 @@ class Question extends Component {
                     name="size"
                     id="size"
                     onChange={this.handleChangeSize}
+                    required
                   >
                     <option value="">Size</option>
                     <option value="1">1</option>
@@ -240,6 +257,7 @@ class Question extends Component {
                     name="code"
                     id="code"
                     onChange={this.handleChangeCode}
+                    required
                   >
                     <option value="">Code</option>
                     <option value="Euro">Euro</option>
@@ -261,6 +279,7 @@ class Question extends Component {
                     name="kota"
                     id="kota"
                     onChange={this.handleChangeCity}
+                    required
                   >
                     <option value="">City</option>
                     <option value="Taipe">Taipe</option>
@@ -273,6 +292,7 @@ class Question extends Component {
                     name="negara"
                     id="negara"
                     onChange={this.handleChangeCountries}
+                    required
                   >
                     <option value="">Contry</option>
                     <option value="China">China</option>
@@ -296,6 +316,7 @@ class Question extends Component {
                       className="date"
                       placeholder="Date"
                       format="dd MMMMMMMMMM yyyy"
+                      required
                     />
                   </form>
                 </div>
@@ -315,6 +336,7 @@ class Question extends Component {
                     id="klikFile"
                     value="Klik Me"
                     onClick={this.klikFunction}
+                    required
                   />
                   <input
                     onChange={this.handleChangeFile}
@@ -322,6 +344,7 @@ class Question extends Component {
                     id="file"
                     accept="image/png, image/jpeg,file/pdf"
                     style={{ backgroundColor: "black", visibility: "collapse" }}
+                    required
                   />
                 </div>
               </div>
@@ -339,6 +362,7 @@ class Question extends Component {
                       name="budget"
                       id="budget"
                       onChange={this.handleChangeBudget}
+                      required
                     >
                       <option value=""> Budget </option>
                       <option value="2000">starting from 2000(USD)</option>
@@ -364,6 +388,7 @@ class Question extends Component {
                     placeholder="Email"
                     type="email"
                     name="email"
+                    required
                   />
                 </div>
               </div>
@@ -380,8 +405,9 @@ class Question extends Component {
                     name="phoneCode"
                     id="phoneCode"
                     onChange={this.handleChangePhoneCode}
+                    required
                   >
-                    <option value="">PhoneCode</option>
+                    <option value="">Code</option>
                     <option value="62">+62</option>
                     <option value="73">+73</option>
                     <option value="13">+13</option>
@@ -395,6 +421,7 @@ class Question extends Component {
                     placeholder="Number Whatsapp"
                     type="tel"
                     name="tel"
+                    required
                   />
                 </div>
               </div>
