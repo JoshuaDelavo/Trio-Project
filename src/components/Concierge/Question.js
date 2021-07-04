@@ -289,7 +289,7 @@ class Question extends Component {
                       onChange={this.handleChangeDate}
                       className="date"
                       placeholder="Date"
-                      format="dd/MMM/yyyy"
+                      format="dd MMMMMMMMMM yyyy"
                     />
                   </form>
                 </div>

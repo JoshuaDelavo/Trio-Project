@@ -183,22 +183,6 @@ select option {
   text-align: center;
   justify-content: center;
 }
-
-/* .date {
-  outline: 0;
-  border-width: 0 0 2px;
-  border-color: rgb(251, 251, 252);
-  justify-content: center;
-  background-color: transparent;
-  color: white;
-}
-.date input {
-  color: white;
-}
-.date button {
-  color: white;
-}
-}*/
 #budget2 {
   font-size: 20px;
   font-style: normal;
@@ -244,14 +228,9 @@ select option {
 #ej2-datepicker_0 {
   color: white;
   text-align: center;
-  font-size: 15px;
-  margin-right: 50px;
-}
-#ej2-datepicker_0 {
-  color: white;
-  text-align: center;
-  font-size: 15px;
-  margin-right: 50px;
+  font-size: 17px;
+  margin-right: 30px;
+  margin-top: 2px;
 }
 
 .e-input-group-icon,
