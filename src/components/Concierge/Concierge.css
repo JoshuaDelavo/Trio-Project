@@ -173,15 +173,15 @@ select option {
 #pembatas {
   justify-content: space-between;
 }
+#segaris {
+  display: inline-flex;
+}
 #utama {
   font-size: 20px;
   font-style: normal;
   font-weight: 300;
   text-align: center;
   justify-content: center;
-}
-#segaris {
-  display: inline-flex;
 }
 
 /* .date {
@@ -247,12 +247,19 @@ select option {
   font-size: 15px;
   margin-right: 50px;
 }
+#ej2-datepicker_0 {
+  color: white;
+  text-align: center;
+  font-size: 15px;
+  margin-right: 50px;
+}
 
 .e-input-group-icon,
 .e-date-icon,
 .e-icons::before {
   background-color: rgb(223, 221, 221);
 }
+
 @media only screen and (max-width: 1024px) {
   #utama {
     width: 350px;
@@ -330,17 +337,4 @@ select option {
     margin-left: 35px;
     width: 80%;
   }
-}
-
-#ej2-datepicker_0 {
-  color: white;
-  text-align: center;
-  font-size: 15px;
-  margin-right: 50px;
-}
-
-.e-input-group-icon,
-.e-date-icon,
-.e-icons::before {
-  background-color: rgb(223, 221, 221);
 }
