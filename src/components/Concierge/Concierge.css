@@ -204,14 +204,15 @@ select option {
 }
 #m62 {
   margin-top: -32px;
-  margin-left: 500px;
+  margin-left: 550px;
+  width: 30%;
 }
 #m7 {
   margin-left: -420px;
 }
 #m72 {
   margin-top: -32px;
-  margin-left: 700px;
+  margin-left: 550px;
 }
 #m8 {
   margin-left: -270px;
@@ -253,22 +254,21 @@ select option {
     width: 350px;
   }
   #m1 {
-    margin-left: -130px;
     position: relative;
   }
   #m2 {
-    margin-top: 35px;
+    margin-top: 40px;
+    margin-left: -11px;
     position: absolute;
-    margin-left: -140px;
   }
   #m3 {
     position: relative;
     margin-left: -70px;
-    margin-top: 10px;
+    margin-top: 15px;
   }
   #m4 {
     position: absolute;
-    margin-top: 45px;
+    margin-top: 50px;
     margin-left: -70px;
   }
   #m5 {
@@ -285,13 +285,16 @@ select option {
     margin-left: -60px;
     margin-top: 10px;
   }
+  #date{
+    margin-left: 60px;
+  }
   #m7 {
     position: relative;
     margin-left: -75px;
   }
   #m72 {
     margin-top: 5px;
-    margin-left: 50px;
+    margin-left: -30px;
   }
   #file {
     width: 75%;
