@@ -32,6 +32,7 @@ import { useStyles } from "@material-ui/pickers/views/Calendar/SlideTransition";
 import { id } from "date-fns/locale";
 import "./Concierge.css";
 import dateFormat from "dateformat";
+import { DatePickerComponent } from '@syncfusion/ej2-react-calendars';
 
 class Question extends Component {
     constructor() {
@@ -275,7 +276,14 @@ class Question extends Component {
                                 and I need to use this dress at
                                 <div id="m62">
                                     <form name="date" id="date">
-                                        <input onChange={this.handleChangeDate} type="date" id="birthday" name="birthday"></input>
+                                        <DatePickerComponent
+                                            onChange={this.handleChangeDate}
+                                            className="date"
+                                            placeholder="Date"
+                                            format="dd/MMM/yyyy"
+                                            width="45%"
+                                            style={{ marginLeft: "25%" }}
+                                        />
                                     </form>
                                 </div>
                             </div>

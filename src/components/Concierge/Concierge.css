@@ -119,7 +119,7 @@ select option {
   background-color: transparent;
   color: rgb(224, 218, 218);
   margin-left: 10px;
-  max-width: 50%;
+  max-width: 52%;
 }
 
 #tel {
@@ -227,6 +227,18 @@ select option {
 #m102{
   margin-top: -33px;
   margin-left: 450px;
+}
+#ej2-datepicker_0 {
+  color: white;
+  text-align: center;
+  font-size: 15px;
+  margin-right: 50px;
+}
+
+.e-input-group-icon,
+.e-date-icon,
+.e-icons::before {
+  background-color: rgb(223, 221, 221);
 }
 @media only screen and (max-width: 1024px) {
   #utama{
