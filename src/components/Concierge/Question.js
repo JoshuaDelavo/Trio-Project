@@ -1,4 +1,5 @@
 import React, { useState, useEffect, Component } from "react";
+import { AiOutlineCamera } from "react-icons/ai";
 import { Button, TextField } from "@material-ui/core";
 import { makeStyles, withTheme } from "@material-ui/core/styles";
 import pickers from "@material-ui/pickers";
@@ -111,6 +112,7 @@ class Question extends Component {
   handleChangeFile(event) {
     document.getElementById(7).className = "show";
     this.setState({ photo: event.target.files[0] });
+    document.getElementById("namaFile").value = event.target.files[0].name;
   }
   handleChangeBudget(event) {
     if (event.target.value == "others") {
@@ -158,6 +160,9 @@ class Question extends Component {
     document.getElementById("utama").className = "show";
     document.getElementById("budget2").className = "hide";
   }
+  klikFunction() {
+    document.getElementById("file").click();
+  }
 
   render() {
     return (
@@ -173,6 +178,7 @@ class Question extends Component {
                   placeholder="Name"
                   type="text"
                   name="name"
+                  onkeypress={this.adjust}
                 />
               </div>
             </div>
@@ -303,13 +309,20 @@ class Question extends Component {
               <div id="6" className="hide">
                 I have preferance for my dress
                 <div id="m72">
+                  <input type="text" id="namaFile" disable />
+                  <AiOutlineCamera
+                    type="button"
+                    id="klikFile"
+                    value="Klik Me"
+                    onClick={this.klikFunction}
+                  />
                   <input
                     onChange={this.handleChangeFile}
                     type="file"
                     id="file"
                     accept="image/png, image/jpeg,file/pdf"
-                    style={{ backgroundColor: "black" }}
-                  ></input>
+                    style={{ backgroundColor: "black", visibility: "collapse" }}
+                  />
                 </div>
               </div>
             </div>
