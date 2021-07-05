@@ -22,7 +22,7 @@ body {
   background-color: transparent;
   color: rgb(197, 187, 187);
   margin-left: 10px;
-  min-width: 30px;
+  min-width: 60px;
 }
 #umur {
   display: inline-flex;
@@ -112,6 +112,7 @@ select option {
   margin-left: 10px;
   max-width: 100px;
   max-width: 80%;
+  min-width: 60px;
 }
 #phoneCode {
   outline: 0;
@@ -132,6 +133,7 @@ select option {
   max-width: 180px;
   margin-left: -40px;
   margin-bottom: 10px;
+  min-width: 70px;
 }
 #submit {
   border: none;
@@ -178,6 +180,7 @@ select option {
   background-color: transparent;
   color: rgb(224, 218, 218);
   margin-left: 10px;
+  max-width: 200px;
 }
 #pembatas {
   justify-content: space-between;

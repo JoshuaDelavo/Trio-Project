@@ -34,6 +34,7 @@ import { id } from "date-fns/locale";
 import "./Concierge.css";
 import dateFormat from "dateformat";
 import { DatePickerComponent } from "@syncfusion/ej2-react-calendars";
+import axios from 'axios';
 
 class Question extends Component {
   constructor() {
@@ -56,7 +57,18 @@ class Question extends Component {
     this.handleSubmitBudget = this.handleSubmitBudget.bind(this);
     this.handleSubmitCancelBudget = this.handleSubmitCancelBudget.bind(this);
     this.handleChangeBudget2 = this.handleChangeBudget2.bind(this);
+    var country2 = this;
+
   }
+  componentDidMount() {
+    axios.get('https://raw.githubusercontent.com/David-Haim-zz/CountriesToCitiesJSON/master/countriesToCities.json')
+      .then(function (response) {
+        // this.setState({ data: response.data });
+        console.log(response.data);
+      })
+      ;
+  }
+
   useStyles1 = makeStyles((theme) => ({
     formControl: {
       margin: theme.spacing(1),
@@ -83,6 +95,9 @@ class Question extends Component {
     var test = document.getElementById('name');
     var length = test.value.length
     test.style.width = length * 12 + 'px';
+    console.log(this.state.data);
+
+
   }
   handleChangeAge(event) {
     this.setState({ age: event.target.value });
@@ -109,8 +124,6 @@ class Question extends Component {
   handleChangeDate(date) {
     this.setState({ needToUseAt: date.target.value });
     document.getElementById(6).className = "show";
-    // document.getElementById('birthday').value = ''
-    // document.getElementById('birthday').placeholder = dateFormat(date.target.value, "dS mmmm yyyy")
   }
   handleChangeFile(event) {
     document.getElementById(7).className = "show";
@@ -123,7 +136,7 @@ class Question extends Component {
   handleChangeBudget(event) {
     if (event.target.value == "others") {
       document.getElementById("budget2").className = "show";
-      document.getElementById("utama").className = "hide";
+      document.getElementById("utama").hidden = true;
     } else {
       this.setState({ budget: event.target.value });
     }
@@ -135,7 +148,6 @@ class Question extends Component {
     var test = document.getElementById('email');
     var length = test.value.length
     test.style.width = length * 13 + 'px';
-    console.log(length)
   }
   handleChangePhoneCode(event) {
     this.setState({ phone_code: event.target.value });
@@ -151,7 +163,7 @@ class Question extends Component {
     test.style.width = length * 12 + 'px';
   }
   handleSubmit() {
-    console.log(this.state);
+    console.log(this.state)
     var formData = new FormData();
     const stateObj = this.state;
     formData.append("data", JSON.stringify(stateObj));
@@ -162,10 +174,15 @@ class Question extends Component {
   }
   handleChangeBudget2(event) {
     this.setState({ budget: event.target.value });
+    document.getElementById('others').innerHTML = this.state.budget
+    var test = document.getElementById('budget');
+    var length = event.target.value.length;
+    test.style.width = (6 + length) * 13 + 'px';
   }
   handleSubmitBudget() {
-    document.getElementById("utama").className = "show";
-    document.getElementById("budget2").className = "hide";
+    document.getElementById('others').innerHTML = this.state.budget + ' USD'
+    document.getElementById("utama").hidden = false;
+    document.getElementById("budget2").hidden = true;
   }
   handleSubmitCancelBudget() {
     this.setState({ budget: "" });
@@ -281,6 +298,11 @@ class Question extends Component {
                     onChange={this.handleChangeCity}
                     required
                   >
+                    {/* {this.country2.map(name => (
+                      <option value={name[0]}>
+                        {name[0]}
+                      </option>
+                    ))} */}
                     <option value="">City</option>
                     <option value="Taipe">Taipe</option>
                     <option value="Jakarta">Jakarta</option>
@@ -368,7 +390,7 @@ class Question extends Component {
                       <option value="2000">starting from 2000(USD)</option>
                       <option value="10000">starting from 10000(USD)</option>
                       <option value="100000">starting from 100000(USD)</option>
-                      <option value="others">Others</option>
+                      <option id='others' value="others"> Others</option>
                     </select>
                   </FormControl>
                 </div>
