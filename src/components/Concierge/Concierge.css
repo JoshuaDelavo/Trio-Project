@@ -110,7 +110,6 @@ select option {
   background-color: transparent;
   color: rgb(197, 187, 187);
   margin-left: 10px;
-  max-width: 100px;
   max-width: 80%;
   min-width: 60px;
 }
@@ -149,6 +148,7 @@ select option {
   background-color: transparent;
   color: rgb(224, 218, 218);
   margin-left: 10px;
+  margin-bottom: 30px;
 }
 #enter {
   color: rgb(0, 0, 0);
@@ -230,6 +230,7 @@ select option {
 #m92 {
   margin-top: -30px;
   margin-left: 380px;
+  max-width: 230px;
 }
 #m10 {
   margin-left: -190px;
@@ -251,6 +252,15 @@ select option {
 .e-icons::before {
   background-color: rgb(223, 221, 221);
 }
+#setuju{
+  margin-left:-130px;
+  width: 500px;
+}
+#batal{
+  margin-top:-80px;
+  width: 500px;
+  margin-left: 70px;
+}
 
 @media only screen and (max-width: 1024px) {
   #utama {
@@ -258,11 +268,14 @@ select option {
   }
   #m1 {
     position: relative;
-    margin-left: -158px;
+    margin-left: -150px;
+  }
+  #name{
+    max-width: 80px;
   }
   #m2 {
     margin-top: 40px;
-    margin-left: -169px;
+    margin-left: -160px;
     position: absolute;
   }
   #m3 {
@@ -335,5 +348,21 @@ select option {
     margin-top: 40px;
     margin-left: 35px;
     width: 80%;
+  }
+  #prefB{
+    max-width: 120px;
+    margin-bottom: 30px;
+    margin-right: 5px;
+  }
+  #setuju{
+    width: 100px;
+    margin-left: 50px;
+  }
+  #batal{
+    width: 100px;
+    margin-left: 150px;
+  }
+  #tel{
+    max-width: 150px;
   }
 }

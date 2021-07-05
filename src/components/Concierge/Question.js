@@ -459,14 +459,7 @@ class Question extends Component {
             </div>
           </div>
         </div>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+        <br /><br /><br /><br /><br /><br /><br /><br />
         <div id="budget2" className="hide">
           My Prefer Budget
           <input
@@ -480,17 +473,20 @@ class Question extends Component {
           USD
           <br />
           <div id="pembatas">
-            <ButtonText onClick={this.handleSubmitBudget}>ENTER</ButtonText>
-            <ButtonText
-              style={{
-                margin: "30px",
-                backgroundColor: "black",
-                color: "white",
-              }}
-              onClick={this.handleSubmitCancelBudget}
-            >
-              CANCEL
-            </ButtonText>
+            <div id="setuju">
+              <ButtonText onClick={this.handleSubmitBudget}>ENTER</ButtonText>
+            </div>
+            <div id="batal">
+              <ButtonText 
+                style={{
+                  margin: "30px",
+                  backgroundColor: "black",
+                  color: "white",
+                }}
+                onClick={this.handleSubmitCancelBudget}>
+                    CANCEL
+              </ButtonText>
+            </div>
           </div>
         </div>
       </div>
