@@ -352,7 +352,7 @@ class Question extends Component {
               <div id="6" className="hide">
                 I have preferance for my dress
                 <div id="m72">
-                  <input type="text" id="namaFile" disable />
+                  <input type="text" id="namaFile" readOnly/>
                   <AiOutlineCamera
                     type="button"
                     id="klikFile"

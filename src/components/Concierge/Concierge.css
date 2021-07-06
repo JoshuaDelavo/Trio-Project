@@ -130,9 +130,10 @@ select option {
   background-color: transparent;
   color: rgb(197, 187, 187);
   max-width: 180px;
-  margin-left: -40px;
+  margin-left: -100px;
   margin-bottom: 10px;
   min-width: 70px;
+  max-width: 135px;
 }
 #submit {
   border: none;
@@ -364,5 +365,6 @@ select option {
   }
   #tel{
     max-width: 150px;
+    margin-right: -50px;
   }
 }
