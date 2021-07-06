@@ -180,7 +180,7 @@ class Question extends Component {
     test.style.width = (6 + length) * 13 + 'px';
     if (window.innerWidth < 1024) {
       var cek = document.getElementById('m8');
-      cek.style.marginLeft = '-' + 200 + 'px';
+      cek.style.marginLeft = '-' + 186 + 'px';
       cek = document.getElementById('m82');
       cek.style.marginLeft = 20 + 'px';
     }
