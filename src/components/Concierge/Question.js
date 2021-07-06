@@ -178,6 +178,12 @@ class Question extends Component {
     var test = document.getElementById('budget');
     var length = event.target.value.length;
     test.style.width = (6 + length) * 13 + 'px';
+    if (window.innerWidth < 1024) {
+      var cek = document.getElementById('m8');
+      cek.style.marginLeft = '-' + 200 + 'px';
+      cek = document.getElementById('m82');
+      cek.style.marginLeft = 20 + 'px';
+    }
   }
   handleSubmitBudget() {
     document.getElementById('others').innerHTML = this.state.budget + ' USD'
@@ -352,7 +358,7 @@ class Question extends Component {
               <div id="6" className="hide">
                 I have preferance for my dress
                 <div id="m72">
-                  <input type="text" id="namaFile" readOnly/>
+                  <input type="text" id="namaFile" readOnly />
                   <AiOutlineCamera
                     type="button"
                     id="klikFile"
@@ -477,14 +483,14 @@ class Question extends Component {
               <ButtonText onClick={this.handleSubmitBudget}>ENTER</ButtonText>
             </div>
             <div id="batal">
-              <ButtonText 
+              <ButtonText
                 style={{
                   margin: "30px",
                   backgroundColor: "black",
                   color: "white",
                 }}
                 onClick={this.handleSubmitCancelBudget}>
-                    CANCEL
+                CANCEL
               </ButtonText>
             </div>
           </div>
