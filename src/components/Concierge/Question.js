@@ -10,6 +10,7 @@ import Concierge from "../../config/ConciergeApi";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormHelperText from "@material-ui/core/FormHelperText";
+import AutosizeInput from 'react-input-autosize';
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import "date-fns";
@@ -92,11 +93,6 @@ class Question extends Component {
   handleChangeName(event) {
     this.setState({ name: event.target.value });
     document.getElementById(1).className = "show";
-    var test = document.getElementById('name');
-    var length = test.value.length
-    test.style.width = length * 12 + 'px';
-    console.log(this.state.data);
-
 
   }
   handleChangeAge(event) {
@@ -145,9 +141,6 @@ class Question extends Component {
   handleChangeEmail(event) {
     this.setState({ email: event.target.value });
     document.getElementById(9).className = "show";
-    var test = document.getElementById('email');
-    var length = test.value.length
-    test.style.width = length * 13 + 'px';
   }
   handleChangePhoneCode(event) {
     this.setState({ phone_code: event.target.value });
@@ -158,9 +151,7 @@ class Question extends Component {
       waPhoneNumber: "+" + this.state.phone_code + event.target.value,
     });
     document.getElementById(10).className = "show";
-    var test = document.getElementById('tel');
-    var length = test.value.length
-    test.style.width = length * 12 + 'px';
+
   }
   handleSubmit() {
     console.log(this.state)
@@ -207,13 +198,12 @@ class Question extends Component {
             <div id="m1">
               <div id="0">
                 My Name is
-                <input
-                  onChange={this.handleChangeName}
+                <AutosizeInput
                   id="name"
+                  name="form-field-name"
+                  value={this.state.name}
                   placeholder="Name"
-                  type="text"
-                  name="name"
-                  required
+                  onChange={this.handleChangeName.bind(this)}
                 />
               </div>
             </div>
@@ -409,16 +399,13 @@ class Question extends Component {
             <div id="m9">
               <div id="8" className="hide">
                 you can email me at
-                <div id="m92">
-                  <input
-                    onChange={this.handleChangeEmail}
-                    id="email"
-                    placeholder="Email"
-                    type="email"
-                    name="email"
-                    required
-                  />
-                </div>
+                <AutosizeInput
+                  id="email"
+                  name="form-field-name"
+                  value={this.state.email}
+                  placeholder="Email"
+                  onChange={this.handleChangeEmail.bind(this)}
+                />
               </div>
             </div>
           </div>
@@ -442,14 +429,11 @@ class Question extends Component {
                   </select>
                 </FormControl>
                 <div id="m102">
-                  <input
-                    onChange={this.handleChangeNumber}
+                  <AutosizeInput
                     id="tel"
-                    pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-                    placeholder="Number Whatsapp"
-                    type="tel"
-                    name="tel"
-                    required
+                    name="form-field-name"
+                    placeholder="Phone Number"
+                    onChange={this.handleChangeNumber.bind(this)}
                   />
                 </div>
               </div>
