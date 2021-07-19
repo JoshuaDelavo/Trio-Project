@@ -9,6 +9,7 @@ import Container from "@material-ui/core/Container";
 import Concierge from "../../config/ConciergeApi";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormHelperText from "@material-ui/core/FormHelperText";
+import AutosizeInput from "react-input-autosize";
 import FormControl from "@material-ui/core/FormControl";
 import "date-fns";
 import ConciergeApi from "../../config/ConciergeApi";
@@ -224,6 +225,8 @@ class Question extends Component {
                 {/* <input
                   onChange={this.handleChangeName}
                   id="name"
+                  name="form-field-name"
+                  value={this.state.name}
                   placeholder="Name"
                   type="text"
                   name="name"
@@ -510,11 +513,9 @@ class Question extends Component {
                   <TextField
                     onChange={this.handleChangeNumber}
                     id="tel"
-                    pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-                    placeholder="Number Whatsapp"
-                    type="tel"
-                    name="tel"
-                    required
+                    name="form-field-name"
+                    placeholder="Phone Number"
+                    onChange={this.handleChangeNumber.bind(this)}
                   />
                 </div>
               </div>
