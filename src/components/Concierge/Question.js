@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Component } from "react";
 import { AiOutlineCamera } from "react-icons/ai";
-import { Button, TextField } from "@material-ui/core";
+import { Button, TextField, Select, MenuItem } from "@material-ui/core";
 import { makeStyles, withTheme } from "@material-ui/core/styles";
 import pickers from "@material-ui/pickers";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -8,10 +8,8 @@ import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import Concierge from "../../config/ConciergeApi";
 import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
 import "date-fns";
 import ConciergeApi from "../../config/ConciergeApi";
 import DateFnsUtils from "@date-io/date-fns";
@@ -34,12 +32,25 @@ import { id } from "date-fns/locale";
 import "./Concierge.css";
 import dateFormat from "dateformat";
 import { DatePickerComponent } from "@syncfusion/ej2-react-calendars";
-import axios from 'axios';
+import axios from "axios";
 
 class Question extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      name: "",
+      age: "",
+      favouriteColor: "",
+      size: "",
+      sizeType: "",
+      city: "",
+      country: "",
+      needToUseAt: "",
+      photo: "",
+      budget: "",
+      email: "",
+      waPhoneNumber: "",
+    };
     this.handleChangeName = this.handleChangeName.bind(this);
     this.handleChangeAge = this.handleChangeAge.bind(this);
     this.handleChangeColor = this.handleChangeColor.bind(this);
@@ -58,15 +69,16 @@ class Question extends Component {
     this.handleSubmitCancelBudget = this.handleSubmitCancelBudget.bind(this);
     this.handleChangeBudget2 = this.handleChangeBudget2.bind(this);
     var country2 = this;
-
   }
   componentDidMount() {
-    axios.get('https://raw.githubusercontent.com/David-Haim-zz/CountriesToCitiesJSON/master/countriesToCities.json')
+    axios
+      .get(
+        "https://raw.githubusercontent.com/David-Haim-zz/CountriesToCitiesJSON/master/countriesToCities.json",
+      )
       .then(function (response) {
         // this.setState({ data: response.data });
         console.log(response.data);
-      })
-      ;
+      });
   }
 
   useStyles1 = makeStyles((theme) => ({
@@ -89,15 +101,17 @@ class Question extends Component {
       },
     },
   }));
+  setValue(value) {
+    React.useState("Color");
+  }
+
   handleChangeName(event) {
     this.setState({ name: event.target.value });
     document.getElementById(1).className = "show";
-    var test = document.getElementById('name');
-    var length = test.value.length
-    test.style.width = length * 12 + 'px';
+    var test = document.getElementById("name");
+    var length = test.value.length;
+    test.style.width = length * 12 + "px";
     console.log(this.state.data);
-
-
   }
   handleChangeAge(event) {
     this.setState({ age: event.target.value });
@@ -129,9 +143,9 @@ class Question extends Component {
     document.getElementById(7).className = "show";
     this.setState({ photo: event.target.files[0] });
     document.getElementById("namaFile").value = event.target.files[0].name;
-    var test = document.getElementById('namaFile');
-    var length = test.value.length
-    test.style.width = length * 12 + 'px';
+    var test = document.getElementById("namaFile");
+    var length = test.value.length;
+    test.style.width = length * 12 + "px";
   }
   handleChangeBudget(event) {
     if (event.target.value == "others") {
@@ -145,9 +159,9 @@ class Question extends Component {
   handleChangeEmail(event) {
     this.setState({ email: event.target.value });
     document.getElementById(9).className = "show";
-    var test = document.getElementById('email');
-    var length = test.value.length
-    test.style.width = length * 13 + 'px';
+    var test = document.getElementById("email");
+    var length = test.value.length;
+    test.style.width = length * 13 + "px";
   }
   handleChangePhoneCode(event) {
     this.setState({ phone_code: event.target.value });
@@ -158,12 +172,12 @@ class Question extends Component {
       waPhoneNumber: "+" + this.state.phone_code + event.target.value,
     });
     document.getElementById(10).className = "show";
-    var test = document.getElementById('tel');
-    var length = test.value.length
-    test.style.width = length * 12 + 'px';
+    var test = document.getElementById("tel");
+    var length = test.value.length;
+    test.style.width = length * 12 + "px";
   }
   handleSubmit() {
-    console.log(this.state)
+    console.log(this.state);
     var formData = new FormData();
     const stateObj = this.state;
     formData.append("data", JSON.stringify(stateObj));
@@ -174,19 +188,19 @@ class Question extends Component {
   }
   handleChangeBudget2(event) {
     this.setState({ budget: event.target.value });
-    document.getElementById('others').innerHTML = this.state.budget
-    var test = document.getElementById('budget');
+    document.getElementById("others").innerHTML = this.state.budget;
+    var test = document.getElementById("budget");
     var length = event.target.value.length;
-    test.style.width = (6 + length) * 13 + 'px';
+    test.style.width = (6 + length) * 13 + "px";
     if (window.innerWidth < 1024) {
-      var cek = document.getElementById('m8');
-      cek.style.marginLeft = '-' + 186 + 'px';
-      cek = document.getElementById('m82');
-      cek.style.marginLeft = 20 + 'px';
+      var cek = document.getElementById("m8");
+      cek.style.marginLeft = "-" + 186 + "px";
+      cek = document.getElementById("m82");
+      cek.style.marginLeft = 20 + "px";
     }
   }
   handleSubmitBudget() {
-    document.getElementById('others').innerHTML = this.state.budget + ' USD'
+    document.getElementById("others").innerHTML = this.state.budget + " USD";
     document.getElementById("utama").hidden = false;
     document.getElementById("budget2").hidden = true;
   }
@@ -207,12 +221,21 @@ class Question extends Component {
             <div id="m1">
               <div id="0">
                 My Name is
-                <input
+                {/* <input
                   onChange={this.handleChangeName}
                   id="name"
                   placeholder="Name"
                   type="text"
                   name="name"
+                  required
+                /> */}
+                <TextField
+                  onChange={this.handleChangeName}
+                  id="name"
+                  placeholder="Name"
+                  type="text"
+                  size="medium"
+                  helperText="Please Enter You'r Name"
                   required
                 />
               </div>
@@ -221,7 +244,7 @@ class Question extends Component {
               <div id="1" className="hide" style={{ marginLeft: "10px" }}>
                 and I'm
                 <div id="umur">
-                  <input
+                  {/* <input
                     onChange={this.handleChangeAge}
                     id="age"
                     placeholder="Age"
@@ -229,6 +252,13 @@ class Question extends Component {
                     name="age"
                     max="120"
                     min="1"
+                    required
+                  /> */}
+                  <TextField
+                    onChange={this.handleChangeAge}
+                    id="age"
+                    placeholder="Age"
+                    type="number"
                     required
                   />
                 </div>
@@ -244,7 +274,7 @@ class Question extends Component {
                 My favourite color is
                 <div id="warna">
                   <FormControl className={this.useStyles1.formControl}>
-                    <select
+                    {/* <select
                       name="color"
                       id="color"
                       onChange={this.handleChangeColor}
@@ -254,7 +284,22 @@ class Question extends Component {
                       <option value="Blue">Blue</option>
                       <option value="Red">Red</option>
                       <option value="Green">Green</option>
-                    </select>
+                    </select> */}
+                    <Select
+                      name="color"
+                      select
+                      id="color"
+                      onChange={this.handleChangeColor}
+                      placeholder="Color"
+                      required
+                    >
+                      <MenuItem value={""} disabled>
+                        Select
+                      </MenuItem>
+                      <MenuItem value={"Blue"}>Blue</MenuItem>
+                      <MenuItem value={"Red"}>Red</MenuItem>
+                      <MenuItem value={"Green"}>Green</MenuItem>
+                    </Select>
                   </FormControl>
                 </div>
               </div>
@@ -263,30 +308,34 @@ class Question extends Component {
               <div id="3" className="hide">
                 and my dress size is
                 <FormControl className={this.useStyles1.formControl}>
-                  <select
+                  <Select
                     name="size"
                     id="size"
                     onChange={this.handleChangeSize}
                     required
                   >
-                    <option value="">Size</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                  </select>
+                    <MenuItem value="" disabled>
+                      Size
+                    </MenuItem>
+                    <MenuItem value="1">1</MenuItem>
+                    <MenuItem value="2">2</MenuItem>
+                    <MenuItem value="3">3</MenuItem>
+                  </Select>
                 </FormControl>
                 <FormControl className={this.useStyles1.formControl}>
-                  <select
+                  <Select
                     name="code"
                     id="code"
                     onChange={this.handleChangeCode}
                     required
                   >
-                    <option value="">Code</option>
-                    <option value="Euro">Euro</option>
-                    <option value="US">US</option>
-                    <option value="JPN">JPN</option>
-                  </select>
+                    <MenuItem value="" disabled>
+                      Code
+                    </MenuItem>
+                    <MenuItem value="Euro">Euro</MenuItem>
+                    <MenuItem value="US">US</MenuItem>
+                    <MenuItem value="JPN">JPN</MenuItem>
+                  </Select>
                 </FormControl>
               </div>
             </div>
@@ -298,7 +347,7 @@ class Question extends Component {
               <div id="4" className="hide">
                 I live in
                 <FormControl className={this.useStyles1.formControl}>
-                  <select
+                  <Select
                     name="kota"
                     id="kota"
                     onChange={this.handleChangeCity}
@@ -309,24 +358,28 @@ class Question extends Component {
                         {name[0]}
                       </option>
                     ))} */}
-                    <option value="">City</option>
-                    <option value="Taipe">Taipe</option>
-                    <option value="Jakarta">Jakarta</option>
-                    <option value="Malvoch">Malvoch</option>
-                  </select>
+                    <MenuItem value="" disabled>
+                      City
+                    </MenuItem>
+                    <MenuItem value="Taipe">Taipe</MenuItem>
+                    <MenuItem value="Jakarta">Jakarta</MenuItem>
+                    <MenuItem value="Malvoch">Malvoch</MenuItem>
+                  </Select>
                 </FormControl>
                 <FormControl className={this.useStyles1.formControl}>
-                  <select
+                  <Select
                     name="negara"
                     id="negara"
                     onChange={this.handleChangeCountries}
                     required
                   >
-                    <option value="">Contry</option>
-                    <option value="China">China</option>
-                    <option value="Thailand">Thailand</option>
-                    <option value="German">German</option>
-                  </select>
+                    <MenuItem value="" disabled>
+                      Contry
+                    </MenuItem>
+                    <MenuItem value="China">China</MenuItem>
+                    <MenuItem value="Thailand">Thailand</MenuItem>
+                    <MenuItem value="German">German</MenuItem>
+                  </Select>
                 </FormControl>
               </div>
             </div>
@@ -386,18 +439,28 @@ class Question extends Component {
                 my budget is
                 <div id="m82">
                   <FormControl className={this.useStyles1.formControl}>
-                    <select
+                    <Select
                       name="budget"
                       id="budget"
                       onChange={this.handleChangeBudget}
                       required
                     >
-                      <option value=""> Budget </option>
-                      <option value="2000">starting from 2000(USD)</option>
-                      <option value="10000">starting from 10000(USD)</option>
-                      <option value="100000">starting from 100000(USD)</option>
-                      <option id='others' value="others"> Others</option>
-                    </select>
+                      <MenuItem value="" diabled>
+                        {" "}
+                        Budget{" "}
+                      </MenuItem>
+                      <MenuItem value="2000">starting from 2000(USD)</MenuItem>
+                      <MenuItem value="10000">
+                        starting from 10000(USD)
+                      </MenuItem>
+                      <MenuItem value="100000">
+                        starting from 100000(USD)
+                      </MenuItem>
+                      <MenuItem id="others" value="others">
+                        {" "}
+                        Others
+                      </MenuItem>
+                    </Select>
                   </FormControl>
                 </div>
               </div>
@@ -410,7 +473,7 @@ class Question extends Component {
               <div id="8" className="hide">
                 you can email me at
                 <div id="m92">
-                  <input
+                  <TextField
                     onChange={this.handleChangeEmail}
                     id="email"
                     placeholder="Email"
@@ -429,20 +492,22 @@ class Question extends Component {
               <div id="9" className="hide">
                 or WhatsApp me at
                 <FormControl style={{ width: "30%" }}>
-                  <select
+                  <Select
                     name="phoneCode"
                     id="phoneCode"
                     onChange={this.handleChangePhoneCode}
                     required
                   >
-                    <option value="">Code</option>
-                    <option value="62">+62</option>
-                    <option value="73">+73</option>
-                    <option value="13">+13</option>
-                  </select>
+                    <MenuItem value="" disabled>
+                      Code
+                    </MenuItem>
+                    <MenuItem value="62">+62</MenuItem>
+                    <MenuItem value="73">+73</MenuItem>
+                    <MenuItem value="13">+13</MenuItem>
+                  </Select>
                 </FormControl>
                 <div id="m102">
-                  <input
+                  <TextField
                     onChange={this.handleChangeNumber}
                     id="tel"
                     pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
@@ -465,10 +530,17 @@ class Question extends Component {
             </div>
           </div>
         </div>
-        <br /><br /><br /><br /><br /><br /><br /><br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         <div id="budget2" className="hide">
           My Prefer Budget
-          <input
+          <TextField
             onChange={this.handleChangeBudget2}
             id="prefB"
             pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
@@ -489,7 +561,8 @@ class Question extends Component {
                   backgroundColor: "black",
                   color: "white",
                 }}
-                onClick={this.handleSubmitCancelBudget}>
+                onClick={this.handleSubmitCancelBudget}
+              >
                 CANCEL
               </ButtonText>
             </div>

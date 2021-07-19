@@ -3,9 +3,8 @@
   border-bottom: 2px solid rgb(255, 255, 255) !important;
 }
 .MuiInputBase-root {
-  color: none;
+  color: white;
 }
-
 body {
   background-color: rgb(34, 34, 34);
 }
@@ -253,12 +252,12 @@ select option {
 .e-icons::before {
   background-color: rgb(223, 221, 221);
 }
-#setuju{
-  margin-left:-130px;
+#setuju {
+  margin-left: -130px;
   width: 500px;
 }
-#batal{
-  margin-top:-80px;
+#batal {
+  margin-top: -80px;
   width: 500px;
   margin-left: 70px;
 }
@@ -271,7 +270,7 @@ select option {
     position: relative;
     margin-left: -150px;
   }
-  #name{
+  #name {
     max-width: 80px;
   }
   #m2 {
@@ -302,9 +301,9 @@ select option {
   #m62 {
     margin-left: -60px;
     margin-top: 10px;
-    width:100%;
+    width: 100%;
   }
-  #date{
+  #date {
     margin-left: 60px;
   }
   #m7 {
@@ -350,20 +349,20 @@ select option {
     margin-left: 35px;
     width: 80%;
   }
-  #prefB{
+  #prefB {
     max-width: 120px;
     margin-bottom: 30px;
     margin-right: 5px;
   }
-  #setuju{
+  #setuju {
     width: 100px;
     margin-left: 50px;
   }
-  #batal{
+  #batal {
     width: 100px;
     margin-left: 150px;
   }
-  #tel{
+  #tel {
     max-width: 150px;
     margin-right: -50px;
   }
