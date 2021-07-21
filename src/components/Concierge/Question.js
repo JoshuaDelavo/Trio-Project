@@ -1,37 +1,13 @@
-import React, { useState, useEffect, Component } from "react";
+import React, { Component } from "react";
 import { AiOutlineCamera } from "react-icons/ai";
-import { Button, TextField, Select, MenuItem } from "@material-ui/core";
-import { makeStyles, withTheme } from "@material-ui/core/styles";
-import pickers from "@material-ui/pickers";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Typography from "@material-ui/core/Typography";
-import Container from "@material-ui/core/Container";
-import Concierge from "../../config/ConciergeApi";
-import InputLabel from "@material-ui/core/InputLabel";
-import FormHelperText from "@material-ui/core/FormHelperText";
+import { Select, MenuItem } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import AutosizeInput from "react-input-autosize";
 import FormControl from "@material-ui/core/FormControl";
 import "date-fns";
 import ConciergeApi from "../../config/ConciergeApi";
-import DateFnsUtils from "@date-io/date-fns";
-import Countries from "../Countries";
-import {
-  MuiPickersUtilsProvider,
-  KeyboardTimePicker,
-  KeyboardDatePicker,
-} from "@material-ui/pickers";
-import {
-  NavCon,
-  NavBurgerIcon,
-  ConMenu,
-  ConItem,
-  ButtonText,
-  BottomIcon,
-} from "./ConciergeElements";
-import { useStyles } from "@material-ui/pickers/views/Calendar/SlideTransition";
-import { id } from "date-fns/locale";
+import { ButtonText } from "./ConciergeElements";
 import "./Concierge.css";
-import dateFormat from "dateformat";
 import { DatePickerComponent } from "@syncfusion/ej2-react-calendars";
 import axios from "axios";
 
@@ -181,7 +157,7 @@ class Question extends Component {
             <div id="m1">
               <div id="0">
                 My Name is
-                <TextField
+                <AutosizeInput
                   onChange={this.handleChange}
                   id="name"
                   placeholder="Name"
