@@ -39,37 +39,33 @@ class Question extends Component {
   constructor() {
     super();
     this.state = {
-      name: "",
-      age: "",
-      favouriteColor: "",
-      size: "",
-      sizeType: "",
-      city: "",
-      country: "",
-      needToUseAt: "",
-      photo: "",
-      budget: "",
-      email: "",
-      waPhoneNumber: "",
+      fields: {
+        name: 1,
+        age: 2,
+        favouriteColor: 3,
+        size: 3,
+        sizeType: 4,
+        city: 4,
+        country: 5,
+        needToUseAt: 6,
+        photo: 7,
+        budget: 8,
+        email: 9,
+        phoneCode: 9,
+        nomor: 10,
+      },
+      names: false,
+      test: false
     };
-    this.handleChangeName = this.handleChangeName.bind(this);
-    this.handleChangeAge = this.handleChangeAge.bind(this);
-    this.handleChangeColor = this.handleChangeColor.bind(this);
-    this.handleChangeSize = this.handleChangeSize.bind(this);
-    this.handleChangeCode = this.handleChangeCode.bind(this);
-    this.handleChangeCity = this.handleChangeCity.bind(this);
-    this.handleChangeCountries = this.handleChangeCountries.bind(this);
-    this.handleChangeDate = this.handleChangeDate.bind(this);
+
     this.handleChangeFile = this.handleChangeFile.bind(this);
     this.handleChangeBudget = this.handleChangeBudget.bind(this);
-    this.handleChangeEmail = this.handleChangeEmail.bind(this);
-    this.handleChangePhoneCode = this.handleChangePhoneCode.bind(this);
     this.handleChangeNumber = this.handleChangeNumber.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleSubmitBudget = this.handleSubmitBudget.bind(this);
     this.handleSubmitCancelBudget = this.handleSubmitCancelBudget.bind(this);
     this.handleChangeBudget2 = this.handleChangeBudget2.bind(this);
-    var country2 = this;
+    this.handleChange = this.handleChange.bind(this);
   }
   componentDidMount() {
     axios
@@ -106,39 +102,12 @@ class Question extends Component {
     React.useState("Color");
   }
 
-  handleChangeName(event) {
-    this.setState({ name: event.target.value });
-    document.getElementById(1).className = "show";
-    var test = document.getElementById("name");
-    var length = test.value.length;
-    test.style.width = length * 12 + "px";
-    console.log(this.state.data);
-  }
-  handleChangeAge(event) {
-    this.setState({ age: event.target.value });
-    document.getElementById(2).className = "show";
-  }
-  handleChangeColor(event) {
-    this.setState({ favouriteColor: event.target.value });
-    document.getElementById(3).className = "show";
-  }
-  handleChangeSize(event) {
-    this.setState({ size: event.target.value });
-  }
-  handleChangeCode(event) {
-    this.setState({ sizeType: event.target.value });
-    document.getElementById(4).className = "show";
-  }
-  handleChangeCity(event) {
-    this.setState({ city: event.target.value });
-  }
-  handleChangeCountries(event) {
-    this.setState({ country: event.target.value });
-    document.getElementById(5).className = "show";
-  }
-  handleChangeDate(date) {
-    this.setState({ needToUseAt: date.target.value });
-    document.getElementById(6).className = "show";
+  handleChange(res) {
+    this.setState({ [res.target.name]: res.target.value });
+    var cek = res.target.name
+    var iter = parseInt(this.state.fields[cek], 10);
+    console.log(iter);
+    document.getElementById(iter).className = "show";
   }
   handleChangeFile(event) {
     document.getElementById(7).className = "show";
@@ -151,26 +120,16 @@ class Question extends Component {
   handleChangeBudget(event) {
     if (event.target.value == "others") {
       document.getElementById("budget2").className = "show";
-      document.getElementById("utama").hidden = true;
+      document.getElementById("utama").className = 'hide';
     } else {
+      this.setState({ test: false })
       this.setState({ budget: event.target.value });
     }
     document.getElementById(8).className = "show";
   }
-  handleChangeEmail(event) {
-    this.setState({ email: event.target.value });
-    document.getElementById(9).className = "show";
-    var test = document.getElementById("email");
-    var length = test.value.length;
-    test.style.width = length * 13 + "px";
-  }
-  handleChangePhoneCode(event) {
-    this.setState({ phone_code: event.target.value });
-    console.log(this.state.phone_code);
-  }
   handleChangeNumber(event) {
     this.setState({
-      waPhoneNumber: "+" + this.state.phone_code + event.target.value,
+      waPhoneNumber: "+" + this.state.phoneCode + event.target.value,
     });
     document.getElementById(10).className = "show";
     var test = document.getElementById("tel");
@@ -178,7 +137,6 @@ class Question extends Component {
     test.style.width = length * 12 + "px";
   }
   handleSubmit() {
-    console.log(this.state);
     var formData = new FormData();
     const stateObj = this.state;
     formData.append("data", JSON.stringify(stateObj));
@@ -186,10 +144,11 @@ class Question extends Component {
     ConciergeApi.create(formData);
     document.getElementById("second").hidden = true;
     document.getElementById("third").hidden = false;
+    console.log(stateObj);
   }
   handleChangeBudget2(event) {
     this.setState({ budget: event.target.value });
-    document.getElementById("others").innerHTML = this.state.budget;
+    this.setState({ test: true })
     var test = document.getElementById("budget");
     var length = event.target.value.length;
     test.style.width = (6 + length) * 13 + "px";
@@ -201,12 +160,12 @@ class Question extends Component {
     }
   }
   handleSubmitBudget() {
-    document.getElementById("others").innerHTML = this.state.budget + " USD";
-    document.getElementById("utama").hidden = false;
-    document.getElementById("budget2").hidden = true;
+    document.getElementById("utama").className = 'show';
+    document.getElementById("budget2").className = 'hide';
   }
   handleSubmitCancelBudget() {
     this.setState({ budget: "" });
+    this.setState({ test: false })
     document.getElementById("utama").className = "show";
     document.getElementById("budget2").className = "hide";
   }
@@ -222,20 +181,11 @@ class Question extends Component {
             <div id="m1">
               <div id="0">
                 My Name is
-                {/* <input
-                  onChange={this.handleChangeName}
-                  id="name"
-                  name="form-field-name"
-                  value={this.state.name}
-                  placeholder="Name"
-                  type="text"
-                  name="name"
-                  required
-                /> */}
                 <TextField
-                  onChange={this.handleChangeName}
+                  onChange={this.handleChange}
                   id="name"
                   placeholder="Name"
+                  name="name"
                   type="text"
                   size="medium"
                   helperText="Please Enter You'r Name"
@@ -244,22 +194,13 @@ class Question extends Component {
               </div>
             </div>
             <div id="m2">
-              <div id="1" className="hide" style={{ marginLeft: "10px" }}>
+              <div id="1" className={this.state.names ? "show" : "hide"} style={{ marginLeft: "10px" }}>
                 and I'm
                 <div id="umur">
-                  {/* <input
-                    onChange={this.handleChangeAge}
+                  <AutosizeInput
+                    onChange={this.handleChange}
                     id="age"
-                    placeholder="Age"
-                    type="number"
                     name="age"
-                    max="120"
-                    min="1"
-                    required
-                  /> */}
-                  <TextField
-                    onChange={this.handleChangeAge}
-                    id="age"
                     placeholder="Age"
                     type="number"
                     required
@@ -277,22 +218,11 @@ class Question extends Component {
                 My favourite color is
                 <div id="warna">
                   <FormControl className={this.useStyles1.formControl}>
-                    {/* <select
-                      name="color"
-                      id="color"
-                      onChange={this.handleChangeColor}
-                      required
-                    >
-                      <option value="">Color</option>
-                      <option value="Blue">Blue</option>
-                      <option value="Red">Red</option>
-                      <option value="Green">Green</option>
-                    </select> */}
                     <Select
-                      name="color"
+                      name="favouriteColor"
                       select
                       id="color"
-                      onChange={this.handleChangeColor}
+                      onChange={this.handleChange}
                       placeholder="Color"
                       required
                     >
@@ -314,7 +244,7 @@ class Question extends Component {
                   <Select
                     name="size"
                     id="size"
-                    onChange={this.handleChangeSize}
+                    onChange={this.handleChange}
                     required
                   >
                     <MenuItem value="" disabled>
@@ -327,9 +257,9 @@ class Question extends Component {
                 </FormControl>
                 <FormControl className={this.useStyles1.formControl}>
                   <Select
-                    name="code"
+                    name="sizeType"
                     id="code"
-                    onChange={this.handleChangeCode}
+                    onChange={this.handleChange}
                     required
                   >
                     <MenuItem value="" disabled>
@@ -351,16 +281,11 @@ class Question extends Component {
                 I live in
                 <FormControl className={this.useStyles1.formControl}>
                   <Select
-                    name="kota"
+                    name="city"
                     id="kota"
-                    onChange={this.handleChangeCity}
+                    onChange={this.handleChange}
                     required
                   >
-                    {/* {this.country2.map(name => (
-                      <option value={name[0]}>
-                        {name[0]}
-                      </option>
-                    ))} */}
                     <MenuItem value="" disabled>
                       City
                     </MenuItem>
@@ -371,9 +296,9 @@ class Question extends Component {
                 </FormControl>
                 <FormControl className={this.useStyles1.formControl}>
                   <Select
-                    name="negara"
+                    name="country"
                     id="negara"
-                    onChange={this.handleChangeCountries}
+                    onChange={this.handleChange}
                     required
                   >
                     <MenuItem value="" disabled>
@@ -396,7 +321,8 @@ class Question extends Component {
                 <div id="m62">
                   <form name="date" id="date">
                     <DatePickerComponent
-                      onChange={this.handleChangeDate}
+                      name="needToUseAt"
+                      onChange={this.handleChange}
                       className="date"
                       placeholder="Date"
                       format="dd MMMMMMMMMM yyyy"
@@ -424,6 +350,7 @@ class Question extends Component {
                   />
                   <input
                     onChange={this.handleChangeFile}
+                    name="photo"
                     type="file"
                     id="file"
                     accept="image/png, image/jpeg,file/pdf"
@@ -461,7 +388,7 @@ class Question extends Component {
                       </MenuItem>
                       <MenuItem id="others" value="others">
                         {" "}
-                        Others
+                        {this.state.test ? this.state.budget + " (USD)" : 'Others'}
                       </MenuItem>
                     </Select>
                   </FormControl>
@@ -476,8 +403,8 @@ class Question extends Component {
               <div id="8" className="hide">
                 you can email me at
                 <div id="m92">
-                  <TextField
-                    onChange={this.handleChangeEmail}
+                  <AutosizeInput
+                    onChange={this.handleChange}
                     id="email"
                     placeholder="Email"
                     type="email"
@@ -498,7 +425,7 @@ class Question extends Component {
                   <Select
                     name="phoneCode"
                     id="phoneCode"
-                    onChange={this.handleChangePhoneCode}
+                    onChange={this.handleChange}
                     required
                   >
                     <MenuItem value="" disabled>
@@ -510,10 +437,10 @@ class Question extends Component {
                   </Select>
                 </FormControl>
                 <div id="m102">
-                  <TextField
+                  <AutosizeInput
                     onChange={this.handleChangeNumber}
                     id="tel"
-                    name="form-field-name"
+                    name="nomor"
                     placeholder="Phone Number"
                     onChange={this.handleChangeNumber.bind(this)}
                   />
@@ -541,7 +468,7 @@ class Question extends Component {
         <br />
         <div id="budget2" className="hide">
           My Prefer Budget
-          <TextField
+          <AutosizeInput
             onChange={this.handleChangeBudget2}
             id="prefB"
             pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
