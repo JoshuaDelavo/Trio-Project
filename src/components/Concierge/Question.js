@@ -31,7 +31,7 @@ class Question extends Component {
         nomor: 10,
       },
       names: false,
-      test: false
+      test: false,
     };
 
     this.handleChangeFile = this.handleChangeFile.bind(this);
@@ -80,7 +80,7 @@ class Question extends Component {
 
   handleChange(res) {
     this.setState({ [res.target.name]: res.target.value });
-    var cek = res.target.name
+    var cek = res.target.name;
     var iter = parseInt(this.state.fields[cek], 10);
     console.log(iter);
     document.getElementById(iter).className = "show";
@@ -96,9 +96,9 @@ class Question extends Component {
   handleChangeBudget(event) {
     if (event.target.value == "others") {
       document.getElementById("budget2").className = "show";
-      document.getElementById("utama").className = 'hide';
+      document.getElementById("utama").className = "hide";
     } else {
-      this.setState({ test: false })
+      this.setState({ test: false });
       this.setState({ budget: event.target.value });
     }
     document.getElementById(8).className = "show";
@@ -124,7 +124,7 @@ class Question extends Component {
   }
   handleChangeBudget2(event) {
     this.setState({ budget: event.target.value });
-    this.setState({ test: true })
+    this.setState({ test: true });
     var test = document.getElementById("budget");
     var length = event.target.value.length;
     test.style.width = (6 + length) * 13 + "px";
@@ -136,12 +136,12 @@ class Question extends Component {
     }
   }
   handleSubmitBudget() {
-    document.getElementById("utama").className = 'show';
-    document.getElementById("budget2").className = 'hide';
+    document.getElementById("utama").className = "show";
+    document.getElementById("budget2").className = "hide";
   }
   handleSubmitCancelBudget() {
     this.setState({ budget: "" });
-    this.setState({ test: false })
+    this.setState({ test: false });
     document.getElementById("utama").className = "show";
     document.getElementById("budget2").className = "hide";
   }
@@ -170,7 +170,11 @@ class Question extends Component {
               </div>
             </div>
             <div id="m2">
-              <div id="1" className={this.state.names ? "show" : "hide"} style={{ marginLeft: "10px" }}>
+              <div
+                id="1"
+                className={this.state.names ? "show" : "hide"}
+                style={{ marginLeft: "10px" }}
+              >
                 and I'm
                 <div id="umur">
                   <AutosizeInput
@@ -364,7 +368,9 @@ class Question extends Component {
                       </MenuItem>
                       <MenuItem id="others" value="others">
                         {" "}
-                        {this.state.test ? this.state.budget + " (USD)" : 'Others'}
+                        {this.state.test
+                          ? this.state.budget + " (USD)"
+                          : "Others"}
                       </MenuItem>
                     </Select>
                   </FormControl>
@@ -385,6 +391,7 @@ class Question extends Component {
                     placeholder="Email"
                     type="email"
                     name="email"
+                    width="140px"
                     required
                   />
                 </div>
