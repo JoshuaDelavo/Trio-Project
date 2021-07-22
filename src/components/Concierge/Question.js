@@ -346,7 +346,7 @@ class Question extends Component {
           <div id="segaris">
             <div id="m8">
               <div id="7" className="hide">
-                my budget is
+                My budget is
                 <div id="m82">
                   <FormControl className={this.useStyles1.formControl}>
                     <Select
@@ -441,14 +441,7 @@ class Question extends Component {
             </div>
           </div>
         </div>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+        <br /><br /><br /><br /><br /><br /><br /><br />
         <div id="budget2" className="hide">
           My Prefer Budget
           <AutosizeInput

@@ -208,7 +208,7 @@ select option {
 #m62 {
   margin-top: -32px;
   margin-left: 550px;
-  width: 30%;
+  width: 28%;
 }
 #m7 {
   margin-left: -220px;
@@ -221,8 +221,8 @@ select option {
   margin-left: -200px;
 }
 #m82 {
-  margin-top: -28px;
-  margin-left: 400px;
+  margin-top: -30px;
+  margin-left: 350px;
 }
 #m9 {
   margin-left: -135px;
@@ -230,7 +230,7 @@ select option {
 #m92 {
   margin-top: -30px;
   margin-left: 380px;
-  max-width: 230px;
+  min-width: 300px;
 }
 #m10 {
   margin-left: -60px;
