@@ -15,6 +15,8 @@ import Concierge from './pages/Concierge';
 import Home from './pages/Home';
 import News from './pages/News';
 import NewsDetail from './pages/NewsDetail';
+import Question from './pages/Question';
+import Thanks from './pages/Thanks';
 import ScrollToTop from "./pages/ScrollToTop";
 
 function App() {
@@ -41,6 +43,15 @@ function App() {
           </Route>
           <Route path='/News'>
             <News />
+          </Route>
+          <Route path='/Concierge'>
+            <Concierge />
+          </Route>
+          <Route path='/Question'>
+            <Question />
+          </Route>
+          <Route path='/Thanks'>
+            <Thanks />
           </Route>
         </Switch>
       </div>

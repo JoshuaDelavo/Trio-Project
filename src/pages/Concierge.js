@@ -1,17 +1,9 @@
 import React from "react";
-
+import Dashboard from '../sections/Concierge/Dashboard'
 const Concierge = () => {
   return (
     <div>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      Concierge Page
+      <Dashboard></Dashboard>
     </div>
   );
 };
