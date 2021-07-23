@@ -34,6 +34,17 @@ class Question extends Component {
             },
             names: false,
             test: false,
+            id1: false,
+            id2: false,
+            id3: false,
+            id4: false,
+            id5: false,
+            id6: false,
+            id7: false,
+            id8: false,
+            id9: false,
+            id10: false,
+
         };
 
         this.handleChangeFile = this.handleChangeFile.bind(this);
@@ -170,253 +181,277 @@ class Question extends Component {
                                     required
                                 />
                             </Grid>
-
-                            <Grid item xs={6}>
-                                and I'm
-                                <div id="umur">
-                                    <TextField
-                                        onChange={this.handleChange}
-                                        id="age"
-                                        name="age"
-                                        placeholder="Age"
-                                        type="number"
-                                        required
-                                    />
-                                </div>
-                                years old
-                            </Grid>
+                            {this.state.id1 ?
+                                <Grid item xs={6}>
+                                    and I'm
+                                    <div id="umur">
+                                        <TextField
+                                            onChange={this.handleChange}
+                                            id="age"
+                                            name="age"
+                                            placeholder="Age"
+                                            type="number"
+                                            required
+                                        />
+                                    </div>
+                                    years old
+                                </Grid>
+                                : ""
+                            }
                         </Grid>
                         <Grid container xs={12} spacing={2}>
-                            <Grid item xs={6}>
-                                My favourite color is
-                                <div id="warna">
+                            {this.state.id2 ?
+                                <Grid item xs={6}>
+                                    My favourite color is
+                                    <div id="warna">
+                                        <FormControl className={this.useStyles1.formControl}>
+                                            <Select
+                                                name="favouriteColor"
+                                                select
+                                                id="color"
+                                                onChange={this.handleChange}
+                                                placeholder="Color"
+                                                required
+                                            >
+                                                <MenuItem value={""} disabled>
+                                                    Select
+                                                </MenuItem>
+                                                <MenuItem value={"Blue"}>Blue</MenuItem>
+                                                <MenuItem value={"Red"}>Red</MenuItem>
+                                                <MenuItem value={"Green"}>Green</MenuItem>
+                                            </Select>
+                                        </FormControl>
+                                    </div>
+                                </Grid>
+                                : ""}
+                            {this.state.id3 ?
+                                <Grid item xs={6}>
+                                    and my dress size is
                                     <FormControl className={this.useStyles1.formControl}>
                                         <Select
-                                            name="favouriteColor"
-                                            select
-                                            id="color"
+                                            name="size"
+                                            id="size"
                                             onChange={this.handleChange}
-                                            placeholder="Color"
                                             required
                                         >
-                                            <MenuItem value={""} disabled>
-                                                Select
+                                            <MenuItem value="" disabled>
+                                                Size
                                             </MenuItem>
-                                            <MenuItem value={"Blue"}>Blue</MenuItem>
-                                            <MenuItem value={"Red"}>Red</MenuItem>
-                                            <MenuItem value={"Green"}>Green</MenuItem>
+                                            <MenuItem value="1">1</MenuItem>
+                                            <MenuItem value="2">2</MenuItem>
+                                            <MenuItem value="3">3</MenuItem>
                                         </Select>
                                     </FormControl>
-                                </div>
-                            </Grid>
-                            <Grid item xs={6}>
-                                and my dress size is
+                                    <FormControl className={this.useStyles1.formControl}>
+                                        <Select
+                                            name="sizeType"
+                                            id="code"
+                                            onChange={this.handleChange}
+                                            required
+                                        >
+                                            <MenuItem value="" disabled>
+                                                Code
+                                            </MenuItem>
+                                            <MenuItem value="Euro">Euro</MenuItem>
+                                            <MenuItem value="US">US</MenuItem>
+                                            <MenuItem value="JPN">JPN</MenuItem>
+                                        </Select>
+                                    </FormControl>
+                                </Grid>
+                                : ""}
+                        </Grid>
+                        {this.state.id4 ?
+                            <Grid container xs={12}>
+                                I live in
                                 <FormControl className={this.useStyles1.formControl}>
                                     <Select
-                                        name="size"
-                                        id="size"
+                                        name="city"
+                                        id="kota"
                                         onChange={this.handleChange}
                                         required
                                     >
                                         <MenuItem value="" disabled>
-                                            Size
+                                            City
                                         </MenuItem>
-                                        <MenuItem value="1">1</MenuItem>
-                                        <MenuItem value="2">2</MenuItem>
-                                        <MenuItem value="3">3</MenuItem>
+                                        <MenuItem value="Taipe">Taipe</MenuItem>
+                                        <MenuItem value="Jakarta">Jakarta</MenuItem>
+                                        <MenuItem value="Malvoch">Malvoch</MenuItem>
                                     </Select>
                                 </FormControl>
                                 <FormControl className={this.useStyles1.formControl}>
                                     <Select
-                                        name="sizeType"
-                                        id="code"
+                                        name="country"
+                                        id="negara"
+                                        onChange={this.handleChange}
+                                        required
+                                    >
+                                        <MenuItem value="" disabled>
+                                            Contry
+                                        </MenuItem>
+                                        <MenuItem value="China">China</MenuItem>
+                                        <MenuItem value="Thailand">Thailand</MenuItem>
+                                        <MenuItem value="German">German</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            </Grid>
+                            : ""}
+                        {this.state.id5 ?
+                            <Grid container xs={12}>
+                                and I need to use this dress at
+                                <DatePickerComponent
+                                    name="needToUseAt"
+                                    onChange={this.handleChange}
+                                    className="date"
+                                    placeholder="Date"
+                                    format="dd MMMMMMMMMM yyyy"
+                                    required
+                                />
+                            </Grid>
+                            : ""}
+                        {this.state.id6 ?
+                            <Grid container xs={12}>
+                                <input type="text" id="namaFile" readOnly />
+                                <AiOutlineCamera
+                                    type="button"
+                                    id="klikFile"
+                                    value="Klik Me"
+                                    onClick={this.klikFunction}
+                                    required
+                                />
+                                <input
+                                    onChange={this.handleChangeFile}
+                                    name="photo"
+                                    type="file"
+                                    id="file"
+                                    accept="image/png, image/jpeg,file/pdf"
+                                    style={{ backgroundColor: "black", visibility: "collapse" }}
+                                    required
+                                />
+
+                            </Grid>
+                            : ""}
+                        {this.state.id7 ?
+                            <Grid container xs={12}>
+
+                                <FormControl className={this.useStyles1.formControl}>
+                                    <Select
+                                        name="budget"
+                                        id="budget"
+                                        onChange={this.handleChangeBudget}
+                                        required
+                                    >
+                                        <MenuItem value="" diabled>
+                                            {" "}
+                                            Budget{" "}
+                                        </MenuItem>
+                                        <MenuItem value="2000">starting from 2000(USD)</MenuItem>
+                                        <MenuItem value="10000">
+                                            starting from 10000(USD)
+                                        </MenuItem>
+                                        <MenuItem value="100000">
+                                            starting from 100000(USD)
+                                        </MenuItem>
+                                        <MenuItem id="others" value="others">
+                                            {" "}
+                                            {this.state.test
+                                                ? this.state.budget + " (USD)"
+                                                : "Others"}
+                                        </MenuItem>
+                                    </Select>
+                                </FormControl>
+                            </Grid>
+                            : ""}
+                        {this.state.id8 ?
+                            <Grid container xs={12}>
+                                you can email me at
+                                <AutosizeInput
+                                    onChange={this.handleChange}
+                                    id="email"
+                                    placeholder="Email"
+                                    type="email"
+                                    name="email"
+                                    width="140px"
+                                    required
+                                />
+                            </Grid>
+                            : ""}
+                        {this.state.id9 ?
+                            <Grid container xs={12}>
+                                or WhatsApp me at
+                                <FormControl style={{ width: "30%" }}>
+                                    <Select
+                                        name="phoneCode"
+                                        id="phoneCode"
                                         onChange={this.handleChange}
                                         required
                                     >
                                         <MenuItem value="" disabled>
                                             Code
                                         </MenuItem>
-                                        <MenuItem value="Euro">Euro</MenuItem>
-                                        <MenuItem value="US">US</MenuItem>
-                                        <MenuItem value="JPN">JPN</MenuItem>
+                                        <MenuItem value="62">+62</MenuItem>
+                                        <MenuItem value="73">+73</MenuItem>
+                                        <MenuItem value="13">+13</MenuItem>
                                     </Select>
                                 </FormControl>
+                                <AutosizeInput
+                                    onChange={this.handleChangeNumber}
+                                    id="tel"
+                                    name="nomor"
+                                    placeholder="Phone Number"
+                                    onChange={this.handleChangeNumber.bind(this)}
+                                />
                             </Grid>
-                        </Grid>
-                        <Grid container xs={12}>
-                            I live in
-                            <FormControl className={this.useStyles1.formControl}>
-                                <Select
-                                    name="city"
-                                    id="kota"
-                                    onChange={this.handleChange}
-                                    required
-                                >
-                                    <MenuItem value="" disabled>
-                                        City
-                                    </MenuItem>
-                                    <MenuItem value="Taipe">Taipe</MenuItem>
-                                    <MenuItem value="Jakarta">Jakarta</MenuItem>
-                                    <MenuItem value="Malvoch">Malvoch</MenuItem>
-                                </Select>
-                            </FormControl>
-                            <FormControl className={this.useStyles1.formControl}>
-                                <Select
-                                    name="country"
-                                    id="negara"
-                                    onChange={this.handleChange}
-                                    required
-                                >
-                                    <MenuItem value="" disabled>
-                                        Contry
-                                    </MenuItem>
-                                    <MenuItem value="China">China</MenuItem>
-                                    <MenuItem value="Thailand">Thailand</MenuItem>
-                                    <MenuItem value="German">German</MenuItem>
-                                </Select>
-                            </FormControl>
-                        </Grid>
-                        <Grid container xs={12}>
-                            and I need to use this dress at
-                            <DatePickerComponent
-                                name="needToUseAt"
-                                onChange={this.handleChange}
-                                className="date"
-                                placeholder="Date"
-                                format="dd MMMMMMMMMM yyyy"
-                                required
-                            />
-                        </Grid>
-                        <Grid container xs={12}>
-                            <input type="text" id="namaFile" readOnly />
-                            <AiOutlineCamera
-                                type="button"
-                                id="klikFile"
-                                value="Klik Me"
-                                onClick={this.klikFunction}
-                                required
-                            />
-                            <input
-                                onChange={this.handleChangeFile}
-                                name="photo"
-                                type="file"
-                                id="file"
-                                accept="image/png, image/jpeg,file/pdf"
-                                style={{ backgroundColor: "black", visibility: "collapse" }}
-                                required
-                            />
-
-                        </Grid>
-                        <Grid container xs={12}>
-
-                            <FormControl className={this.useStyles1.formControl}>
-                                <Select
-                                    name="budget"
-                                    id="budget"
-                                    onChange={this.handleChangeBudget}
-                                    required
-                                >
-                                    <MenuItem value="" diabled>
-                                        {" "}
-                                        Budget{" "}
-                                    </MenuItem>
-                                    <MenuItem value="2000">starting from 2000(USD)</MenuItem>
-                                    <MenuItem value="10000">
-                                        starting from 10000(USD)
-                                    </MenuItem>
-                                    <MenuItem value="100000">
-                                        starting from 100000(USD)
-                                    </MenuItem>
-                                    <MenuItem id="others" value="others">
-                                        {" "}
-                                        {this.state.test
-                                            ? this.state.budget + " (USD)"
-                                            : "Others"}
-                                    </MenuItem>
-                                </Select>
-                            </FormControl>
-                        </Grid>
-                        <Grid container xs={12}>
-                            you can email me at
-                            <AutosizeInput
-                                onChange={this.handleChange}
-                                id="email"
-                                placeholder="Email"
-                                type="email"
-                                name="email"
-                                width="140px"
-                                required
-                            />
-                            or WhatsApp me at
-                            <FormControl style={{ width: "30%" }}>
-                                <Select
-                                    name="phoneCode"
-                                    id="phoneCode"
-                                    onChange={this.handleChange}
-                                    required
-                                >
-                                    <MenuItem value="" disabled>
-                                        Code
-                                    </MenuItem>
-                                    <MenuItem value="62">+62</MenuItem>
-                                    <MenuItem value="73">+73</MenuItem>
-                                    <MenuItem value="13">+13</MenuItem>
-                                </Select>
-                            </FormControl>
-                            <AutosizeInput
-                                onChange={this.handleChangeNumber}
-                                id="tel"
-                                name="nomor"
-                                placeholder="Phone Number"
-                                onChange={this.handleChangeNumber.bind(this)}
-                            />
-                        </Grid>
-                        <Grid container xs={12}>
-                            <Grid xs />
-                            <Grid xs={6} >
-                                <ButtonText onClick={this.handleSubmit}>
-                                    SUBMIT MY REQUEST
-                                </ButtonText>
+                            : ""}
+                        {this.state.id10 ?
+                            <Grid container xs={12}>
+                                <Grid xs />
+                                <Grid xs={6} >
+                                    <ButtonText onClick={this.handleSubmit}>
+                                        SUBMIT MY REQUEST
+                                    </ButtonText>
+                                </Grid>
+                                <Grid xs />
                             </Grid>
-                            <Grid xs />
-                        </Grid>
+                            : ""}
                     </Grid >
                     <Grid xs />
                 </Grid>}
-                {this.state.uatama ?
-                    <Grid className={'Budget2'} container>
-                        <Grid container xs={12}>
-                            My Prefer Budget
-                            <AutosizeInput
-                                onChange={this.handleChangeBudget2}
-                                id="prefB"
-                                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-                                placeholder="Prefer Budget"
-                                type="number"
-                                name="prefB"
-                            />
-                            USD
-                        </Grid>
+                {
+                    this.state.uatama ?
+                        <Grid className={'Budget2'} container>
+                            <Grid container xs={12}>
+                                My Prefer Budget
+                                <AutosizeInput
+                                    onChange={this.handleChangeBudget2}
+                                    id="prefB"
+                                    pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+                                    placeholder="Prefer Budget"
+                                    type="number"
+                                    name="prefB"
+                                />
+                                USD
+                            </Grid>
 
-                        <Grid container xs={12} spacing={2}>
-                            <Grid item xs={6}>
-                                <ButtonText onClick={this.handleSubmitBudget}>ENTER</ButtonText>
+                            <Grid container xs={12} spacing={2}>
+                                <Grid item xs={6}>
+                                    <ButtonText onClick={this.handleSubmitBudget}>ENTER</ButtonText>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <ButtonText
+                                        style={{
+                                            margin: "30px",
+                                            backgroundColor: "black",
+                                            color: "white",
+                                        }}
+                                        onClick={this.handleSubmitCancelBudget}
+                                    >
+                                        CANCEL
+                                    </ButtonText>
+                                </Grid>
                             </Grid>
-                            <Grid item xs={6}>
-                                <ButtonText
-                                    style={{
-                                        margin: "30px",
-                                        backgroundColor: "black",
-                                        color: "white",
-                                    }}
-                                    onClick={this.handleSubmitCancelBudget}
-                                >
-                                    CANCEL
-                                </ButtonText>
-                            </Grid>
-                        </Grid>
-                    </Grid >
-                    : ''}
+                        </Grid >
+                        : ''
+                }
             </div >
         );
     }

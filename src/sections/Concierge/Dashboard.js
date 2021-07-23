@@ -28,7 +28,9 @@ class Dashboard extends Component {
 
     render() {
         return (
-            <div >
+
+            <Grid container spacing={3}>
+                <Grid xs />
                 <Grid container xs={6}>
                     <Grid item xs={12}>
                         <FaTimes></FaTimes> CLOSE
@@ -39,23 +41,34 @@ class Dashboard extends Component {
                         <SectionParagraph value={this.state.paragraph3} />
                         <SectionParagraph value={this.state.paragraph4} />
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={12}
+                        justifyContent="center"
+                        alignItems="center">
                         <ButtonText value="Start" >START THE EXPERIENCE</ButtonText>
                     </Grid>
                     <Grid item xs={12}>
                         <SectionTextSmall value="Need connect fast ? We are available here"></SectionTextSmall>
                     </Grid>
-                    <Grid item xs={12} spacing={4}>
-                        <AiOutlineInstagram></AiOutlineInstagram>
-                        <AiOutlineWhatsApp
-                            style={{ marginLeft: "2rem" }}
-                        ></AiOutlineWhatsApp>
-                        <IoMailOutline style={{ marginLeft: "2rem" }}></IoMailOutline>
-                        <AiOutlinePhone style={{ marginLeft: "2rem" }}></AiOutlinePhone>
+                    <Grid container >
+                        <Grid item xs={6} sm={3}>
+                            <AiOutlineInstagram></AiOutlineInstagram>
+                        </Grid>
+                        <Grid item xs={6} sm={3}>
+                            <AiOutlineWhatsApp
+                                style={{ marginLeft: "2rem" }}
+                            ></AiOutlineWhatsApp>
+                        </Grid>
+                        <Grid item xs={6} sm={3}>
+                            <IoMailOutline style={{ marginLeft: "2rem" }}></IoMailOutline>
+                        </Grid>
+                        <Grid item xs={6} sm={3}>
+                            <AiOutlinePhone style={{ marginLeft: "2rem" }}></AiOutlinePhone>
+                        </Grid>
                     </Grid>
 
-                </Grid>
-            </div>
+                </Grid >
+                <Grid xs />
+            </Grid >
         );
     }
 }
