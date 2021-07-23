@@ -103,9 +103,7 @@ export const BottomIcon = styled.div`
     
 `
 export const ThanksMenu = styled.div`
-    position: absolute;
-    margin-top: 10%;
-    width:60%;
+    margin-top: 20%;
     height:auto;
     justify-content:center;
 

@@ -29,13 +29,24 @@ class Dashboard extends Component {
     render() {
         return (
 
-            <Grid container spacing={3}>
+            <Grid container spacing={3}
+                style={{
+                    marginTop: "2%"
+                }}
+            >
                 <Grid xs />
                 <Grid container xs={6}>
                     <Grid item xs={12}>
-                        <FaTimes></FaTimes> CLOSE
-                    </Grid>
-                    <Grid item xs={12}>
+                        <SectionTextMedium value="WELCOME TO"></SectionTextMedium>
+                        <SectionTextMedium value="THE FASHION CONCIERGE"></SectionTextMedium>
+                        <hr
+                            style={{
+                                border: "1px solid white",
+                                width: "45px",
+                                margin: "auto",
+                                marginBottom: "20px"
+                            }}
+                        ></hr>
                         <SectionParagraph value={this.state.paragraph} />
                         <SectionParagraph value={this.state.paragraph2} />
                         <SectionParagraph value={this.state.paragraph3} />
@@ -45,7 +56,7 @@ class Dashboard extends Component {
                         justifyContent="center"
                         alignItems="center">
                         <Grid item xs />
-                        <Grid item xs={6} sm={3}>
+                        <Grid item xs={6} sm={3} style={{ marginBottom: "20px" }}>
                             <ButtonText value="Start" >START THE EXPERIENCE</ButtonText>
                         </Grid>
                         <Grid item xs />
@@ -71,7 +82,13 @@ class Dashboard extends Component {
                     </Grid>
 
                 </Grid >
-                <Grid xs />
+                <Grid xs
+                    justifyContent="flex-end"
+                    alignItems="center" >
+                    <Grid item xs={12}>
+                        <FaTimes></FaTimes> CLOSE
+                    </Grid>
+                </Grid>
             </Grid >
         );
     }

@@ -17,21 +17,25 @@ class Thanks extends Component {
 
     render() {
         return (
-            <Grid container xs={6}>
-                <ThanksMenu >
-                    <ThanksItem>
-                        <div >
-                            <SectionTextMedium value="THANK YOU" ></SectionTextMedium>
-                            <hr style={{ border: '1px solid white', width: '80px', margin: 'auto' }}></hr>
-                            <br />
-                            <SectionParagraph value={this.state.paragraph}> </SectionParagraph>
-                            <SectionParagraph value={this.state.paragraph2}> </SectionParagraph>
-                        </div>
-                    </ThanksItem>
-                    <ThanksItem>
-                        <ButtonThanks value="Start">BACK TO DASHBOARD</ButtonThanks>
-                    </ThanksItem>
-                </ThanksMenu>
+            <Grid container spacing={3}>
+                <Grid xs />
+                <Grid xs={6} justifyContent="center">
+                    <ThanksMenu >
+                        <ThanksItem>
+                            <div >
+                                <SectionTextMedium value="THANK YOU" ></SectionTextMedium>
+                                <hr style={{ border: '1px solid white', width: '80px', margin: 'auto' }}></hr>
+                                <br />
+                                <SectionParagraph value={this.state.paragraph}> </SectionParagraph>
+                                <SectionParagraph value={this.state.paragraph2}> </SectionParagraph>
+                            </div>
+                        </ThanksItem>
+                        <ThanksItem>
+                            <ButtonThanks value="Start">BACK TO DASHBOARD</ButtonThanks>
+                        </ThanksItem>
+                    </ThanksMenu>
+                </Grid>
+                <Grid xs />
             </Grid>
         );
     }
