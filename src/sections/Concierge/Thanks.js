@@ -4,6 +4,7 @@ import SectionTextMedium from '../../components/SectionTextMedium/index';
 import SectionParagraph from '../../components/SectionParagraph/index';
 import Scroll from 'react-scroll';
 import Grid from '@material-ui/core/Grid';
+import { Link } from 'react-router-dom'
 
 
 class Thanks extends Component {
@@ -30,9 +31,13 @@ class Thanks extends Component {
                                 <SectionParagraph value={this.state.paragraph2}> </SectionParagraph>
                             </div>
                         </ThanksItem>
-                        <ThanksItem>
-                            <ButtonThanks value="Start">BACK TO DASHBOARD</ButtonThanks>
-                        </ThanksItem>
+                        <Link to="/">
+                            <ThanksItem>
+
+                                <ButtonThanks value="Start">BACK TO DASHBOARD</ButtonThanks>
+
+                            </ThanksItem>
+                        </Link>
                     </ThanksMenu>
                 </Grid>
                 <Grid xs />

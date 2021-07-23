@@ -57,7 +57,9 @@ class Dashboard extends Component {
                         alignItems="center">
                         <Grid item xs />
                         <Grid item xs={6} sm={3} style={{ marginBottom: "20px" }}>
+
                             <ButtonText value="Start" >START THE EXPERIENCE</ButtonText>
+
                         </Grid>
                         <Grid item xs />
                     </Grid>
