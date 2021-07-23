@@ -41,10 +41,14 @@ class Dashboard extends Component {
                         <SectionParagraph value={this.state.paragraph3} />
                         <SectionParagraph value={this.state.paragraph4} />
                     </Grid>
-                    <Grid item xs={12}
+                    <Grid container xs={12}
                         justifyContent="center"
                         alignItems="center">
-                        <ButtonText value="Start" >START THE EXPERIENCE</ButtonText>
+                        <Grid item xs />
+                        <Grid item xs={6} sm={3}>
+                            <ButtonText value="Start" >START THE EXPERIENCE</ButtonText>
+                        </Grid>
+                        <Grid item xs />
                     </Grid>
                     <Grid item xs={12}>
                         <SectionTextSmall value="Need connect fast ? We are available here"></SectionTextSmall>

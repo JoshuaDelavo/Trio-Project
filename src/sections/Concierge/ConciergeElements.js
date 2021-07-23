@@ -78,7 +78,7 @@ export const ConItem = styled.div`
 `
 export const ButtonText = styled.button`
     backgroun-color:white;
-    width:35%;
+    width:100%;
     height:50px;
     text-align: center;
     text-decoration: none;
