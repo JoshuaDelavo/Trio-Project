@@ -111,15 +111,12 @@ class Question2 extends Component {
         this.setState({ [res.target.name]: res.target.value });
     }
     handleChangeFile2(event) {
-        console.log("i was here")
         const idfield = this.state.fields[event.target.name];
         this.setState({ [idfield]: true });
         this.setState({ photo: event.target.files[0] });
     }
     handleChangeBudget1(event) {
-        console.log(event.target.value)
         if (event.target.value == "other") {
-            console.log(this.state.utama)
             this.setState({ utama: !this.state.utama })
         } else {
             this.setState({ test: false });
@@ -155,9 +152,7 @@ class Question2 extends Component {
         const stateObj = this.state.datafix;
         formData.append("data", JSON.stringify(stateObj));
         formData.append("file.imageReferance", stateObj.photo);
-        // ConciergeApi.create(formData);
-        console.log("State", stateObj);
-        console.log("FormDAta", formData);
+        ConciergeApi.create(formData);
 
     }
     handleChangeBudget2(event) {
