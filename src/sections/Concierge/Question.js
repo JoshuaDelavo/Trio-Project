@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { AiOutlineCamera } from "react-icons/ai";
 import { Select, MenuItem } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import AutosizeInput from "react-input-autosize";
 import FormControl from "@material-ui/core/FormControl";
 import "date-fns";
 import ConciergeApi from "../../config/ConciergeApi";
@@ -11,28 +10,28 @@ import { DatePickerComponent } from "@syncfusion/ej2-react-calendars";
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import axios from "axios";
+import { Link } from 'react-router-dom'
 
-class Question extends Component {
+class Question2 extends Component {
     constructor() {
         super();
         this.state = {
-            utama: true,
             fields: {
-                name: 1,
-                age: 2,
-                favouriteColor: 3,
-                size: 3,
-                sizeType: 4,
-                city: 4,
-                country: 5,
-                needToUseAt: 6,
-                photo: 7,
-                budget: 8,
-                email: 9,
-                phoneCode: 9,
-                nomor: 10,
+                name: "id1",
+                age: "id2",
+                favouriteColor: "id3",
+                size: "id3",
+                sizeType: "id4",
+                city: "id4",
+                country: "id5",
+                needToUseAt: "id6",
+                photo: "id7",
+                budget: "id8",
+                email: "id9",
+                phoneCode: "id9",
+                nomor: "id10",
             },
-            names: false,
+            utama: true,
             test: false,
             id1: false,
             id2: false,
@@ -44,11 +43,27 @@ class Question extends Component {
             id8: false,
             id9: false,
             id10: false,
+            others: "other",
+
+            name: "",
+            age: "",
+            favouriteColor: "",
+            size: "",
+            sizeType: "",
+            city: "",
+            country: "",
+            needToUseAt: "",
+            photo: "",
+            email: "",
+            budget: "",
+            phoneCode: "",
+            waPhoneNumber: ""
+
 
         };
 
-        this.handleChangeFile = this.handleChangeFile.bind(this);
-        this.handleChangeBudget = this.handleChangeBudget.bind(this);
+        this.handleChangeFile2 = this.handleChangeFile2.bind(this);
+        this.handleChangeBudget1 = this.handleChangeBudget1.bind(this);
         this.handleChangeNumber = this.handleChangeNumber.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleSubmitBudget = this.handleSubmitBudget.bind(this);
@@ -56,16 +71,16 @@ class Question extends Component {
         this.handleChangeBudget2 = this.handleChangeBudget2.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
-    componentDidMount() {
-        axios
-            .get(
-                "https://raw.githubusercontent.com/David-Haim-zz/CountriesToCitiesJSON/master/countriesToCities.json",
-            )
-            .then(function (response) {
-                // this.setState({ data: response.data });
-                console.log(response.data);
-            });
-    }
+    // componentDidMount() {
+    //     axios
+    //         .get(
+    //             "https://raw.githubusercontent.com/David-Haim-zz/CountriesToCitiesJSON/master/countriesToCities.json",
+    //         )
+    //         .then(function (response) {
+    //             // this.setState({ data: response.data });
+    //             console.log(response.data);
+    //         });
+    // }
     useStyles1 = makeStyles((theme) => ({
         formControl: {
             margin: theme.spacing(1),
@@ -91,88 +106,89 @@ class Question extends Component {
     }
 
     handleChange(res) {
+        const idfield = this.state.fields[res.target.name];
+        this.setState({ [idfield]: true });
         this.setState({ [res.target.name]: res.target.value });
-        var cek = res.target.name;
-        var iter = parseInt(this.state.fields[cek], 10);
-        console.log(iter);
-        document.getElementById(iter).className = "show";
     }
-    handleChangeFile(event) {
-        document.getElementById(7).className = "show";
+    handleChangeFile2(event) {
+        console.log("i was here")
+        const idfield = this.state.fields[event.target.name];
+        this.setState({ [idfield]: true });
         this.setState({ photo: event.target.files[0] });
-        document.getElementById("namaFile").value = event.target.files[0].name;
-        var test = document.getElementById("namaFile");
-        var length = test.value.length;
-        test.style.width = length * 12 + "px";
     }
-    handleChangeBudget(event) {
-        if (event.target.value == "others") {
-            document.getElementById("budget2").className = "show";
-            document.getElementById("utama").className = "hide";
+    handleChangeBudget1(event) {
+        console.log(event.target.value)
+        if (event.target.value == "other") {
+            console.log(this.state.utama)
+            this.setState({ utama: !this.state.utama })
         } else {
             this.setState({ test: false });
             this.setState({ budget: event.target.value });
         }
-        document.getElementById(8).className = "show";
+        this.setState({ id8: true });
     }
     handleChangeNumber(event) {
         this.setState({
             waPhoneNumber: "+" + this.state.phoneCode + event.target.value,
         });
-        document.getElementById(10).className = "show";
-        var test = document.getElementById("tel");
-        var length = test.value.length;
-        test.style.width = length * 12 + "px";
+        this.setState({
+            datafix: {
+                name: this.state.name,
+                age: this.state.age,
+                favouriteColor: this.state.favouriteColor,
+                size: this.state.size,
+                sizeType: this.state.sizeType,
+                city: this.state.city,
+                country: this.state.country,
+                needToUseAt: this.state.needToUseAt,
+                photo: this.state.photo,
+                budget: this.state.budget,
+                email: this.state.email,
+                waPhoneNumber: this.state.waPhoneNumber
+            }
+        })
+        this.setState({ id10: true });
     }
     handleSubmit() {
+
         var formData = new FormData();
-        const stateObj = this.state;
+        const stateObj = this.state.datafix;
         formData.append("data", JSON.stringify(stateObj));
         formData.append("file.imageReferance", stateObj.photo);
-        ConciergeApi.create(formData);
-        document.getElementById("second").hidden = true;
-        document.getElementById("third").hidden = false;
-        console.log(stateObj);
+        // ConciergeApi.create(formData);
+        console.log("State", stateObj);
+        console.log("FormDAta", formData);
+
     }
     handleChangeBudget2(event) {
         this.setState({ budget: event.target.value });
         this.setState({ test: true });
-        var test = document.getElementById("budget");
-        var length = event.target.value.length;
-        test.style.width = (6 + length) * 13 + "px";
-        if (window.innerWidth < 1024) {
-            var cek = document.getElementById("m8");
-            cek.style.marginLeft = "-" + 186 + "px";
-            cek = document.getElementById("m82");
-            cek.style.marginLeft = 20 + "px";
-        }
     }
     handleSubmitBudget() {
-        document.getElementById("utama").className = "show";
-        document.getElementById("budget2").className = "hide";
+        this.setState({ utama: !this.state.utama });
+        this.setState({ others: this.state.budget });
     }
     handleSubmitCancelBudget() {
         this.setState({ budget: "" });
         this.setState({ test: false });
-        document.getElementById("utama").className = "show";
-        document.getElementById("budget2").className = "hide";
+        this.setState({ utama: !this.state.utama })
     }
     klikFunction() {
-        document.getElementById("file").click();
+        document.getElementById("id7").click();
     }
 
     render() {
         return (
-            <div>{this.state.uatama ? "" :
-                <Grid container xs={12} >
-                    <Grid xs />
+            <div>{this.state.utama ?
+                <Grid container style={{ marginTop: "10%", color: "white" }} >
+                    <Grid item xs />
                     <Grid className={'utama'} xs={6} container spacing={1}>
-                        <Grid container xs={12} spacing={2}>
+                        <Grid container spacing={2}>
                             <Grid item xs={6}>
                                 My Name is
                                 <TextField
                                     onChange={this.handleChange}
-                                    id="name"
+                                    id="id1"
                                     placeholder="Name"
                                     name="name"
                                     type="text"
@@ -187,7 +203,7 @@ class Question extends Component {
                                     <div id="umur">
                                         <TextField
                                             onChange={this.handleChange}
-                                            id="age"
+                                            id="id2"
                                             name="age"
                                             placeholder="Age"
                                             type="number"
@@ -199,7 +215,7 @@ class Question extends Component {
                                 : ""
                             }
                         </Grid>
-                        <Grid container xs={12} spacing={2}>
+                        <Grid container spacing={2}>
                             {this.state.id2 ?
                                 <Grid item xs={6}>
                                     My favourite color is
@@ -207,15 +223,13 @@ class Question extends Component {
                                         <FormControl className={this.useStyles1.formControl}>
                                             <Select
                                                 name="favouriteColor"
-                                                select
-                                                id="color"
+                                                id="id3"
+                                                value={this.state.favouriteColor}
                                                 onChange={this.handleChange}
                                                 placeholder="Color"
                                                 required
                                             >
-                                                <MenuItem value={""} disabled>
-                                                    Select
-                                                </MenuItem>
+                                                <MenuItem value={""} disabled>Color </MenuItem>
                                                 <MenuItem value={"Blue"}>Blue</MenuItem>
                                                 <MenuItem value={"Red"}>Red</MenuItem>
                                                 <MenuItem value={"Green"}>Green</MenuItem>
@@ -230,11 +244,11 @@ class Question extends Component {
                                     <FormControl className={this.useStyles1.formControl}>
                                         <Select
                                             name="size"
-                                            id="size"
+                                            id="id3"
                                             onChange={this.handleChange}
                                             required
                                         >
-                                            <MenuItem value="" disabled>
+                                            <MenuItem value="allSize" disabled>
                                                 Size
                                             </MenuItem>
                                             <MenuItem value="1">1</MenuItem>
@@ -245,7 +259,7 @@ class Question extends Component {
                                     <FormControl className={this.useStyles1.formControl}>
                                         <Select
                                             name="sizeType"
-                                            id="code"
+                                            id="id4"
                                             onChange={this.handleChange}
                                             required
                                         >
@@ -261,12 +275,12 @@ class Question extends Component {
                                 : ""}
                         </Grid>
                         {this.state.id4 ?
-                            <Grid container xs={12}>
+                            <Grid container >
                                 I live in
                                 <FormControl className={this.useStyles1.formControl}>
                                     <Select
                                         name="city"
-                                        id="kota"
+                                        id="id4"
                                         onChange={this.handleChange}
                                         required
                                     >
@@ -281,7 +295,7 @@ class Question extends Component {
                                 <FormControl className={this.useStyles1.formControl}>
                                     <Select
                                         name="country"
-                                        id="negara"
+                                        id="id5"
                                         onChange={this.handleChange}
                                         required
                                     >
@@ -296,10 +310,11 @@ class Question extends Component {
                             </Grid>
                             : ""}
                         {this.state.id5 ?
-                            <Grid container xs={12}>
+                            <Grid container >
                                 and I need to use this dress at
                                 <DatePickerComponent
                                     name="needToUseAt"
+                                    id="id6"
                                     onChange={this.handleChange}
                                     className="date"
                                     placeholder="Date"
@@ -309,7 +324,8 @@ class Question extends Component {
                             </Grid>
                             : ""}
                         {this.state.id6 ?
-                            <Grid container xs={12}>
+                            <Grid container >
+                                I have preferance for my dress
                                 <input type="text" id="namaFile" readOnly />
                                 <AiOutlineCamera
                                     type="button"
@@ -319,28 +335,29 @@ class Question extends Component {
                                     required
                                 />
                                 <input
-                                    onChange={this.handleChangeFile}
+                                    onChange={this.handleChangeFile2}
                                     name="photo"
+                                    value=""
                                     type="file"
-                                    id="file"
+                                    id="id7"
                                     accept="image/png, image/jpeg,file/pdf"
-                                    style={{ backgroundColor: "black", visibility: "collapse" }}
+                                    style={{ backgroundColor: "black", color: "white", display: "colapse" }}
                                     required
                                 />
 
                             </Grid>
                             : ""}
                         {this.state.id7 ?
-                            <Grid container xs={12}>
-
+                            <Grid container >
+                                My budget is
                                 <FormControl className={this.useStyles1.formControl}>
                                     <Select
                                         name="budget"
-                                        id="budget"
-                                        onChange={this.handleChangeBudget}
+                                        id="id8"
+                                        onChange={this.handleChangeBudget1}
                                         required
                                     >
-                                        <MenuItem value="" diabled>
+                                        <MenuItem value="" disabled>
                                             {" "}
                                             Budget{" "}
                                         </MenuItem>
@@ -351,7 +368,7 @@ class Question extends Component {
                                         <MenuItem value="100000">
                                             starting from 100000(USD)
                                         </MenuItem>
-                                        <MenuItem id="others" value="others">
+                                        <MenuItem id="others" value={this.state.others}>
                                             {" "}
                                             {this.state.test
                                                 ? this.state.budget + " (USD)"
@@ -362,11 +379,11 @@ class Question extends Component {
                             </Grid>
                             : ""}
                         {this.state.id8 ?
-                            <Grid container xs={12}>
+                            <Grid container >
                                 you can email me at
-                                <AutosizeInput
+                                <TextField
                                     onChange={this.handleChange}
-                                    id="email"
+                                    id="id9"
                                     placeholder="Email"
                                     type="email"
                                     name="email"
@@ -376,12 +393,12 @@ class Question extends Component {
                             </Grid>
                             : ""}
                         {this.state.id9 ?
-                            <Grid container xs={12}>
+                            <Grid container >
                                 or WhatsApp me at
                                 <FormControl style={{ width: "30%" }}>
                                     <Select
                                         name="phoneCode"
-                                        id="phoneCode"
+                                        id="id9"
                                         onChange={this.handleChange}
                                         required
                                     >
@@ -393,7 +410,7 @@ class Question extends Component {
                                         <MenuItem value="13">+13</MenuItem>
                                     </Select>
                                 </FormControl>
-                                <AutosizeInput
+                                <TextField
                                     onChange={this.handleChangeNumber}
                                     id="tel"
                                     name="nomor"
@@ -403,25 +420,33 @@ class Question extends Component {
                             </Grid>
                             : ""}
                         {this.state.id10 ?
-                            <Grid container xs={12}>
-                                <Grid xs />
-                                <Grid xs={6} >
-                                    <ButtonText onClick={this.handleSubmit}>
-                                        SUBMIT MY REQUEST
-                                    </ButtonText>
+                            <Grid container >
+                                <Grid item xs />
+                                <Grid item xs={6} >
+                                    <Link to="/Thanks">
+                                        <ButtonText onClick={this.handleSubmit}>
+                                            SUBMIT MY REQUEST
+                                        </ButtonText>
+                                    </Link>
                                 </Grid>
-                                <Grid xs />
+                                <Grid item xs />
                             </Grid>
                             : ""}
                     </Grid >
-                    <Grid xs />
-                </Grid>}
+                    <Grid item xs />
+                </Grid> : ''}
                 {
-                    this.state.uatama ?
-                        <Grid className={'Budget2'} container>
-                            <Grid container xs={12}>
+                    this.state.utama ? "" :
+                        <Grid className={'Budget2'} container
+                            style={{
+                                color: "white",
+                                marginTop: "10%"
+
+                            }}
+                        >
+                            <Grid container>
                                 My Prefer Budget
-                                <AutosizeInput
+                                <TextField
                                     onChange={this.handleChangeBudget2}
                                     id="prefB"
                                     pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
@@ -432,7 +457,7 @@ class Question extends Component {
                                 USD
                             </Grid>
 
-                            <Grid container xs={12} spacing={2}>
+                            <Grid container spacing={2}>
                                 <Grid item xs={6}>
                                     <ButtonText onClick={this.handleSubmitBudget}>ENTER</ButtonText>
                                 </Grid>
@@ -450,11 +475,11 @@ class Question extends Component {
                                 </Grid>
                             </Grid>
                         </Grid >
-                        : ''
+
                 }
             </div >
         );
     }
 }
 
-export default Question;
+export default Question2;

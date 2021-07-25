@@ -14,6 +14,7 @@ import SectionParagraph from "../../components/SectionParagraph/index";
 import Scroll from "react-scroll";
 import { IoMailOutline } from "react-icons/io5";
 import Grid from '@material-ui/core/Grid';
+import { Link } from 'react-router-dom'
 
 class Dashboard extends Component {
     constructor() {
@@ -57,9 +58,9 @@ class Dashboard extends Component {
                         alignItems="center">
                         <Grid item xs />
                         <Grid item xs={6} sm={3} style={{ marginBottom: "20px" }}>
-
-                            <ButtonText value="Start" >START THE EXPERIENCE</ButtonText>
-
+                            <Link to="/Question">
+                                <ButtonText value="Start" >START THE EXPERIENCE</ButtonText>
+                            </Link>
                         </Grid>
                         <Grid item xs />
                     </Grid>

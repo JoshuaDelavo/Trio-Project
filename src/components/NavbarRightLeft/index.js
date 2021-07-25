@@ -59,12 +59,16 @@ const NavbarRightLeft = ({ toggle, toggle2, hamburgerOpen, conciergeOpen }) => {
           <NavLogo to="/">
             <img src={baseURL + logo.logo.url} alt=""></img>
           </NavLogo>
-            <NavTulisan onClick={toggle2}>
+          <NavTulisan >
+            <Link to="/Concierge" style={{ color: 'white' }}>
               THE CONCIERGE{" "}
-              {conciergeOpen ? "" : <BiEditAlt onClick={toggle2}></BiEditAlt>}
-            </NavTulisan>
-          <NavEditIcon onClick={toggle2}>
-            {conciergeOpen ? "" : <BiEditAlt onClick={toggle2}></BiEditAlt>}
+              <BiEditAlt ></BiEditAlt>
+            </Link>
+          </NavTulisan>
+          <NavEditIcon >
+            <Link to="/Concierge" style={{ color: 'white' }}>
+              <BiEditAlt></BiEditAlt>
+            </Link>
           </NavEditIcon>
         </NavbarContainer>
       </Fade>

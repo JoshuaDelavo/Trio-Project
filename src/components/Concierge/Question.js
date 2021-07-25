@@ -81,6 +81,8 @@ class Question extends Component {
   handleChange(res) {
     this.setState({ [res.target.name]: res.target.value });
     var cek = res.target.name;
+    console.log(cek);
+    console.log(res.target.id);
     var iter = parseInt(this.state.fields[cek], 10);
     console.log(iter);
     document.getElementById(iter).className = "show";
