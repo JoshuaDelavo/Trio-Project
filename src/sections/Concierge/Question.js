@@ -11,6 +11,7 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import axios from "axios";
 import { Link } from 'react-router-dom'
+import "./test.css"
 
 class Question2 extends Component {
     constructor() {
@@ -175,13 +176,14 @@ class Question2 extends Component {
     render() {
         return (
             <div>{this.state.utama ?
-                <Grid container style={{ marginTop: "10%", color: "white" }} >
+                <Grid container className="container">
                     <Grid item xs />
                     <Grid className={'utama'} xs={6} container spacing={1}>
                         <Grid container spacing={2}>
                             <Grid item xs={6}>
                                 My Name is
                                 <TextField
+                                    className="inputBox"
                                     onChange={this.handleChange}
                                     id="id1"
                                     placeholder="Name"
@@ -197,6 +199,7 @@ class Question2 extends Component {
                                     and I'm
                                     <div id="umur">
                                         <TextField
+                                            className="inputBox"
                                             onChange={this.handleChange}
                                             id="id2"
                                             name="age"
@@ -215,13 +218,14 @@ class Question2 extends Component {
                                 <Grid item xs={6}>
                                     My favourite color is
                                     <div id="warna">
-                                        <FormControl className={this.useStyles1.formControl}>
+                                        <FormControl required className={this.useStyles1.formControl}>
                                             <Select
                                                 name="favouriteColor"
                                                 id="id3"
                                                 value={this.state.favouriteColor}
                                                 onChange={this.handleChange}
                                                 placeholder="Color"
+                                                autoWidth
                                                 required
                                             >
                                                 <MenuItem value={""} disabled>Color </MenuItem>
@@ -236,11 +240,13 @@ class Question2 extends Component {
                             {this.state.id3 ?
                                 <Grid item xs={6}>
                                     and my dress size is
-                                    <FormControl className={this.useStyles1.formControl}>
+                                    <FormControl required className={this.useStyles1.formControl}>
                                         <Select
                                             name="size"
                                             id="id3"
+                                            autoWidth
                                             onChange={this.handleChange}
+                                            placeholder="Size"
                                             required
                                         >
                                             <MenuItem value="allSize" disabled>
@@ -251,12 +257,14 @@ class Question2 extends Component {
                                             <MenuItem value="3">3</MenuItem>
                                         </Select>
                                     </FormControl>
-                                    <FormControl className={this.useStyles1.formControl}>
+                                    <FormControl required className={this.useStyles1.formControl}>
                                         <Select
                                             name="sizeType"
                                             id="id4"
                                             onChange={this.handleChange}
+                                            placeholder="sizeType"
                                             required
+                                            autoWidth
                                         >
                                             <MenuItem value="" disabled>
                                                 Code
@@ -272,12 +280,14 @@ class Question2 extends Component {
                         {this.state.id4 ?
                             <Grid container >
                                 I live in
-                                <FormControl className={this.useStyles1.formControl}>
+                                <FormControl required className={this.useStyles1.formControl}>
                                     <Select
                                         name="city"
                                         id="id4"
                                         onChange={this.handleChange}
+                                        placeholder="City"
                                         required
+                                        autoWidth
                                     >
                                         <MenuItem value="" disabled>
                                             City
@@ -287,11 +297,13 @@ class Question2 extends Component {
                                         <MenuItem value="Malvoch">Malvoch</MenuItem>
                                     </Select>
                                 </FormControl>
-                                <FormControl className={this.useStyles1.formControl}>
+                                <FormControl required className={this.useStyles1.formControl}>
                                     <Select
                                         name="country"
+                                        placeholder="Country"
                                         id="id5"
                                         onChange={this.handleChange}
+                                        autoWidth
                                         required
                                     >
                                         <MenuItem value="" disabled>
@@ -309,6 +321,7 @@ class Question2 extends Component {
                                 and I need to use this dress at
                                 <DatePickerComponent
                                     name="needToUseAt"
+                                    placeholder="Date"
                                     id="id6"
                                     onChange={this.handleChange}
                                     className="date"
@@ -321,7 +334,7 @@ class Question2 extends Component {
                         {this.state.id6 ?
                             <Grid container >
                                 I have preferance for my dress
-                                <input type="text" id="namaFile" readOnly />
+                                <input type="text" id="namaFile" value={this.state.photo.name} placeholder="Choose File" readOnly />
                                 <AiOutlineCamera
                                     type="button"
                                     id="klikFile"
@@ -336,7 +349,7 @@ class Question2 extends Component {
                                     type="file"
                                     id="id7"
                                     accept="image/png, image/jpeg,file/pdf"
-                                    style={{ backgroundColor: "black", color: "white", display: "colapse" }}
+                                    style={{ backgroundColor: "black", color: "white", visibility: "collapse" }}
                                     required
                                 />
 
@@ -345,12 +358,13 @@ class Question2 extends Component {
                         {this.state.id7 ?
                             <Grid container >
                                 My budget is
-                                <FormControl className={this.useStyles1.formControl}>
+                                <FormControl required className={this.useStyles1.formControl}>
                                     <Select
                                         name="budget"
                                         id="id8"
                                         onChange={this.handleChangeBudget1}
                                         required
+                                        autoWidth
                                     >
                                         <MenuItem value="" disabled>
                                             {" "}
@@ -390,12 +404,13 @@ class Question2 extends Component {
                         {this.state.id9 ?
                             <Grid container >
                                 or WhatsApp me at
-                                <FormControl style={{ width: "30%" }}>
+                                <FormControl required style={{ width: "30%" }}>
                                     <Select
                                         name="phoneCode"
                                         id="id9"
                                         onChange={this.handleChange}
                                         required
+                                        autoWidth
                                     >
                                         <MenuItem value="" disabled>
                                             Code
