@@ -5,6 +5,13 @@
 .MuiInputBase-root {
   color: white;
 }
+.MuiFormControl-root {
+  width: 60px;
+  padding: 5px;
+}
+.MuiGrid-item .MuiGrid-grid-xs-6 {
+  padding-bottom: 10px;
+}
 body {
   background-color: rgb(34, 34, 34);
 }
@@ -13,6 +20,21 @@ body {
 }
 .show {
   display: inline;
+}
+.MuiInputBase-root.MuiInput-root.MuiInput-underline.MuiInputBase-formControl.MuiInput-formControl {
+  color: white;
+  padding-left: 10px;
+  width: 90px;
+}
+.MuiInput-underline {
+  border-bottom: 2px solid #dddddd;
+}
+
+.grid-container {
+  display: inline;
+  grid-template-columns: auto auto auto;
+  background-color: #2196f3;
+  padding: 10px;
 }
 #name {
   outline: 0;
@@ -193,7 +215,6 @@ select option {
   font-style: normal;
   font-weight: 300;
   text-align: center;
-  justify-content: center;
 }
 #budget2 {
   font-size: 20px;
@@ -202,6 +223,7 @@ select option {
   text-align: center;
   justify-content: center;
 }
+
 #m6 {
   margin-left: -230px;
 }
