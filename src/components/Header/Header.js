@@ -54,7 +54,7 @@ const Header = () => {
         <Fade in={!hiddenStyle}>
             <div className={`header`}>
                 <Sidebar hamburgerOpen={hamburgerOpen} toggle={toggle}></Sidebar>
-                <Concierge conciergeOpen={conciergeOpen} toggle2={toggle2}></Concierge>
+                {/* <Concierge conciergeOpen={conciergeOpen} toggle2={toggle2}></Concierge> */}
                 <NavbarRightLeft hamburgerOpen={hamburgerOpen} toggle={toggle} conciergeOpen={conciergeOpen} toggle2={toggle2}></NavbarRightLeft>
             </div>
         </Fade>

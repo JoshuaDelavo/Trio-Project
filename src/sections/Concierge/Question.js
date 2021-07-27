@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { AiOutlineCamera } from "react-icons/ai";
-import { Select, MenuItem } from "@material-ui/core";
+import { Select, MenuItem, Typography, Container } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import FormControl from "@material-ui/core/FormControl";
 import "date-fns";
@@ -72,16 +72,6 @@ class Question2 extends Component {
         this.handleChangeBudget2 = this.handleChangeBudget2.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
-    // componentDidMount() {
-    //     axios
-    //         .get(
-    //             "https://raw.githubusercontent.com/David-Haim-zz/CountriesToCitiesJSON/master/countriesToCities.json",
-    //         )
-    //         .then(function (response) {
-    //             // this.setState({ data: response.data });
-    //             console.log(response.data);
-    //         });
-    // }
     useStyles1 = makeStyles((theme) => ({
         formControl: {
             margin: theme.spacing(1),
@@ -152,7 +142,7 @@ class Question2 extends Component {
         var formData = new FormData();
         const stateObj = this.state.datafix;
         formData.append("data", JSON.stringify(stateObj));
-        formData.append("file.imageReferance", stateObj.photo);
+        formData.append("file.imageReference", stateObj.photo);
         ConciergeApi.create(formData);
 
     }
@@ -175,71 +165,75 @@ class Question2 extends Component {
 
     render() {
         return (
-            <div>{this.state.utama ?
-                <Grid container className="container">
-                    <Grid item xs />
-                    <Grid className={'utama'} xs={6} container spacing={1}>
-                        <Grid container spacing={2}>
-                            <Grid item xs={6}>
-                                My Name is
+            <React.Fragment>
+                {this.state.utama ?
+                    <Container className="container" style={{ marginTop: 150 }}>
+                        <Grid container direction="row"
+                            justifyContent="center"
+                            alignItems="flex-start">
+                            <Grid item align="right" xs={12} md={6} >
+                                <Typography variant="span" style={{ marginRight: 10 }}>My Name is</Typography>
                                 <TextField
+                                    style={{ marginTop: -5 }}
                                     className="inputBox"
                                     onChange={this.handleChange}
                                     id="id1"
                                     placeholder="Name"
                                     name="name"
                                     type="text"
-                                    size="medium"
-                                    helperText="Please Enter You'r Name"
+                                    autoComplete='off'
                                     required
                                 />
                             </Grid>
                             {this.state.id1 ?
-                                <Grid item xs={6}>
-                                    and I'm
-                                    <div id="umur">
-                                        <TextField
-                                            className="inputBox"
-                                            onChange={this.handleChange}
-                                            id="id2"
-                                            name="age"
-                                            placeholder="Age"
-                                            type="number"
-                                            required
-                                        />
-                                    </div>
-                                    years old
+                                <Grid item xs={12} md={6}>
+                                    <Typography variant="span" style={{ marginRight: 10 }}>and I'm</Typography>
+                                    <TextField
+                                        style={{ marginTop: -5 }}
+                                        className="inputBox"
+                                        onChange={this.handleChange}
+                                        id="id2"
+                                        name="age"
+                                        placeholder="Age"
+                                        type="number"
+                                        required
+                                    />
+                                    <Typography variant="span" style={{ marginLeft: 10 }}>years old</Typography>
                                 </Grid>
-                                : ""
+                                :
+                                ""
                             }
                         </Grid>
-                        <Grid container spacing={2}>
+                        <Grid container direction="row"
+                            justifyContent="center"
+                            alignItems="flex-start"
+                            style={{ marginTop: 15 }}>
                             {this.state.id2 ?
-                                <Grid item xs={6}>
-                                    My favourite color is
-                                    <div id="warna">
-                                        <FormControl required className={this.useStyles1.formControl}>
-                                            <Select
-                                                name="favouriteColor"
-                                                id="id3"
-                                                value={this.state.favouriteColor}
-                                                onChange={this.handleChange}
-                                                placeholder="Color"
-                                                autoWidth
-                                                required
-                                            >
-                                                <MenuItem value={""} disabled>Color </MenuItem>
-                                                <MenuItem value={"Blue"}>Blue</MenuItem>
-                                                <MenuItem value={"Red"}>Red</MenuItem>
-                                                <MenuItem value={"Green"}>Green</MenuItem>
-                                            </Select>
-                                        </FormControl>
-                                    </div>
+                                <Grid item align="right" xs={12} md={6}>
+                                    <Typography variant="span" style={{ marginRight: 10 }}>My favourite color is</Typography>
+                                    <FormControl required className={this.useStyles1.formControl}>
+                                        <Select
+                                            name="favouriteColor"
+                                            id="id3"
+                                            value={this.state.favouriteColor}
+                                            onChange={this.handleChange}
+                                            placeholder="Color"
+                                            autoWidth
+                                            required
+                                        >
+                                            <MenuItem value={""} disabled>Color </MenuItem>
+                                            <MenuItem value={"Blue"}>Blue</MenuItem>
+                                            <MenuItem value={"Red"}>Red</MenuItem>
+                                            <MenuItem value={"Green"}>Green</MenuItem>
+                                        </Select>
+                                    </FormControl>
                                 </Grid>
-                                : ""}
+                                :
+                                ""
+                            }
                             {this.state.id3 ?
                                 <Grid item xs={6}>
-                                    and my dress size is
+                                    <Typography variant="span" style={{ marginRight: 10 }}>and my dress size is</Typography>
                                     <FormControl required className={this.useStyles1.formControl}>
                                         <Select
                                             name="size"
@@ -442,9 +436,10 @@ class Question2 extends Component {
                                 <Grid item xs />
                             </Grid>
                             : ""}
-                    </Grid >
-                    <Grid item xs />
-                </Grid> : ''}
+                    </Container>
+                    :
+                    ''
+                }
                 {
                     this.state.utama ? "" :
                         <Grid className={'Budget2'} container
@@ -487,7 +482,7 @@ class Question2 extends Component {
                         </Grid >
 
                 }
-            </div >
+            </React.Fragment >
         );
     }
 }
