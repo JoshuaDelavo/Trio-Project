@@ -60,7 +60,7 @@ class Question2 extends Component {
       sizeType: "Type",
       city: "City",
       country: "Country",
-      needToUseAt: new Date().toLocaleString(),
+      needToUseAt: "",
       photo: "",
       email: "",
       budget: "Budget",
@@ -142,8 +142,7 @@ class Question2 extends Component {
     } else {
       if (this.state.test == true) {
         this.setState({ budget: event.target.value });
-      }
-      else {
+      } else {
         this.setState({ test: false });
         this.setState({ budget: event.target.value });
       }
