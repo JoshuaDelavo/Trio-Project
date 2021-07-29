@@ -15,6 +15,10 @@ import Scroll from "react-scroll";
 import { IoMailOutline } from "react-icons/io5";
 import Grid from '@material-ui/core/Grid';
 import { Link } from 'react-router-dom'
+import logoEmail from '../../images/email_icon.svg';
+import logoWa from '../../images/wa_icon2.svg';
+import logoPhone from '../../images/phone_icon.svg';
+import logoIg from '../../images/ig_icon2.svg';
 
 class Dashboard extends Component {
     constructor() {
@@ -32,7 +36,7 @@ class Dashboard extends Component {
 
             <Grid container spacing={3}
                 style={{
-                    marginTop: "2%"
+                    marginTop: "7%"
                 }}
             >
                 <Grid xs />
@@ -67,20 +71,35 @@ class Dashboard extends Component {
                     <Grid item xs={12}>
                         <SectionTextSmall value="Need connect fast ? We are available here"></SectionTextSmall>
                     </Grid>
-                    <Grid container >
-                        <Grid item xs={6} sm={3}>
-                            <AiOutlineInstagram></AiOutlineInstagram>
+                    <Grid container 
+                        style={{
+                            marginLeft: "5%"
+                        }}>
+                        <Grid item xs={2} sm={4}>
+
                         </Grid>
-                        <Grid item xs={6} sm={3}>
-                            <AiOutlineWhatsApp
-                                style={{ marginLeft: "2rem" }}
-                            ></AiOutlineWhatsApp>
+                        <Grid item xs={2} sm={1}>
+                            <a href={'https://www.instagram.com/sebastiangunawanofficial/'}>
+                                <img src={logoIg}></img>
+                            </a>
                         </Grid>
-                        <Grid item xs={6} sm={3}>
-                            <IoMailOutline style={{ marginLeft: "2rem" }}></IoMailOutline>
+                        <Grid item xs={2} sm={1}>
+                            <a href={'https://wa.me/6281220762081'}>
+                                <img src={logoWa}></img>
+                            </a>
                         </Grid>
-                        <Grid item xs={6} sm={3}>
-                            <AiOutlinePhone style={{ marginLeft: "2rem" }}></AiOutlinePhone>
+                        <Grid item xs={2} sm={1}>
+                            <a href={`mailto:edwin@anthem.co.id`}>
+                                <img src={logoEmail} ></img>
+                            </a>
+                        </Grid>
+                        <Grid item xs={2} sm={1}>
+                            <a href={`tel:6281220762081`}>
+                                <img src={logoPhone}></img>
+                            </a>
+                        </Grid>
+                        <Grid item xs={2} sm={4}>
+
                         </Grid>
                     </Grid>
 

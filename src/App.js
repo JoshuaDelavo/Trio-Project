@@ -24,24 +24,24 @@ function App() {
     <Router>
       <ScrollToTop />
       <div>
-        <Header />
         <Switch>
           <Route exact path='/'>
+            <Header />
             <Home />
           </Route>
           <Route path='/collections/:id'>
             <CollectionsDetail />
           </Route>
           <Route path='/News/:id'>
+            <Header />
             <NewsDetail />
           </Route>
           <Route path='/collections'>
+            <Header />
             <Collections />
           </Route>
-          <Route path='/concierge'>
-            <Concierge />
-          </Route>
           <Route path='/News'>
+            <Header />
             <News />
           </Route>
           <Route path='/Concierge'>
