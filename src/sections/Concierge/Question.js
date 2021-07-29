@@ -55,16 +55,16 @@ class Question2 extends Component {
 
       name: "",
       age: "",
-      favouriteColor: "",
-      size: "",
-      sizeType: "",
-      city: "",
-      country: "",
+      favouriteColor: "Color",
+      size: "Size",
+      sizeType: "Type",
+      city: "City",
+      country: "Country",
       needToUseAt: new Date().toLocaleString(),
       photo: "",
       email: "",
-      budget: "",
-      phoneCode: "",
+      budget: "Budget",
+      phoneCode: "Code",
       waPhoneNumber: "",
     };
 
@@ -140,8 +140,13 @@ class Question2 extends Component {
     if (event.target.value == "other") {
       this.setState({ utama: !this.state.utama });
     } else {
-      this.setState({ test: false });
-      this.setState({ budget: event.target.value });
+      if (this.state.test == true) {
+        this.setState({ budget: event.target.value });
+      }
+      else {
+        this.setState({ test: false });
+        this.setState({ budget: event.target.value });
+      }
     }
     this.setState({ id8: true });
   }
@@ -216,6 +221,7 @@ class Question2 extends Component {
                   type="text"
                   autoComplete="off"
                   required
+                  value={this.state.name}
                 />
               </Grid>
               {this.state.id1 ? (
@@ -232,6 +238,7 @@ class Question2 extends Component {
                     placeholder="Age"
                     type="number"
                     required
+                    value={this.state.age}
                   />
                   <Typography variant="span" style={{ marginLeft: 10 }}>
                     years old
@@ -269,7 +276,7 @@ class Question2 extends Component {
                       autoWidth
                       required
                     >
-                      <MenuItem value={""} disabled>
+                      <MenuItem value={"Color"} disabled>
                         Color{" "}
                       </MenuItem>
                       <MenuItem value={"Blue"}>Blue</MenuItem>
@@ -291,12 +298,13 @@ class Question2 extends Component {
                       name="size"
                       id="id3"
                       autoWidth
+                      value={this.state.size}
                       onChange={this.handleChange}
                       placeholder="Size"
                       required
                       style={{ marginRight: 10 }}
                     >
-                      <MenuItem value="allSize" disabled>
+                      <MenuItem value="Size" disabled>
                         Size
                       </MenuItem>
                       <MenuItem value="1">1</MenuItem>
@@ -311,11 +319,12 @@ class Question2 extends Component {
                       onChange={this.handleChange}
                       placeholder="sizeType"
                       required
+                      value={this.state.sizeType}
                       style={{ marginRight: 20 }}
                       autoWidth
                     >
-                      <MenuItem value="" disabled>
-                        Code
+                      <MenuItem value="Type" disabled>
+                        Type
                       </MenuItem>
                       <MenuItem value="Euro">Euro</MenuItem>
                       <MenuItem value="US">US</MenuItem>
@@ -351,9 +360,10 @@ class Question2 extends Component {
                     onChange={this.handleChange}
                     placeholder="City"
                     required
+                    value={this.state.city}
                     autoWidth
                   >
-                    <MenuItem value="" disabled>
+                    <MenuItem value="City" disabled>
                       City
                     </MenuItem>
                     <MenuItem value="Taipe">Taipe</MenuItem>
@@ -372,9 +382,10 @@ class Question2 extends Component {
                     id="id5"
                     onChange={this.handleChange}
                     autoWidth
+                    value={this.state.country}
                     required
                   >
-                    <MenuItem value="" disabled>
+                    <MenuItem value="Country" disabled>
                       Contry
                     </MenuItem>
                     <MenuItem value="China">China</MenuItem>
@@ -541,6 +552,7 @@ class Question2 extends Component {
                   placeholder="Email"
                   type="email"
                   name="email"
+                  value={this.state.email}
                   width="140px"
                   style={{ marginLeft: 10 }}
                   required
@@ -568,12 +580,13 @@ class Question2 extends Component {
                   <Select
                     name="phoneCode"
                     id="id9"
+                    value={this.state.phoneCode}
                     onChange={this.handleChange}
                     required
                     autoWidth
                     style={{ marginLeft: 10 }}
                   >
-                    <MenuItem value="" disabled>
+                    <MenuItem value="Code" disabled>
                       Code
                     </MenuItem>
                     <MenuItem value="62">+62</MenuItem>
@@ -585,6 +598,7 @@ class Question2 extends Component {
                   onChange={this.handleChangeNumber}
                   id="tel"
                   name="nomor"
+                  value={this.state.tel}
                   placeholder="Phone Number"
                   onChange={this.handleChangeNumber.bind(this)}
                   style={{ marginLeft: 20 }}
