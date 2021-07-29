@@ -140,12 +140,9 @@ class Question2 extends Component {
     if (event.target.value == "other") {
       this.setState({ utama: !this.state.utama });
     } else {
-      if (this.state.test == true) {
-        this.setState({ budget: event.target.value });
-      } else {
-        this.setState({ test: false });
-        this.setState({ budget: event.target.value });
-      }
+      this.setState({ test: false });
+      this.setState({ budget: event.target.value });
+      this.setState({ others: "other" });
     }
     this.setState({ id8: true });
   }
@@ -427,7 +424,6 @@ class Question2 extends Component {
                       name="needToUseAt"
                       placeholder="Date"
                       id="id6"
-                      value={this.state.needToUseAt}
                       onChange={this.handleChangeDate}
                       className="date"
                       placeholder="Date"
@@ -511,9 +507,10 @@ class Question2 extends Component {
                     id="id8"
                     onChange={this.handleChangeBudget1}
                     required
+                    value={this.state.budget}
                     autoWidth
                   >
-                    <MenuItem value="" disabled>
+                    <MenuItem value="Budget" disabled>
                       {" "}
                       Budget{" "}
                     </MenuItem>
@@ -522,7 +519,7 @@ class Question2 extends Component {
                     <MenuItem value="100000">
                       starting from 100000(USD)
                     </MenuItem>
-                    <MenuItem id="others" value={this.state.others}>
+                    <MenuItem id="others" value={this.state.test ? this.state.budget : this.state.others}>
                       {" "}
                       {this.state.test
                         ? this.state.budget + " (USD)"
