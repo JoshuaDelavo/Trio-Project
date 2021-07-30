@@ -1,17 +1,17 @@
 import React, { Component } from "react";
-import { AiOutlineCamera } from "react-icons/ai";
+import { AiOutlineCalendar, AiOutlineCamera } from "react-icons/ai";
 import { Select, MenuItem, Typography, Container } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import FormControl from "@material-ui/core/FormControl";
 import "date-fns";
 import ConciergeApi from "../../config/ConciergeApi";
 import { ButtonText } from "./ConciergeElements";
-import Autocomplete from '@material-ui/lab/Autocomplete';
+import Autocomplete from "@material-ui/lab/Autocomplete";
 //import { DatePickerComponent } from "@syncfusion/ej2-react-calendars";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import axios from "axios";
-import { Country, State, City } from 'country-state-city';
+import { Country, State, City } from "country-state-city";
 import { Link } from "react-router-dom";
 import "date-fns";
 import DateFnsUtils from "@date-io/date-fns";
@@ -62,7 +62,7 @@ class Question2 extends Component {
       sizeType: "Type",
       city: "",
       country: "",
-      needToUseAt: "",
+      needToUseAt: new Date().toLocaleString(),
       photo: "",
       email: "",
       budget: "Budget",
@@ -80,7 +80,7 @@ class Question2 extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleChangeDate = this.handleChangeDate.bind(this);
     this.selectCountry = this.selectCountry.bind(this);
-    this.selectRegion = this.selectRegion.bind(this)
+    this.selectRegion = this.selectRegion.bind(this);
   }
   useStyles1 = makeStyles((theme) => ({
     formControl: {
@@ -156,7 +156,7 @@ class Question2 extends Component {
 
   selectRegion(val) {
     this.setState({ city: val });
-    this.setState({ id5: true })
+    this.setState({ id5: true });
   }
   handleChangeNumber(event) {
     this.setState({
@@ -205,7 +205,7 @@ class Question2 extends Component {
   }
 
   render() {
-    console.log(City.getCitiesOfCountry(this.state.country))
+    console.log(City.getCitiesOfCountry(this.state.country));
     return (
       <React.Fragment>
         {this.state.utama ? (
@@ -388,11 +388,11 @@ class Question2 extends Component {
                   disableClearable
                   style={{
                     width: 150,
-                    backgroundColor: 'transparent',
+                    backgroundColor: "transparent",
                   }}
-                  renderInput={(params) => <TextField {...params} label="Country" color="red"
-                  />
-                  }
+                  renderInput={(params) => (
+                    <TextField {...params} label="Country" color="red" />
+                  )}
                   onChange={(event, value) => this.selectCountry(value.isoCode)}
                 />
 
@@ -405,9 +405,9 @@ class Question2 extends Component {
                   autoSelect={true}
                   getOptionLabel={(options) => options.name}
                   style={{ width: 150 }}
-                  renderInput={(params) => <TextField {...params} label="city"
-                  />
-                  }
+                  renderInput={(params) => (
+                    <TextField {...params} label="city" />
+                  )}
                   onChange={(event, value) => this.selectRegion(value.name)}
                 />
                 {/* <FormControl
@@ -471,6 +471,9 @@ class Question2 extends Component {
                       className="date"
                       placeholder="Date"
                       format="dd MMMMMMMMMM yyyy"
+                      keyboardIcon={
+                        <AiOutlineCalendar style={{ fill: "white" }} />
+                      }
                       required
                     />
                   </FormControl>
@@ -562,7 +565,12 @@ class Question2 extends Component {
                     <MenuItem value="100000">
                       starting from 100000(USD)
                     </MenuItem>
-                    <MenuItem id="others" value={this.state.test ? this.state.budget : this.state.others}>
+                    <MenuItem
+                      id="others"
+                      value={
+                        this.state.test ? this.state.budget : this.state.others
+                      }
+                    >
                       {" "}
                       {this.state.test
                         ? this.state.budget + " (USD)"
