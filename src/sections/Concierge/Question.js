@@ -59,7 +59,7 @@ class Question2 extends Component {
       age: "",
       favouriteColor: "Color",
       size: "Size",
-      sizeType: "Type",
+      sizeType: "US",
       city: "",
       country: "",
       needToUseAt: new Date().toLocaleString(),
@@ -68,6 +68,26 @@ class Question2 extends Component {
       budget: "Budget",
       phoneCode: "Code",
       waPhoneNumber: "",
+      types: [
+        {
+          name: "United State",
+          code: "US"
+        },
+        {
+          name: "Europe",
+          code: "EURO"
+        },
+        {
+          name: "Japan",
+          code: "JPN"
+        }
+      ],
+      sizestype:
+      {
+        US: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+        EURO: ['24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '46', '49', '50'],
+        JPN: ['11', '12', '13', '14', '15', '16', '17']
+      }
     };
 
     this.handleChangeFile2 = this.handleChangeFile2.bind(this);
@@ -80,7 +100,9 @@ class Question2 extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleChangeDate = this.handleChangeDate.bind(this);
     this.selectCountry = this.selectCountry.bind(this);
-    this.selectRegion = this.selectRegion.bind(this);
+    this.selectRegion = this.selectRegion.bind(this)
+    this.selectType = this.selectType.bind(this);
+    this.selectSize = this.selectSize.bind(this);
   }
   useStyles1 = makeStyles((theme) => ({
     formControl: {
@@ -158,6 +180,13 @@ class Question2 extends Component {
     this.setState({ city: val });
     this.setState({ id5: true });
   }
+  selectType(val) {
+    this.setState({ sizeType: val });
+  }
+  selectSize(val) {
+    this.setState({ size: val });
+    this.setState({ id4: true })
+  }
   handleChangeNumber(event) {
     this.setState({
       waPhoneNumber: "+" + this.state.phoneCode + event.target.value,
@@ -203,9 +232,11 @@ class Question2 extends Component {
   klikFunction() {
     document.getElementById("id7").click();
   }
+  getSize(code) {
+    return (this.state.sizestype[code])
+  }
 
   render() {
-    console.log(City.getCitiesOfCountry(this.state.country));
     return (
       <React.Fragment>
         {this.state.utama ? (
@@ -302,7 +333,36 @@ class Question2 extends Component {
                   <Typography variant="span" style={{ marginRight: 10 }}>
                     and my dress size is
                   </Typography>
-                  <FormControl required className={this.useStyles1.formControl}>
+                  <Autocomplete
+                    name="Type"
+                    id="combo-box-country"
+                    options={this.state.types}
+                    getOptionLabel={(options) => options.name}
+                    disableClearable
+                    style={{
+                      width: 150,
+                      backgroundColor: 'transparent',
+                    }}
+                    renderInput={(params) => <TextField {...params} label="Country" color="red"
+                    />
+                    }
+                    onChange={(event, value) => this.selectType(value.code)}
+                  />
+                  <Autocomplete
+                    name="size"
+                    key={this.state.sizeType}
+                    id="combo-box-city"
+                    options={this.getSize(this.state.sizeType)}
+                    disableClearable
+                    getOptionLabel={(options) => options}
+                    autoSelect={true}
+                    style={{ width: 150 }}
+                    renderInput={(params) => <TextField {...params} label="city"
+                    />
+                    }
+                    onChange={(event, value) => this.selectSize(value)}
+                  />
+                  {/* <FormControl required className={this.useStyles1.formControl}>
                     <Select
                       name="sizeType"
                       id="id4"
@@ -320,8 +380,8 @@ class Question2 extends Component {
                       <MenuItem value="US">US</MenuItem>
                       <MenuItem value="JPN">JPN</MenuItem>
                     </Select>
-                  </FormControl>
-                  <FormControl required className={this.useStyles1.formControl}>
+                  </FormControl> */}
+                  {/* <FormControl required className={this.useStyles1.formControl}>
                     <Select
                       name="size"
                       id="id3"
@@ -339,7 +399,7 @@ class Question2 extends Component {
                       <MenuItem value="2">2</MenuItem>
                       <MenuItem value="3">3</MenuItem>
                     </Select>
-                  </FormControl>
+                  </FormControl> */}
                 </Grid>
               ) : (
                 ""
@@ -358,28 +418,6 @@ class Question2 extends Component {
                 <Typography variant="span" style={{ marginLeft: 550 }}>
                   I live in
                 </Typography>
-                {/* <FormControl
-                  required
-                  className={this.useStyles2.formControl}
-                  style={{ marginLeft: 10 }}
-                >
-                  <Select
-                    name="country"
-                    placeholder="Country"
-                    id="id5"
-                    onChange={this.handleChange}
-                    autoWidth
-                    value={this.state.country}
-                    required
-                  >
-                    <MenuItem value="Country" disabled>
-                      Contry
-                    </MenuItem>
-                    <MenuItem value="China">China</MenuItem>
-                    <MenuItem value="Thailand">Thailand</MenuItem>
-                    <MenuItem value="German">German</MenuItem>
-                  </Select>
-                </FormControl> */}
                 <Autocomplete
                   name="country"
                   id="combo-box-country"
@@ -410,28 +448,6 @@ class Question2 extends Component {
                   )}
                   onChange={(event, value) => this.selectRegion(value.name)}
                 />
-                {/* <FormControl
-                  required
-                  className={this.useStyles2.formControl}
-                  style={{ marginLeft: 10 }}
-                >
-                  <Select
-                    name="city"
-                    id="id4"
-                    onChange={this.handleChange}
-                    placeholder="City"
-                    required
-                    value={this.state.city}
-                    autoWidth
-                  >
-                    <MenuItem value="City" disabled>
-                      City
-                    </MenuItem>
-                    <MenuItem value="Taipe">Taipe</MenuItem>
-                    <MenuItem value="Jakarta">Jakarta</MenuItem>
-                    <MenuItem value="Malvoch">Malvoch</MenuItem>
-                  </Select>
-                </FormControl> */}
               </Grid>
             ) : (
               ""
