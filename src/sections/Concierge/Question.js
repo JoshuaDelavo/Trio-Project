@@ -6,10 +6,12 @@ import FormControl from "@material-ui/core/FormControl";
 import "date-fns";
 import ConciergeApi from "../../config/ConciergeApi";
 import { ButtonText } from "./ConciergeElements";
+import Autocomplete from '@material-ui/lab/Autocomplete';
 //import { DatePickerComponent } from "@syncfusion/ej2-react-calendars";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import axios from "axios";
+import { Country, State, City } from 'country-state-city';
 import { Link } from "react-router-dom";
 import "date-fns";
 import DateFnsUtils from "@date-io/date-fns";
@@ -58,8 +60,8 @@ class Question2 extends Component {
       favouriteColor: "Color",
       size: "Size",
       sizeType: "Type",
-      city: "City",
-      country: "Country",
+      city: "",
+      country: "",
       needToUseAt: "",
       photo: "",
       email: "",
@@ -77,6 +79,8 @@ class Question2 extends Component {
     this.handleChangeBudget2 = this.handleChangeBudget2.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleChangeDate = this.handleChangeDate.bind(this);
+    this.selectCountry = this.selectCountry.bind(this);
+    this.selectRegion = this.selectRegion.bind(this)
   }
   useStyles1 = makeStyles((theme) => ({
     formControl: {
@@ -146,6 +150,14 @@ class Question2 extends Component {
     }
     this.setState({ id8: true });
   }
+  selectCountry(val) {
+    this.setState({ country: val });
+  }
+
+  selectRegion(val) {
+    this.setState({ city: val });
+    this.setState({ id5: true })
+  }
   handleChangeNumber(event) {
     this.setState({
       waPhoneNumber: "+" + this.state.phoneCode + event.target.value,
@@ -193,6 +205,7 @@ class Question2 extends Component {
   }
 
   render() {
+    console.log(City.getCitiesOfCountry(this.state.country))
     return (
       <React.Fragment>
         {this.state.utama ? (
@@ -345,7 +358,7 @@ class Question2 extends Component {
                 <Typography variant="span" style={{ marginLeft: 550 }}>
                   I live in
                 </Typography>
-                <FormControl
+                {/* <FormControl
                   required
                   className={this.useStyles2.formControl}
                   style={{ marginLeft: 10 }}
@@ -366,8 +379,38 @@ class Question2 extends Component {
                     <MenuItem value="Thailand">Thailand</MenuItem>
                     <MenuItem value="German">German</MenuItem>
                   </Select>
-                </FormControl>
-                <FormControl
+                </FormControl> */}
+                <Autocomplete
+                  name="country"
+                  id="combo-box-country"
+                  options={Country.getAllCountries()}
+                  getOptionLabel={(options) => options.name}
+                  disableClearable
+                  style={{
+                    width: 150,
+                    backgroundColor: 'transparent',
+                  }}
+                  renderInput={(params) => <TextField {...params} label="Country" color="red"
+                  />
+                  }
+                  onChange={(event, value) => this.selectCountry(value.isoCode)}
+                />
+
+                <Autocomplete
+                  name="city"
+                  key={this.state.country}
+                  id="combo-box-city"
+                  options={City.getCitiesOfCountry(this.state.country)}
+                  disableClearable
+                  autoSelect={true}
+                  getOptionLabel={(options) => options.name}
+                  style={{ width: 150 }}
+                  renderInput={(params) => <TextField {...params} label="city"
+                  />
+                  }
+                  onChange={(event, value) => this.selectRegion(value.name)}
+                />
+                {/* <FormControl
                   required
                   className={this.useStyles2.formControl}
                   style={{ marginLeft: 10 }}
@@ -388,7 +431,7 @@ class Question2 extends Component {
                     <MenuItem value="Jakarta">Jakarta</MenuItem>
                     <MenuItem value="Malvoch">Malvoch</MenuItem>
                   </Select>
-                </FormControl>
+                </FormControl> */}
               </Grid>
             ) : (
               ""
