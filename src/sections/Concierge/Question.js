@@ -343,7 +343,7 @@ class Question2 extends Component {
                       width: 150,
                       backgroundColor: 'transparent',
                     }}
-                    renderInput={(params) => <TextField {...params} label="Country" color="red"
+                    renderInput={(params) => <TextField {...params} label="SizeType" color="red"
                     />
                     }
                     onChange={(event, value) => this.selectType(value.code)}
@@ -357,7 +357,7 @@ class Question2 extends Component {
                     getOptionLabel={(options) => options}
                     autoSelect={true}
                     style={{ width: 150 }}
-                    renderInput={(params) => <TextField {...params} label="city"
+                    renderInput={(params) => <TextField {...params} label="Size"
                     />
                     }
                     onChange={(event, value) => this.selectSize(value)}
