@@ -172,7 +172,7 @@ class Question2 extends Component {
     var formData = new FormData();
     const stateObj = this.state.datafix;
     formData.append("data", JSON.stringify(stateObj));
-    formData.append("file.imageReference", stateObj.photo);
+    formData.append("files.imageReference", stateObj.photo);
     ConciergeApi.create(formData);
   }
   handleChangeBudget2(event) {
