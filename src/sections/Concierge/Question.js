@@ -291,25 +291,6 @@ class Question2 extends Component {
                   </Typography>
                   <FormControl required className={this.useStyles1.formControl}>
                     <Select
-                      name="size"
-                      id="id3"
-                      autoWidth
-                      value={this.state.size}
-                      onChange={this.handleChange}
-                      placeholder="Size"
-                      required
-                      style={{ marginRight: 10 }}
-                    >
-                      <MenuItem value="Size" disabled>
-                        Size
-                      </MenuItem>
-                      <MenuItem value="1">1</MenuItem>
-                      <MenuItem value="2">2</MenuItem>
-                      <MenuItem value="3">3</MenuItem>
-                    </Select>
-                  </FormControl>
-                  <FormControl required className={this.useStyles1.formControl}>
-                    <Select
                       name="sizeType"
                       id="id4"
                       onChange={this.handleChange}
@@ -325,6 +306,25 @@ class Question2 extends Component {
                       <MenuItem value="Euro">Euro</MenuItem>
                       <MenuItem value="US">US</MenuItem>
                       <MenuItem value="JPN">JPN</MenuItem>
+                    </Select>
+                  </FormControl>
+                  <FormControl required className={this.useStyles1.formControl}>
+                    <Select
+                      name="size"
+                      id="id3"
+                      autoWidth
+                      value={this.state.size}
+                      onChange={this.handleChange}
+                      placeholder="Size"
+                      required
+                      style={{ marginRight: 10 }}
+                    >
+                      <MenuItem value="Size" disabled>
+                        Size
+                      </MenuItem>
+                      <MenuItem value="1">1</MenuItem>
+                      <MenuItem value="2">2</MenuItem>
+                      <MenuItem value="3">3</MenuItem>
                     </Select>
                   </FormControl>
                 </Grid>
@@ -351,28 +351,6 @@ class Question2 extends Component {
                   style={{ marginLeft: 10 }}
                 >
                   <Select
-                    name="city"
-                    id="id4"
-                    onChange={this.handleChange}
-                    placeholder="City"
-                    required
-                    value={this.state.city}
-                    autoWidth
-                  >
-                    <MenuItem value="City" disabled>
-                      City
-                    </MenuItem>
-                    <MenuItem value="Taipe">Taipe</MenuItem>
-                    <MenuItem value="Jakarta">Jakarta</MenuItem>
-                    <MenuItem value="Malvoch">Malvoch</MenuItem>
-                  </Select>
-                </FormControl>
-                <FormControl
-                  required
-                  className={this.useStyles2.formControl}
-                  style={{ marginLeft: 10 }}
-                >
-                  <Select
                     name="country"
                     placeholder="Country"
                     id="id5"
@@ -387,6 +365,28 @@ class Question2 extends Component {
                     <MenuItem value="China">China</MenuItem>
                     <MenuItem value="Thailand">Thailand</MenuItem>
                     <MenuItem value="German">German</MenuItem>
+                  </Select>
+                </FormControl>
+                <FormControl
+                  required
+                  className={this.useStyles2.formControl}
+                  style={{ marginLeft: 10 }}
+                >
+                  <Select
+                    name="city"
+                    id="id4"
+                    onChange={this.handleChange}
+                    placeholder="City"
+                    required
+                    value={this.state.city}
+                    autoWidth
+                  >
+                    <MenuItem value="City" disabled>
+                      City
+                    </MenuItem>
+                    <MenuItem value="Taipe">Taipe</MenuItem>
+                    <MenuItem value="Jakarta">Jakarta</MenuItem>
+                    <MenuItem value="Malvoch">Malvoch</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>
