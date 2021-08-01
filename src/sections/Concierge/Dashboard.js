@@ -19,6 +19,7 @@ import logoEmail from '../../images/email_icon.svg';
 import logoWa from '../../images/wa_icon2.svg';
 import logoPhone from '../../images/phone_icon.svg';
 import logoIg from '../../images/ig_icon2.svg';
+import closeImg from '../../images/close-icon.svg';
 
 class Dashboard extends Component {
     constructor() {
@@ -107,8 +108,8 @@ class Dashboard extends Component {
                 <Grid xs
                     justifyContent="flex-end"
                     alignItems="center" >
-                    <Grid item xs={12}>
-                        <FaTimes></FaTimes> CLOSE
+                    <Grid item xs={12} style={{ color: "white" }}>
+                        <img src={closeImg} alt=""></img> CLOSE
                     </Grid>
                 </Grid>
             </Grid >

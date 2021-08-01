@@ -70,15 +70,15 @@ class Question2 extends Component {
       waPhoneNumber: "",
       types: [
         {
-          name: "United State",
+          name: "US",
           code: "US"
         },
         {
-          name: "Europe",
+          name: "EUR",
           code: "EURO"
         },
         {
-          name: "Japan",
+          name: "JPN",
           code: "JPN"
         }
       ],
@@ -252,7 +252,7 @@ class Question2 extends Component {
                   My Name is
                 </Typography>
                 <TextField
-                  style={{ marginTop: -5 }}
+                  style={{ marginTop: -5, width:100, marginRight:10,}}
                   className="inputBox"
                   onChange={this.handleChange}
                   id="id1"
@@ -270,7 +270,7 @@ class Question2 extends Component {
                     and I'm
                   </Typography>
                   <TextField
-                    style={{ marginTop: -5 }}
+                    style={{ marginTop: -5, width:45, }}
                     className="inputBox"
                     onChange={this.handleChange}
                     id="id2"
@@ -310,6 +310,9 @@ class Question2 extends Component {
                     <Select
                       name="favouriteColor"
                       id="id3"
+                      style={{
+                        marginTop: -3, marginRight: 10,
+                      }}
                       value={this.state.favouriteColor}
                       onChange={this.handleChange}
                       placeholder="Color"
@@ -340,11 +343,14 @@ class Question2 extends Component {
                     getOptionLabel={(options) => options.name}
                     disableClearable
                     style={{
-                      width: 150,
+                      width: 50,
                       backgroundColor: 'transparent',
+                      marginLeft: 155,
+                      marginTop: -27,
                     }}
-                    renderInput={(params) => <TextField {...params} label="SizeType" color="red"
-                    />
+                    renderInput={(params) => 
+                      <TextField {...params} placeholder="Type"
+                      />
                     }
                     onChange={(event, value) => this.selectType(value.code)}
                   />
@@ -356,50 +362,13 @@ class Question2 extends Component {
                     disableClearable
                     getOptionLabel={(options) => options}
                     autoSelect={true}
-                    style={{ width: 150 }}
-                    renderInput={(params) => <TextField {...params} label="Size"
-                    />
+                    style={{ width: 50, marginLeft: 215, marginTop: -34, }}
+                    renderInput={(params) => 
+                      <TextField {...params} placeholder="Size"
+                      />
                     }
                     onChange={(event, value) => this.selectSize(value)}
                   />
-                  {/* <FormControl required className={this.useStyles1.formControl}>
-                    <Select
-                      name="sizeType"
-                      id="id4"
-                      onChange={this.handleChange}
-                      placeholder="sizeType"
-                      required
-                      value={this.state.sizeType}
-                      style={{ marginRight: 20 }}
-                      autoWidth
-                    >
-                      <MenuItem value="Type" disabled>
-                        Type
-                      </MenuItem>
-                      <MenuItem value="Euro">Euro</MenuItem>
-                      <MenuItem value="US">US</MenuItem>
-                      <MenuItem value="JPN">JPN</MenuItem>
-                    </Select>
-                  </FormControl> */}
-                  {/* <FormControl required className={this.useStyles1.formControl}>
-                    <Select
-                      name="size"
-                      id="id3"
-                      autoWidth
-                      value={this.state.size}
-                      onChange={this.handleChange}
-                      placeholder="Size"
-                      required
-                      style={{ marginRight: 10 }}
-                    >
-                      <MenuItem value="Size" disabled>
-                        Size
-                      </MenuItem>
-                      <MenuItem value="1">1</MenuItem>
-                      <MenuItem value="2">2</MenuItem>
-                      <MenuItem value="3">3</MenuItem>
-                    </Select>
-                  </FormControl> */}
                 </Grid>
               ) : (
                 ""
@@ -425,11 +394,13 @@ class Question2 extends Component {
                   getOptionLabel={(options) => options.name}
                   disableClearable
                   style={{
-                    width: 150,
+                    width: 120,
                     backgroundColor: "transparent",
+                    marginLeft: 610,
+                    marginTop: -27,
                   }}
                   renderInput={(params) => (
-                    <TextField {...params} label="Country" color="red" />
+                    <TextField {...params} placeholder="Country" />
                   )}
                   onChange={(event, value) => this.selectCountry(value.isoCode)}
                 />
@@ -442,9 +413,9 @@ class Question2 extends Component {
                   disableClearable
                   autoSelect={true}
                   getOptionLabel={(options) => options.name}
-                  style={{ width: 150 }}
+                  style={{ width: 110, marginLeft: 743, marginTop: -34,}}
                   renderInput={(params) => (
-                    <TextField {...params} label="city" />
+                    <TextField {...params} placeholder="City" />
                   )}
                   onChange={(event, value) => this.selectRegion(value.name)}
                 />
@@ -469,16 +440,6 @@ class Question2 extends Component {
                     className={this.tanggal.formControl}
                     style={{ marginLeft: 10 }}
                   >
-                    {/* <DatePickerComponent
-                    name="needToUseAt"
-                    cssClass="e-custom-style"
-                    placeholder="Date"
-                    id="id6"
-                    onChange={this.handleChange}
-                    placeholder="Date"
-                    format="dd MMMMMMMMMM yyyy"
-                    required
-                  /> */}
                     <KeyboardDatePicker
                       name="needToUseAt"
                       placeholder="Date"
@@ -486,6 +447,7 @@ class Question2 extends Component {
                       onChange={this.handleChangeDate}
                       className="date"
                       placeholder="Date"
+                      style={{ width: 200, marginTop: -3,}}
                       format="dd MMMMMMMMMM yyyy"
                       keyboardIcon={
                         <AiOutlineCalendar style={{ fill: "white" }} />
@@ -562,7 +524,7 @@ class Question2 extends Component {
                 <FormControl
                   required
                   className={this.useStyles1.formControl}
-                  style={{ marginLeft: 10 }}
+                  style={{ marginLeft: 10, marginTop: -3, }}
                 >
                   <Select
                     name="budget"
@@ -617,7 +579,7 @@ class Question2 extends Component {
                   name="email"
                   value={this.state.email}
                   width="140px"
-                  style={{ marginLeft: 10 }}
+                  style={{ marginLeft: 10, marginTop: -3,}}
                   required
                 />
               </Grid>
@@ -638,7 +600,7 @@ class Question2 extends Component {
                 <FormControl
                   required
                   className={this.tanggal.formControl}
-                  style={{ marginLeft: 10 }}
+                  style={{ marginLeft: 10, }}
                 >
                   <Select
                     name="phoneCode"
@@ -647,7 +609,7 @@ class Question2 extends Component {
                     onChange={this.handleChange}
                     required
                     autoWidth
-                    style={{ marginLeft: 10 }}
+                    style={{ marginTop: -3, }}
                   >
                     <MenuItem value="Code" disabled>
                       Code
@@ -664,7 +626,7 @@ class Question2 extends Component {
                   value={this.state.tel}
                   placeholder="Phone Number"
                   onChange={this.handleChangeNumber.bind(this)}
-                  style={{ marginLeft: 20 }}
+                  style={{ marginLeft: 10, marginTop: -3,}}
                 />
               </Grid>
             ) : (
