@@ -62,7 +62,7 @@ class Question2 extends Component {
       sizeType: "US",
       city: "",
       country: "",
-      needToUseAt: new Date().toLocaleString(),
+      needToUseAt: new Date(),
       photo: "",
       email: "",
       budget: "Budget",
@@ -214,7 +214,7 @@ class Question2 extends Component {
     const stateObj = this.state.datafix;
     formData.append("data", JSON.stringify(stateObj));
     formData.append("files.imageReference", stateObj.photo);
-    ConciergeApi.create(formData);
+    //ConciergeApi.create(formData);
   }
   handleChangeBudget2(event) {
     this.setState({ budget: event.target.value });
@@ -252,7 +252,7 @@ class Question2 extends Component {
                   My Name is
                 </Typography>
                 <TextField
-                  style={{ marginTop: -5, width:100, marginRight:10,}}
+                  style={{ marginTop: -5, width: 100, marginRight: 10, }}
                   className="inputBox"
                   onChange={this.handleChange}
                   id="id1"
@@ -270,7 +270,7 @@ class Question2 extends Component {
                     and I'm
                   </Typography>
                   <TextField
-                    style={{ marginTop: -5, width:45, }}
+                    style={{ marginTop: -5, width: 45, }}
                     className="inputBox"
                     onChange={this.handleChange}
                     id="id2"
@@ -348,7 +348,7 @@ class Question2 extends Component {
                       marginLeft: 155,
                       marginTop: -27,
                     }}
-                    renderInput={(params) => 
+                    renderInput={(params) =>
                       <TextField {...params} placeholder="Type"
                       />
                     }
@@ -363,7 +363,7 @@ class Question2 extends Component {
                     getOptionLabel={(options) => options}
                     autoSelect={true}
                     style={{ width: 50, marginLeft: 215, marginTop: -34, }}
-                    renderInput={(params) => 
+                    renderInput={(params) =>
                       <TextField {...params} placeholder="Size"
                       />
                     }
@@ -413,7 +413,7 @@ class Question2 extends Component {
                   disableClearable
                   autoSelect={true}
                   getOptionLabel={(options) => options.name}
-                  style={{ width: 110, marginLeft: 743, marginTop: -34,}}
+                  style={{ width: 110, marginLeft: 743, marginTop: -34, }}
                   renderInput={(params) => (
                     <TextField {...params} placeholder="City" />
                   )}
@@ -444,10 +444,11 @@ class Question2 extends Component {
                       name="needToUseAt"
                       placeholder="Date"
                       id="id6"
+                      value={this.state.needToUseAt}
                       onChange={this.handleChangeDate}
                       className="date"
                       placeholder="Date"
-                      style={{ width: 200, marginTop: -3,}}
+                      style={{ width: 200, marginTop: -3, }}
                       format="dd MMMMMMMMMM yyyy"
                       keyboardIcon={
                         <AiOutlineCalendar style={{ fill: "white" }} />
@@ -579,7 +580,7 @@ class Question2 extends Component {
                   name="email"
                   value={this.state.email}
                   width="140px"
-                  style={{ marginLeft: 10, marginTop: -3,}}
+                  style={{ marginLeft: 10, marginTop: -3, }}
                   required
                 />
               </Grid>
@@ -626,7 +627,7 @@ class Question2 extends Component {
                   value={this.state.tel}
                   placeholder="Phone Number"
                   onChange={this.handleChangeNumber.bind(this)}
-                  style={{ marginLeft: 10, marginTop: -3,}}
+                  style={{ marginLeft: 10, marginTop: -3, }}
                 />
               </Grid>
             ) : (
