@@ -311,7 +311,7 @@ class Question2 extends Component {
                       name="favouriteColor"
                       id="id3"
                       style={{
-                        marginTop: -3, marginRight: 10,
+                        marginTop: -3, marginRight: 10, fill: "white",
                       }}
                       value={this.state.favouriteColor}
                       onChange={this.handleChange}
@@ -451,7 +451,7 @@ class Question2 extends Component {
                       className="date"
                       placeholder="Date"
                       style={{ width: 200, marginTop: -3, }}
-                      format="dd MMMMMMMMMM yyyy"
+                      format="dd-MM-yyyy"
                       keyboardIcon={
                         <AiOutlineCalendar style={{ fill: "white" }} />
                       }
@@ -478,7 +478,7 @@ class Question2 extends Component {
                   type="text"
                   id="namaFile"
                   value={this.state.photo.name}
-                  placeholder="Choose File"
+                  placeholder="Choose Image"
                   style={{
                     backgroundColor: "black",
                     color: "white",
