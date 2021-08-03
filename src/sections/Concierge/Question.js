@@ -242,7 +242,6 @@ class Question2 extends Component {
     document.getElementById("id7").click();
   }
   getSize(code) {
-    console.log(code);
     if (code == '') {
       return (this.state.sizestype["empty"]);
     }
@@ -252,7 +251,6 @@ class Question2 extends Component {
   }
 
   render() {
-    console.log(data);
     return (
       <React.Fragment>
         <Container
