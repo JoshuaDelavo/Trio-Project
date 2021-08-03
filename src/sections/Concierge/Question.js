@@ -19,6 +19,7 @@ import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
 } from "@material-ui/pickers";
+import data from '../../data/phoneCode.json'
 
 import "./test.css";
 
@@ -103,6 +104,7 @@ class Question2 extends Component {
     this.selectRegion = this.selectRegion.bind(this)
     this.selectType = this.selectType.bind(this);
     this.selectSize = this.selectSize.bind(this);
+    this.selectPhoneCode = this.selectPhoneCode.bind(this);
   }
   useStyles1 = makeStyles((theme) => ({
     formControl: {
@@ -172,8 +174,9 @@ class Question2 extends Component {
     }
     this.setState({ id8: true });
   }
-  selectCountry(val) {
+  selectCountry(val, name) {
     this.setState({ country: val });
+    this.setState({ coutry2: name })
   }
 
   selectRegion(val) {
@@ -187,9 +190,12 @@ class Question2 extends Component {
     this.setState({ size: val });
     this.setState({ id4: true })
   }
+  selectPhoneCode(val) {
+    this.setState({ phoneCode: val });
+  }
   handleChangeNumber(event) {
     this.setState({
-      waPhoneNumber: "+" + this.state.phoneCode + event.target.value,
+      waPhoneNumber: this.state.phoneCode + event.target.value,
     });
     this.setState({
       datafix: {
@@ -199,7 +205,7 @@ class Question2 extends Component {
         size: this.state.size,
         sizeType: this.state.sizeType,
         city: this.state.city,
-        country: this.state.country,
+        country: this.state.country2,
         needToUseAt: this.state.needToUseAt,
         photo: this.state.photo,
         budget: this.state.budget,
@@ -210,6 +216,7 @@ class Question2 extends Component {
     this.setState({ id10: true });
   }
   handleSubmit() {
+    console.log(this.state.datafix)
     var formData = new FormData();
     const stateObj = this.state.datafix;
     formData.append("data", JSON.stringify(stateObj));
@@ -237,6 +244,7 @@ class Question2 extends Component {
   }
 
   render() {
+    console.log(data);
     return (
       <React.Fragment>
         {this.state.utama ? (
@@ -301,7 +309,7 @@ class Question2 extends Component {
                   align="right"
                   xs={12}
                   md={6}
-                  style={{ marginTop: 15, marginLeft: -50,}}
+                  style={{ marginTop: 15, marginLeft: -50, }}
                 >
                   <Typography variant="span" style={{ marginRight: 10 }}>
                     My favourite color is
@@ -342,6 +350,7 @@ class Question2 extends Component {
                     options={this.state.types}
                     getOptionLabel={(options) => options.name}
                     disableClearable
+                    value={this.state.sizeType}
                     autoComplete="off"
                     style={{
                       width: 50,
@@ -359,6 +368,7 @@ class Question2 extends Component {
                     name="size"
                     key={this.state.sizeType}
                     id="combo-box-city"
+                    value={this.state.size}
                     options={this.getSize(this.state.sizeType)}
                     disableClearable
                     autoComplete="off"
@@ -384,7 +394,7 @@ class Question2 extends Component {
                 xs={12}
                 alignItems="center"
                 justifyContent="center"
-                style={{ marginTop: 15, marginLeft:-80, }}
+                style={{ marginTop: 15, marginLeft: -80, }}
               >
                 <Typography variant="span" style={{ marginLeft: 550 }}>
                   I live in
@@ -395,6 +405,7 @@ class Question2 extends Component {
                   options={Country.getAllCountries()}
                   getOptionLabel={(options) => options.name}
                   disableClearable
+                  value={this.state.country}
                   style={{
                     width: 120,
                     backgroundColor: "transparent",
@@ -404,12 +415,13 @@ class Question2 extends Component {
                   renderInput={(params) => (
                     <TextField {...params} placeholder="Country" />
                   )}
-                  onChange={(event, value) => this.selectCountry(value.isoCode)}
+                  onChange={(event, value) => this.selectCountry(value.isoCode, value.name)}
                 />
 
                 <Autocomplete
                   name="city"
                   key={this.state.country}
+                  value={this.state.city}
                   id="combo-box-city"
                   options={City.getCitiesOfCountry(this.state.country)}
                   disableClearable
@@ -432,7 +444,7 @@ class Question2 extends Component {
                   xs={12}
                   alignItems="center"
                   justifyContent="center"
-                  style={{ marginTop: 15, marginLeft:-65, }}
+                  style={{ marginTop: 15, marginLeft: -65, }}
                 >
                   <Typography variant="span" style={{ marginLeft: 450 }}>
                     and I need to use this dress at
@@ -469,7 +481,7 @@ class Question2 extends Component {
                 xs={12}
                 alignItems="center"
                 justifyContent="center"
-                style={{ marginTop: 15, marginLeft:-80,}}
+                style={{ marginTop: 15, marginLeft: -80, }}
               >
                 <Typography variant="span" style={{ marginLeft: 440 }}>
                   I have preferance for my dress
@@ -519,7 +531,7 @@ class Question2 extends Component {
                 xs={12}
                 alignItems="center"
                 justifyContent="center"
-                style={{ marginTop: 15, marginLeft:-10,}}
+                style={{ marginTop: 15, marginLeft: -10, }}
               >
                 <Typography variant="span" style={{ marginLeft: 480 }}>
                   My budget is
@@ -600,7 +612,7 @@ class Question2 extends Component {
                 <Typography variant="span" style={{ marginLeft: 430 }}>
                   or WhatsApp me at
                 </Typography>
-                <FormControl
+                {/* <FormControl
                   required
                   className={this.tanggal.formControl}
                   style={{ marginLeft: 10, }}
@@ -621,7 +633,27 @@ class Question2 extends Component {
                     <MenuItem value="73">+73</MenuItem>
                     <MenuItem value="13">+13</MenuItem>
                   </Select>
-                </FormControl>
+                </FormControl> */}
+                <Autocomplete
+                  name="code"
+                  id="combo-box-country"
+                  options={data.countries}
+                  getOptionLabel={(options) => options.code}
+                  disableClearable
+                  value={this.state.phoneCode}
+                  autoComplete="off"
+                  style={{
+                    width: 50,
+                    backgroundColor: 'transparent',
+                    marginLeft: 155,
+                    marginTop: -27,
+                  }}
+                  renderInput={(params) =>
+                    <TextField {...params} placeholder="Phone Code"
+                    />
+                  }
+                  onChange={(event, value) => this.selectPhoneCode(value.code)}
+                />
                 <TextField
                   onChange={this.handleChangeNumber}
                   id="tel"
@@ -680,7 +712,7 @@ class Question2 extends Component {
               justifyContent="center"
               style={{ marginTop: 15 }}
             >
-              <Typography variant="span" style={{ marginLeft: 620, fontWeight: "bold",}}>
+              <Typography variant="span" style={{ marginLeft: 620, fontWeight: "bold", }}>
                 My Preffered Budget
               </Typography>
               <TextField
@@ -690,7 +722,7 @@ class Question2 extends Component {
                 placeholder="Prefer Budget"
                 type="number"
                 name="prefB"
-                style={{ marginLeft: 10, marginTop:-5, width: 100, }}
+                style={{ marginLeft: 10, marginTop: -5, width: 100, }}
               />
               USD
             </Grid>
