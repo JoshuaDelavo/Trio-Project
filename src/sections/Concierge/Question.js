@@ -301,7 +301,7 @@ class Question2 extends Component {
                   align="right"
                   xs={12}
                   md={6}
-                  style={{ marginTop: 15 }}
+                  style={{ marginTop: 15, marginLeft: -50,}}
                 >
                   <Typography variant="span" style={{ marginRight: 10 }}>
                     My favourite color is
@@ -342,6 +342,7 @@ class Question2 extends Component {
                     options={this.state.types}
                     getOptionLabel={(options) => options.name}
                     disableClearable
+                    autoComplete="off"
                     style={{
                       width: 50,
                       backgroundColor: 'transparent',
@@ -360,6 +361,7 @@ class Question2 extends Component {
                     id="combo-box-city"
                     options={this.getSize(this.state.sizeType)}
                     disableClearable
+                    autoComplete="off"
                     getOptionLabel={(options) => options}
                     autoSelect={true}
                     style={{ width: 50, marginLeft: 215, marginTop: -34, }}
@@ -382,7 +384,7 @@ class Question2 extends Component {
                 xs={12}
                 alignItems="center"
                 justifyContent="center"
-                style={{ marginTop: 15 }}
+                style={{ marginTop: 15, marginLeft:-80, }}
               >
                 <Typography variant="span" style={{ marginLeft: 550 }}>
                   I live in
@@ -430,7 +432,7 @@ class Question2 extends Component {
                   xs={12}
                   alignItems="center"
                   justifyContent="center"
-                  style={{ marginTop: 15 }}
+                  style={{ marginTop: 15, marginLeft:-65, }}
                 >
                   <Typography variant="span" style={{ marginLeft: 450 }}>
                     and I need to use this dress at
@@ -467,7 +469,7 @@ class Question2 extends Component {
                 xs={12}
                 alignItems="center"
                 justifyContent="center"
-                style={{ marginTop: 15 }}
+                style={{ marginTop: 15, marginLeft:-80,}}
               >
                 <Typography variant="span" style={{ marginLeft: 440 }}>
                   I have preferance for my dress
@@ -517,7 +519,7 @@ class Question2 extends Component {
                 xs={12}
                 alignItems="center"
                 justifyContent="center"
-                style={{ marginTop: 15 }}
+                style={{ marginTop: 15, marginLeft:-10,}}
               >
                 <Typography variant="span" style={{ marginLeft: 480 }}>
                   My budget is
@@ -593,7 +595,7 @@ class Question2 extends Component {
                 xs={12}
                 alignItems="center"
                 justifyContent="center"
-                style={{ marginTop: 15 }}
+                style={{ marginTop: 15, marginLeft: -40, }}
               >
                 <Typography variant="span" style={{ marginLeft: 430 }}>
                   or WhatsApp me at
@@ -635,16 +637,16 @@ class Question2 extends Component {
             )}
             <br></br>
             {this.state.id10 ? (
-              <Grid container style={{ marginLeft: 205 }}>
+              <Grid container style={{ marginLeft: 205, marginTop: 20, }}>
                 <Grid item xs />
                 <Grid item xs={6}>
                   <Link to="/Thanks">
                     <ButtonText
                       onClick={this.handleSubmit}
                       style={{
-                        fontSize: 15,
+                        fontSize: 13,
                         height: 40,
-                        width: 290,
+                        width: 200,
                       }}
                     >
                       SUBMIT MY REQUEST
@@ -668,7 +670,7 @@ class Question2 extends Component {
             container
             style={{
               color: "white",
-              marginTop: "10%",
+              marginTop: "17%",
             }}
           >
             <Grid
@@ -678,8 +680,8 @@ class Question2 extends Component {
               justifyContent="center"
               style={{ marginTop: 15 }}
             >
-              <Typography variant="span" style={{ marginLeft: 540 }}>
-                My Prefer Budget
+              <Typography variant="span" style={{ marginLeft: 620, fontWeight: "bold",}}>
+                My Preffered Budget
               </Typography>
               <TextField
                 onChange={this.handleChangeBudget2}
@@ -688,7 +690,7 @@ class Question2 extends Component {
                 placeholder="Prefer Budget"
                 type="number"
                 name="prefB"
-                style={{ marginLeft: 10 }}
+                style={{ marginLeft: 10, marginTop:-5, width: 100, }}
               />
               USD
             </Grid>
@@ -703,10 +705,12 @@ class Question2 extends Component {
                   onClick={this.handleSubmitBudget}
                   direction={"row"}
                   style={{
-                    fontSize: 15,
+                    fontSize: 10,
                     height: 40,
-                    width: 290,
+                    width: 110,
                     backgroundColor: "white",
+                    textAlign: "center",
+                    marginLeft: 230,
                     color: "black",
                   }}
                 >
@@ -715,16 +719,13 @@ class Question2 extends Component {
               </Grid>
               <Grid item xs={3} style={{ marginLeft: 100 }}>
                 <ButtonText
-                  //   style={{
-                  //     margin: "30px",
-                  //     backgroundColor: "black",
-                  //     color: "white",
-                  //   }}
                   style={{
-                    fontSize: 15,
+                    fontSize: 10,
                     height: 40,
-                    width: 290,
+                    width: 110,
+                    textAlign: "center",
                     backgroundColor: "black",
+                    marginLeft: -30,
                     color: "white",
                   }}
                   onClick={this.handleSubmitCancelBudget}
