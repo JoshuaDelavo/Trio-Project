@@ -348,15 +348,12 @@ class Question2 extends Component {
       const field = field_req[i];
       if (this.state[field + "_err"] === "" && checked !== false) {
         checked = true
-        console.log(i);
       } else {
         checked = false;
-        console.log("break", i);
         break;
       }
     }
     if (checked === true) {
-      console.log(checked)
       this.clickSubmit();
     }
   }
