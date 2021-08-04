@@ -23,6 +23,20 @@ import data from '../../data/phoneCode.json'
 
 import "./test.css";
 
+const field_req = ["name",
+  "age",
+  "favouriteColor",
+  "size",
+  "sizeType",
+  "city",
+  "country",
+  "needToUseAt",
+  "photo",
+  "email",
+  "budget",
+  "phoneCode",
+  "waPhoneNumber"];
+
 class Question2 extends Component {
   constructor() {
     super();
@@ -55,20 +69,37 @@ class Question2 extends Component {
       id9: false,
       id10: false,
       others: "other",
+      submit: false,
 
       name: "",
       age: "",
       favouriteColor: "Color",
-      size: "Size",
+      size: "",
       sizeType: "",
       city: "",
       country: "",
       needToUseAt: new Date(),
       photo: "",
       email: "",
-      budget: "Budget",
-      phoneCode: "Code",
+      budget: "",
+      phoneCode: "",
+      tel: '',
       waPhoneNumber: "",
+
+      name_err: "",
+      age_err: "",
+      favouriteColor_err: "",
+      size_err: "",
+      sizeType_err: "",
+      city_err: "",
+      country_err: "",
+      needToUseAt_err: "",
+      photo_err: "",
+      email_err: "",
+      budget_err: "",
+      phoneCode_err: "",
+      waPhoneNumber_err: "",
+
       types: [
         {
           name: "US",
@@ -85,7 +116,7 @@ class Question2 extends Component {
       ],
       sizestype:
       {
-        empty: [""],
+        empty: ["No Option"],
         US: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
         EURO: ['24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '46', '49', '50'],
         JPN: ['11', '12', '13', '14', '15', '16', '17']
@@ -106,6 +137,7 @@ class Question2 extends Component {
     this.selectType = this.selectType.bind(this);
     this.selectSize = this.selectSize.bind(this);
     this.selectPhoneCode = this.selectPhoneCode.bind(this);
+    this.checkSubmit = this.checkSubmit.bind(this);
   }
   useStyles1 = makeStyles((theme) => ({
     formControl: {
@@ -154,6 +186,29 @@ class Question2 extends Component {
     const idfield = this.state.fields[res.target.name];
     this.setState({ [idfield]: true });
     this.setState({ [res.target.name]: res.target.value });
+    if (res.target.value === "") {
+      this.setState({ [res.target.name + "_err"]: "Require" })
+    }
+    else {
+      this.setState({ [res.target.name + "_err"]: "" })
+    }
+    if (res.target.name == "email") {
+      var cekE = res.target.value;
+      var test = cekE.split("@");
+
+      if (test.length === 2 && test[1] !== "") {
+        var test2 = test[1].split('.')
+        if (test2.length === 2 && test2[1] !== "") {
+          this.setState({ [res.target.name + "_err"]: "" })
+        }
+        else {
+          this.setState({ [res.target.name + "_err"]: "Please insert email correctly" })
+        }
+      }
+      else {
+        this.setState({ [res.target.name + "_err"]: "Please insert email correctly" })
+      }
+    }
   }
   handleChangeDate(Date) {
     this.setState({ id6: true });
@@ -168,12 +223,13 @@ class Question2 extends Component {
   handleChangeBudget1(event) {
     if (event.target.value == "other") {
       this.setState({ utama: !this.state.utama });
+      this.setState({ budget: "" });
     } else {
       this.setState({ test: false });
       this.setState({ budget: event.target.value });
       this.setState({ others: "other" });
+      this.setState({ id8: true });
     }
-    this.setState({ id8: true });
   }
   selectCountry(val, name) {
     this.setState({ country: val });
@@ -187,18 +243,90 @@ class Question2 extends Component {
   }
   selectType(val) {
     this.setState({ sizeType: val });
+    this.setState({ sizeType_err: "" })
   }
   selectSize(val) {
-    this.setState({ size: val });
-    this.setState({ id4: true })
+    if (val === "No Option") {
+      this.setState({ size_err: "Require" })
+      this.setState({ sizeType_err: "Require" })
+    }
+    else {
+      this.setState({ size: val });
+      this.setState({ id4: true });
+      this.setState({ size_err: "" })
+    }
+
   }
   selectPhoneCode(val) {
     this.setState({ phoneCode: val });
+    this.setState({ waPhoneNumber_err: "" });
+    this.setState({
+      waPhoneNumber: this.state.phoneCode + this.state.tel
+    });
   }
   handleChangeNumber(event) {
-    this.setState({
-      waPhoneNumber: this.state.phoneCode + event.target.value,
-    });
+    this.setState({ tel: event.target.value })
+    if (this.state.phoneCode === "") {
+      this.setState({ waPhoneNumber_err: "Please pick your phone code" });
+    }
+    else {
+      this.setState({
+        waPhoneNumber: this.state.phoneCode + event.target.value
+      });
+      if (event.target.value === "") {
+        this.setState({ waPhoneNumber_err: "Please Insert your number" });
+        this.setState({ id10: false });
+      }
+      else {
+        this.setState({ waPhoneNumber_err: "" });
+        this.setState({ id10: true });
+      }
+    }
+
+  }
+  handleSubmit() {
+    console.log(this.state.datafix)
+    var formData = new FormData();
+    const stateObj = this.state.datafix;
+    formData.append("data", JSON.stringify(stateObj));
+    formData.append("files.imageReference", stateObj.photo);
+    // ConciergeApi.create(formData);
+  }
+  handleChangeBudget2(event) {
+    this.setState({ budget: event.target.value });
+    this.setState({ test: true });
+  }
+  handleSubmitBudget() {
+    if (this.state.budget == '') {
+      this.handleSubmitCancelBudget();
+    }
+    else {
+      this.setState({ id8: true });
+      this.setState({ utama: !this.state.utama });
+      this.setState({ others: this.state.budget });
+    }
+  }
+  handleSubmitCancelBudget() {
+    this.setState({ budget: "" });
+    this.setState({ test: false });
+    this.setState({ utama: !this.state.utama });
+    this.setState({ id8: false });
+  }
+  klikFunction() {
+    document.getElementById("id7").click();
+  }
+  clickSubmit() {
+    document.getElementById("submitBtn").click();
+  }
+  getSize(code) {
+    if (code == '') {
+      return (this.state.sizestype["empty"]);
+    }
+    else {
+      return (this.state.sizestype[code])
+    }
+  }
+  checkSubmit() {
     this.setState({
       datafix: {
         name: this.state.name,
@@ -215,41 +343,23 @@ class Question2 extends Component {
         waPhoneNumber: this.state.waPhoneNumber,
       },
     });
-    this.setState({ id10: true });
-  }
-  handleSubmit() {
-    console.log(this.state.datafix)
-    var formData = new FormData();
-    const stateObj = this.state.datafix;
-    formData.append("data", JSON.stringify(stateObj));
-    formData.append("files.imageReference", stateObj.photo);
-    // ConciergeApi.create(formData);
-  }
-  handleChangeBudget2(event) {
-    this.setState({ budget: event.target.value });
-    this.setState({ test: true });
-  }
-  handleSubmitBudget() {
-    this.setState({ utama: !this.state.utama });
-    this.setState({ others: this.state.budget });
-  }
-  handleSubmitCancelBudget() {
-    this.setState({ budget: "" });
-    this.setState({ test: false });
-    this.setState({ utama: !this.state.utama });
-  }
-  klikFunction() {
-    document.getElementById("id7").click();
-  }
-  getSize(code) {
-    if (code == '') {
-      return (this.state.sizestype["empty"]);
+    var checked = true;
+    for (let i = 0; i < field_req.length; i++) {
+      const field = field_req[i];
+      if (this.state[field + "_err"] === "" && checked !== false) {
+        checked = true
+        console.log(i);
+      } else {
+        checked = false;
+        console.log("break", i);
+        break;
+      }
     }
-    else {
-      return (this.state.sizestype[code])
+    if (checked === true) {
+      console.log(checked)
+      this.clickSubmit();
     }
   }
-
   render() {
     return (
       <React.Fragment>
@@ -271,6 +381,8 @@ class Question2 extends Component {
               <TextField
                 style={{ marginTop: -5, width: 100, marginRight: 10, }}
                 className="inputBox"
+                error={this.state.name_err !== ""}
+                helperText={this.state.name_err}
                 onChange={this.handleChange}
                 id="id1"
                 placeholder="Name"
@@ -290,6 +402,8 @@ class Question2 extends Component {
                   style={{ marginTop: -5, width: 45, }}
                   className="inputBox"
                   onChange={this.handleChange}
+                  error={this.state.age_err !== ""}
+                  helperText={this.state.age_err}
                   id="id2"
                   name="age"
                   placeholder="Age"
@@ -355,6 +469,8 @@ class Question2 extends Component {
                 </Typography>
                 <Autocomplete
                   name="Type"
+                  error={this.state.sizeType_err !== ""}
+                  helperText={this.state.sizeType_err}
                   id="combo-box-country"
                   options={this.state.types}
                   getOptionLabel={(options) => options.name}
@@ -377,6 +493,8 @@ class Question2 extends Component {
                   name="size"
                   key={this.state.sizeType}
                   id="combo-box-city"
+                  error={this.state.size_err !== ""}
+                  helperText={this.state.size_err}
                   // value={this.state.size}
                   options={this.getSize(this.state.sizeType)}
                   disableClearable
@@ -466,6 +584,8 @@ class Question2 extends Component {
                   <KeyboardDatePicker
                     name="needToUseAt"
                     placeholder="Date"
+                    error={this.state.needToUseAt_err !== ""}
+                    helperText={this.state.needToUseAt_err}
                     id="id6"
                     value={this.state.needToUseAt}
                     onChange={this.handleChangeDate}
@@ -599,6 +719,8 @@ class Question2 extends Component {
                 onChange={this.handleChange}
                 id="id9"
                 placeholder="Email"
+                error={this.state.email_err !== ""}
+                helperText={this.state.email_err}
                 type="email"
                 name="email"
                 value={this.state.email}
@@ -651,13 +773,13 @@ class Question2 extends Component {
                 disableClearable
                 autoComplete="off"
                 style={{
-                  width: 50,
+                  width: 100,
                   backgroundColor: 'transparent',
                   marginLeft: 155,
                   marginTop: -27,
                 }}
                 renderInput={(params) =>
-                  <TextField {...params} placeholder="Phone Code"
+                  <TextField {...params} placeholder="Code"
                   />
                 }
                 onChange={(event, value) => this.selectPhoneCode(value.code)}
@@ -666,6 +788,8 @@ class Question2 extends Component {
                 onChange={this.handleChangeNumber}
                 id="tel"
                 name="nomor"
+                error={this.state.waPhoneNumber_err !== ""}
+                helperText={this.state.waPhoneNumber_err}
                 value={this.state.tel}
                 placeholder="Phone Number"
                 onChange={this.handleChangeNumber.bind(this)}
@@ -680,8 +804,19 @@ class Question2 extends Component {
             <Grid container style={{ marginLeft: 205, marginTop: 20, }}>
               <Grid item xs />
               <Grid item xs={6}>
-                <Link to="/Thanks">
+                <ButtonText
+                  onClick={this.checkSubmit}
+                  style={{
+                    fontSize: 13,
+                    height: 40,
+                    width: 200,
+                  }}
+                >
+                  SUBMIT MY REQUEST
+                </ButtonText>
+                <Link to="/Thanks" hidden={true}>
                   <ButtonText
+                    id="submitBtn"
                     onClick={this.handleSubmit}
                     style={{
                       fontSize: 13,
