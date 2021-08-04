@@ -342,20 +342,21 @@ class Question2 extends Component {
         email: this.state.email,
         waPhoneNumber: this.state.waPhoneNumber,
       },
-    });
-    var checked = true;
-    for (let i = 0; i < field_req.length; i++) {
-      const field = field_req[i];
-      if (this.state[field + "_err"] === "" && checked !== false) {
-        checked = true
-      } else {
-        checked = false;
-        break;
+    }, function () {
+      var checked = true;
+      for (let i = 0; i < field_req.length; i++) {
+        const field = field_req[i];
+        if (this.state[field + "_err"] === "" && checked !== false) {
+          checked = true
+        } else {
+          checked = false;
+          break;
+        }
       }
-    }
-    if (checked === true) {
-      this.clickSubmit();
-    }
+      if (checked === true) {
+        this.clickSubmit();
+      }
+    });
   }
   render() {
     return (
