@@ -373,12 +373,14 @@ class Question2 extends Component {
             alignItems="flex-start"
           >
             <Grid item align="right" xs={12} md={6}>
-              <Typography variant="span" style={{ marginRight: 10 }}>
+              <Typography variant="span" style={{ marginRight: 10, fontSize: "25px", }}>
                 My Name is
               </Typography>
               <TextField
-                style={{ marginTop: -5, width: 100, marginRight: 10, }}
+                style={{ marginTop: -3, width: 100, marginRight: 10, }}
                 className="inputBox"
+                inputProps={{style: {fontSize: 25}}} 
+                InputLabelProps={{style: {fontSize: 25}}}
                 error={this.state.name_err !== ""}
                 helperText={this.state.name_err}
                 onChange={this.handleChange}
@@ -393,12 +395,14 @@ class Question2 extends Component {
             </Grid>
             {this.state.id1 ? (
               <Grid item xs={12} md={6}>
-                <Typography variant="span" style={{ marginRight: 10 }}>
+                <Typography variant="span" style={{ marginRight: 10, fontSize: "25px", }}>
                   and I'm
                 </Typography>
                 <TextField
-                  style={{ marginTop: -5, width: 45, }}
+                  style={{ marginTop: -2, width: 58, }}
                   className="inputBox"
+                  inputProps={{style: {fontSize: 25}}} 
+                  InputLabelProps={{style: {fontSize: 25}}}
                   onChange={this.handleChange}
                   error={this.state.age_err !== ""}
                   helperText={this.state.age_err}
@@ -409,7 +413,7 @@ class Question2 extends Component {
                   required
                   value={this.state.age}
                 />
-                <Typography variant="span" style={{ marginLeft: 10 }}>
+                <Typography variant="span" style={{ marginLeft: 10, fontSize: "25px", }}>
                   years old
                 </Typography>
               </Grid>
@@ -432,7 +436,7 @@ class Question2 extends Component {
                 md={6}
                 style={{ marginTop: 15, marginLeft: -50, }}
               >
-                <Typography variant="span" style={{ marginRight: 10 }}>
+                <Typography variant="span" style={{ marginRight: 10,  fontSize: "25px", }}>
                   My favourite color is
                 </Typography>
                 <FormControl required className={this.useStyles1.formControl}>
@@ -440,7 +444,7 @@ class Question2 extends Component {
                     name="favouriteColor"
                     id="id3"
                     style={{
-                      marginTop: -3, marginRight: 10, fill: "white",
+                      marginTop: -3, marginRight: 10, fill: "white", fontSize: 25,
                     }}
                     value={this.state.favouriteColor}
                     onChange={this.handleChange}
@@ -462,7 +466,7 @@ class Question2 extends Component {
             )}
             {this.state.id3 ? (
               <Grid item xs={6} style={{ marginTop: 15 }}>
-                <Typography variant="span" style={{ marginRight: 10 }}>
+                <Typography variant="span" style={{ marginRight: 10, fontSize:"25px",}}>
                   and my dress size is
                 </Typography>
                 <Autocomplete
@@ -478,8 +482,9 @@ class Question2 extends Component {
                   style={{
                     width: 50,
                     backgroundColor: 'transparent',
-                    marginLeft: 155,
-                    marginTop: -27,
+                    paddingLeft: 240,
+                    marginTop: -30,
+                    fontSize:25,
                   }}
                   renderInput={(params) =>
                     <TextField {...params} placeholder="Type"
@@ -499,7 +504,7 @@ class Question2 extends Component {
                   autoComplete="off"
                   getOptionLabel={(options) => options}
                   autoSelect={true}
-                  style={{ width: 50, marginLeft: 215, marginTop: -34, }}
+                  style={{ width: 50, marginLeft: 0, marginTop: -34, }}
                   renderInput={(params) =>
                     <TextField {...params} placeholder="Size"
                     />
