@@ -77,7 +77,7 @@ export const ConItem = styled.div`
     
 `
 export const ButtonText = styled.button`
-    backgroun-color:white;
+    background-color:white;
     width:100%;
     height:50px;
     text-align: center;
@@ -123,7 +123,7 @@ export const ThanksItem = styled.div`
     
 `
 export const ButtonThanks = styled.button`
-    backgroun-color:white;
+    background-color:white;
     width:50%;
     height:50px;
     text-align: center;
