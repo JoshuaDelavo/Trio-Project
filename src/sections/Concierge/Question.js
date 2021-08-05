@@ -265,21 +265,24 @@ class Question2 extends Component {
     });
   }
   handleChangeNumber(event) {
-    this.setState({ tel: event.target.value })
-    if (this.state.phoneCode === "") {
-      this.setState({ waPhoneNumber_err: "Please pick your phone code" });
-    }
-    else {
-      this.setState({
-        waPhoneNumber: this.state.phoneCode + event.target.value
-      });
-      if (event.target.value === "") {
-        this.setState({ waPhoneNumber_err: "Please Insert your number" });
-        this.setState({ id10: false });
+    const re = /^[0-9\b]+$/;
+    if (event.target.value === '' || re.test(event.target.value)) {
+      this.setState({ tel: event.target.value })
+      if (this.state.phoneCode === "") {
+        this.setState({ waPhoneNumber_err: "Please pick your phone code" });
       }
       else {
-        this.setState({ waPhoneNumber_err: "" });
-        this.setState({ id10: true });
+        this.setState({
+          waPhoneNumber: this.state.phoneCode + event.target.value
+        });
+        if (event.target.value === "") {
+          this.setState({ waPhoneNumber_err: "Please Insert your number" });
+          this.setState({ id10: false });
+        }
+        else {
+          this.setState({ waPhoneNumber_err: "" });
+          this.setState({ id10: true });
+        }
       }
     }
 
@@ -379,8 +382,8 @@ class Question2 extends Component {
               <TextField
                 style={{ marginTop: -3, width: 100, marginRight: 10, }}
                 className="inputBox"
-                inputProps={{style: {fontSize: 25}}} 
-                InputLabelProps={{style: {fontSize: 25}}}
+                inputProps={{ style: { fontSize: 25 } }}
+                InputLabelProps={{ style: { fontSize: 25 } }}
                 error={this.state.name_err !== ""}
                 helperText={this.state.name_err}
                 onChange={this.handleChange}
@@ -401,8 +404,8 @@ class Question2 extends Component {
                 <TextField
                   style={{ marginTop: -2, width: 60, }}
                   className="inputBox"
-                  inputProps={{style: {fontSize: 25}}} 
-                  InputLabelProps={{style: {fontSize: 25}}}
+                  inputProps={{ style: { fontSize: 25 } }}
+                  InputLabelProps={{ style: { fontSize: 25 } }}
                   onChange={this.handleChange}
                   error={this.state.age_err !== ""}
                   helperText={this.state.age_err}
@@ -435,7 +438,7 @@ class Question2 extends Component {
                 md={6}
                 style={{ marginTop: 15, marginLeft: 0, }}
               >
-                <Typography variant="span" style={{ marginRight: 10,  fontSize: "25px", }}>
+                <Typography variant="span" style={{ marginRight: 10, fontSize: "25px", }}>
                   My favourite color is
                 </Typography>
                 <FormControl required className={this.useStyles1.formControl}>
@@ -464,8 +467,8 @@ class Question2 extends Component {
               ""
             )}
             {this.state.id3 ? (
-              <Grid item xs={6} style={{ marginTop: 15, fontSize: 25,}}>
-                <Typography variant="span" style={{ marginRight: 10, fontSize:"25px",}}>
+              <Grid item xs={6} style={{ marginTop: 15, fontSize: 25, }}>
+                <Typography variant="span" style={{ marginRight: 10, fontSize: "25px", }}>
                   and my dress size is
                 </Typography>
                 <Autocomplete
@@ -483,7 +486,7 @@ class Question2 extends Component {
                     backgroundColor: 'transparent',
                     paddingLeft: 240,
                     marginTop: -33,
-                    fontSize:25,
+                    fontSize: 25,
                   }}
                   renderInput={(params) =>
                     <TextField {...params} placeholder="Type"
@@ -503,12 +506,12 @@ class Question2 extends Component {
                   autoComplete="off"
                   getOptionLabel={(options) => options}
                   autoSelect={true}
-                  style={{ 
+                  style={{
                     paddingLeft: 320,
-                    marginTop: -36.5, 
+                    marginTop: -36.5,
                   }}
                   renderInput={(params) =>
-                    <TextField {...params} placeholder="Size" style={{width:60,}}
+                    <TextField {...params} placeholder="Size" style={{ width: 60, }}
                     />
                   }
                   onChange={(event, value) => this.selectSize(value)}
@@ -526,7 +529,7 @@ class Question2 extends Component {
               xs={12}
               alignItems="center"
               justifyContent="center"
-              style={{ marginTop: 10, marginLeft: -115, fontSize: 25,}}
+              style={{ marginTop: 10, marginLeft: -115, fontSize: 25, }}
             >
               <Typography variant="span" style={{ marginLeft: 550, fontSize: "25px", }}>
                 I live in
@@ -545,7 +548,7 @@ class Question2 extends Component {
                   fontSize: 25,
                 }}
                 renderInput={(params) => (
-                  <TextField {...params} placeholder="Country" style={{width:150,}}/>
+                  <TextField {...params} placeholder="Country" style={{ width: 150, }} />
                 )}
                 onChange={(event, value) => this.selectCountry(value.isoCode, value.name)}
               />
@@ -561,7 +564,7 @@ class Question2 extends Component {
                 getOptionLabel={(options) => options.name}
                 style={{ paddingLeft: 810, marginTop: -37, fontSize: 25, }}
                 renderInput={(params) => (
-                  <TextField {...params} placeholder="City" style={{width:150,}}/>
+                  <TextField {...params} placeholder="City" style={{ width: 150, }} />
                 )}
                 onChange={(event, value) => this.selectRegion(value.name)}
               />
@@ -578,13 +581,13 @@ class Question2 extends Component {
                 justifyContent="center"
                 style={{ marginTop: 15, marginLeft: -85, }}
               >
-                <Typography variant="span" style={{ marginLeft: 450, fontSize:"25px" }}>
+                <Typography variant="span" style={{ marginLeft: 450, fontSize: "25px" }}>
                   and I need to use this dress at
                 </Typography>
                 <FormControl
                   required
                   className={this.tanggal.formControl}
-                  style={{ marginTop:3,marginLeft: 10, fontSize:"25px", }}
+                  style={{ marginTop: 3, marginLeft: 10, fontSize: "25px", }}
                 >
                   <KeyboardDatePicker
                     name="needToUseAt"
@@ -596,7 +599,7 @@ class Question2 extends Component {
                     onChange={this.handleChangeDate}
                     className="date"
                     placeholder="Date"
-                    style={{ width: 150, fontSize:"25px", }}
+                    style={{ width: 150, fontSize: "25px", }}
                     format="dd-MM-yyyy"
                     keyboardIcon={
                       <AiOutlineCalendar style={{ fill: "white" }} />
@@ -617,7 +620,7 @@ class Question2 extends Component {
               justifyContent="center"
               style={{ marginTop: 15, marginLeft: -80, }}
             >
-              <Typography variant="span" style={{ marginLeft: 440, fontSize:"25px", }}>
+              <Typography variant="span" style={{ marginLeft: 440, fontSize: "25px", }}>
                 I have preferance for my dress
               </Typography>
               <input
@@ -630,7 +633,7 @@ class Question2 extends Component {
                   color: "white",
                   marginLeft: 10,
                   border: "none",
-                  fontSize:"25px",
+                  fontSize: "25px",
                   borderBottom: "1px solid white",
                 }}
                 readOnly
@@ -653,7 +656,7 @@ class Question2 extends Component {
                   backgroundColor: "black",
                   color: "white",
                   visibility: "collapse",
-                  fontSize:"25px",
+                  fontSize: "25px",
                 }}
                 required
               />
@@ -667,15 +670,15 @@ class Question2 extends Component {
               xs={12}
               alignItems="center"
               justifyContent="center"
-              style={{ marginTop:-30, marginLeft: -10, }}
+              style={{ marginTop: -30, marginLeft: -10, }}
             >
-              <Typography variant="span" style={{ marginLeft: 480, fontSize:"25px", }}>
+              <Typography variant="span" style={{ marginLeft: 480, fontSize: "25px", }}>
                 My budget is
               </Typography>
               <FormControl
                 required
                 className={this.useStyles1.formControl}
-                style={{ minWidth:300, marginLeft: 10, marginTop:-3, fontSize:"25px",}}
+                style={{ minWidth: 300, marginLeft: 10, marginTop: -3, fontSize: "25px", }}
               >
                 <Select
                   name="budget"
@@ -683,25 +686,25 @@ class Question2 extends Component {
                   onChange={this.handleChangeBudget1}
                   required
                   value={this.state.budget}
-                  style={{fontSize:"25px",}}
+                  style={{ fontSize: "25px", }}
                   autoWidth
                 >
                   <MenuItem value="Budget" disabled>
                     {" "}
                     Budget{" "}
                   </MenuItem>
-                  <MenuItem value="2000" style={{fontSize:"25px",}}>
+                  <MenuItem value="2000" style={{ fontSize: "25px", }}>
                     starting from 2000(USD)
                   </MenuItem>
-                  <MenuItem value="10000" style={{fontSize:"25px",}}>
+                  <MenuItem value="10000" style={{ fontSize: "25px", }}>
                     starting from 10000(USD)
                   </MenuItem>
-                  <MenuItem value="100000" style={{fontSize:"25px",}}>
+                  <MenuItem value="100000" style={{ fontSize: "25px", }}>
                     starting from 100000(USD)
                   </MenuItem>
                   <MenuItem
                     id="others"
-                    style={{fontSize:"25px",}}
+                    style={{ fontSize: "25px", }}
                     value={
                       this.state.test ? this.state.budget : this.state.others
                     }
@@ -723,9 +726,9 @@ class Question2 extends Component {
               xs={12}
               alignItems="center"
               justifyContent="center"
-              style={{ marginTop: 15, fontSize:"25px",}}
+              style={{ marginTop: 15, fontSize: "25px", }}
             >
-              <Typography variant="span" style={{ marginLeft: 450, fontSize:"25px",  }}>
+              <Typography variant="span" style={{ marginLeft: 450, fontSize: "25px", }}>
                 you can email me at
               </Typography>
               <TextField
@@ -738,9 +741,9 @@ class Question2 extends Component {
                 name="email"
                 value={this.state.email}
                 width="140px"
-                inputProps={{style: {fontSize: 25}}} 
-                InputLabelProps={{style: {fontSize: 25}}}
-                style={{ marginLeft: 10, marginTop:-4, fontSize:"25px",}}
+                inputProps={{ style: { fontSize: 25 } }}
+                InputLabelProps={{ style: { fontSize: 25 } }}
+                style={{ marginLeft: 10, marginTop: -4, fontSize: "25px", }}
                 required
               />
             </Grid>
@@ -753,7 +756,7 @@ class Question2 extends Component {
               xs={12}
               alignItems="center"
               justifyContent="center"
-              style={{ marginTop:15,marginLeft: -40, fontSize:"25px",}}
+              style={{ marginTop: 15, marginLeft: -40, fontSize: "25px", }}
             >
               <Typography variant="span" style={{ marginLeft: 430, }}>
                 or WhatsApp me at
@@ -770,7 +773,7 @@ class Question2 extends Component {
                   backgroundColor: 'transparent',
                   marginLeft: 670,
                   marginTop: -30,
-                  fontSize:"25px",
+                  fontSize: "25px",
                 }}
                 renderInput={(params) =>
                   <TextField {...params} placeholder="Code"
@@ -787,8 +790,8 @@ class Question2 extends Component {
                 value={this.state.tel}
                 placeholder="Phone Number"
                 onChange={this.handleChangeNumber.bind(this)}
-                inputProps={{style: {fontSize: 25}}} 
-                InputLabelProps={{style: {fontSize: 25}}}
+                inputProps={{ style: { fontSize: 25 } }}
+                InputLabelProps={{ style: { fontSize: 25 } }}
                 style={{ marginLeft: 785, marginTop: -47.5, }}
               />
             </Grid>
@@ -797,7 +800,7 @@ class Question2 extends Component {
           )}
           <br></br>
           {this.state.id10 ? (
-            <Grid container style={{ marginTop:-20,marginLeft: 210, }}>
+            <Grid container style={{ marginTop: -20, marginLeft: 210, }}>
               <Grid item xs />
               <Grid item xs={6}>
                 <ButtonText
@@ -806,7 +809,7 @@ class Question2 extends Component {
                     fontSize: 13,
                     height: 40,
                     width: 200,
-                    marginTop:-20,
+                    marginTop: -20,
                   }}
                 >
                   SUBMIT MY REQUEST
@@ -852,7 +855,7 @@ class Question2 extends Component {
             justifyContent="center"
             style={{ marginTop: 15, fontSize: "25px", fontWeight: "bold", }}
           >
-            <Typography variant="span" style={{ marginLeft: 570, fontSize:"25px",}}>
+            <Typography variant="span" style={{ marginLeft: 570, fontSize: "25px", }}>
               My Preffered Budget
             </Typography>
             <TextField
@@ -862,9 +865,9 @@ class Question2 extends Component {
               placeholder="Prefer Budget"
               type="number"
               name="prefB"
-              inputProps={{style: {fontSize: 25}}} 
-              InputLabelProps={{style: {fontSize: 25}}}
-              style={{ marginLeft: 10, marginRight: 10, marginTop:-3, width: 150, fontSize:"25px", }}
+              inputProps={{ style: { fontSize: 25 } }}
+              InputLabelProps={{ style: { fontSize: 25 } }}
+              style={{ marginLeft: 10, marginRight: 10, marginTop: -3, width: 150, fontSize: "25px", }}
             />
             USD
           </Grid>
