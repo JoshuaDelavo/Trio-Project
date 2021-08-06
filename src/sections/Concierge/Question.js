@@ -20,6 +20,7 @@ import {
   KeyboardDatePicker,
 } from "@material-ui/pickers";
 import data from '../../data/phoneCode.json'
+import arrDown from '../../images/arrow-down.svg';
 
 import "./test.css";
 
@@ -461,6 +462,7 @@ class Question2 extends Component {
                     <MenuItem value={"Red"}>Red</MenuItem>
                     <MenuItem value={"Green"}>Green</MenuItem>
                   </Select>
+                  <img src={arrDown} alt=""></img>
                 </FormControl>
               </Grid>
             ) : (
@@ -618,7 +620,7 @@ class Question2 extends Component {
               xs={12}
               alignItems="center"
               justifyContent="center"
-              style={{ marginTop: 15, marginLeft: -80, }}
+              style={{ marginTop: 15, marginLeft: -100, }}
             >
               <Typography variant="span" style={{ marginLeft: 440, fontSize: "25px", }}>
                 I have preferance for my dress
@@ -726,7 +728,7 @@ class Question2 extends Component {
               xs={12}
               alignItems="center"
               justifyContent="center"
-              style={{ marginTop: 15, fontSize: "25px", }}
+              style={{ marginTop: 15, fontSize: "25px", marginLeft:-30, }}
             >
               <Typography variant="span" style={{ marginLeft: 450, fontSize: "25px", }}>
                 you can email me at
@@ -756,7 +758,7 @@ class Question2 extends Component {
               xs={12}
               alignItems="center"
               justifyContent="center"
-              style={{ marginTop: 15, marginLeft: -40, fontSize: "25px", }}
+              style={{ marginTop: 15, marginLeft: -90, fontSize: "25px", }}
             >
               <Typography variant="span" style={{ marginLeft: 430, }}>
                 or WhatsApp me at
@@ -855,7 +857,7 @@ class Question2 extends Component {
             justifyContent="center"
             style={{ marginTop: 15, fontSize: "25px", fontWeight: "bold", }}
           >
-            <Typography variant="span" style={{ marginLeft: 570, fontSize: "25px", }}>
+            <Typography variant="span" style={{ marginLeft: 520, fontSize: "25px", }}>
               My Preffered Budget
             </Typography>
             <TextField
@@ -867,7 +869,7 @@ class Question2 extends Component {
               name="prefB"
               inputProps={{ style: { fontSize: 25 } }}
               InputLabelProps={{ style: { fontSize: 25 } }}
-              style={{ marginLeft: 10, marginRight: 10, marginTop: -3, width: 150, fontSize: "25px", }}
+              style={{ marginLeft: 10, marginRight: 10, marginTop: -3, width: 170, }}
             />
             USD
           </Grid>
@@ -875,34 +877,34 @@ class Question2 extends Component {
           <Grid
             container
             spacing={1}
-            style={{ marginLeft: 425, marginTop: 10 }}
+            style={{ marginLeft: 350, marginTop: 20 }}
           >
             <Grid item xs={3}>
               <ButtonText
                 onClick={this.handleSubmitBudget}
                 direction={"row"}
                 style={{
-                  fontSize: 10,
-                  height: 40,
-                  width: 110,
+                  fontSize: 15,
+                  height: 45,
+                  width: 180,
                   backgroundColor: "white",
                   textAlign: "center",
-                  marginLeft: 230,
+                  marginLeft: 200,
                   color: "black",
                 }}
               >
                 ENTER
               </ButtonText>
             </Grid>
-            <Grid item xs={3} style={{ marginLeft: 100 }}>
+            <Grid item xs={3} style={{ marginLeft: 120 }}>
               <ButtonText
                 style={{
-                  fontSize: 10,
-                  height: 40,
-                  width: 110,
+                  fontSize: 15,
+                  height: 45,
+                  width: 180,
                   textAlign: "center",
                   backgroundColor: "black",
-                  marginLeft: -30,
+                  marginLeft:0,
                   color: "white",
                 }}
                 onClick={this.handleSubmitCancelBudget}
