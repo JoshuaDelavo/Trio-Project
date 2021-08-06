@@ -20,7 +20,6 @@ import {
   KeyboardDatePicker,
 } from "@material-ui/pickers";
 import data from '../../data/phoneCode.json'
-import arrDown from '../../images/arrow-down.svg';
 
 import "./test.css";
 
@@ -462,7 +461,6 @@ class Question2 extends Component {
                     <MenuItem value={"Red"}>Red</MenuItem>
                     <MenuItem value={"Green"}>Green</MenuItem>
                   </Select>
-                  <img src={arrDown} alt=""></img>
                 </FormControl>
               </Grid>
             ) : (
