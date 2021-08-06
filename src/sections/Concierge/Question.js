@@ -19,12 +19,13 @@ import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
 } from "@material-ui/pickers";
-import data from '../../data/phoneCode.json'
-import arrDown from '../../images/arrow-down.svg';
+import data from "../../data/phoneCode.json";
+import arrDown from "../../images/arrow-down.svg";
 
 import "./test.css";
 
-const field_req = ["name",
+const field_req = [
+  "name",
   "age",
   "favouriteColor",
   "size",
@@ -36,7 +37,8 @@ const field_req = ["name",
   "email",
   "budget",
   "phoneCode",
-  "waPhoneNumber"];
+  "waPhoneNumber",
+];
 
 class Question2 extends Component {
   constructor() {
@@ -84,7 +86,7 @@ class Question2 extends Component {
       email: "",
       budget: "",
       phoneCode: "",
-      tel: '',
+      tel: "",
       waPhoneNumber: "",
 
       name_err: "",
@@ -104,24 +106,51 @@ class Question2 extends Component {
       types: [
         {
           name: "US",
-          code: "US"
+          code: "US",
         },
         {
           name: "EUR",
-          code: "EURO"
+          code: "EURO",
         },
         {
           name: "JPN",
-          code: "JPN"
-        }
+          code: "JPN",
+        },
       ],
-      sizestype:
-      {
+      sizestype: {
         empty: ["No Option"],
-        US: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
-        EURO: ['24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '46', '49', '50'],
-        JPN: ['11', '12', '13', '14', '15', '16', '17']
-      }
+        US: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+        EURO: [
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "29",
+          "30",
+          "31",
+          "32",
+          "33",
+          "34",
+          "35",
+          "36",
+          "37",
+          "38",
+          "39",
+          "40",
+          "41",
+          "42",
+          "43",
+          "44",
+          "45",
+          "46",
+          "47",
+          "46",
+          "49",
+          "50",
+        ],
+        JPN: ["11", "12", "13", "14", "15", "16", "17"],
+      },
     };
 
     this.handleChangeFile2 = this.handleChangeFile2.bind(this);
@@ -134,7 +163,7 @@ class Question2 extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleChangeDate = this.handleChangeDate.bind(this);
     this.selectCountry = this.selectCountry.bind(this);
-    this.selectRegion = this.selectRegion.bind(this)
+    this.selectRegion = this.selectRegion.bind(this);
     this.selectType = this.selectType.bind(this);
     this.selectSize = this.selectSize.bind(this);
     this.selectPhoneCode = this.selectPhoneCode.bind(this);
@@ -188,26 +217,27 @@ class Question2 extends Component {
     this.setState({ [idfield]: true });
     this.setState({ [res.target.name]: res.target.value });
     if (res.target.value === "") {
-      this.setState({ [res.target.name + "_err"]: "Require" })
-    }
-    else {
-      this.setState({ [res.target.name + "_err"]: "" })
+      this.setState({ [res.target.name + "_err"]: "Require" });
+    } else {
+      this.setState({ [res.target.name + "_err"]: "" });
     }
     if (res.target.name == "email") {
       var cekE = res.target.value;
       var test = cekE.split("@");
 
       if (test.length === 2 && test[1] !== "") {
-        var test2 = test[1].split('.')
+        var test2 = test[1].split(".");
         if (test2.length === 2 && test2[1] !== "") {
-          this.setState({ [res.target.name + "_err"]: "" })
+          this.setState({ [res.target.name + "_err"]: "" });
+        } else {
+          this.setState({
+            [res.target.name + "_err"]: "Please insert email correctly",
+          });
         }
-        else {
-          this.setState({ [res.target.name + "_err"]: "Please insert email correctly" })
-        }
-      }
-      else {
-        this.setState({ [res.target.name + "_err"]: "Please insert email correctly" })
+      } else {
+        this.setState({
+          [res.target.name + "_err"]: "Please insert email correctly",
+        });
       }
     }
   }
@@ -235,7 +265,7 @@ class Question2 extends Component {
   selectCountry(val, name) {
     this.setState({ country: val });
     this.setState({ country2: name });
-    this.setState({ city: '' });
+    this.setState({ city: "" });
   }
 
   selectRegion(val) {
@@ -244,52 +274,47 @@ class Question2 extends Component {
   }
   selectType(val) {
     this.setState({ sizeType: val });
-    this.setState({ sizeType_err: "" })
+    this.setState({ sizeType_err: "" });
   }
   selectSize(val) {
     if (val === "No Option") {
-      this.setState({ size_err: "Require" })
-      this.setState({ sizeType_err: "Require" })
-    }
-    else {
+      this.setState({ size_err: "Require" });
+      this.setState({ sizeType_err: "Require" });
+    } else {
       this.setState({ size: val });
       this.setState({ id4: true });
-      this.setState({ size_err: "" })
+      this.setState({ size_err: "" });
     }
-
   }
   selectPhoneCode(val) {
     this.setState({ phoneCode: val });
     this.setState({ waPhoneNumber_err: "" });
     this.setState({
-      waPhoneNumber: this.state.phoneCode + this.state.tel
+      waPhoneNumber: this.state.phoneCode + this.state.tel,
     });
   }
   handleChangeNumber(event) {
     const re = /^[0-9\b]+$/;
-    if (event.target.value === '' || re.test(event.target.value)) {
-      this.setState({ tel: event.target.value })
+    if (event.target.value === "" || re.test(event.target.value)) {
+      this.setState({ tel: event.target.value });
       if (this.state.phoneCode === "") {
         this.setState({ waPhoneNumber_err: "Please pick your phone code" });
-      }
-      else {
+      } else {
         this.setState({
-          waPhoneNumber: this.state.phoneCode + event.target.value
+          waPhoneNumber: this.state.phoneCode + event.target.value,
         });
         if (event.target.value === "") {
           this.setState({ waPhoneNumber_err: "Please Insert your number" });
           this.setState({ id10: false });
-        }
-        else {
+        } else {
           this.setState({ waPhoneNumber_err: "" });
           this.setState({ id10: true });
         }
       }
     }
-
   }
   handleSubmit() {
-    console.log(this.state.datafix)
+    console.log(this.state.datafix);
     var formData = new FormData();
     const stateObj = this.state.datafix;
     formData.append("data", JSON.stringify(stateObj));
@@ -301,10 +326,9 @@ class Question2 extends Component {
     this.setState({ test: true });
   }
   handleSubmitBudget() {
-    if (this.state.budget == '') {
+    if (this.state.budget == "") {
       this.handleSubmitCancelBudget();
-    }
-    else {
+    } else {
       this.setState({ id8: true });
       this.setState({ utama: !this.state.utama });
       this.setState({ others: this.state.budget });
@@ -323,44 +347,46 @@ class Question2 extends Component {
     document.getElementById("submitBtn").click();
   }
   getSize(code) {
-    if (code == '') {
-      return (this.state.sizestype["empty"]);
-    }
-    else {
-      return (this.state.sizestype[code])
+    if (code == "") {
+      return this.state.sizestype["empty"];
+    } else {
+      return this.state.sizestype[code];
     }
   }
   checkSubmit() {
-    this.setState({
-      datafix: {
-        name: this.state.name,
-        age: this.state.age,
-        favouriteColor: this.state.favouriteColor,
-        size: this.state.size,
-        sizeType: this.state.sizeType,
-        city: this.state.city,
-        country: this.state.country2,
-        needToUseAt: this.state.needToUseAt,
-        photo: this.state.photo,
-        budget: this.state.budget,
-        email: this.state.email,
-        waPhoneNumber: this.state.waPhoneNumber,
+    this.setState(
+      {
+        datafix: {
+          name: this.state.name,
+          age: this.state.age,
+          favouriteColor: this.state.favouriteColor,
+          size: this.state.size,
+          sizeType: this.state.sizeType,
+          city: this.state.city,
+          country: this.state.country2,
+          needToUseAt: this.state.needToUseAt,
+          photo: this.state.photo,
+          budget: this.state.budget,
+          email: this.state.email,
+          waPhoneNumber: this.state.waPhoneNumber,
+        },
       },
-    }, function () {
-      var checked = true;
-      for (let i = 0; i < field_req.length; i++) {
-        const field = field_req[i];
-        if (this.state[field + "_err"] === "" && checked !== false) {
-          checked = true
-        } else {
-          checked = false;
-          break;
+      function () {
+        var checked = true;
+        for (let i = 0; i < field_req.length; i++) {
+          const field = field_req[i];
+          if (this.state[field + "_err"] === "" && checked !== false) {
+            checked = true;
+          } else {
+            checked = false;
+            break;
+          }
         }
-      }
-      if (checked === true) {
-        this.clickSubmit();
-      }
-    });
+        if (checked === true) {
+          this.clickSubmit();
+        }
+      },
+    );
   }
   render() {
     return (
@@ -377,11 +403,14 @@ class Question2 extends Component {
             alignItems="flex-start"
           >
             <Grid item align="right" xs={12} md={6}>
-              <Typography variant="span" style={{ marginRight: 10, fontSize: "25px", }}>
+              <Typography
+                variant="span"
+                style={{ marginRight: 10, fontSize: "25px" }}
+              >
                 My Name is
               </Typography>
               <TextField
-                style={{ marginTop: -3, width: 100, marginRight: 10, }}
+                style={{ marginTop: -3, width: 100, marginRight: 10 }}
                 className="inputBox"
                 inputProps={{ style: { fontSize: 25 } }}
                 InputLabelProps={{ style: { fontSize: 25 } }}
@@ -399,11 +428,14 @@ class Question2 extends Component {
             </Grid>
             {this.state.id1 ? (
               <Grid item xs={12} md={6}>
-                <Typography variant="span" style={{ marginRight: 10, fontSize: "25px", }}>
+                <Typography
+                  variant="span"
+                  style={{ marginRight: 10, fontSize: "25px" }}
+                >
                   and I'm
                 </Typography>
                 <TextField
-                  style={{ marginTop: -2, width: 60, }}
+                  style={{ marginTop: -2, width: 60 }}
                   className="inputBox"
                   inputProps={{ style: { fontSize: 25 } }}
                   InputLabelProps={{ style: { fontSize: 25 } }}
@@ -417,7 +449,10 @@ class Question2 extends Component {
                   required
                   value={this.state.age}
                 />
-                <Typography variant="span" style={{ marginLeft: 10, fontSize: "25px", }}>
+                <Typography
+                  variant="span"
+                  style={{ marginLeft: 10, fontSize: "25px" }}
+                >
                   years old
                 </Typography>
               </Grid>
@@ -437,9 +472,12 @@ class Question2 extends Component {
                 align="right"
                 xs={12}
                 md={6}
-                style={{ marginTop: 15, marginLeft: 0, }}
+                style={{ marginTop: 15, marginLeft: 0 }}
               >
-                <Typography variant="span" style={{ marginRight: 10, fontSize: "25px", }}>
+                <Typography
+                  variant="span"
+                  style={{ marginRight: 10, fontSize: "25px" }}
+                >
                   My favourite color is
                 </Typography>
                 <FormControl required className={this.useStyles1.formControl}>
@@ -447,7 +485,10 @@ class Question2 extends Component {
                     name="favouriteColor"
                     id="id3"
                     style={{
-                      marginTop: -3, marginRight: 10, fill: "white", fontSize: 25,
+                      marginTop: -3,
+                      marginRight: 10,
+                      fill: "white",
+                      fontSize: 25,
                     }}
                     value={this.state.favouriteColor}
                     onChange={this.handleChange}
@@ -462,15 +503,17 @@ class Question2 extends Component {
                     <MenuItem value={"Red"}>Red</MenuItem>
                     <MenuItem value={"Green"}>Green</MenuItem>
                   </Select>
-                  <img src={arrDown} alt=""></img>
                 </FormControl>
               </Grid>
             ) : (
               ""
             )}
             {this.state.id3 ? (
-              <Grid item xs={6} style={{ marginTop: 15, fontSize: 25, }}>
-                <Typography variant="span" style={{ marginRight: 10, fontSize: "25px", }}>
+              <Grid item xs={6} style={{ marginTop: 15, fontSize: 25 }}>
+                <Typography
+                  variant="span"
+                  style={{ marginRight: 10, fontSize: "25px" }}
+                >
                   and my dress size is
                 </Typography>
                 <Autocomplete
@@ -485,15 +528,20 @@ class Question2 extends Component {
                   autoComplete="off"
                   style={{
                     width: 304,
-                    backgroundColor: 'transparent',
+                    backgroundColor: "transparent",
                     paddingLeft: 240,
-                    marginTop: -33,
+                    marginTop: -50,
                     fontSize: 25,
                   }}
-                  renderInput={(params) =>
-                    <TextField {...params} placeholder="Type"
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      inputProps={{
+                        style: { fontSize: "30px" },
+                      }}
+                      placeholder="Type"
                     />
-                  }
+                  )}
                   onChange={(event, value) => this.selectType(value.code)}
                 />
                 <Autocomplete
@@ -512,10 +560,16 @@ class Question2 extends Component {
                     paddingLeft: 320,
                     marginTop: -36.5,
                   }}
-                  renderInput={(params) =>
-                    <TextField {...params} placeholder="Size" style={{ width: 60, }}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      placeholder="Size"
+                      style={{ width: 60 }}
+                      inputProps={{
+                        style: { fontSize: "30px" },
+                      }}
                     />
-                  }
+                  )}
                   onChange={(event, value) => this.selectSize(value)}
                 />
               </Grid>
@@ -531,9 +585,12 @@ class Question2 extends Component {
               xs={12}
               alignItems="center"
               justifyContent="center"
-              style={{ marginTop: 10, marginLeft: -115, fontSize: 25, }}
+              style={{ marginTop: 10, marginLeft: -115, fontSize: 25 }}
             >
-              <Typography variant="span" style={{ marginLeft: 550, fontSize: "25px", }}>
+              <Typography
+                variant="span"
+                style={{ marginLeft: 550, fontSize: "25px" }}
+              >
                 I live in
               </Typography>
               <Autocomplete
@@ -550,9 +607,15 @@ class Question2 extends Component {
                   fontSize: 25,
                 }}
                 renderInput={(params) => (
-                  <TextField {...params} placeholder="Country" style={{ width: 150, }} />
+                  <TextField
+                    {...params}
+                    placeholder="Country"
+                    style={{ width: 150 }}
+                  />
                 )}
-                onChange={(event, value) => this.selectCountry(value.isoCode, value.name)}
+                onChange={(event, value) =>
+                  this.selectCountry(value.isoCode, value.name)
+                }
               />
 
               <Autocomplete
@@ -564,9 +627,13 @@ class Question2 extends Component {
                 disableClearable
                 autoSelect={true}
                 getOptionLabel={(options) => options.name}
-                style={{ paddingLeft: 810, marginTop: -37, fontSize: 25, }}
+                style={{ paddingLeft: 810, marginTop: -37, fontSize: 25 }}
                 renderInput={(params) => (
-                  <TextField {...params} placeholder="City" style={{ width: 150, }} />
+                  <TextField
+                    {...params}
+                    placeholder="City"
+                    style={{ width: 150 }}
+                  />
                 )}
                 onChange={(event, value) => this.selectRegion(value.name)}
               />
@@ -581,15 +648,18 @@ class Question2 extends Component {
                 xs={12}
                 alignItems="center"
                 justifyContent="center"
-                style={{ marginTop: 15, marginLeft: -85, }}
+                style={{ marginTop: 15, marginLeft: -85 }}
               >
-                <Typography variant="span" style={{ marginLeft: 450, fontSize: "25px" }}>
+                <Typography
+                  variant="span"
+                  style={{ marginLeft: 450, fontSize: "25px" }}
+                >
                   and I need to use this dress at
                 </Typography>
                 <FormControl
                   required
                   className={this.tanggal.formControl}
-                  style={{ marginTop: 3, marginLeft: 10, fontSize: "25px", }}
+                  style={{ marginTop: 3, marginLeft: 10, fontSize: "25px" }}
                 >
                   <KeyboardDatePicker
                     name="needToUseAt"
@@ -601,7 +671,7 @@ class Question2 extends Component {
                     onChange={this.handleChangeDate}
                     className="date"
                     placeholder="Date"
-                    style={{ width: 150, fontSize: "25px", }}
+                    style={{ width: 150, fontSize: "25px" }}
                     format="dd-MM-yyyy"
                     keyboardIcon={
                       <AiOutlineCalendar style={{ fill: "white" }} />
@@ -620,9 +690,12 @@ class Question2 extends Component {
               xs={12}
               alignItems="center"
               justifyContent="center"
-              style={{ marginTop: 15, marginLeft: -100, }}
+              style={{ marginTop: 15, marginLeft: -100 }}
             >
-              <Typography variant="span" style={{ marginLeft: 440, fontSize: "25px", }}>
+              <Typography
+                variant="span"
+                style={{ marginLeft: 440, fontSize: "25px" }}
+              >
                 I have preferance for my dress
               </Typography>
               <input
@@ -672,15 +745,23 @@ class Question2 extends Component {
               xs={12}
               alignItems="center"
               justifyContent="center"
-              style={{ marginTop: -30, marginLeft: -10, }}
+              style={{ marginTop: -30, marginLeft: -10 }}
             >
-              <Typography variant="span" style={{ marginLeft: 480, fontSize: "25px", }}>
+              <Typography
+                variant="span"
+                style={{ marginLeft: 480, fontSize: "25px" }}
+              >
                 My budget is
               </Typography>
               <FormControl
                 required
                 className={this.useStyles1.formControl}
-                style={{ minWidth: 300, marginLeft: 10, marginTop: -3, fontSize: "25px", }}
+                style={{
+                  minWidth: 300,
+                  marginLeft: 10,
+                  marginTop: -3,
+                  fontSize: "25px",
+                }}
               >
                 <Select
                   name="budget"
@@ -688,33 +769,31 @@ class Question2 extends Component {
                   onChange={this.handleChangeBudget1}
                   required
                   value={this.state.budget}
-                  style={{ fontSize: "25px", }}
+                  style={{ fontSize: "25px" }}
                   autoWidth
                 >
                   <MenuItem value="Budget" disabled>
                     {" "}
                     Budget{" "}
                   </MenuItem>
-                  <MenuItem value="2000" style={{ fontSize: "25px", }}>
+                  <MenuItem value="2000" style={{ fontSize: "25px" }}>
                     starting from 2000(USD)
                   </MenuItem>
-                  <MenuItem value="10000" style={{ fontSize: "25px", }}>
+                  <MenuItem value="10000" style={{ fontSize: "25px" }}>
                     starting from 10000(USD)
                   </MenuItem>
-                  <MenuItem value="100000" style={{ fontSize: "25px", }}>
+                  <MenuItem value="100000" style={{ fontSize: "25px" }}>
                     starting from 100000(USD)
                   </MenuItem>
                   <MenuItem
                     id="others"
-                    style={{ fontSize: "25px", }}
+                    style={{ fontSize: "25px" }}
                     value={
                       this.state.test ? this.state.budget : this.state.others
                     }
                   >
                     {" "}
-                    {this.state.test
-                      ? this.state.budget + " (USD)"
-                      : "Others"}
+                    {this.state.test ? this.state.budget + " (USD)" : "Others"}
                   </MenuItem>
                 </Select>
               </FormControl>
@@ -728,9 +807,12 @@ class Question2 extends Component {
               xs={12}
               alignItems="center"
               justifyContent="center"
-              style={{ marginTop: 15, fontSize: "25px", marginLeft:-30, }}
+              style={{ marginTop: 15, fontSize: "25px", marginLeft: -30 }}
             >
-              <Typography variant="span" style={{ marginLeft: 450, fontSize: "25px", }}>
+              <Typography
+                variant="span"
+                style={{ marginLeft: 450, fontSize: "25px" }}
+              >
                 you can email me at
               </Typography>
               <TextField
@@ -745,7 +827,7 @@ class Question2 extends Component {
                 width="140px"
                 inputProps={{ style: { fontSize: 25 } }}
                 InputLabelProps={{ style: { fontSize: 25 } }}
-                style={{ marginLeft: 10, marginTop: -4, fontSize: "25px", }}
+                style={{ marginLeft: 10, marginTop: -4, fontSize: "25px" }}
                 required
               />
             </Grid>
@@ -758,9 +840,9 @@ class Question2 extends Component {
               xs={12}
               alignItems="center"
               justifyContent="center"
-              style={{ marginTop: 15, marginLeft: -90, fontSize: "25px", }}
+              style={{ marginTop: 15, marginLeft: -90, fontSize: "25px" }}
             >
-              <Typography variant="span" style={{ marginLeft: 430, }}>
+              <Typography variant="span" style={{ marginLeft: 430 }}>
                 or WhatsApp me at
               </Typography>
               <Autocomplete
@@ -772,15 +854,14 @@ class Question2 extends Component {
                 autoComplete="off"
                 style={{
                   width: 100,
-                  backgroundColor: 'transparent',
+                  backgroundColor: "transparent",
                   marginLeft: 670,
                   marginTop: -30,
                   fontSize: "25px",
                 }}
-                renderInput={(params) =>
-                  <TextField {...params} placeholder="Code"
-                  />
-                }
+                renderInput={(params) => (
+                  <TextField {...params} placeholder="Code" />
+                )}
                 onChange={(event, value) => this.selectPhoneCode(value.code)}
               />
               <TextField
@@ -794,7 +875,7 @@ class Question2 extends Component {
                 onChange={this.handleChangeNumber.bind(this)}
                 inputProps={{ style: { fontSize: 25 } }}
                 InputLabelProps={{ style: { fontSize: 25 } }}
-                style={{ marginLeft: 785, marginTop: -47.5, }}
+                style={{ marginLeft: 785, marginTop: -47.5 }}
               />
             </Grid>
           ) : (
@@ -802,7 +883,7 @@ class Question2 extends Component {
           )}
           <br></br>
           {this.state.id10 ? (
-            <Grid container style={{ marginTop: -20, marginLeft: 210, }}>
+            <Grid container style={{ marginTop: -20, marginLeft: 210 }}>
               <Grid item xs />
               <Grid item xs={6}>
                 <ButtonText
@@ -837,7 +918,6 @@ class Question2 extends Component {
           )}
         </Container>
 
-
         <Grid
           className={"Budget2"}
           container
@@ -845,19 +925,19 @@ class Question2 extends Component {
             color: "white",
             marginTop: "17%",
           }}
-          hidden=
-          {this.state.utama ?
-            true
-            : false}
+          hidden={this.state.utama ? true : false}
         >
           <Grid
             item
             xs={12}
             alignItems="center"
             justifyContent="center"
-            style={{ marginTop: 15, fontSize: "25px", fontWeight: "bold", }}
+            style={{ marginTop: 15, fontSize: "25px", fontWeight: "bold" }}
           >
-            <Typography variant="span" style={{ marginLeft: 520, fontSize: "25px", }}>
+            <Typography
+              variant="span"
+              style={{ marginLeft: 520, fontSize: "25px" }}
+            >
               My Preffered Budget
             </Typography>
             <TextField
@@ -869,7 +949,12 @@ class Question2 extends Component {
               name="prefB"
               inputProps={{ style: { fontSize: 25 } }}
               InputLabelProps={{ style: { fontSize: 25 } }}
-              style={{ marginLeft: 10, marginRight: 10, marginTop: -3, width: 170, }}
+              style={{
+                marginLeft: 10,
+                marginRight: 10,
+                marginTop: -3,
+                width: 170,
+              }}
             />
             USD
           </Grid>
@@ -904,7 +989,7 @@ class Question2 extends Component {
                   width: 180,
                   textAlign: "center",
                   backgroundColor: "black",
-                  marginLeft:0,
+                  marginLeft: 0,
                   color: "white",
                 }}
                 onClick={this.handleSubmitCancelBudget}
@@ -914,7 +999,6 @@ class Question2 extends Component {
             </Grid>
           </Grid>
         </Grid>
-
       </React.Fragment>
     );
   }
