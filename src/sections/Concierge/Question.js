@@ -230,7 +230,7 @@ class Question2 extends Component {
 
       if (test.length === 2 && test[1] !== "") {
         var test2 = test[1].split('.')
-        if (test2.length === 2 && test2[1] !== "") {
+        if (test2.length >= 2 && test2[1] !== "") {
           this.setState({ [res.target.name + "_err"]: "" })
         }
         else {
@@ -325,7 +325,7 @@ class Question2 extends Component {
     const stateObj = this.state.datafix;
     formData.append("data", JSON.stringify(stateObj));
     formData.append("files.imageReference", stateObj.photo);
-    // ConciergeApi.create(formData);
+    ConciergeApi.create(formData);
   }
   handleChangeBudget2(event) {
     this.setState({ budget: event.target.value });
@@ -883,7 +883,7 @@ class Question2 extends Component {
           justify="center"
           style={{
             color: "white",
-            marginTop: "25%",
+            marginTop: "17%",
           }}
           hidden=
           {this.state.utama ?
