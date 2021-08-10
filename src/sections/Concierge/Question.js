@@ -940,6 +940,7 @@ class Question2 extends Component {
                 border: '1px solid #FFFFFF',
                 width: '100%',
                 width: 200,
+                marginLeft: 15,
               }}
               onClick={this.handleSubmitCancelBudget}
             >
