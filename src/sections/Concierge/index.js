@@ -3,7 +3,6 @@ import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 import SectionTextMedium from "../../components/SectionTextMedium/index";
 import SectionParagraph from "../../components/SectionParagraph/index";
 import Button from '@material-ui/core/Button';
-// import './Concierge.css';
 import Dialog from '@material-ui/core/Dialog';
 import { styled } from '@material-ui/core/styles';
 

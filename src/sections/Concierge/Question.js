@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import { AiOutlineCalendar, AiOutlineCamera } from "react-icons/ai";
-import { Select, MenuItem, Typography, Container } from "@material-ui/core";
+import {
+  Select, MenuItem, Typography, Container, InputLabel,
+  createMuiTheme,
+  ThemeProvider,
+  CssBaseline,
+  Paper
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import FormControl from "@material-ui/core/FormControl";
 import "date-fns";
@@ -15,13 +21,45 @@ import { Country, State, City } from "country-state-city";
 import { Link } from "react-router-dom";
 import "date-fns";
 import DateFnsUtils from "@date-io/date-fns";
+import closeIcn from '../../images/close_icon.svg';
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
 } from "@material-ui/pickers";
 import data from '../../data/phoneCode.json'
+import "./style.css";
+import { withStyles } from '@material-ui/core/styles';
 
-import "./test.css";
+const CustomTextfieldRaw = withStyles({
+  root: {
+    width: '100%',
+    '& label.Mui-focused': {
+      color: 'white',
+    },
+    '& label.Mui-focused.Mui-error': {
+      color: 'red',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: 'white',
+    },
+    '& .MuiInput-underline.Mui-error:after': {
+      borderBottomColor: 'red',
+    },
+    '& .MuiInput-underline.Mui-error': {
+      color: 'red',
+    },
+  },
+})(TextField);
+
+const theme = createMuiTheme({
+  palette: {
+    type: 'dark',
+  },
+});
+
+function goBack() {
+  window.history.go(-2);
+}
 
 const field_req = ["name",
   "age",
@@ -37,7 +75,39 @@ const field_req = ["name",
   "phoneCode",
   "waPhoneNumber"];
 
+const styles = theme => ({
+  textValue: {
+    fontSize: 25,
+    fontWeight: 100,
+    borderBottom: "1px solid white"
+  },
+  marginLeftDesktop: {
+    [theme.breakpoints.up('md')]: {
+      marginLeft: 10
+    }
+  },
+  marginRightDesktop: {
+    [theme.breakpoints.up('md')]: {
+      marginRight: 10
+    }
+  },
+  marginRightAll: {
+    marginRight: 10
+  },
+  marginTopMobile: {
+    [theme.breakpoints.down('sm')]: {
+      marginTop: 20,
+    },
+  },
+  floatLeftMobile: {
+    [theme.breakpoints.down('sm')]: {
+      float: 'left'
+    }
+  },
+});
+
 class Question2 extends Component {
+
   constructor() {
     super();
     this.state = {
@@ -58,16 +128,16 @@ class Question2 extends Component {
       },
       utama: true,
       test: false,
-      id1: true,
-      id2: true,
-      id3: true,
-      id4: true,
-      id5: true,
-      id6: true,
-      id7: true,
-      id8: true,
-      id9: true,
-      id10: true,
+      id1: false,
+      id2: false,
+      id3: false,
+      id4: false,
+      id5: false,
+      id6: false,
+      id7: false,
+      id8: false,
+      id9: false,
+      id10: false,
       others: "other",
       submit: false,
 
@@ -139,45 +209,7 @@ class Question2 extends Component {
     this.selectPhoneCode = this.selectPhoneCode.bind(this);
     this.checkSubmit = this.checkSubmit.bind(this);
   }
-  useStyles1 = makeStyles((theme) => ({
-    formControl: {
-      margin: theme.spacing(1),
-      minWidth: 120,
-    },
-    selectEmpty: {
-      marginTop: theme.spacing(2),
-    },
-  }));
-  useStyles2 = makeStyles((theme) => ({
-    formControl: {
-      margin: theme.spacing(2),
-      minWidth: 100,
-    },
-    selectEmpty: {
-      marginTop: theme.spacing(2),
-    },
-  }));
-  tanggal = makeStyles((theme) => ({
-    formControl: {
-      margin: theme.spacing(2),
-      minWidth: 100,
-      color: "white",
-    },
-    selectEmpty: {
-      marginTop: theme.spacing(2),
-    },
-  }));
-  useStyles = makeStyles((theme) => ({
-    root: {
-      "& > *": {
-        color: "white",
-        background: "grey",
-        margin: theme.spacing(1),
-        width: "auto",
-        height: "auto",
-      },
-    },
-  }));
+
   setValue(value) {
     React.useState("Color");
   }
@@ -187,7 +219,7 @@ class Question2 extends Component {
     this.setState({ [idfield]: true });
     this.setState({ [res.target.name]: res.target.value });
     if (res.target.value === "") {
-      this.setState({ [res.target.name + "_err"]: "Require" })
+      this.setState({ [res.target.name + "_err"]: "Required" })
     }
     else {
       this.setState({ [res.target.name + "_err"]: "" })
@@ -247,8 +279,8 @@ class Question2 extends Component {
   }
   selectSize(val) {
     if (val === "No Option") {
-      this.setState({ size_err: "Require" })
-      this.setState({ sizeType_err: "Require" })
+      this.setState({ size_err: "Required" })
+      this.setState({ sizeType_err: "Required" })
     }
     else {
       this.setState({ size: val });
@@ -362,8 +394,9 @@ class Question2 extends Component {
     });
   }
   render() {
+    const { classes } = this.props;
     return (
-      <React.Fragment>
+      <ThemeProvider theme={theme}>
         <Container
           className="container"
           style={{ marginTop: 100 }}
@@ -371,54 +404,421 @@ class Question2 extends Component {
         >
           <Grid
             container
-            direction="row"
-            justifyContent="center"
-            alignItems="flex-start"
+            direction="column"
+            alignItems="center"
+            justify="center"
           >
-            <Grid item align="right" xs={12} md={6}>
-              <Typography variant="span" style={{ marginRight: 10, fontSize: "25px", }}>
-                My Name is
-              </Typography>
-              <TextField
-                style={{ marginTop: -3, width: 100, marginRight: 10, }}
-                className="inputBox"
-                inputProps={{ style: { fontSize: 25 } }}
-                InputLabelProps={{ style: { fontSize: 25 } }}
-                error={this.state.name_err !== ""}
-                helperText={this.state.name_err}
-                onChange={this.handleChange}
-                id="id1"
-                placeholder="Name"
-                name="name"
-                type="text"
-                autoComplete="off"
-                required
-                value={this.state.name}
-              />
-            </Grid>
-            {this.state.id1 ? (
-              <Grid item xs={12} md={6}>
-                <Typography variant="span" style={{ marginRight: 10, fontSize: "25px", }}>
-                  and I'm
+            <Grid item xs={12}>
+              <Grid
+                container>
+                <Typography variant="span" style={{ fontSize: 25 }} className={classes.marginRightAll}>
+                  My Name is
                 </Typography>
-                <TextField
-                  style={{ marginTop: -2, width: 60, }}
-                  className="inputBox"
-                  inputProps={{ style: { fontSize: 25 } }}
-                  InputLabelProps={{ style: { fontSize: 25 } }}
+                <CustomTextfieldRaw
+                  className={classes.marginRightAll}
+                  style={{ width: 100 }}
+                  error={this.state.name_err !== ""}
+                  helperText={this.state.name_err}
                   onChange={this.handleChange}
-                  error={this.state.age_err !== ""}
-                  helperText={this.state.age_err}
-                  id="id2"
-                  name="age"
-                  placeholder="Age"
-                  type="number"
+                  InputProps={{ style: { fontSize: 25 } }}
+                  id="id1"
+                  name="name"
+                  type="text"
+                  autoComplete="off"
                   required
-                  value={this.state.age}
+                  value={this.state.name}
                 />
-                <Typography variant="span" style={{ marginLeft: 10, fontSize: "25px", }}>
-                  years old
-                </Typography>
+                {this.state.id1 ? (
+                  <div className={`${classes.marginTopMobile}`}>
+                    <Typography variant="span" style={{ fontSize: 25 }} className={`${classes.marginRightAll} `}>
+                      and I'm
+                    </Typography>
+                    <CustomTextfieldRaw className={classes.marginRightAll}
+                      style={{ width: 60, }}
+                      onChange={this.handleChange}
+                      error={this.state.age_err !== ""}
+                      helperText={this.state.age_err}
+                      id="id2"
+                      name="age"
+                      type="number"
+                      InputProps={{ inputProps: { min: 0 }, style: { fontSize: 25 } }}
+                      required
+                      value={this.state.age}
+                    />
+                    <Typography variant="span" style={{ fontSize: 25 }}>
+                      years old
+                    </Typography>
+                  </div>
+                ) : (
+                  ""
+                )}
+              </Grid>
+            </Grid>
+
+          </Grid>
+          <Grid
+            container
+            direction="column"
+            alignItems="center"
+            justify="center"
+            style={{ marginTop: 20 }}
+          >
+            {this.state.id2 ? (
+              <Grid item xs={12}>
+                <Grid
+                  container>
+                  <Typography variant="span" style={{ fontSize: 25 }} className={classes.marginRightAll}>
+                    My favourite color is
+                  </Typography>
+                  <FormControl required>
+                    <Select className={classes.marginRightAll}
+                      labelId="color"
+                      name="favouriteColor"
+                      id="id3"
+                      style={{
+                        fill: "white", fontSize: 25, width: 100
+                      }}
+                      value={this.state.favouriteColor}
+                      onChange={this.handleChange}
+                      autoWidth
+                      required
+                    >
+                      <MenuItem value={"Blue"}>Blue</MenuItem>
+                      <MenuItem value={"Red"}>Red</MenuItem>
+                      <MenuItem value={"Green"}>Green</MenuItem>
+                    </Select>
+                  </FormControl>
+                  {this.state.id3 ? (
+                    <React.Fragment>
+                      <Typography variant="span" style={{ fontSize: 25 }} className={`${classes.marginRightAll} ${classes.marginTopMobile}`}>
+                        and my dress size is
+                      </Typography>
+                      <Autocomplete
+                        className={classes.marginRightAll}
+                        name="Type"
+                        error={this.state.sizeType_err !== ""}
+                        helperText={this.state.sizeType_err}
+                        options={this.state.types}
+                        getOptionLabel={(options) => options.name}
+                        disableClearable
+                        // value={this.state.sizeType}
+                        autoComplete="off"
+                        renderInput={(params) =>
+                          <CustomTextfieldRaw {...params} placeholder="Type" style={{ width: 100 }} className={classes.floatLeftMobile}
+                            inputProps={{ ...params.inputProps, style: { fontSize: 25 }, autoComplete: 'asdasd1241' }}
+                          />
+                        }
+                        onChange={(event, value) => this.selectType(value.code)}
+                      />
+                      <Autocomplete
+                        name="size"
+                        key={this.state.sizeType}
+                        error={this.state.size_err !== ""}
+                        helperText={this.state.size_err}
+                        // value={this.state.size}
+                        options={this.getSize(this.state.sizeType)}
+                        disableClearable
+                        autoComplete="off"
+                        getOptionLabel={(options) => options}
+                        autoSelect={true}
+                        renderInput={(params) =>
+                          <CustomTextfieldRaw {...params} placeholder="Size" style={{ width: 100 }}
+                            inputProps={{ ...params.inputProps, style: { fontSize: 25 }, autoComplete: 'asdasd1241' }}
+                          />
+                        }
+                        onChange={(event, value) => this.selectSize(value)}
+                      />
+                    </React.Fragment>
+                  ) : (
+                    ""
+                  )}
+                </Grid>
+              </Grid>
+            ) : (
+              ""
+            )}
+
+
+            {/* COSTUM */}
+          </Grid>
+          <Grid
+            container
+            direction="column"
+            alignItems="center"
+            justify="center"
+            style={{ marginTop: 20 }}
+          >
+            {this.state.id4 ? (
+              <Grid
+                item
+                xs={12}
+                style={{ fontSize: 25 }}
+              >
+                <Grid
+                  container
+                >
+                  <Typography variant="span" style={{ fontSize: 25 }} className={classes.marginRightAll}>
+                    I live in
+                  </Typography>
+                  <Autocomplete
+                    className={classes.marginRightAll}
+                    disableClearable
+                    name="country"
+                    options={Country.getAllCountries()}
+                    getOptionLabel={(options) => options.name}
+                    // value={this.state.country}
+                    renderInput={(params) => (
+                      <CustomTextfieldRaw {...params} placeholder="Country" style={{ width: 200 }} autoComplete="new-password"
+                        inputProps={{ ...params.inputProps, style: { fontSize: 25 }, autoComplete: 'asdasd1241' }} />
+                    )}
+                    onChange={(event, value) => this.selectCountry(value.isoCode, value.name)}
+                  />
+                  <Autocomplete
+                    disableClearable
+                    autoComplete="off"
+                    name="city"
+                    key={this.state.country}
+                    // value={this.state.city}
+                    options={City.getCitiesOfCountry(this.state.country)}
+                    autoSelect={true}
+                    getOptionLabel={(options) => options.name}
+                    renderInput={(params) => (
+                      <CustomTextfieldRaw {...params} placeholder="City" style={{ width: 200 }}
+                        inputProps={{ ...params.inputProps, style: { fontSize: 25 }, autoComplete: 'asdasd1241' }} />
+                    )}
+                    onChange={(event, value) => this.selectRegion(value.name)}
+                  />
+                </Grid>
+              </Grid>
+            ) : (
+              ""
+            )}
+          </Grid>
+          <Grid
+            container
+            direction="column"
+            alignItems="center"
+            justify="center"
+            style={{ marginTop: 20 }}
+          >
+            {this.state.id5 ? (
+              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <Grid
+                  item
+                  xs={12}
+                >
+                  <Grid
+                    container>
+                    <Typography variant="span" style={{ fontSize: 25 }} className={classes.marginRightAll}>
+                      and I need to use this dress at
+                    </Typography>
+                    <KeyboardDatePicker
+                      style={{ width: 200 }}
+                      InputProps={{ style: { fontSize: 25 } }}
+                      name="needToUseAt"
+                      error={this.state.needToUseAt_err !== ""}
+                      helperText={this.state.needToUseAt_err}
+                      id="id6"
+                      value={this.state.needToUseAt}
+                      onChange={this.handleChangeDate}
+                      format="dd-MM-yyyy"
+                      keyboardIcon={
+                        <AiOutlineCalendar />
+                      }
+                      required
+                    />
+                  </Grid>
+                </Grid>
+              </MuiPickersUtilsProvider>
+            ) : (
+              ""
+            )}
+          </Grid>
+          <Grid
+            container
+            direction="column"
+            alignItems="center"
+            justify="center"
+            style={{ marginTop: 20 }}
+          >
+            {this.state.id6 ? (
+              <Grid item xs={12}>
+                <Grid
+                  container >
+                  <Typography variant="span" style={{ fontSize: 25 }} className={classes.marginRightAll}>
+                    I have preference for my dress
+                  </Typography>
+                  <CustomTextfieldRaw
+                    style={{
+                      width: 200,
+                    }}
+                    InputProps={{
+                      readOnly: true,
+                      style: { fontSize: 25 }
+                    }}
+                    type="text"
+                    id="namaFile"
+                    value={this.state.photo.name}
+                    placeholder="Choose Image"
+                  />
+                  <AiOutlineCamera
+                    type="button"
+                    id="klikFile"
+                    value="Klik Me"
+                    onClick={this.klikFunction}
+                    required
+                  />
+                  <input
+                    onChange={this.handleChangeFile2}
+                    name="photo"
+                    value=""
+                    type="file"
+                    id="id7"
+                    accept="image/png, image/jpeg,file/pdf"
+                    style={{
+                      backgroundColor: "black",
+                      color: "white",
+                      visibility: "collapse",
+                      height: 0,
+                      width: 0,
+                      fontSize: 25,
+                    }}
+                    required
+                  />
+                </Grid>
+              </Grid>
+            ) : (
+              ""
+            )}
+          </Grid>
+          <Grid
+            container
+            direction="column"
+            alignItems="center"
+            justify="center"
+            style={{ marginTop: 20 }}
+          >
+            {this.state.id7 ? (
+              <Grid item xs={12}>
+                <Grid
+                  container >
+                  <Typography variant="span" style={{ fontSize: 25 }} className={classes.marginRightAll}>
+                    My budget is
+                  </Typography>
+                  <Select
+                    required
+                    name="budget"
+                    id="id8"
+                    onChange={this.handleChangeBudget1}
+                    value={this.state.budget}
+                    style={{ fontSize: 25, width: 400 }}
+                  >
+                    <MenuItem value="2000" style={{ fontSize: 25 }}>
+                      starting from 2,000 (USD)
+                    </MenuItem>
+                    <MenuItem value="10000" style={{ fontSize: 25 }}>
+                      starting from 10,000 (USD)
+                    </MenuItem>
+                    <MenuItem value="100000" style={{ fontSize: 25 }}>
+                      starting from 100,000 (USD)
+                    </MenuItem>
+                    <MenuItem
+                      id="others"
+                      style={{ fontSize: 25 }}
+                      value={
+                        this.state.test ? this.state.budget : this.state.others
+                      }
+                    >
+                      {this.state.test
+                        ? this.state.budget + " (USD)"
+                        : "Others"}
+                    </MenuItem>
+                  </Select>
+                </Grid>
+              </Grid>
+            ) : (
+              ""
+            )}
+          </Grid>
+          <Grid
+            container
+            direction="column"
+            alignItems="center"
+            justify="center"
+            style={{ marginTop: 20 }}
+          >
+            {this.state.id8 ? (
+              <Grid item xs={12}>
+                <Grid
+                  container >
+                  <Typography variant="span" style={{ fontSize: 25 }} className={classes.marginRightAll}>
+                    you can email me at
+                  </Typography>
+                  <CustomTextfieldRaw
+                    onChange={this.handleChange}
+                    id="id9"
+                    placeholder="Email"
+                    error={this.state.email_err !== ""}
+                    helperText={this.state.email_err}
+                    type="email"
+                    name="email"
+                    value={this.state.email}
+                    inputProps={{ style: { fontSize: 25 }, autoComplete: 'asdasd1241' }}
+                    style={{ width: 350 }}
+                    required
+                  />
+                </Grid>
+              </Grid>
+            ) : (
+              ""
+            )}
+          </Grid>
+          <Grid
+            container
+            direction="column"
+            alignItems="center"
+            justify="center"
+            style={{ marginTop: 20 }}
+          >
+            {this.state.id9 ? (
+              <Grid item xs={12}>
+                <Grid
+                  container >
+                  <Typography variant="span" style={{ fontSize: 25 }} className={classes.marginRightAll}>
+                    or WhatsApp me at
+                  </Typography>
+                  <Autocomplete
+                    className={classes.marginRightAll}
+                    name="code"
+                    options={data.countries}
+                    getOptionLabel={(options) => options.code}
+                    disableClearable
+                    style={{
+                      backgroundColor: 'transparent',
+                      fontSize: 25,
+                    }}
+                    renderInput={(params) =>
+                      <CustomTextfieldRaw {...params} placeholder="+" style={{ width: 100 }}
+                        inputProps={{ ...params.inputProps, style: { fontSize: 25 }, autoComplete: 'asdasd1241' }}
+                      />
+                    }
+                    onChange={(event, value) => this.selectPhoneCode(value.code)}
+                  />
+                  <CustomTextfieldRaw
+                    onChange={this.handleChangeNumber}
+                    id="tel"
+                    name="nomor"
+                    error={this.state.waPhoneNumber_err !== ""}
+                    helperText={this.state.waPhoneNumber_err}
+                    value={this.state.tel}
+                    placeholder="Phone Number"
+                    onChange={this.handleChangeNumber.bind(this)}
+                    inputProps={{ style: { fontSize: 25 }, autoComplete: 'asdasd1241' }}
+                    style={{
+                      width: 300,
+                    }}
+                  />
+                </Grid>
               </Grid>
             ) : (
               ""
@@ -427,389 +827,25 @@ class Question2 extends Component {
           <Grid
             container
             direction="row"
-            justifyContent="center"
-            alignItems="flex-start"
+            alignItems="center"
+            justify="center"
+            style={{ marginTop: 30 }}
           >
-            {this.state.id2 ? (
-              <Grid
-                item
-                align="right"
-                xs={12}
-                md={6}
-                style={{ marginTop: 15, marginLeft: 0, }}
-              >
-                <Typography variant="span" style={{ marginRight: 10, fontSize: "25px", }}>
-                  My favourite color is
-                </Typography>
-                <FormControl required className={this.useStyles1.formControl}>
-                  <Select
-                    name="favouriteColor"
-                    id="id3"
-                    style={{
-                      marginTop: -3, marginRight: 10, fill: "white", fontSize: 25,
-                    }}
-                    value={this.state.favouriteColor}
-                    onChange={this.handleChange}
-                    placeholder="Color"
-                    autoWidth
-                    required
-                  >
-                    <MenuItem value={"Color"} disabled>
-                      Color{" "}
-                    </MenuItem>
-                    <MenuItem value={"Blue"}>Blue</MenuItem>
-                    <MenuItem value={"Red"}>Red</MenuItem>
-                    <MenuItem value={"Green"}>Green</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
-            ) : (
-              ""
-            )}
-            {this.state.id3 ? (
-              <Grid item xs={6} style={{ marginTop: 15, fontSize: 25, }}>
-                <Typography variant="span" style={{ marginRight: 10, fontSize: "25px", }}>
-                  and my dress size is
-                </Typography>
-                <Autocomplete
-                  name="Type"
-                  error={this.state.sizeType_err !== ""}
-                  helperText={this.state.sizeType_err}
-                  id="combo-box-country"
-                  options={this.state.types}
-                  getOptionLabel={(options) => options.name}
-                  disableClearable
-                  // value={this.state.sizeType}
-                  autoComplete="off"
-                  style={{
-                    width: 304,
-                    backgroundColor: 'transparent',
-                    paddingLeft: 240,
-                    marginTop: -33,
-                    fontSize: 25,
-                  }}
-                  renderInput={(params) =>
-                    <TextField {...params} placeholder="Type"
-                    />
-                  }
-                  onChange={(event, value) => this.selectType(value.code)}
-                />
-                <Autocomplete
-                  name="size"
-                  key={this.state.sizeType}
-                  id="combo-box-city"
-                  error={this.state.size_err !== ""}
-                  helperText={this.state.size_err}
-                  // value={this.state.size}
-                  options={this.getSize(this.state.sizeType)}
-                  disableClearable
-                  autoComplete="off"
-                  getOptionLabel={(options) => options}
-                  autoSelect={true}
-                  style={{
-                    paddingLeft: 320,
-                    marginTop: -36.5,
-                  }}
-                  renderInput={(params) =>
-                    <TextField {...params} placeholder="Size" style={{ width: 60, }}
-                    />
-                  }
-                  onChange={(event, value) => this.selectSize(value)}
-                />
-              </Grid>
-            ) : (
-              ""
-            )}
-
-            {/* COSTUM */}
-          </Grid>
-          {this.state.id4 ? (
-            <Grid
-              item
-              xs={12}
-              alignItems="center"
-              justifyContent="center"
-              style={{ marginTop: 10, marginLeft: -115, fontSize: 25, }}
-            >
-              <Typography variant="span" style={{ marginLeft: 550, fontSize: "25px", }}>
-                I live in
-              </Typography>
-              <Autocomplete
-                name="country"
-                id="combo-box-country"
-                options={Country.getAllCountries()}
-                getOptionLabel={(options) => options.name}
-                disableClearable
-                // value={this.state.country}
-                style={{
-                  backgroundColor: "transparent",
-                  paddingLeft: 640,
-                  marginTop: -35,
-                  fontSize: 25,
-                }}
-                renderInput={(params) => (
-                  <TextField {...params} placeholder="Country" style={{ width: 150, }} />
-                )}
-                onChange={(event, value) => this.selectCountry(value.isoCode, value.name)}
-              />
-
-              <Autocomplete
-                name="city"
-                key={this.state.country}
-                // value={this.state.city}
-                id="combo-box-city"
-                options={City.getCitiesOfCountry(this.state.country)}
-                disableClearable
-                autoSelect={true}
-                getOptionLabel={(options) => options.name}
-                style={{ paddingLeft: 810, marginTop: -37, fontSize: 25, }}
-                renderInput={(params) => (
-                  <TextField {...params} placeholder="City" style={{ width: 150, }} />
-                )}
-                onChange={(event, value) => this.selectRegion(value.name)}
-              />
-            </Grid>
-          ) : (
-            ""
-          )}
-          {this.state.id5 ? (
-            <MuiPickersUtilsProvider utils={DateFnsUtils}>
-              <Grid
-                item
-                xs={12}
-                alignItems="center"
-                justifyContent="center"
-                style={{ marginTop: 15, marginLeft: -85, }}
-              >
-                <Typography variant="span" style={{ marginLeft: 450, fontSize: "25px" }}>
-                  and I need to use this dress at
-                </Typography>
-                <FormControl
-                  required
-                  className={this.tanggal.formControl}
-                  style={{ marginTop: 3, marginLeft: 10, fontSize: "25px", }}
-                >
-                  <KeyboardDatePicker
-                    name="needToUseAt"
-                    placeholder="Date"
-                    error={this.state.needToUseAt_err !== ""}
-                    helperText={this.state.needToUseAt_err}
-                    id="id6"
-                    value={this.state.needToUseAt}
-                    onChange={this.handleChangeDate}
-                    className="date"
-                    placeholder="Date"
-                    style={{ width: 150, fontSize: "25px", }}
-                    format="dd-MM-yyyy"
-                    keyboardIcon={
-                      <AiOutlineCalendar style={{ fill: "white" }} />
-                    }
-                    required
-                  />
-                </FormControl>
-              </Grid>
-            </MuiPickersUtilsProvider>
-          ) : (
-            ""
-          )}
-          {this.state.id6 ? (
-            <Grid
-              item
-              xs={12}
-              alignItems="center"
-              justifyContent="center"
-              style={{ marginTop: 15, marginLeft: -100, }}
-            >
-              <Typography variant="span" style={{ marginLeft: 440, fontSize: "25px", }}>
-                I have preferance for my dress
-              </Typography>
-              <input
-                type="text"
-                id="namaFile"
-                value={this.state.photo.name}
-                placeholder="Choose Image"
-                style={{
-                  backgroundColor: "black",
-                  color: "white",
-                  marginLeft: 10,
-                  border: "none",
-                  fontSize: "25px",
-                  borderBottom: "1px solid white",
-                }}
-                readOnly
-              />
-              <AiOutlineCamera
-                type="button"
-                id="klikFile"
-                value="Klik Me"
-                onClick={this.klikFunction}
-                required
-              />
-              <input
-                onChange={this.handleChangeFile2}
-                name="photo"
-                value=""
-                type="file"
-                id="id7"
-                accept="image/png, image/jpeg,file/pdf"
-                style={{
-                  backgroundColor: "black",
-                  color: "white",
-                  visibility: "collapse",
-                  fontSize: "25px",
-                }}
-                required
-              />
-            </Grid>
-          ) : (
-            ""
-          )}
-          {this.state.id7 ? (
-            <Grid
-              item
-              xs={12}
-              alignItems="center"
-              justifyContent="center"
-              style={{ marginTop: -30, marginLeft: -10, }}
-            >
-              <Typography variant="span" style={{ marginLeft: 480, fontSize: "25px", }}>
-                My budget is
-              </Typography>
-              <FormControl
-                required
-                className={this.useStyles1.formControl}
-                style={{ minWidth: 300, marginLeft: 10, marginTop: -3, fontSize: "25px", }}
-              >
-                <Select
-                  name="budget"
-                  id="id8"
-                  onChange={this.handleChangeBudget1}
-                  required
-                  value={this.state.budget}
-                  style={{ fontSize: "25px", }}
-                  autoWidth
-                >
-                  <MenuItem value="Budget" disabled>
-                    {" "}
-                    Budget{" "}
-                  </MenuItem>
-                  <MenuItem value="2000" style={{ fontSize: "25px", }}>
-                    starting from 2000(USD)
-                  </MenuItem>
-                  <MenuItem value="10000" style={{ fontSize: "25px", }}>
-                    starting from 10000(USD)
-                  </MenuItem>
-                  <MenuItem value="100000" style={{ fontSize: "25px", }}>
-                    starting from 100000(USD)
-                  </MenuItem>
-                  <MenuItem
-                    id="others"
-                    style={{ fontSize: "25px", }}
-                    value={
-                      this.state.test ? this.state.budget : this.state.others
-                    }
-                  >
-                    {" "}
-                    {this.state.test
-                      ? this.state.budget + " (USD)"
-                      : "Others"}
-                  </MenuItem>
-                </Select>
-              </FormControl>
-            </Grid>
-          ) : (
-            ""
-          )}
-          {this.state.id8 ? (
-            <Grid
-              item
-              xs={12}
-              alignItems="center"
-              justifyContent="center"
-              style={{ marginTop: 15, fontSize: "25px", marginLeft:-30, }}
-            >
-              <Typography variant="span" style={{ marginLeft: 450, fontSize: "25px", }}>
-                you can email me at
-              </Typography>
-              <TextField
-                onChange={this.handleChange}
-                id="id9"
-                placeholder="Email"
-                error={this.state.email_err !== ""}
-                helperText={this.state.email_err}
-                type="email"
-                name="email"
-                value={this.state.email}
-                width="140px"
-                inputProps={{ style: { fontSize: 25 } }}
-                InputLabelProps={{ style: { fontSize: 25 } }}
-                style={{ marginLeft: 10, marginTop: -4, fontSize: "25px", }}
-                required
-              />
-            </Grid>
-          ) : (
-            ""
-          )}
-          {this.state.id9 ? (
-            <Grid
-              item
-              xs={12}
-              alignItems="center"
-              justifyContent="center"
-              style={{ marginTop: 15, marginLeft: -90, fontSize: "25px", }}
-            >
-              <Typography variant="span" style={{ marginLeft: 430, }}>
-                or WhatsApp me at
-              </Typography>
-              <Autocomplete
-                name="code"
-                id="combo-box-country"
-                options={data.countries}
-                getOptionLabel={(options) => options.code}
-                disableClearable
-                autoComplete="off"
-                style={{
-                  width: 100,
-                  backgroundColor: 'transparent',
-                  marginLeft: 670,
-                  marginTop: -30,
-                  fontSize: "25px",
-                }}
-                renderInput={(params) =>
-                  <TextField {...params} placeholder="Code"
-                  />
-                }
-                onChange={(event, value) => this.selectPhoneCode(value.code)}
-              />
-              <TextField
-                onChange={this.handleChangeNumber}
-                id="tel"
-                name="nomor"
-                error={this.state.waPhoneNumber_err !== ""}
-                helperText={this.state.waPhoneNumber_err}
-                value={this.state.tel}
-                placeholder="Phone Number"
-                onChange={this.handleChangeNumber.bind(this)}
-                inputProps={{ style: { fontSize: 25 } }}
-                InputLabelProps={{ style: { fontSize: 25 } }}
-                style={{ marginLeft: 785, marginTop: -47.5, }}
-              />
-            </Grid>
-          ) : (
-            ""
-          )}
-          <br></br>
-          {this.state.id10 ? (
-            <Grid container style={{ marginTop: -20, marginLeft: 210, }}>
-              <Grid item xs />
-              <Grid item xs={6}>
+            {this.state.id10 ? (
+              <React.Fragment>
                 <ButtonText
                   onClick={this.checkSubmit}
                   style={{
-                    fontSize: 13,
-                    height: 40,
-                    width: 200,
-                    marginTop: -20,
+                    height: 56,
+                    padding: '0 40px',
+                    borderRadius: '0px',
+                    border: '1px solid #FFFFFF',
+                    background: 'white',
+                    color: 'black',
+                    fontWeight: 300,
+                    letterSpacing: '0.16em',
+                    width: '100%',
+                    width: 250
                   }}
                 >
                   SUBMIT MY REQUEST
@@ -819,103 +855,101 @@ class Question2 extends Component {
                     id="submitBtn"
                     onClick={this.handleSubmit}
                     style={{
-                      fontSize: 13,
-                      height: 40,
-                      width: 200,
+                      height: 56,
+                      padding: '0 40px',
+                      borderRadius: '0px',
+                      border: '1px solid #FFFFFF',
+                      background: 'white',
+                      color: 'black',
+                      fontWeight: 300,
+                      letterSpacing: '0.16em',
+                      width: '100%',
+                      width: 250
                     }}
                   >
                     SUBMIT MY REQUEST
                   </ButtonText>
                 </Link>
-              </Grid>
-              <Grid item xs />
-            </Grid>
-          ) : (
-            ""
-          )}
+              </React.Fragment>
+            ) : (
+              ""
+            )}
+          </Grid>
         </Container>
-
-
         <Grid
-          className={"Budget2"}
           container
+          direction="row"
+          alignItems="center"
+          justify="center"
           style={{
             color: "white",
-            marginTop: "17%",
+            marginTop: "25%",
           }}
           hidden=
           {this.state.utama ?
             true
             : false}
         >
-          <Grid
-            item
-            xs={12}
-            alignItems="center"
-            justifyContent="center"
-            style={{ marginTop: 15, fontSize: "25px", fontWeight: "bold", }}
-          >
-            <Typography variant="span" style={{ marginLeft: 520, fontSize: "25px", }}>
-              My Preffered Budget
-            </Typography>
-            <TextField
-              onChange={this.handleChangeBudget2}
-              id="prefB"
-              pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-              placeholder="Prefer Budget"
-              type="number"
-              name="prefB"
-              inputProps={{ style: { fontSize: 25 } }}
-              InputLabelProps={{ style: { fontSize: 25 } }}
-              style={{ marginLeft: 10, marginRight: 10, marginTop: -3, width: 170, }}
-            />
-            USD
-          </Grid>
-
+          <Typography variant="span" style={{ fontSize: 25 }}>
+            My Preffered Budget
+          </Typography>
+          <TextField
+            onChange={this.handleChangeBudget2}
+            id="prefB"
+            pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+            type="number"
+            name="prefB"
+            InputProps={{ inputProps: { min: 0 }, style: { fontSize: 25 } }}
+            style={{ marginLeft: 10, marginRight: 10, marginTop: -3, width: 170 }}
+          />
+          <Typography variant="span" style={{ fontSize: 25 }}>USD</Typography>
           <Grid
             container
-            spacing={1}
-            style={{ marginLeft: 350, marginTop: 20 }}
+            direction="row"
+            alignItems="center"
+            justify="center"
+            style={{ marginTop: 25 }}
           >
-            <Grid item xs={3}>
-              <ButtonText
-                onClick={this.handleSubmitBudget}
-                direction={"row"}
-                style={{
-                  fontSize: 15,
-                  height: 45,
-                  width: 180,
-                  backgroundColor: "white",
-                  textAlign: "center",
-                  marginLeft: 200,
-                  color: "black",
-                }}
-              >
-                ENTER
-              </ButtonText>
-            </Grid>
-            <Grid item xs={3} style={{ marginLeft: 120 }}>
-              <ButtonText
-                style={{
-                  fontSize: 15,
-                  height: 45,
-                  width: 180,
-                  textAlign: "center",
-                  backgroundColor: "black",
-                  marginLeft:0,
-                  color: "white",
-                }}
-                onClick={this.handleSubmitCancelBudget}
-              >
-                CANCEL
-              </ButtonText>
-            </Grid>
+            <ButtonText
+              onClick={this.handleSubmitBudget}
+              direction={"row"}
+              style={{
+                height: 56,
+                padding: '0 40px',
+                borderRadius: '0px',
+                border: '1px solid #FFFFFF',
+                background: 'white',
+                color: 'black',
+                fontWeight: 300,
+                letterSpacing: '0.16em',
+                width: '100%',
+                width: 200
+              }}
+            >
+              ENTER
+            </ButtonText>
+            <ButtonText
+              style={{
+                height: 56,
+                padding: '0 40px',
+                borderRadius: '0px',
+                background: 'black',
+                color: 'white',
+                fontWeight: 300,
+                letterSpacing: '0.16em',
+                border: '1px solid #FFFFFF',
+                width: '100%',
+                width: 200,
+              }}
+              onClick={this.handleSubmitCancelBudget}
+            >
+              CANCEL
+            </ButtonText>
           </Grid>
         </Grid>
-
-      </React.Fragment>
+      </ThemeProvider>
     );
   }
 }
 
-export default Question2;
+export default withStyles(styles)(Question2);

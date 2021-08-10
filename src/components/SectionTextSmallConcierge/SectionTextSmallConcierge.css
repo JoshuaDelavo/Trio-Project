@@ -1,0 +1,32 @@
+
+.section-text-small-concierge{
+    color:white;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-align: center;
+    
+}
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+@media (min-width: 576px) {
+}
+
+@media (max-width: 768px) {
+}
+
+@media(min-width:960px) {
+}
+
+@media(min-width:1100px) {
+}
+
+@media(min-width:1200px) {
+}
+@media(min-width:1500px) {
+    
+}

@@ -1,0 +1,36 @@
+.section-paragraph-thx{
+    color:white;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 30px;
+    letter-spacing: 0.05em;
+    text-align: center;
+}
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+@media (min-width: 576px) {
+}
+
+@media (max-width: 768px) {
+    .section-paragraph-thx{
+        font-size: 18px;
+        line-height: 30px;
+        margin-top: -7%;
+    }
+}
+
+@media(min-width:960px) {
+}
+
+@media(min-width:1100px) {
+}
+
+@media(min-width:1200px) {
+}
+@media(min-width:1500px) {
+    
+}
