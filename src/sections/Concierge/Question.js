@@ -61,8 +61,7 @@ function goBack() {
   window.history.go(-2);
 }
 
-const field_req = [
-  "name",
+const field_req = ["name",
   "age",
   "favouriteColor",
   "size",
@@ -74,8 +73,7 @@ const field_req = [
   "email",
   "budget",
   "phoneCode",
-  "waPhoneNumber",
-];
+  "waPhoneNumber"];
 
 const styles = theme => ({
   textValue: {
@@ -155,7 +153,7 @@ class Question2 extends Component {
       email: "",
       budget: "",
       phoneCode: "",
-      tel: "",
+      tel: '',
       waPhoneNumber: "",
 
       name_err: "",
@@ -175,51 +173,24 @@ class Question2 extends Component {
       types: [
         {
           name: "US",
-          code: "US",
+          code: "US"
         },
         {
           name: "EUR",
-          code: "EURO",
+          code: "EURO"
         },
         {
           name: "JPN",
-          code: "JPN",
-        },
+          code: "JPN"
+        }
       ],
-      sizestype: {
+      sizestype:
+      {
         empty: ["No Option"],
-        US: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
-        EURO: [
-          "24",
-          "25",
-          "26",
-          "27",
-          "28",
-          "29",
-          "30",
-          "31",
-          "32",
-          "33",
-          "34",
-          "35",
-          "36",
-          "37",
-          "38",
-          "39",
-          "40",
-          "41",
-          "42",
-          "43",
-          "44",
-          "45",
-          "46",
-          "47",
-          "46",
-          "49",
-          "50",
-        ],
-        JPN: ["11", "12", "13", "14", "15", "16", "17"],
-      },
+        US: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+        EURO: ['24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '46', '49', '50'],
+        JPN: ['11', '12', '13', '14', '15', '16', '17']
+      }
     };
 
     this.handleChangeFile2 = this.handleChangeFile2.bind(this);
@@ -232,7 +203,7 @@ class Question2 extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleChangeDate = this.handleChangeDate.bind(this);
     this.selectCountry = this.selectCountry.bind(this);
-    this.selectRegion = this.selectRegion.bind(this);
+    this.selectRegion = this.selectRegion.bind(this)
     this.selectType = this.selectType.bind(this);
     this.selectSize = this.selectSize.bind(this);
     this.selectPhoneCode = this.selectPhoneCode.bind(this);
@@ -258,18 +229,16 @@ class Question2 extends Component {
       var test = cekE.split("@");
 
       if (test.length === 2 && test[1] !== "") {
-        var test2 = test[1].split(".");
+        var test2 = test[1].split('.')
         if (test2.length === 2 && test2[1] !== "") {
-          this.setState({ [res.target.name + "_err"]: "" });
-        } else {
-          this.setState({
-            [res.target.name + "_err"]: "Please insert email correctly",
-          });
+          this.setState({ [res.target.name + "_err"]: "" })
         }
-      } else {
-        this.setState({
-          [res.target.name + "_err"]: "Please insert email correctly",
-        });
+        else {
+          this.setState({ [res.target.name + "_err"]: "Please insert email correctly" })
+        }
+      }
+      else {
+        this.setState({ [res.target.name + "_err"]: "Please insert email correctly" })
       }
     }
   }
@@ -297,7 +266,7 @@ class Question2 extends Component {
   selectCountry(val, name) {
     this.setState({ country: val });
     this.setState({ country2: name });
-    this.setState({ city: "" });
+    this.setState({ city: '' });
   }
 
   selectRegion(val) {
@@ -306,7 +275,7 @@ class Question2 extends Component {
   }
   selectType(val) {
     this.setState({ sizeType: val });
-    this.setState({ sizeType_err: "" });
+    this.setState({ sizeType_err: "" })
   }
   selectSize(val) {
     if (val === "No Option") {
@@ -316,38 +285,42 @@ class Question2 extends Component {
     else {
       this.setState({ size: val });
       this.setState({ id4: true });
-      this.setState({ size_err: "" });
+      this.setState({ size_err: "" })
     }
+
   }
   selectPhoneCode(val) {
     this.setState({ phoneCode: val });
     this.setState({ waPhoneNumber_err: "" });
     this.setState({
-      waPhoneNumber: this.state.phoneCode + this.state.tel,
+      waPhoneNumber: this.state.phoneCode + this.state.tel
     });
   }
   handleChangeNumber(event) {
     const re = /^[0-9\b]+$/;
-    if (event.target.value === "" || re.test(event.target.value)) {
-      this.setState({ tel: event.target.value });
+    if (event.target.value === '' || re.test(event.target.value)) {
+      this.setState({ tel: event.target.value })
       if (this.state.phoneCode === "") {
         this.setState({ waPhoneNumber_err: "Please pick your phone code" });
-      } else {
+      }
+      else {
         this.setState({
-          waPhoneNumber: this.state.phoneCode + event.target.value,
+          waPhoneNumber: this.state.phoneCode + event.target.value
         });
         if (event.target.value === "") {
           this.setState({ waPhoneNumber_err: "Please Insert your number" });
           this.setState({ id10: false });
-        } else {
+        }
+        else {
           this.setState({ waPhoneNumber_err: "" });
           this.setState({ id10: true });
         }
       }
     }
+
   }
   handleSubmit() {
-    console.log(this.state.datafix);
+    console.log(this.state.datafix)
     var formData = new FormData();
     const stateObj = this.state.datafix;
     formData.append("data", JSON.stringify(stateObj));
@@ -359,9 +332,10 @@ class Question2 extends Component {
     this.setState({ test: true });
   }
   handleSubmitBudget() {
-    if (this.state.budget == "") {
+    if (this.state.budget == '') {
       this.handleSubmitCancelBudget();
-    } else {
+    }
+    else {
       this.setState({ id8: true });
       this.setState({ utama: !this.state.utama });
       this.setState({ others: this.state.budget });
@@ -380,46 +354,44 @@ class Question2 extends Component {
     document.getElementById("submitBtn").click();
   }
   getSize(code) {
-    if (code == "") {
-      return this.state.sizestype["empty"];
-    } else {
-      return this.state.sizestype[code];
+    if (code == '') {
+      return (this.state.sizestype["empty"]);
+    }
+    else {
+      return (this.state.sizestype[code])
     }
   }
   checkSubmit() {
-    this.setState(
-      {
-        datafix: {
-          name: this.state.name,
-          age: this.state.age,
-          favouriteColor: this.state.favouriteColor,
-          size: this.state.size,
-          sizeType: this.state.sizeType,
-          city: this.state.city,
-          country: this.state.country2,
-          needToUseAt: this.state.needToUseAt,
-          photo: this.state.photo,
-          budget: this.state.budget,
-          email: this.state.email,
-          waPhoneNumber: this.state.waPhoneNumber,
-        },
+    this.setState({
+      datafix: {
+        name: this.state.name,
+        age: this.state.age,
+        favouriteColor: this.state.favouriteColor,
+        size: this.state.size,
+        sizeType: this.state.sizeType,
+        city: this.state.city,
+        country: this.state.country2,
+        needToUseAt: this.state.needToUseAt,
+        photo: this.state.photo,
+        budget: this.state.budget,
+        email: this.state.email,
+        waPhoneNumber: this.state.waPhoneNumber,
       },
-      function () {
-        var checked = true;
-        for (let i = 0; i < field_req.length; i++) {
-          const field = field_req[i];
-          if (this.state[field + "_err"] === "" && checked !== false) {
-            checked = true;
-          } else {
-            checked = false;
-            break;
-          }
+    }, function () {
+      var checked = true;
+      for (let i = 0; i < field_req.length; i++) {
+        const field = field_req[i];
+        if (this.state[field + "_err"] === "" && checked !== false) {
+          checked = true
+        } else {
+          checked = false;
+          break;
         }
-        if (checked === true) {
-          this.clickSubmit();
-        }
-      },
-    );
+      }
+      if (checked === true) {
+        this.clickSubmit();
+      }
+    });
   }
   render() {
     const { classes } = this.props;
@@ -913,7 +885,10 @@ class Question2 extends Component {
             color: "white",
             marginTop: "25%",
           }}
-          hidden={this.state.utama ? true : false}
+          hidden=
+          {this.state.utama ?
+            true
+            : false}
         >
           <Typography variant="span" style={{ fontSize: 25 }}>
             My Preffered Budget
