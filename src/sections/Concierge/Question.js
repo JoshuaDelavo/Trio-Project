@@ -798,7 +798,7 @@ class Question2 extends Component {
                       fontSize: 25,
                     }}
                     renderInput={(params) =>
-                      <CustomTextfieldRaw {...params} placeholder="+" style={{ width: 100 }}
+                      <CustomTextfieldRaw {...params} placeholder="+" style={{ width: 110 }}
                         inputProps={{ ...params.inputProps, style: { fontSize: 25 }, autoComplete: 'asdasd1241' }}
                       />
                     }
@@ -845,7 +845,7 @@ class Question2 extends Component {
                     fontWeight: 300,
                     letterSpacing: '0.16em',
                     width: '100%',
-                    width: 250
+                    width: 300
                   }}
                 >
                   SUBMIT MY REQUEST
@@ -864,7 +864,7 @@ class Question2 extends Component {
                       fontWeight: 300,
                       letterSpacing: '0.16em',
                       width: '100%',
-                      width: 250
+                      width: 300,
                     }}
                   >
                     SUBMIT MY REQUEST
