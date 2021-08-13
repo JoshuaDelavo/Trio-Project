@@ -29,6 +29,7 @@ import {
 import data from '../../data/phoneCode.json'
 import "./style.css";
 import { withStyles } from '@material-ui/core/styles';
+import camera from '../../images/camera.svg';
 
 const CustomTextfieldRaw = withStyles({
   root: {
@@ -128,16 +129,16 @@ class Question2 extends Component {
       },
       utama: true,
       test: false,
-      id1: false,
-      id2: false,
-      id3: false,
-      id4: false,
-      id5: false,
-      id6: false,
-      id7: false,
-      id8: false,
-      id9: false,
-      id10: false,
+      id1: true,
+      id2: true,
+      id3: true,
+      id4: true,
+      id5: true,
+      id6: true,
+      id7: true,
+      id8: true,
+      id9: true,
+      id10: true,
       others: "other",
       submit: false,
 
@@ -661,13 +662,21 @@ class Question2 extends Component {
                     value={this.state.photo.name}
                     placeholder="Choose Image"
                   />
-                  <AiOutlineCamera
+                  {/* <AiOutlineCamera
                     type="button"
                     id="klikFile"
                     value="Klik Me"
                     onClick={this.klikFunction}
                     required
-                  />
+                  /> */}
+                  <img src={camera} 
+                    type="button"
+                    id="klikFile"
+                    value="Klik Me"
+                    fill="white"
+                    onClick={this.klikFunction}
+                    required>
+                  </img>
                   <input
                     onChange={this.handleChangeFile2}
                     name="photo"
