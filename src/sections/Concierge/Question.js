@@ -394,15 +394,29 @@ class Question2 extends Component {
       }
     });
   }
+  goBack() {
+    window.history.go(-2);
+  }
   render() {
     const { classes } = this.props;
     return (
       <ThemeProvider theme={theme}>
         <Container
           className="container"
-          style={{ marginTop: 100 }}
           hidden={this.state.utama ? false : true}
         >
+          <Grid container
+            spacing={2} >
+            <Grid item sm={10} xs={9} />
+            <Grid item sm={2} xs={3}
+              style={{
+                marginTop: "2.9%",
+                marginLeft: "-0.8%",
+                marginBottom: "3%"
+              }}>
+              <img src={closeIcn} onClick={() => goBack()}></img>
+            </Grid>
+          </Grid>
           <Grid
             container
             direction="column"
@@ -669,7 +683,7 @@ class Question2 extends Component {
                     onClick={this.klikFunction}
                     required
                   /> */}
-                  <img src={camera} 
+                  <img src={camera}
                     type="button"
                     id="klikFile"
                     value="Klik Me"
