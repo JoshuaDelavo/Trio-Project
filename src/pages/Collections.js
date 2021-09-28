@@ -1,18 +1,16 @@
 import React from 'react'
+import TopCoverImage from '../sections/TopCoverImage'
+import OurCollections from '../sections/OurCollections'
+import Footer from '../components/Footer/index';
 
 
 const Collections = () => {
     return (
         <div>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            Collections Page
+            <TopCoverImage />
+            <OurCollections />
+            <Footer />
+            
         </div>
     )
 }

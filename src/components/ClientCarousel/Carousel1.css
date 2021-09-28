@@ -1,0 +1,106 @@
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+body {
+  background-color: black;
+}
+
+.app-aboutUs1 {
+  width: 155%;
+  margin-left: -27.5%;
+  height: 570px;
+}
+
+.slide-aboutUs1{
+  transform: scale(1);
+  transition: transform 300ms;
+  opacity: 1;
+}
+
+.slide-aboutUs1 img {
+  width: 28rem;
+  margin-left: 3%;
+}
+
+.slide-title{
+  width: 80%;
+  margin-left: 10%;
+}
+
+.slide-title p{
+  font-size: 200%;
+}
+
+p {
+  text-align: center;
+  color: white;
+}
+
+.activeSlide {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.arrow {
+  background-color: transparent;
+  position: absolute;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.arrow svg {
+  transition: color 300ms;
+}
+
+.arrow svg:hover {
+  color: #68edff;
+}
+
+.next {
+  right: 0%;
+  top: 50%;
+}
+
+.prev {
+  left: 0%;
+  top: 50%;
+}
+
+@media only screen and (max-width: 1024px) {
+
+}
+
+@media only screen and (max-width: 785px) {
+
+  .slide-aboutUs1  img {
+    width: 95%;
+    margin-left: 2.5%;
+  }
+
+  .slide-aboutUs1  p {
+    width: 110%;
+    margin-left: -5%;
+    margin-top: 5%;
+  }
+
+  .slide-aboutUs1{
+    margin-left: 0%;
+  }
+  
+  .app-aboutUs1 {
+    width: 100%;
+    margin-left: 0%;
+    
+  }
+  .disabled {
+    cursor: not-allowed;
+  }
+  .slick-next:not(.disabled):before, 
+  .slick-prev:not(.disabled):before {
+    opacity:0;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+
+}

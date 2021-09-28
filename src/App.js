@@ -1,6 +1,6 @@
 import './App.css';
 
-import React, { useState } from 'react'
+import React from 'react'
 import {
   BrowserRouter as Router,
   Switch,
@@ -13,7 +13,9 @@ import Collections from './pages/Collections';
 import CollectionsDetail from './pages/CollectionsDetail';
 import Concierge from './pages/Concierge';
 import Home from './pages/Home';
+import 'react-image-lightbox/style.css';
 import News from './pages/News';
+import OurStory from './pages/OurStory';
 import NewsDetail from './pages/NewsDetail';
 import Question from './pages/Question';
 import Thanks from './pages/Thanks';
@@ -33,25 +35,28 @@ function App() {
           <Route path='/collections/:id'>
             <CollectionsDetail />
           </Route>
-          <Route path='/News/:id'>
-            <Header />
+          <Route path='/news/:id'>
             <NewsDetail />
           </Route>
           <Route path='/collections'>
             <Header />
             <Collections />
           </Route>
-          <Route path='/News'>
+          <Route path='/ourStory'>
+            <Header />
+            <OurStory />
+          </Route>
+          <Route path='/news'>
             <Header />
             <News />
           </Route>
-          <Route path='/Concierge'>
+          <Route path='/concierge'>
             <Concierge />
           </Route>
-          <Route path='/Question'>
+          <Route path='/question'>
             <Question />
           </Route>
-          <Route path='/Thanks'>
+          <Route path='/thanks'>
             <Thanks />
           </Route>
         </Switch>

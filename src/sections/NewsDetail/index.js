@@ -67,23 +67,22 @@ const NewsDetails = () => {
     setOpen(false);
   };
 
-  let iconStyles = { color: "white", fontSize: "1.5em", marginLeft: "1em" };
+  let iconStyles = { color: "white", fontSize: "1.5em", marginLeft: "1em", cursor:"pointer" };
   let iconStyles2 = { color: "white", fontSize: "1.5em" };
-  let arrow = { color: "white", fontSize: "1.5em", marginRight: "0.5em" };
+  let arrow = { color: "white", fontSize: "1.5em", marginRight: 10, float:'left' };
   var dateFormat = require("dateformat");
 
   return (
     <Element id="about-us" name="about-us">
       <div className="container-news">
         <Link to="/News" style={{ textDecoration: "none" }}>
-          <p className="backToArticles">
-            <IoIosArrowBack style={arrow}> </IoIosArrowBack>back to all articles
-          </p>
+          <div className="backToArticles">
+            <IoIosArrowBack style={arrow}> </IoIosArrowBack><p style={{ float: 'left', marginTop: 3 }}>back to all articles</p>
+          </div>
         </Link>
         <br />
         <br />
         <p className="article-title">{detail.title}</p>
-        <br />
         <div className="underTitle">
           <div className="posted">
             <SectionParagraph
@@ -118,6 +117,7 @@ const NewsDetails = () => {
             </Snackbar>
           </div>
         </div>
+        <br />
         <div className="iconContainer2">
           <WhatsappShareButton
             message="Testing function of react"
@@ -138,15 +138,15 @@ const NewsDetails = () => {
           <IoMdCopy style={iconStyles} onClick={handleClick}></IoMdCopy>
           <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
             <Alert onClose={handleClose} severity="success">
-              {"" + window.location.href}
+              {"Link Copied! " + window.location.href}
             </Alert>
           </Snackbar>
         </div>
-        <br />
-        <div className="article-container">
+        <div className="article-container" style={{ marginTop: 20 }}>
           <ReactMarkdown>{detail.article}</ReactMarkdown>
         </div>
       </div>
+
     </Element>
   );
 };

@@ -12,6 +12,9 @@ import { baseURL } from '../../config';
 const NewsHome = () => {
     var dateFormat = require('dateformat');
     const [newsHome, setNewsHome] = useState([]);
+    const [checked, setChecked] = useState(false);
+    const [checkedApi, setCheckedApi] = useState(false);
+
     const breakpointColumnsObj = {
         default: 3,
         1100: 2,
@@ -20,8 +23,25 @@ const NewsHome = () => {
     };
     useEffect(() => {
         NewsApi.findLatest().then(res => {
-            console.log("news", res);
+            // console.log("news",res);
+            // console.log("news", res);
+            res.map((res, i) => {
+                new Promise((resolve, reject) => {
+                    const loadImg = new Image()
+
+                    loadImg.src = baseURL + res.coverImage.url
+
+                    loadImg.onload = () => {
+                        resolve(baseURL + res.coverImage.url)
+                    }
+
+                    loadImg.onerror = err => reject(err)
+                }).then(() => setChecked(true))
+                    .catch(err => console.log("Failed to load images", err))
+            })
+            // console.log("news", res);
             setNewsHome(res);
+            setCheckedApi(true);
         })
     }, [])
 
@@ -29,7 +49,7 @@ const NewsHome = () => {
         <Element id='news' name='news'>
             <div className="container-campaign">
                 <SectionTextMedium value="OUR LATEST UPDATE"></SectionTextMedium>
-                <hr style={{ border: '1px solid white', width: '45px', margin: 'auto' }}></hr>
+                <hr style={{ border: '1px solid white', width: '45px', margin: 'auto', marginTop:10 }}></hr>
                 <br />
                 <br />
                 <Masonry
@@ -62,7 +82,7 @@ const NewsHome = () => {
                         <Grid item xs={1} md={2}>
                         </Grid>
                         <Grid item xs={10} md={8}>
-                            <Link to={`/News/`}>
+                            <Link to={`/news/`}>
                                 <Button value="SEE ALL NEWS" ></Button>
                             </Link>
                         </Grid>

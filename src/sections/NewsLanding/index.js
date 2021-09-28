@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Grid, Fade, colors } from "@material-ui/core";
+import { Grid, Fade } from "@material-ui/core";
 import { Element } from "react-scroll";
 import "./NewsLanding.css";
 import NewsApi from "../../config/NewsApi";
@@ -14,15 +14,17 @@ import Select from "@material-ui/core/Select";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import LazyLoad from "react-lazyload";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import { ReactComponent as Arrow } from '../../images/arrow-sort.svg';
+import SectionTextSmall from '../../components/SectionTextSmall/index';
 
 const NewsLanding = () => {
-  const [ourCollections, setOurCollections] = useState([]);
+  // const [ourCollections, setOurCollections] = useState([]);
   const [checked, setChecked] = useState(false);
-  const [checkedApi, setCheckedApi] = useState(false);
+  // const [checkedApi, setCheckedApi] = useState(false);
   const [data, setData] = useState([]);
-  const [dataLength, setDataLength] = useState();
+  // const [dataLength, setDataLength] = useState();
   const [sortType, setSortType] = useState("published_at");
-  const [ourCollectionsAll, setOurCollectionsAll] = useState([]);
+  // const [ourCollectionsAll, setOurCollectionsAll] = useState([]);
 
   const breakpointColumnsObj = {
     default: 3,
@@ -68,14 +70,14 @@ const NewsLanding = () => {
         }
       };
       sortArray(sortType);
-      setOurCollections(res);
-      setCheckedApi(true);
+      // setOurCollections(res);
+      // setCheckedApi(true);
       console.log("sort2", sortType);
     });
 
-    NewsApi.find().then((res) => {
-      setOurCollectionsAll(res);
-    });
+    // NewsApi.find().then((res) => {
+    //   setOurCollectionsAll(res);
+    // });
   }, [sortType]);
 
   const useStyles = makeStyles((theme) => ({
@@ -96,20 +98,17 @@ const NewsLanding = () => {
   const handleOpen = () => {
     setOpen(true);
   };
-  const refreshPage = () => {
-    window.location.reload();
-  };
+  // const refreshPage = () => {
+  //   window.location.reload();
+  // };
   var dateFormat = require('dateformat');
   return (
     <Element id="news" name="news">
-      {ourCollections.map((ourCollections, i) => {
-        return <React.Fragment key={ourCollections.id}></React.Fragment>;
-      })}
-      <div className="container-campaign">
-        <div className="form">
+      <div className="container-news-landing">
         <FormControl className={classes.formControl}>
           <InputLabel id="select-type" className="select-selected2">
-            <span style={{color:'lightgray'}}>Sort By : </span>
+            <SectionTextSmall value="Sort by:"></SectionTextSmall>
+            {/* <Arrow className="style-arrow-news" /> */}
           </InputLabel>
           <Select
             labelId="select-type"
@@ -126,14 +125,13 @@ const NewsLanding = () => {
               fontStyle: "normal",
               fontWeight: 300,
               letterSpacing: 0.32,
-              width: 200,
+              width: 125,
             }}
           >
             <MenuItem value={"published_at"}>Latest to Oldest</MenuItem>
             <MenuItem value={"id"}>Oldest to Latest</MenuItem>
           </Select>
         </FormControl>
-        </div>
         <br />
         <br />
         <Masonry
@@ -146,7 +144,7 @@ const NewsLanding = () => {
               <React.Fragment key={data.id}>
                 <LazyLoad height={400} offset={100}>
                   <Fade in={checked} appear>
-                    <Link to={`/News/${data.id}`} style={{ textDecoration: 'none' }}>
+                    <Link to={`/news/${data.id}`} style={{ textDecoration: 'none' }}>
                       <div className="conterContent">
                         <LazyLoadImage
                           effect="blur"
@@ -156,14 +154,14 @@ const NewsLanding = () => {
                         <br />
                         <br />
                         <div className="btn-container-col">
-                          <h2 className="container-text-col">{data.title}</h2>
+                          <h2 className="container-text-news">{data.title}</h2>
                           <br />
                           <p className="tanggal">{dateFormat(data.published_at, "dS mmmm yyyy")}</p>
-                          <Grid container={true} spacing={2} justify="center">
+                          <Grid container={true} spacing={2} justifyContent="center">
                             <Grid item xs={12} md={6}></Grid>
                           </Grid>
                         </div>
-                      
+
                       </div>
                     </Link>
                   </Fade>

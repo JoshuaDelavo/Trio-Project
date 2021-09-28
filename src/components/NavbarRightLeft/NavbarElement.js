@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link as LinkR } from "react-router-dom";
-import { Link as LinkS } from "react-scroll";
+// import { Link as LinkS } from "react-scroll";
 
 export const Nav = styled.nav`
   display: flex;
@@ -30,15 +30,15 @@ export const NavbarContainer = styled.div`
   }
 `;
 export const NavTulisan = styled.div`
-  @media screen and (min-width: 1024px) {
-    color: white;
-    font-size: 16px;
-    justify-content: flex-end;
-  }
-  @media screen and (max-width: 1024px) {
-    display: none;
-  }
-`;
+    cursor: pointer;
+    @media screen and (min-width:1024px){
+    color:white;
+    font-size:16px;
+    }
+    @media screen and (max-width:1024px){
+        display :none;
+    }
+`
 export const NavEditIcon = styled.div`
   color: white;
   display: none;
@@ -64,14 +64,43 @@ export const NavLogo = styled(LinkR)`
     padding-left: 2%;
   }
 
-  > img {
-    height: 64px;
-    width: 192;
-    @media screen and (max-width: 1024px) {
-      height: 40px;
+`
+
+
+export const ConciergeImage = styled.img`
+
+    @media screen and (max-width:768px){
+        width: 30px;
+        margin-top:-10px
     }
-  }
-`;
+`
+export const NavBurgerText = styled.p`
+    font-size:14px;
+    float:right;
+    margin-right:60px;
+
+    &:hover {
+        cursor:pointer;
+    }
+
+    @media screen and (max-width:1024px){
+        visibility:hidden;
+    } 
+`
+
+export const NavBurgerImage = styled.img`
+    width: 20px;
+    margin-top: -2px;
+
+    &:hover {
+        cursor:pointer;
+    }
+
+    @media screen and (max-width:768px){
+        width: 30px;
+        margin-top:15px;
+    }
+`
 
 export const NavBurgerIcon = styled.div`
   display: absolute;

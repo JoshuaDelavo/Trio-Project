@@ -20,7 +20,7 @@ const OurNetworkHome = () => {
         <Element id='ourNetwork' name='ourNetwork'>
             <div className="container-campaign">
                 <SectionTextMedium value="OUR NETWORK"></SectionTextMedium>
-                <hr style={{ border: '1px solid white', width: '45px', margin: 'auto' }}></hr>
+                <hr style={{ border: '1px solid white', width: '45px', margin: 'auto', marginTop:10 }}></hr>
                 <br />
                 <br/>
                 <br/>
@@ -32,9 +32,9 @@ const OurNetworkHome = () => {
                     
                     ourNetwork.map((ourNetwork, i) => {
                         return <React.Fragment key={ourNetwork.id}>
-                                <Grid item  container justify="center" xs={12} sm={2}>
+                                <Grid item  container justifyContent="center" xs={12} sm={2}>
                                     <a href={ourNetwork.linkTo}>
-                                        <img src={baseURL+ ourNetwork.logo.url} className="img"></img>
+                                        <img src={baseURL+ ourNetwork.logo.url} className="img" alt="our-network-logo"></img>
                                     </a>
                                 </Grid>
                         </React.Fragment>          

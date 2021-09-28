@@ -22,7 +22,7 @@ const CelebritiesHome = () => {
             <div className="container-celebrities">
                 <SectionTextSmall value={homeCelebrities.smallTitle}></SectionTextSmall>
                 <SectionTextMedium value={homeCelebrities.bigTitle}></SectionTextMedium>
-                <hr style={{ border: '1px solid white', width: '45px', margin: 'auto' }}></hr>
+                <hr style={{ border: '1px solid white', width: '45px', margin: 'auto', marginTop:10 }}></hr>
                 <br />
                 <SectionParagraph value={homeCelebrities.description}
                 ></SectionParagraph>

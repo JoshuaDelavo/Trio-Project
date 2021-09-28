@@ -1,18 +1,18 @@
 import React, { useEffect } from 'react'
 import { Element } from 'react-scroll'
 import './FullScreenImageCenteredContent.css';
-import SectionTextBig from '../../components/SectionTextBig/index';
-import HomeTopCoverApi from '../../config/HomeTopCoverApi';
+// import SectionTextBig from '../../components/SectionTextBig/index';
+// import HomeTopCoverApi from '../../config/HomeTopCoverApi';
 import NewsApi from '../../config/NewsApi';
 import { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { baseURL } from '../../config';
 import { Fade } from '@material-ui/core';
 
 const NewsFullImageDetail = () => {
-    const [homeTopCover, setHomeTopCover] = useState({ backgroundImage: [''] });
+    // const [homeTopCover, setHomeTopCover] = useState({ backgroundImage: [''] });
     const [imgLoaded, setImgLoaded] = useState(false);
-    const [apiLoaded, setApiLoaded] = useState(false);
+    // const [apiLoaded, setApiLoaded] = useState(false);
     const [cover, setCover] = useState([]);
     const { id } = useParams();
 

@@ -6,13 +6,22 @@ import {
   NavLogo,
   NavBurgerIcon,
   NavEditIcon,
+  NavBurgerText,
+  NavBurgerImage,
+  ConciergeImage
 } from "./NavbarElement";
-import { RiMenu2Line } from "react-icons/ri";
-import { BiEditAlt } from "react-icons/bi";
+// import { FaBars } from "react-icons/fa";
+// import LogoAnthem from "../../images/logo_anthem.svg";
+// import Scroll from "react-scroll";
+// import { RiMenu2Line } from "react-icons/ri";
+// import { BiEditAlt } from "react-icons/bi";
 import CompanyApi from "../../config/CompanyApi";
 import { baseURL } from "../../config/";
 import { Fade } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import burgerMenuIcon from '../../images/burger_menu.svg'
+import conciergeIcon from '../../images/concierge_icon.svg'
+// const ScrollLink = Scroll.Link;
 
 const NavbarRightLeft = ({ toggle, toggle2, hamburgerOpen, conciergeOpen }) => {
   const [logo, setLogo] = useState({ logo: [""] });
@@ -34,6 +43,7 @@ const NavbarRightLeft = ({ toggle, toggle2, hamburgerOpen, conciergeOpen }) => {
         .then(() => setImgLoaded(true))
         .catch((err) => console.log("Failed to load images", err));
 
+      // console.log(res);
       setLogo(res);
     });
   }, []);
@@ -42,29 +52,21 @@ const NavbarRightLeft = ({ toggle, toggle2, hamburgerOpen, conciergeOpen }) => {
       <Fade in={imgLoaded}>
         <NavbarContainer>
           <NavBurgerIcon onClick={toggle}>
-            {hamburgerOpen ? (
-              ""
-            ) : (
-              <NavTulisan>
-                <RiMenu2Line onClick={toggle}></RiMenu2Line> MENU
-              </NavTulisan>
-            )}
-            <NavEditIcon >
-              <RiMenu2Line onClick={toggle}></RiMenu2Line>
-            </NavEditIcon>
+            <NavBurgerImage src={burgerMenuIcon} onClick={toggle}></NavBurgerImage>
+            <NavBurgerText>MENU</NavBurgerText>
           </NavBurgerIcon>
           <NavLogo to="/">
             <img src={baseURL + logo.logo.url} alt=""></img>
           </NavLogo>
-          <NavTulisan >
-            <Link to="/Concierge" style={{ color: 'white' }}>
-              THE CONCIERGE{" "}
-              <BiEditAlt ></BiEditAlt>
+          <NavTulisan onClick={toggle2}>
+            <Link to="/Concierge" style={{ color: 'white', textDecoration:'none' }}>
+              <p style={{ fontSize: 14, float:"left", marginRight: 8}}>THE CONCIERGE</p>
+              <img src={conciergeIcon} onClick={toggle2} style={{marginTop:-5}}></img>
             </Link>
           </NavTulisan>
-          <NavEditIcon >
+          <NavEditIcon onClick={toggle2}>
             <Link to="/Concierge" style={{ color: 'white' }}>
-              <BiEditAlt></BiEditAlt>
+              <ConciergeImage src={conciergeIcon} onClick={toggle2}></ConciergeImage>
             </Link>
           </NavEditIcon>
         </NavbarContainer>

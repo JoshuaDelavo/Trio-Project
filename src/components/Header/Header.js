@@ -46,7 +46,7 @@ const Header = () => {
         }, TIMEOUT_DELAY);
     });
 
-    const shadowStyle = shouldShowShadow ? 'shadow' : '';
+    // const shadowStyle = shouldShowShadow ? 'shadow' : '';
     const hiddenStyle = shouldHideHeader ? 'hidden' : '';
 
     return (

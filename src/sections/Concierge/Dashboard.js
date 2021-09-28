@@ -26,7 +26,6 @@ class Dashboard extends Component {
 
     render() {
         return (
-
             <Grid container spacing={2}>
                 <Grid item sm={10} xs={9} />
                 <Grid item sm={2} xs={3}
@@ -37,16 +36,15 @@ class Dashboard extends Component {
                     }}>
                     <img src={closeIcn} onClick={() => goBack()} style={{ cursor: 'pointer' }}></img>
                 </Grid>
-                <Grid item sm={null} xs={12}/>
-                <Grid item sm={null} xs={12}/>
-                <Grid item sm={3} xs={1}/>
+                <Grid item sm={null} xs={12} />
+                <Grid item sm={null} xs={12} />
+                <Grid item sm={3} xs={1} />
                 <Grid item sm={6} xs={10}>
                     <Grid item sm={12} xs={12}>
                         <SectionTextMedium value="WELCOME TO"></SectionTextMedium>
                     </Grid>
                     <Grid item sm={12} xs={12}
                         style={{
-                            marginTop: "-5%",
                             marginBottom: "10%"
                         }}>
                         <SectionTextMedium value="THE FASHION CONCIERGE"></SectionTextMedium>
@@ -55,13 +53,14 @@ class Dashboard extends Component {
                                 border: "1px solid white",
                                 width: "45px",
                                 margin: "auto",
-                                marginBottom: "20px"
+                                marginBottom: "20px",
+                                marginTop:10
                             }}
                         ></hr>
                     </Grid>
                 </Grid>
-                <Grid item sm={3} xs={1}/>
-                <Grid item sm={3} xs={1}/>
+                <Grid item sm={3} xs={1} />
+                <Grid item sm={3} xs={1} />
                 <Grid item sm={6} xs={10}>
                     <SectionTextParagraphConcierge value={this.state.paragraph} />
                 </Grid>

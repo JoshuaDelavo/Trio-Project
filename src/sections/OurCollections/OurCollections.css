@@ -1,0 +1,95 @@
+
+.container-our-collections{
+    height:100%;
+    width:100%;
+    background:black;
+    padding:20px 55px;
+}
+.imgnews{
+   width: 120%;
+}
+
+.container-text-col{
+    font-style: normal;
+    font-weight: 300;
+    font-size: 35px;
+    /* identical to box height, or 140% */
+
+    text-align: center;
+
+    /* Sebastian's White */
+
+    color: #FFFFFF;
+}
+
+.container-text-time-col{
+    font-style: normal;
+    font-weight: 150;
+    font-size: 20px;
+    /* identical to box height, or 140% */
+
+    text-align: center;
+
+    /* Sebastian's White */
+
+    color: #FFFFFF;
+}
+
+.select-selected {
+    background-color: transparent;
+    margin-left: 45%;
+    padding-top: 1%;
+    width: 58%;
+}
+
+.select-selected2 {
+    background-color: transparent;
+    margin-top: 12.5%;
+    margin-left: 11%;
+}
+.style-arrow{
+    margin-left: 260%;
+    margin-top: -78.5%;
+}
+.style-sort{
+    width: auto;
+}
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+@media (min-width: 300px) {
+    .btn-container-col{
+        width:105%;
+        margin-left: 8%;
+    }
+
+}
+
+@media (min-width: 400px) {
+ 
+
+}
+
+@media (min-width: 700px) {
+ 
+
+}
+
+@media (max-width: 768px) {
+   
+
+}
+
+@media(min-width:960px) {
+  
+}
+
+@media(min-width:1100px) {
+}
+
+@media(min-width:1200px) {
+}
+@media(min-width:1500px) {
+    
+}

@@ -1,0 +1,106 @@
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+body {
+  background-color: black;
+}
+
+.App {
+  width: 50%;
+  margin: 10rem auto;
+  height: 570px;
+}
+
+.slick-dots li button:before {
+  color: lightgray;
+  font-size: 10px;
+}
+
+.slick-dots li.slick-active button:before {
+  color: rgb(243, 237, 237);
+  border: 1px solid rgb(243, 237, 237);
+  border-radius: 50%;
+  font-size: 10px;
+}
+
+.slide img {
+  width: 20rem;
+  padding: 25px;
+  margin: 0 -28px;
+}
+
+p {
+  text-align: center;
+  color: white;
+}
+
+.slide3 {
+  transform: scale(0.8);
+  transition: transform 300ms;
+  opacity: 0;
+  margin-bottom: 10%;
+  margin-top: 5%;
+}
+
+.slide3 p{
+  line-height: 25px;
+}
+
+.activeSlide {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.arrow {
+  background-color: transparent;
+  position: absolute;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.arrow svg {
+  transition: color 300ms;
+}
+
+.arrow svg:hover {
+  color: #68edff;
+}
+
+.next {
+  right: 0%;
+  top: 50%;
+}
+
+.prev {
+  left: 0%;
+  top: 50%;
+}
+
+@media only screen and (max-width: 1024px) {
+
+}
+
+@media only screen and (max-width: 785px) {
+
+  .slide3 p{
+    width: 150%;
+    font-size: 40px;
+    line-height: 150%;
+    margin-left: -25%;
+    
+  }
+
+  .slide3{
+    transform: scale(1);
+    width: 100%;
+    margin-top: 10%;
+    margin-bottom: 15%;
+    word-break: break-word;
+  }
+
+}
+
+@media only screen and (min-width: 1024px) {
+
+
+}

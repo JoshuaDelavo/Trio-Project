@@ -1,13 +1,15 @@
-import React, { Component } from "react";
+import React, { Component, Lazy } from "react";
 import { AiOutlineCalendar } from "react-icons/ai";
 import {
   Select, MenuItem, Typography, Container, InputLabel,
-  createMuiTheme,
+  createTheme,
   ThemeProvider,
-  CssBaseline,
-  Paper
+  // CssBaseline,
+  // Paper
 } from "@material-ui/core";
-import FormControl from "@material-ui/core/FormControl";
+import axios from 'axios'
+
+// import FormControl from "@material-ui/core/FormControl";
 import "date-fns";
 import ConciergeApi from "../../config/ConciergeApi";
 import { ButtonText } from "./ConciergeElements";
@@ -15,7 +17,10 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 //import { DatePickerComponent } from "@syncfusion/ej2-react-calendars";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
-import { Country, State, City } from "country-state-city";
+
+// const Login = lazy(()=> import("Country"));
+// import { Country } from "country-state-city";
+// import { City } from "country-state-city";
 import { Link } from "react-router-dom";
 import "date-fns";
 import DateFnsUtils from "@date-io/date-fns";
@@ -31,6 +36,7 @@ import camera from '../../images/camera.svg';
 
 const CustomTextfieldRaw = withStyles({
   root: {
+    marginTop: -6,
     width: '100%',
     '& label.Mui-focused': {
       color: 'white',
@@ -50,7 +56,7 @@ const CustomTextfieldRaw = withStyles({
   },
 })(TextField);
 
-const theme = createMuiTheme({
+const theme = createTheme({
   palette: {
     type: 'dark',
   },
@@ -93,9 +99,19 @@ const styles = theme => ({
   marginRightAll: {
     marginRight: 10
   },
+  marginTopDesktop: {
+    [theme.breakpoints.up('md')]: {
+      marginTop: -10
+    }
+  },
   marginTopMobile: {
     [theme.breakpoints.down('sm')]: {
       marginTop: 20,
+    },
+  },
+  marginTopMobileSmall: {
+    [theme.breakpoints.down('sm')]: {
+      marginTop: 5,
     },
   },
   floatLeftMobile: {
@@ -111,32 +127,35 @@ class Question2 extends Component {
     super();
     this.state = {
       fields: {
-        name: "id1",
-        age: "id2",
-        favouriteColor: "id3",
-        size: "id3",
-        sizeType: "id4",
-        city: "id4",
-        country: "id5",
-        needToUseAt: "id6",
-        photo: "id7",
-        budget: "id8",
-        email: "id9",
-        phoneCode: "id9",
-        nomor: "id10",
+        name: "showMyNameIs",
+        age: "showFavColor",
+        favouriteColor: "showDressSize",
+        size: "showDressSize",
+        sizeType: "showCountry",
+        city: "showCountry",
+        country: "showDatePicker",
+        needToUseAt: "showImageUpload",
+        photo: "showBudget",
+        budget: "showEmail",
+        email: "showWhatsapp",
+        phoneCode: "showWhatsapp",
+        nomor: "showSubmitButton",
+        countries: [],
+        cities: []
       },
       utama: true,
       test: false,
-      id1: false,
-      id2: false,
-      id3: false,
-      id4: false,
-      id5: false,
-      id6: false,
-      id7: false,
-      id8: false,
-      id9: false,
-      id10: false,
+      showMyNameIs: false,
+      showFavColor: false,
+      showDressSize: false,
+      showCountry: false,
+      cityIsDisabled: true,
+      showDatePicker: false,
+      showImageUpload: false,
+      showBudget: false,
+      showEmail: false,
+      showWhatsapp: false,
+      showSubmitButton: false,
       others: "other",
       submit: false,
 
@@ -202,12 +221,48 @@ class Question2 extends Component {
     this.handleChangeBudget2 = this.handleChangeBudget2.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleChangeDate = this.handleChangeDate.bind(this);
-    this.selectCountry = this.selectCountry.bind(this);
-    this.selectRegion = this.selectRegion.bind(this)
+    // this.selectCountry = this.selectCountry.bind(this);
+    // this.selectCity = this.selectCity.bind(this)
     this.selectType = this.selectType.bind(this);
     this.selectSize = this.selectSize.bind(this);
     this.selectPhoneCode = this.selectPhoneCode.bind(this);
     this.checkSubmit = this.checkSubmit.bind(this);
+  }
+
+  componentDidMount = async () => {
+    // console.log(Country.getAllCountries())
+    // console.log(City.getAllCities())
+
+    await axios.get(`https://countriesnow.space/api/v0.1/countries`).then((res) => {
+      if (res.data.error == false) {
+        console.log(res.data.data)
+        this.setState({
+          countries: res.data.data.map(item => {
+            // alert(window.location.pathname.split("/")[2]);
+            return (
+              {
+                value: item.country,
+                label: item.country
+              }
+            )
+          })
+        }, () => {
+          console.log(this.state.countries)
+        })
+
+      } else {
+        // console.log(res.data.msg, res.data.data)
+      }
+    }, (e) => {
+      console.log("Error : ", e);
+    })
+
+    // this.setState({
+    //   countries: Country.getAllCountries(),
+    //   // cities: City.getCitiesOfCountry(this.state.country)
+    // }, () => {
+    //   console.log(this.state)
+    // })
   }
 
   setValue(value) {
@@ -243,7 +298,7 @@ class Question2 extends Component {
     }
   }
   handleChangeDate(Date) {
-    this.setState({ id6: true });
+    this.setState({ showImageUpload: true });
     this.setState({ needToUseAt: Date });
     console.log(Date);
   }
@@ -260,18 +315,47 @@ class Question2 extends Component {
       this.setState({ test: false });
       this.setState({ budget: event.target.value });
       this.setState({ others: "other" });
-      this.setState({ id8: true });
+      this.setState({ showEmail: true });
     }
   }
-  selectCountry(val, name) {
-    this.setState({ country: val });
-    this.setState({ country2: name });
+
+  selectCountry = async (label) => {
+    this.setState({ country: label }, async () => {
+      await axios.post(`https://countriesnow.space/api/v0.1/countries/cities`, {
+        country: this.state.country
+      }).then((res) => {
+        if (res.data.error == false) {
+          console.log(res.data.data)
+          this.setState({
+            cities: res.data.data.map(item => {
+              // alert(window.location.pathname.split("/")[2]);
+              return (
+                {
+                  value: item,
+                  label: item
+                }
+              )
+            })
+          }, () => {
+            this.setState({
+              cityIsDisabled: false
+            })
+            // console.log(this.state.cities)
+          })
+
+        } else {
+          // console.log(res.data.msg, res.data.data)
+        }
+      }, (e) => {
+        console.log("Error : ", e);
+      })
+    });
+    this.setState({ country2: label });
     this.setState({ city: '' });
   }
-
-  selectRegion(val) {
+  selectCity(val) {
     this.setState({ city: val });
-    this.setState({ id5: true });
+    this.setState({ showDatePicker: true });
   }
   selectType(val) {
     this.setState({ sizeType: val });
@@ -284,7 +368,7 @@ class Question2 extends Component {
     }
     else {
       this.setState({ size: val });
-      this.setState({ id4: true });
+      this.setState({ showCountry: true });
       this.setState({ size_err: "" })
     }
 
@@ -309,11 +393,11 @@ class Question2 extends Component {
         });
         if (event.target.value === "") {
           this.setState({ waPhoneNumber_err: "Please Insert your number" });
-          this.setState({ id10: false });
+          this.setState({ showSubmitButton: false });
         }
         else {
           this.setState({ waPhoneNumber_err: "" });
-          this.setState({ id10: true });
+          this.setState({ showSubmitButton: true });
         }
       }
     }
@@ -336,7 +420,7 @@ class Question2 extends Component {
       this.handleSubmitCancelBudget();
     }
     else {
-      this.setState({ id8: true });
+      this.setState({ showEmail: true });
       this.setState({ utama: !this.state.utama });
       this.setState({ others: this.state.budget });
     }
@@ -345,10 +429,10 @@ class Question2 extends Component {
     this.setState({ budget: "" });
     this.setState({ test: false });
     this.setState({ utama: !this.state.utama });
-    this.setState({ id8: false });
+    this.setState({ showEmail: false });
   }
   klikFunction() {
-    document.getElementById("id7").click();
+    document.getElementById("showBudget").click();
   }
   clickSubmit() {
     document.getElementById("submitBtn").click();
@@ -401,27 +485,26 @@ class Question2 extends Component {
     const { classes } = this.props;
     return (
       <ThemeProvider theme={theme}>
+        <Grid container spacing={2}>
+          <Grid item sm={10} xs={9} />
+          <Grid item sm={2} xs={3}
+            style={{
+              marginTop: "2.9%",
+              marginLeft: "-0.8%",
+              marginBottom: "3%"
+            }}>
+            <img src={closeIcn} onClick={() => goBack()} style={{ cursor: 'pointer' }}></img>
+          </Grid>
+        </Grid>
         <Container
           className="container"
           hidden={this.state.utama ? false : true}
         >
-          <Grid container
-            spacing={2} >
-            <Grid item sm={10} xs={9} />
-            <Grid item sm={2} xs={3}
-              style={{
-                marginTop: "2.9%",
-                marginLeft: "-0.8%",
-                marginBottom: "3%"
-              }}>
-              <img src={closeIcn} onClick={() => goBack()} style={{ cursor: 'pointer' }}></img>
-            </Grid>
-          </Grid>
           <Grid
             container
             direction="column"
             alignItems="center"
-            justify="center"
+            justifyContent="center"
           >
             <Grid item xs={12}>
               <Grid
@@ -436,14 +519,13 @@ class Question2 extends Component {
                   helperText={this.state.name_err}
                   onChange={this.handleChange}
                   InputProps={{ style: { fontSize: 25 } }}
-                  id="id1"
                   name="name"
                   type="text"
                   autoComplete="off"
                   required
                   value={this.state.name}
                 />
-                {this.state.id1 ? (
+                {this.state.showMyNameIs ? (
                   <div className={`${classes.marginTopMobile}`}>
                     <span style={{ fontSize: 25 }} className={`${classes.marginRightAll} `}>
                       and I'm
@@ -453,7 +535,6 @@ class Question2 extends Component {
                       onChange={this.handleChange}
                       error={this.state.age_err !== ""}
                       helperText={this.state.age_err}
-                      id="id2"
                       name="age"
                       type="number"
                       InputProps={{ inputProps: { min: 0 }, style: { fontSize: 25 } }}
@@ -475,10 +556,10 @@ class Question2 extends Component {
             container
             direction="column"
             alignItems="center"
-            justify="center"
+            justifyContent="center"
             style={{ marginTop: 20 }}
           >
-            {this.state.id2 ? (
+            {this.state.showFavColor ? (
               <Grid item xs={12}>
                 <Grid
                   container>
@@ -492,14 +573,12 @@ class Question2 extends Component {
                     helperText={this.state.favouriteColor_err}
                     onChange={this.handleChange}
                     InputProps={{ style: { fontSize: 25 } }}
-                    id="id3"
                     name="favouriteColor"
                     type="text"
                     autoComplete="off"
                     required
-                    autoWidth
                   />
-                  {this.state.id3 ? (
+                  {this.state.showDressSize ? (
                     <React.Fragment>
                       <span style={{ fontSize: 25 }} className={`${classes.marginRightAll} ${classes.marginTopMobile}`}>
                         and my dress size is
@@ -507,14 +586,14 @@ class Question2 extends Component {
                       <Autocomplete
                         className={classes.marginRightAll}
                         name="Type"
-                        error={this.state.sizeType_err !== ""}
-                        helperText={this.state.sizeType_err}
+                        error={this.state.sizeType_err == "" ? "" : this.state.sizeType_err}
+                        // helperText={this.state.sizeType_err}
                         options={this.state.types}
                         getOptionLabel={(options) => options.name}
                         disableClearable
                         // value={this.state.sizeType}
                         renderInput={(params) =>
-                          <CustomTextfieldRaw {...params} placeholder="Type" style={{ width: 100 }} className={classes.floatLeftMobile}
+                          <CustomTextfieldRaw {...params} placeholder="Type" style={{ width: 90 }} className={classes.floatLeftMobile}
                             inputProps={{ ...params.inputProps, style: { fontSize: 25 }, autoComplete: 'asdasd1241' }}
                           />
                         }
@@ -523,8 +602,8 @@ class Question2 extends Component {
                       <Autocomplete
                         name="size"
                         key={this.state.sizeType}
-                        error={this.state.size_err !== ""}
-                        helperText={this.state.size_err}
+                        error={this.state.size_err == "" ? "" : this.state.size_err}
+                        // helperText={this.state.size_err}
                         // value={this.state.size}
                         options={this.getSize(this.state.sizeType)}
                         disableClearable
@@ -554,10 +633,10 @@ class Question2 extends Component {
             container
             direction="column"
             alignItems="center"
-            justify="center"
+            justifyContent="center"
             style={{ marginTop: 20 }}
           >
-            {this.state.id4 ? (
+            {this.state.showCountry ? (
               <Grid
                 item
                 xs={12}
@@ -573,29 +652,32 @@ class Question2 extends Component {
                     className={classes.marginRightAll}
                     disableClearable
                     name="country"
-                    options={Country.getAllCountries()}
-                    getOptionLabel={(options) => options.name}
-                    // value={this.state.country}
+                    options={this.state.countries}
+                    getOptionLabel={(options) => options.label}
+                    value={this.state.countries[this.state.countries.findIndex(country => country.value.toString() === this.state.country.toString())]}
+                    // value={this.state.countries[0]}
                     renderInput={(params) => (
                       <CustomTextfieldRaw {...params} placeholder="Country" style={{ width: 200 }}
                         inputProps={{ ...params.inputProps, style: { fontSize: 25 }, autoComplete: 'asdasd1241' }} />
                     )}
-                    onChange={(event, value) => this.selectCountry(value.isoCode, value.name)}
+                    onChange={(event, value) => this.selectCountry(value.label)}
                   />
                   <Autocomplete
                     disableClearable
                     autoComplete="off"
                     name="city"
-                    key={this.state.country}
-                    // value={this.state.city}
-                    options={City.getCitiesOfCountry(this.state.country)}
+                    disabled={this.state.cityIsDisabled}
+                    // key={this.state.country}
+                    // value={[]}
+                    // options={City.getCitiesOfCountry(this.state.country)}
+                    options={this.state.cities}
                     autoSelect={true}
-                    getOptionLabel={(options) => options.name}
+                    getOptionLabel={(options) => options.label}
                     renderInput={(params) => (
                       <CustomTextfieldRaw {...params} placeholder="City" style={{ width: 200 }}
                         inputProps={{ ...params.inputProps, style: { fontSize: 25 }, autoComplete: 'asdasd1241' }} />
                     )}
-                    onChange={(event, value) => this.selectRegion(value.name)}
+                    onChange={(event, value) => this.selectCity(value.label)}
                   />
                 </Grid>
               </Grid>
@@ -607,28 +689,28 @@ class Question2 extends Component {
             container
             direction="column"
             alignItems="center"
-            justify="center"
-            style={{ marginTop: 20 }}
+            justifyContent="center"
+            style={{ marginTop: 25 }}
           >
-            {this.state.id5 ? (
-              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            {this.state.showDatePicker ? (
+              <Grid
+                item
+                xs={12}
+              >
                 <Grid
-                  item
-                  xs={12}
-                >
-                  <Grid
-                    container>
-                    <span style={{ fontSize: 25 }} className={classes.marginRightAll}>
-                      and I need to use this dress at
-                    </span>
+                  container>
+                  <span style={{ fontSize: 25 }} className={classes.marginRightAll}>
+                    and I need to use this dress at
+                  </span>
+                  <MuiPickersUtilsProvider utils={DateFnsUtils}>
                     <KeyboardDatePicker
+                      className={classes.marginTopDesktop}
                       autoComplete="off"
                       style={{ width: 200 }}
                       InputProps={{ style: { fontSize: 25 } }}
                       name="needToUseAt"
                       error={this.state.needToUseAt_err !== ""}
                       helperText={this.state.needToUseAt_err}
-                      id="id6"
                       value={this.state.needToUseAt}
                       onChange={this.handleChangeDate}
                       format="dd-MM-yyyy"
@@ -637,9 +719,9 @@ class Question2 extends Component {
                       }
                       required
                     />
-                  </Grid>
+                  </MuiPickersUtilsProvider>
                 </Grid>
-              </MuiPickersUtilsProvider>
+              </Grid>
             ) : (
               ""
             )}
@@ -648,13 +730,15 @@ class Question2 extends Component {
             container
             direction="column"
             alignItems="center"
-            justify="center"
+            justifyContent="center"
             style={{ marginTop: 20 }}
           >
-            {this.state.id6 ? (
+            {this.state.showImageUpload ? (
               <Grid item xs={12}>
                 <Grid
-                  container >
+                  container
+                  alignItems="center"
+                  justifyContent="center">
                   <span style={{ fontSize: 25 }} className={classes.marginRightAll}>
                     I have preference for my dress
                   </span>
@@ -687,7 +771,7 @@ class Question2 extends Component {
                     name="photo"
                     value=""
                     type="file"
-                    id="id7"
+                    id="showBudget"
                     accept="image/png, image/jpeg,file/pdf"
                     style={{
                       backgroundColor: "black",
@@ -709,10 +793,10 @@ class Question2 extends Component {
             container
             direction="column"
             alignItems="center"
-            justify="center"
+            justifyContent="center"
             style={{ marginTop: 20 }}
           >
-            {this.state.id7 ? (
+            {this.state.showBudget ? (
               <Grid item xs={12}>
                 <Grid
                   container >
@@ -722,7 +806,7 @@ class Question2 extends Component {
                   <Select
                     required
                     name="budget"
-                    id="id8"
+                    id="showEmail"
                     onChange={this.handleChangeBudget1}
                     value={this.state.budget}
                     style={{ fontSize: 25, width: 400 }}
@@ -773,10 +857,10 @@ class Question2 extends Component {
             container
             direction="column"
             alignItems="center"
-            justify="center"
+            justifyContent="center"
             style={{ marginTop: 20 }}
           >
-            {this.state.id8 ? (
+            {this.state.showEmail ? (
               <Grid item xs={12}>
                 <Grid
                   container >
@@ -785,7 +869,7 @@ class Question2 extends Component {
                   </span>
                   <CustomTextfieldRaw
                     onChange={this.handleChange}
-                    id="id9"
+                    id="showWhatsapp"
                     placeholder="Email"
                     error={this.state.email_err !== ""}
                     helperText={this.state.email_err}
@@ -806,10 +890,10 @@ class Question2 extends Component {
             container
             direction="column"
             alignItems="center"
-            justify="center"
+            justifyContent="center"
             style={{ marginTop: 20 }}
           >
-            {this.state.id9 ? (
+            {this.state.showWhatsapp ? (
               <Grid item xs={12}>
                 <Grid
                   container >
@@ -835,6 +919,7 @@ class Question2 extends Component {
                   />
                   <CustomTextfieldRaw
                     onChange={this.handleChangeNumber}
+                    className={`${classes.marginTopMobileSmall}`}
                     id="tel"
                     name="nomor"
                     error={this.state.waPhoneNumber_err !== ""}
@@ -857,10 +942,10 @@ class Question2 extends Component {
             container
             direction="row"
             alignItems="center"
-            justify="center"
+            justifyContent="center"
             style={{ marginTop: 30 }}
           >
-            {this.state.id10 ? (
+            {this.state.showSubmitButton ? (
               <React.Fragment>
                 <ButtonText
                   onClick={this.checkSubmit}
@@ -905,11 +990,11 @@ class Question2 extends Component {
             )}
           </Grid>
         </Container>
-        <Grid
+        {/* <Grid
           container
           direction="row"
           alignItems="center"
-          justify="center"
+          justifyContent="center"
           style={{
             color: "white",
             marginTop: "17%",
@@ -936,7 +1021,7 @@ class Question2 extends Component {
             container
             direction="row"
             alignItems="center"
-            justify="center"
+            justifyContent="center"
             style={{ marginTop: 25 }}
           >
             <ButtonText
@@ -976,7 +1061,7 @@ class Question2 extends Component {
               CANCEL
             </ButtonText>
           </Grid>
-        </Grid>
+        </Grid> */}
       </ThemeProvider>
     );
   }

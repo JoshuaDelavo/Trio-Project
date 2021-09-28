@@ -96,7 +96,7 @@ export const BottomIcon = styled.div`
     justify-content: flex-start;
     font-size: 30px;
     margin-top: -30px;
-    width:100%
+    width:100%;
     @media screen and (max-width:1024px){
         justify-content:center;
     }

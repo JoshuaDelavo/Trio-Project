@@ -1,46 +1,49 @@
 import React from 'react'
 import { Nav, NavBurgerIcon, SidebarMenu, SidebarItem, SidebarLinkRoute } from './SidebarElement'
 import { FaTimes, FaBars } from 'react-icons/fa'
+import burgerMenuCloseIcon from '../../images/burger_menu_close.svg'
 import Scroll from 'react-scroll'
-import { Link as Links } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 const ScrollLink = Scroll.Link
 
 const Sidebar = ({ toggle, hamburgerOpen }) => {
     return (
         <Nav hamburgerOpen={hamburgerOpen} onClick={toggle}>
             <NavBurgerIcon onClick={toggle}>
-                {hamburgerOpen ? <FaTimes onClick={toggle}></FaTimes> : ''} CLOSE
+                <img src={burgerMenuCloseIcon} onClick={toggle} style={{ width: 20, marginTop: -2, float:"left"}}></img>
+                <p style={{ marginLeft: 5, fontSize: 14, float:"left" }}>CLOSE</p>
             </NavBurgerIcon>
             <SidebarMenu>
                 <SidebarItem>
-                    <ScrollLink
+                    {/* <ScrollLink
                         to="content1"
                         spy={true}
                         smooth={true}
                         duration={500}
                         offset={-100}
-                    >
-                        <SidebarLinkRoute onClick={toggle}>Collections</SidebarLinkRoute>
-                    </ScrollLink>
+                    > */}
+                        <Link to='/collections'>
+                            <SidebarLinkRoute onClick={toggle}>Collections</SidebarLinkRoute>
+                        </Link>
+                    {/* </ScrollLink> */}
                 </SidebarItem>
 
                 <SidebarItem>
-
-                    <ScrollLink
+                    {/* <ScrollLink
                         to="/News"
                         spy={true}
                         smooth={true}
                         duration={500}
                         offset={-100}
-                    >
-                        <Links to='/News'>
-                            <SidebarLinkRoute to="/News" onClick={toggle}>News</SidebarLinkRoute>
-                        </Links>
-                    </ScrollLink>
+                    > */}
+                    <Link to='/news'>
+                        <SidebarLinkRoute onClick={toggle}>News</SidebarLinkRoute>
+                    </Link>
+                    {/* </ScrollLink> */}
                 </SidebarItem>
 
                 <SidebarItem>
-                    <ScrollLink
+                    {/* <ScrollLink
                         to="works"
                         spy={true}
                         smooth={true}
@@ -48,10 +51,13 @@ const Sidebar = ({ toggle, hamburgerOpen }) => {
                         offset={-100}
                     >
                         <SidebarLinkRoute onClick={toggle}>Our Story</SidebarLinkRoute>
-                    </ScrollLink>
+                    </ScrollLink> */}
+                    <Link to='/ourStory'>
+                        <SidebarLinkRoute onClick={toggle}>Our Story</SidebarLinkRoute>
+                    </Link>
                 </SidebarItem>
-                <SidebarItem>
-                    <ScrollLink
+                {/* <SidebarItem> */}
+                    {/* <ScrollLink
                         to="about-us"
                         spy={true}
                         smooth={true}
@@ -60,7 +66,7 @@ const Sidebar = ({ toggle, hamburgerOpen }) => {
                     >
                         <SidebarLinkRoute onClick={toggle}>Gallery Locations</SidebarLinkRoute>
                     </ScrollLink>
-                </SidebarItem>
+                </SidebarItem> */}
             </SidebarMenu>
         </Nav >
     )

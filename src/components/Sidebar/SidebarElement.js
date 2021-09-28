@@ -40,8 +40,8 @@ export const NavBurgerIcon = styled.div`
 
     
     @media screen and (max-width:1024px){
-        padding-top:23%;
-        padding-left:8%;
+        padding-top:35px;
+        padding-left:5%;
     }
 
     @media screen and (min-width:2000px){

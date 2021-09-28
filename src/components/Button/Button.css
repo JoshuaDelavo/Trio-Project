@@ -8,6 +8,7 @@
     font-weight:300;
     letter-spacing: 0.16em;
     width:100%;
+    cursor: pointer;
 }
 .btn-filled{
     height: 56px;
@@ -19,6 +20,7 @@
     font-weight:300;
     letter-spacing: 0.16em;
     width:100%;
+    cursor: pointer;
 }
 
 

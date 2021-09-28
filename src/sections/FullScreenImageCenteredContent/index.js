@@ -39,6 +39,7 @@ const FullScreenImageCenteredContent = () => {
         <div className="container-text">
             <SectionTextSmall value={homeTopCover.smallTitle}></SectionTextSmall>
             <SectionTextBig value={homeTopCover.bigTitle}></SectionTextBig>
+            <br/>
             <Link to={`/${homeTopCover.buttonLink}`}>
                 <Button value={homeTopCover.buttonText} customWidth={'auto'}></Button>
             </Link>

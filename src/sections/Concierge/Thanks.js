@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { ThanksMenu, ThanksItem, ButtonThanks } from './ConciergeElements'
+// import { ThanksMenu, ThanksItem, ButtonThanks } from './ConciergeElements'
 import SectionTextParagraphConcierge from '../../components/SectionTextParagraphConcierge/index';
 import SectionTextMedium from '../../components/SectionTextMedium/index';
-import Scroll from 'react-scroll';
+// import Scroll from 'react-scroll';
 import Grid from '@material-ui/core/Grid';
 import { Link } from 'react-router-dom';
 import Button from '../../components/Button/index';

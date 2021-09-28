@@ -116,6 +116,12 @@
     color: #FFFFFF;
   }
 
+  .btn-containerNews{
+    width: 280px;
+    text-align: center; 
+    margin-left: -2%;
+  }
+
 }
 
 @media(min-width:960px) {

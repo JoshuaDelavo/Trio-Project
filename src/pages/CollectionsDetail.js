@@ -1,19 +1,12 @@
-import React from "react";
+import React from 'react'
+import CollectionDetailPage from '../sections/CollectionsDetailPage'
 
 const CollectionsDetail = () => {
   return (
     <div>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      CollectionsDetail Page
+      <CollectionDetailPage />
     </div>
-  );
-};
+  )
+}
 
 export default CollectionsDetail;
