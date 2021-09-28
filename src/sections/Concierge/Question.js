@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { AiOutlineCalendar, AiOutlineCamera } from "react-icons/ai";
+import { AiOutlineCalendar } from "react-icons/ai";
 import {
   Select, MenuItem, Typography, Container, InputLabel,
   createMuiTheme,
@@ -7,7 +7,6 @@ import {
   CssBaseline,
   Paper
 } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 import FormControl from "@material-ui/core/FormControl";
 import "date-fns";
 import ConciergeApi from "../../config/ConciergeApi";
@@ -16,7 +15,6 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 //import { DatePickerComponent } from "@syncfusion/ej2-react-calendars";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
-import axios from "axios";
 import { Country, State, City } from "country-state-city";
 import { Link } from "react-router-dom";
 import "date-fns";
@@ -149,7 +147,8 @@ class Question2 extends Component {
       sizeType: "",
       city: "",
       country: "",
-      needToUseAt: new Date(),
+      // needToUseAt: new Date(),
+      needToUseAt: null,
       photo: "",
       email: "",
       budget: "",
@@ -176,21 +175,21 @@ class Question2 extends Component {
           name: "US",
           code: "US"
         },
-        {
-          name: "EUR",
-          code: "EURO"
-        },
-        {
-          name: "JPN",
-          code: "JPN"
-        }
+        // {
+        //   name: "EUR",
+        //   code: "EURO"
+        // },
+        // {
+        //   name: "JPN",
+        //   code: "JPN"
+        // }
       ],
       sizestype:
       {
         empty: ["No Option"],
-        US: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
-        EURO: ['24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '46', '49', '50'],
-        JPN: ['11', '12', '13', '14', '15', '16', '17']
+        US: ['0', '2', '4', '6', '8', '10', '12', '14'],
+        // EURO: ['24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '46', '49', '50'],
+        // JPN: ['11', '12', '13', '14', '15', '16', '17']
       }
     };
 
@@ -375,6 +374,7 @@ class Question2 extends Component {
         needToUseAt: this.state.needToUseAt,
         photo: this.state.photo,
         budget: this.state.budget,
+        // budget: '$' + parseFloat(this.state.budget).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,'),
         email: this.state.email,
         waPhoneNumber: this.state.waPhoneNumber,
       },
@@ -414,7 +414,7 @@ class Question2 extends Component {
                 marginLeft: "-0.8%",
                 marginBottom: "3%"
               }}>
-              <img src={closeIcn} onClick={() => goBack()}></img>
+              <img src={closeIcn} onClick={() => goBack()} style={{ cursor: 'pointer' }}></img>
             </Grid>
           </Grid>
           <Grid
@@ -426,9 +426,9 @@ class Question2 extends Component {
             <Grid item xs={12}>
               <Grid
                 container>
-                <Typography variant="span" style={{ fontSize: 25 }} className={classes.marginRightAll}>
+                <span style={{ fontSize: 25 }} className={classes.marginRightAll}>
                   My Name is
-                </Typography>
+                </span>
                 <CustomTextfieldRaw
                   className={classes.marginRightAll}
                   style={{ width: 100 }}
@@ -445,9 +445,9 @@ class Question2 extends Component {
                 />
                 {this.state.id1 ? (
                   <div className={`${classes.marginTopMobile}`}>
-                    <Typography variant="span" style={{ fontSize: 25 }} className={`${classes.marginRightAll} `}>
+                    <span style={{ fontSize: 25 }} className={`${classes.marginRightAll} `}>
                       and I'm
-                    </Typography>
+                    </span>
                     <CustomTextfieldRaw className={classes.marginRightAll}
                       style={{ width: 60, }}
                       onChange={this.handleChange}
@@ -460,9 +460,9 @@ class Question2 extends Component {
                       required
                       value={this.state.age}
                     />
-                    <Typography variant="span" style={{ fontSize: 25 }}>
+                    <span style={{ fontSize: 25 }}>
                       years old
-                    </Typography>
+                    </span>
                   </div>
                 ) : (
                   ""
@@ -482,32 +482,28 @@ class Question2 extends Component {
               <Grid item xs={12}>
                 <Grid
                   container>
-                  <Typography variant="span" style={{ fontSize: 25 }} className={classes.marginRightAll}>
+                  <span style={{ fontSize: 25 }} className={classes.marginRightAll}>
                     My favourite color is
-                  </Typography>
-                  <FormControl required>
-                    <Select className={classes.marginRightAll}
-                      labelId="color"
-                      name="favouriteColor"
-                      id="id3"
-                      style={{
-                        fill: "white", fontSize: 25, width: 100
-                      }}
-                      value={this.state.favouriteColor}
-                      onChange={this.handleChange}
-                      autoWidth
-                      required
-                    >
-                      <MenuItem value={"Blue"}>Blue</MenuItem>
-                      <MenuItem value={"Red"}>Red</MenuItem>
-                      <MenuItem value={"Green"}>Green</MenuItem>
-                    </Select>
-                  </FormControl>
+                  </span>
+                  <CustomTextfieldRaw
+                    className={classes.marginRightAll}
+                    style={{ width: 200 }}
+                    error={this.state.favouriteColor_err !== ""}
+                    helperText={this.state.favouriteColor_err}
+                    onChange={this.handleChange}
+                    InputProps={{ style: { fontSize: 25 } }}
+                    id="id3"
+                    name="favouriteColor"
+                    type="text"
+                    autoComplete="off"
+                    required
+                    autoWidth
+                  />
                   {this.state.id3 ? (
                     <React.Fragment>
-                      <Typography variant="span" style={{ fontSize: 25 }} className={`${classes.marginRightAll} ${classes.marginTopMobile}`}>
+                      <span style={{ fontSize: 25 }} className={`${classes.marginRightAll} ${classes.marginTopMobile}`}>
                         and my dress size is
-                      </Typography>
+                      </span>
                       <Autocomplete
                         className={classes.marginRightAll}
                         name="Type"
@@ -517,7 +513,6 @@ class Question2 extends Component {
                         getOptionLabel={(options) => options.name}
                         disableClearable
                         // value={this.state.sizeType}
-                        autoComplete="off"
                         renderInput={(params) =>
                           <CustomTextfieldRaw {...params} placeholder="Type" style={{ width: 100 }} className={classes.floatLeftMobile}
                             inputProps={{ ...params.inputProps, style: { fontSize: 25 }, autoComplete: 'asdasd1241' }}
@@ -533,7 +528,6 @@ class Question2 extends Component {
                         // value={this.state.size}
                         options={this.getSize(this.state.sizeType)}
                         disableClearable
-                        autoComplete="off"
                         getOptionLabel={(options) => options}
                         autoSelect={true}
                         renderInput={(params) =>
@@ -572,9 +566,9 @@ class Question2 extends Component {
                 <Grid
                   container
                 >
-                  <Typography variant="span" style={{ fontSize: 25 }} className={classes.marginRightAll}>
+                  <span style={{ fontSize: 25 }} className={classes.marginRightAll}>
                     I live in
-                  </Typography>
+                  </span>
                   <Autocomplete
                     className={classes.marginRightAll}
                     disableClearable
@@ -583,7 +577,7 @@ class Question2 extends Component {
                     getOptionLabel={(options) => options.name}
                     // value={this.state.country}
                     renderInput={(params) => (
-                      <CustomTextfieldRaw {...params} placeholder="Country" style={{ width: 200 }} autoComplete="new-password"
+                      <CustomTextfieldRaw {...params} placeholder="Country" style={{ width: 200 }}
                         inputProps={{ ...params.inputProps, style: { fontSize: 25 }, autoComplete: 'asdasd1241' }} />
                     )}
                     onChange={(event, value) => this.selectCountry(value.isoCode, value.name)}
@@ -624,10 +618,11 @@ class Question2 extends Component {
                 >
                   <Grid
                     container>
-                    <Typography variant="span" style={{ fontSize: 25 }} className={classes.marginRightAll}>
+                    <span style={{ fontSize: 25 }} className={classes.marginRightAll}>
                       and I need to use this dress at
-                    </Typography>
+                    </span>
                     <KeyboardDatePicker
+                      autoComplete="off"
                       style={{ width: 200 }}
                       InputProps={{ style: { fontSize: 25 } }}
                       name="needToUseAt"
@@ -660,9 +655,9 @@ class Question2 extends Component {
               <Grid item xs={12}>
                 <Grid
                   container >
-                  <Typography variant="span" style={{ fontSize: 25 }} className={classes.marginRightAll}>
+                  <span style={{ fontSize: 25 }} className={classes.marginRightAll}>
                     I have preference for my dress
-                  </Typography>
+                  </span>
                   <CustomTextfieldRaw
                     style={{
                       width: 200,
@@ -676,21 +671,17 @@ class Question2 extends Component {
                     value={this.state.photo.name}
                     placeholder="Choose Image"
                   />
-                  {/* <AiOutlineCamera
-                    type="button"
-                    id="klikFile"
-                    value="Klik Me"
-                    onClick={this.klikFunction}
-                    required
-                  /> */}
+
                   <img src={camera}
                     type="button"
                     id="klikFile"
                     value="Klik Me"
                     fill="white"
+                    style={{ marginLeft: 5, }}
                     onClick={this.klikFunction}
                     required>
                   </img>
+
                   <input
                     onChange={this.handleChangeFile2}
                     name="photo"
@@ -725,9 +716,9 @@ class Question2 extends Component {
               <Grid item xs={12}>
                 <Grid
                   container >
-                  <Typography variant="span" style={{ fontSize: 25 }} className={classes.marginRightAll}>
+                  <span style={{ fontSize: 25 }} className={classes.marginRightAll}>
                     My budget is
-                  </Typography>
+                  </span>
                   <Select
                     required
                     name="budget"
@@ -736,16 +727,31 @@ class Question2 extends Component {
                     value={this.state.budget}
                     style={{ fontSize: 25, width: 400 }}
                   >
-                    <MenuItem value="2000" style={{ fontSize: 25 }}>
-                      starting from 2,000 (USD)
+                    $ 2.000 - $ 4.000
+                    $ 5.000 - $ 7.000
+                    $ 8.000 - $ 10.000
+                    $ 10.000 - $ 12.000
+                    $ 13.000 - $ 15.000
+
+                    <MenuItem value="$ 2.000 - $ 4.000" style={{ fontSize: 25 }}>
+                      $ 2.000 - $ 4.000
                     </MenuItem>
-                    <MenuItem value="10000" style={{ fontSize: 25 }}>
-                      starting from 10,000 (USD)
+                    <MenuItem value="$ 5.000 - $ 7.000" style={{ fontSize: 25 }}>
+                      $ 5.000 - $ 7.000
                     </MenuItem>
-                    <MenuItem value="100000" style={{ fontSize: 25 }}>
-                      starting from 100,000 (USD)
+                    <MenuItem value="$ 8.000 - $ 10.000" style={{ fontSize: 25 }}>
+                      $ 8.000 - $ 10.000
                     </MenuItem>
-                    <MenuItem
+                    <MenuItem value="$ 10.000 - $ 12.000" style={{ fontSize: 25 }}>
+                      $ 10.000 - $ 12.000
+                    </MenuItem>
+                    <MenuItem value="$ 13.000 - $ 15.000" style={{ fontSize: 25 }}>
+                      $ 13.000 - $ 15.000
+                    </MenuItem>
+                    <MenuItem value="> $ 15.000" style={{ fontSize: 25 }}>
+                      {`> $ 15.000`}
+                    </MenuItem>
+                    {/* <MenuItem
                       id="others"
                       style={{ fontSize: 25 }}
                       value={
@@ -755,7 +761,7 @@ class Question2 extends Component {
                       {this.state.test
                         ? this.state.budget + " (USD)"
                         : "Others"}
-                    </MenuItem>
+                    </MenuItem> */}
                   </Select>
                 </Grid>
               </Grid>
@@ -774,9 +780,9 @@ class Question2 extends Component {
               <Grid item xs={12}>
                 <Grid
                   container >
-                  <Typography variant="span" style={{ fontSize: 25 }} className={classes.marginRightAll}>
+                  <span style={{ fontSize: 25 }} className={classes.marginRightAll}>
                     you can email me at
-                  </Typography>
+                  </span>
                   <CustomTextfieldRaw
                     onChange={this.handleChange}
                     id="id9"
@@ -807,9 +813,9 @@ class Question2 extends Component {
               <Grid item xs={12}>
                 <Grid
                   container >
-                  <Typography variant="span" style={{ fontSize: 25 }} className={classes.marginRightAll}>
+                  <span style={{ fontSize: 25 }} className={classes.marginRightAll}>
                     or WhatsApp me at
-                  </Typography>
+                  </span>
                   <Autocomplete
                     className={classes.marginRightAll}
                     name="code"
@@ -913,9 +919,9 @@ class Question2 extends Component {
             true
             : false}
         >
-          <Typography variant="span" style={{ fontSize: 25 }}>
+          <span style={{ fontSize: 25 }}>
             My Preffered Budget
-          </Typography>
+          </span>
           <TextField
             onChange={this.handleChangeBudget2}
             id="prefB"
@@ -925,7 +931,7 @@ class Question2 extends Component {
             InputProps={{ inputProps: { min: 0 }, style: { fontSize: 25 } }}
             style={{ marginLeft: 10, marginRight: 10, marginTop: -3, width: 170 }}
           />
-          <Typography variant="span" style={{ fontSize: 25 }}>USD</Typography>
+          <span style={{ fontSize: 25 }}>USD</span>
           <Grid
             container
             direction="row"

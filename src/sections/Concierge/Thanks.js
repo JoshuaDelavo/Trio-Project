@@ -39,7 +39,7 @@ class Thanks extends Component {
                     <Grid item sm={4} xs={1}/>
                     <Grid item sm={4} xs={10}>
                         <Link to="/">
-                            <Button type="fill" value="BACK TO DASHBOARD" ></Button>
+                            <Button type="fill" value="BACK TO HOME" ></Button>
                         </Link>
                     </Grid>
                     <Grid item sm={4} xs={1}/>

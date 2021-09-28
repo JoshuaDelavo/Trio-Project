@@ -7,15 +7,12 @@ import {
   NavBurgerIcon,
   NavEditIcon,
 } from "./NavbarElement";
-import Scroll from "react-scroll";
 import { RiMenu2Line } from "react-icons/ri";
 import { BiEditAlt } from "react-icons/bi";
 import CompanyApi from "../../config/CompanyApi";
 import { baseURL } from "../../config/";
 import { Fade } from "@material-ui/core";
 import { Link } from "react-router-dom";
-
-const ScrollLink = Scroll.Link;
 
 const NavbarRightLeft = ({ toggle, toggle2, hamburgerOpen, conciergeOpen }) => {
   const [logo, setLogo] = useState({ logo: [""] });
