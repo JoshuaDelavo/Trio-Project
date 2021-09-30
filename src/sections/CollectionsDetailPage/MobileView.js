@@ -77,8 +77,8 @@ const MobileView = () => {
                         >
                             <div>
                                 <div className="style-title">
-                                    <Link to={'/collections'}>
-                                        {<p className={"text-container"}> <ArrowBack /> Back to All Campaigns</p>}
+                                    <Link to={'/collections'} style={{ textDecoration: 'none' }}>
+                                        {<p className={"text-container"}> <ArrowBack style={{float:'left'}} /> <span className={'back-text'}>Back to All Campaigns</span></p>}
                                     </Link>
                                     <p className={"title-container"}>{collection.bigTitle}</p>
                                     <p className={"text-container"}>{collection.description}</p>

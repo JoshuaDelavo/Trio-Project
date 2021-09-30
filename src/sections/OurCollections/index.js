@@ -149,10 +149,9 @@ const OurCollections = () => {
                                             <br />
                                             <br />
                                             <div className="btn-container-col">
-                                                <p className="container-text-time-col">{data.smallTitle}</p>
-                                                <h2 className="container-text-col">{data.bigTitle}</h2>
-                                                <br />
-                                                <p className="container-text-time-col">{data.description}</p>
+                                                <p className="col-subtitle">{data.smallTitle}</p>
+                                                <h2 className="col-title">{data.bigTitle}</h2>
+                                                <p className="col-body">{data.description}</p>
                                                 <br />
                                                 <Grid container={true}
                                                     spacing={2} justifyContent="center">

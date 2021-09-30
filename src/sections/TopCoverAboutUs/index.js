@@ -36,8 +36,8 @@ const TopCoverAboutUs = () => {
     const textTitle = (
         <div className="container-text-img-aboutUs">
             <div className="cover-about-big">
-                <SectionTextBig value={coverImage.titleFirstLine}></SectionTextBig>
-                <SectionTextBig value={coverImage.titleSecondLine}></SectionTextBig>
+                <p className="ourstory-text-title">{coverImage.titleFirstLine}</p>
+                <p className="ourstory-text-title">{coverImage.titleSecondLine}</p>
             </div>
             <div className="cover-about-smal">
                 <SectionParagraph value={coverImage.subtitle}></SectionParagraph>

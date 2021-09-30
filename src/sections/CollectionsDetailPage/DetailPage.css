@@ -1,35 +1,37 @@
-.container-detail{
-    height:100%;
-    width:500%;
-    background:black;
-    display:-ms-flexbox;
+.container-detail {
+    height: 100%;
+    width: 500%;
+    background: black;
+    display: -ms-flexbox;
 }
 
-.style-title{
+.style-title {
     width: 900px;
 }
 
-.style-table{
-    margin-top: -1%;
-
+.style-table {
+    margin-top:-2%
 }
-.style-pict-hor{
+
+.style-pict-hor {
     width: 450px;
 }
-.container-list-pict::-webkit-scrollbar{
-    display: none; 
+
+.container-list-pict::-webkit-scrollbar {
+    display: none;
     overflow-x: scroll;
-   }
-.style-pict1{
+}
+
+.style-pict1 {
     margin-left: 15%;
 }
 
-.style-pict2{
+.style-pict2 {
     margin-left: 40%;
 }
 
-.title-container{
-    color:white;
+.title-container {
+    color: white;
     font-size: 96px;
     font-style: normal;
     font-weight: 400;
@@ -37,12 +39,13 @@
     letter-spacing: 0em;
     text-align: left;
 }
-.text-container{
-    color:white;
-    font-size: 14px;
+
+.text-container {
+    color: white;
+    font-size: 16px;
+    line-height: 24px;
     font-style: normal;
-    font-weight: 300;
-    letter-spacing: 0.32em;
+    font-weight: lighter;
     text-align: left;
 }
 
@@ -56,145 +59,147 @@
 }
 
 .my-masonry-grid-det {
-    display: -webkit-box; /* Not needed if autoprefixing */
-    display: -ms-flexbox; /* Not needed if autoprefixing */
+    display: -webkit-box;
+    /* Not needed if autoprefixing */
+    display: -ms-flexbox;
+    /* Not needed if autoprefixing */
     display: flex;
-    margin-left: -30px; /* gutter size offset */
+    margin-left: -30px;
+    /* gutter size offset */
     width: auto;
 }
+
 .my-masonry-grid_column-det {
-    padding-left: 80px; /* gutter size */
+    padding-left: 80px;
+    /* gutter size */
     background-clip: padding-box;
 }
-  
-  /* Style your items */
-.my-masonry-grid_column-det > div { /* change div to reference your elements you put in <Masonry> */
+
+/* Style your items */
+
+.my-masonry-grid_column-det>div {
+    /* change div to reference your elements you put in <Masonry> */
     background: black;
     margin-bottom: 30px;
     margin-left: 30px;
     margin-right: 30px;
 }
 
-.img-det-style{
+.img-det-style {
     width: 109%;
     margin-top: 10%;
 }
 
 .image-wrapper a {
-
     top: 0;
     left: 0;
-
     background: rgba(0, 0, 0, 0.8);
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 1;
     transition: opacity 0ms ease-in-out;
-  }
+}
+
+.back-text {
+    text-decoration: none;
+    float:left;
+    margin-left:10px;
+}
 
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
+
 @media (min-width: 300px) {
     .my-masonry-grid-det {
-      margin-left: -16%; /* gutter size offset */
+        margin-left: -16%;
+        /* gutter size offset */
     }
     .my-masonry-grid_column-det {
-      padding-left: 5%; /* gutter size */
+        padding-left: 5%;
+        /* gutter size */
     }
-    
     /* Style your items */
-    .my-masonry-grid_column-det > div { /* change div to reference your elements you put in <Masonry> */
-      margin-left: 2%;
-      margin-right: 8%;
+    .my-masonry-grid_column-det>div {
+        /* change div to reference your elements you put in <Masonry> */
+        margin-left: 2%;
+        margin-right: 8%;
     }
-    
-    .style-title{
+    .style-title {
         width: 100%;
         padding-left: 15%;
         margin-top: 30%;
     }
-
-    .img-size-arrow{
+    .img-size-arrow {
         width: 100%;
     }
-
-    .vert-arrow{
+    .vert-arrow {
         width: auto;
         margin-left: 35%;
         margin-bottom: 5%;
         margin-top: 5%;
     }
-
-    .vert-scale-arrow{
+    .vert-scale-arrow {
         width: auto;
         background-color: black;
     }
-
-    .vert-back{
+    .vert-back {
         width: 50%;
         margin-left: 33%;
         margin-top: 5%;
     }
-  }
-  
-
-@media (min-width: 300px) {
-   
 }
 
-@media (min-width: 350px) {
- 
-}
+@media (min-width: 300px) {}
 
-@media (min-width: 370px) {
-}
+@media (min-width: 350px) {}
 
-@media (min-width: 400px) {
+@media (min-width: 370px) {}
 
-   
-}
+@media (min-width: 400px) {}
 
-@media (max-width: 760px) {
-
-} 
+@media (max-width: 760px) {}
 
 @media(min-width:960px) {
-    .style-img-horz{
+    .style-img-horz {
         width: 100%;
         margin-top: 4%;
         height: 100vh;
     }
-
+    .back-text {
+        margin-left: 10px
+    }
 }
 
 @media(min-width:1100px) {
-    .style-title{
+    .style-title {
         width: 900px;
         margin-left: -5%;
         margin-top: 10%;
     }
-    .img-size-arrow{
+    .img-size-arrow {
         width: 400px;
     }
-    .img-arrow{
+    .img-arrow {
         width: 30px
     }
-    .style-table{
-       width : auto;
-       height: fit-content;
+    .style-table {
+        width: auto;
+        height: 100%;
+        margin-top:-0.2%
     }
-    .back-style{
+    .back-style {
         margin-right: -200%;
         margin-top: -14.5%;
     }
 }
 
-@media(min-width:1200px) {
-    
-}
+@media(min-width:1200px) {}
+
 @media(min-width:1500px) {
-   
-    
-}
+    .style-table {
+        width: auto;
+        height: 100%;
+        margin-top:1%
+    }}

@@ -78,9 +78,12 @@ const LightboxContain = () => {
                                                     <Grid item md={12}>
                                                         <div className="style-title">
                                                             <Link to={'/collections'} style={{ textDecoration: 'none' }}>
-                                                                <ArrowBack /> <p className="text-container" style={{ marginTop: -27, marginLeft: 30 }}> Back to All Campaigns</p>
+                                                                <ArrowBack style={{float:'left'}}/> <p className="text-container back-text"> Back to All Campaigns</p>
                                                             </Link>
+                                                            <br/>
                                                             <p className={"title-container"} style={{marginTop:15}}>{collection.bigTitle}</p>
+                                                            <br/>
+                                                            <br/>
                                                             <p className={"text-container"}>{collection.description}</p>
                                                         </div>
                                                     </Grid>

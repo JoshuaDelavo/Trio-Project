@@ -67,9 +67,9 @@ const NewsDetails = () => {
     setOpen(false);
   };
 
-  let iconStyles = { color: "white", fontSize: "1.5em", marginLeft: "1em", cursor:"pointer" };
+  let iconStyles = { color: "white", fontSize: "1.5em", marginLeft: "1em", cursor: "pointer" };
   let iconStyles2 = { color: "white", fontSize: "1.5em" };
-  let arrow = { color: "white", fontSize: "1.5em", marginRight: 10, float:'left' };
+  let arrow = { color: "white", fontSize: "1.5em", marginRight: 10, float: 'left' };
   var dateFormat = require("dateformat");
 
   return (
@@ -77,21 +77,16 @@ const NewsDetails = () => {
       <div className="container-news">
         <Link to="/News" style={{ textDecoration: "none" }}>
           <div className="backToArticles">
-            <IoIosArrowBack style={arrow}> </IoIosArrowBack><p style={{ float: 'left', marginTop: 3 }}>back to all articles</p>
+            <IoIosArrowBack style={arrow}> </IoIosArrowBack><p style={{ float: 'left', marginTop: 5, fontSize: 13 }}>back to all articles</p>
           </div>
         </Link>
         <br />
         <br />
         <p className="article-title">{detail.title}</p>
         <div className="underTitle">
-          <div className="posted">
-            <SectionParagraph
-              value={
-                "Posted on : " +
-                dateFormat(detail.published_at, "dS mmmm yyyy, H:MM ")
-              }
-            ></SectionParagraph>
-          </div>
+          <p className="posted">
+            Posted on: {dateFormat(detail.published_at, "dS mmmm yyyy, H:MM ")}
+          </p>
           <div className="iconContainer">
             <WhatsappShareButton
               message="Testing function of react"

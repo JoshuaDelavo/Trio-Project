@@ -1,7 +1,7 @@
 {
   "name": "sebastian_gunawan_signature",
   "version": "0.1.0",
-  "homepage": ".",
+  "homepage": "https://sebastiangunawansignature.com",
   "private": false,
   "dependencies": {
     "@date-io/date-fns": "^1.3.13",

@@ -36,6 +36,7 @@ function App() {
             <CollectionsDetail />
           </Route>
           <Route path='/news/:id'>
+            <Header />
             <NewsDetail />
           </Route>
           <Route path='/collections'>

@@ -11,6 +11,7 @@ import ReactMarkdown from "react-markdown";
 import ShowMoreText from 'react-show-more-text';
 import Slide1 from '../../components/ClientCarousel/aboutUsSlide1.js';
 import Slide2 from '../../components/ClientCarousel/aboutUsSlide2.js';
+import { Container } from '@material-ui/core';
 
 
 const OurStory = () => {
@@ -26,104 +27,83 @@ const OurStory = () => {
             setApiLoaded(true);
         })
 
-        AboutUs.findSlider1().then(res =>{
+        AboutUs.findSlider1().then(res => {
             console.log("slider1", res);
             setSlideOne(res);
         })
 
-        AboutUs.findSlider2().then(res =>{
+        AboutUs.findSlider2().then(res => {
             console.log("slider2", res);
             setSlideTwo(res);
         })
-        
+
     }, [])
 
     return (
-        <Element id='our-story' name='our-story'>
-            <div className="container-aboutUs">
-                <div className="container-title">
-                    <hr style={{ border: '0.2px solid #505050', width: '100%', margin: 'auto' }}></hr>
-                    <div  className="container-quotes">
-                        <div className="container-quotes-main">
-                            <p className="section-text-medium-qotes">{story.quotes}</p>
-                        </div>
-                        <div className="container-quotes-by">
-                            <SectionParagraph value={story.quotesBy}></SectionParagraph>
-                        </div>
-                    </div>
-                    <hr style={{ border: '0.2px solid #505050', width: '100%', margin: 'auto' }}></hr>
+        <Container>
+            <div className="container-title">
+                <hr style={{ border: '0.2px solid #505050', width: '100%', margin: 'auto' }}></hr>
+                <div className="container-quotes">
+                    <p className="section-text-medium-qotes">{story.quotes}</p>
+                    <br />
+                    <SectionParagraph value={story.quotesBy}></SectionParagraph>
+                </div>
+                <hr style={{ border: '0.2px solid #505050', width: '100%', margin: 'auto' }}></hr>
 
-                    <div className="container-main">
-                        <div className='container-title-main1'>
-                            <SectionTextBig value={story.title2FirstLine}></SectionTextBig>
-                        </div>
-                        <div className='container-title-main2'>
-                            <SectionTextBig value={story.title2SecondLine}></SectionTextBig>
-                        </div>
-                        {
-                            story ?
-                                <div>
-                                    <img src={baseURL + story.articleImage.url} className="article-container-fist-img"></img>
-                                </div>
-                                    
+                <div className="container-quotes">
+                    <p className="ourstory-text-title">{story.title2FirstLine}</p>
+                    <p className="ourstory-text-title">{story.title2SecondLine}</p>
+                    {
+                        story ?
+                            <div>
+                                <img src={baseURL + story.articleImage.url} className="article-container-fist-img"></img>
+                            </div>
+
                             :
                             ''
-                        }
-                        <div className="container-text-aboutUs-art">
-                            <p className="section-text-medium-img-det">{story.articleDescription}</p>
-                            <ShowMoreText
-                                
-                                lines={2}
-                                more={<button className="btn-transparent-art">SHOW MORE</button>}
-                                less={false}
-                                onClick={false}
-                                className={"section-text-medium-art"}
-                                expanded={false}
-                                width={2950}
-                            >   
-                                <div className="article-container-aboutUs">
-                                    <ReactMarkdown>{story.article}</ReactMarkdown>
-                                </div>
-                            </ShowMoreText>
-                        </div>
-
-                        <div className="container-main-bot">
-                            <div className="main-bot-bigTitle">
-                                <SectionTextBig value={story.title3FirstLine}></SectionTextBig>
+                    }
+                    <p className="section-text-medium-img-det">{story.articleDescription}</p>
+                    <br />
+                    <div className={'wrapper'}>
+                        <ShowMoreText
+                            lines={2}
+                            more={<button className="btn-transparent-art">SHOW MORE</button>}
+                            less={false}
+                            onClick={false}
+                            className={"section-text-medium-art"}
+                            expanded={false}
+                            width={2950}
+                        >
+                            <div className="article-container-aboutUs">
+                                <ReactMarkdown>{story.article}</ReactMarkdown>
                             </div>
-                            <div className="main-bot-medium">
-                                <SectionTextMedium value={story.title3SecondLine}></SectionTextMedium>
-                            </div>
-                            <div className="main-bot-bigTitle">
-                                <SectionTextBig value={story.title3ThirdLine}></SectionTextBig>
-                            </div>
-                            <div className="main-bot-bigTitle1">
-                                <SectionTextBig value={story.title3FourthLine}></SectionTextBig>
-                            </div>
-                            <div className="slide-contain1">
-                                <Slide1 />
-                            </div>
-                            <div className="container-award">
-                                <SectionTextBig value={story.title4FirstLine}></SectionTextBig>
-                            </div>
-                            <hr style={{ border: '0.2px solid #505050', width: '100%', margin: 'auto' }}></hr>
-                            <div  className="container-quotes">
-                                <div className="container-quotes-main">
-                                    <p className="section-text-medium-qotes">{story.quotes2}</p>
-                                </div>
-                                <div className="container-quotes-by">
-                                    <SectionParagraph value={story.quotes2By}></SectionParagraph>
-                                </div>
-                            </div>
-                            <hr style={{ border: '0.2px solid #505050', width: '100%', margin: 'auto' }}></hr>
-                            <div className="slide-contain">
-                                <Slide2 />
-                            </div>
-                        </div>
+                        </ShowMoreText>
+                    </div>
+                    <br />
+                    <br />
+                    <p className="ourstory-text-title">{story.title3FirstLine}</p>
+                    <p className="ourstory-text-title-small">{story.title3SecondLine}</p>
+                    <p className="ourstory-text-title">{story.title3ThirdLine}</p>
+                    <p className="ourstory-text-title">{story.title3FourthLine}</p>
+                    <div className="slide-contain1">
+                        <Slide1 />
+                    </div>
+                    <br />
+                    <p className="ourstory-text-title">{story.title4FirstLine}</p>
+                    <br />
+                    <br />
+                    <hr style={{ border: '0.2px solid #505050', width: '100%', margin: 'auto' }}></hr>
+                    <div className="container-quotes">
+                        <p className="section-text-medium-qotes">{story.quotes2}</p>
+                        <SectionParagraph value={story.quotes2By}></SectionParagraph>
+                    </div>
+                    <hr style={{ border: '0.2px solid #505050', width: '100%', margin: 'auto' }}></hr>
+                    <div className="slide-contain">
+                        <Slide2 />
                     </div>
                 </div>
             </div>
-        </Element>
+        </Container>
     )
 }
 

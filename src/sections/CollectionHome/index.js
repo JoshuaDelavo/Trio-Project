@@ -6,7 +6,7 @@ import SectionTextSmall from '../../components/SectionTextSmall/index';
 import SectionTextMedium from '../../components/SectionTextMedium/index';
 import SectionParagraph from '../../components/SectionParagraph/index';
 import Button from '../../components/Button/index';
-import { Card, Grid, Fade } from '@material-ui/core';
+import { Card, Grid, Fade, Container } from '@material-ui/core';
 import './CollectionHome.css';
 import CollectionsApi from '../../config/CollectionsApi';
 import { Link } from 'react-router-dom';
@@ -22,18 +22,18 @@ const CollectionHome = () => {
     useEffect(() => {
         CollectionsApi.detailLatest().then(res => {
             // console.log(res);
-            console.log("col",res);
+            console.log("col", res);
             res.map((res, i) => {
                 new Promise((resolve, reject) => {
                     const loadImg = new Image()
-                               
-                        loadImg.src = baseURL + res.picture1.url
 
-                        loadImg.onload = () => {
-                            resolve(baseURL + res.picture1.url)
-                        }
+                    loadImg.src = baseURL + res.picture1.url
 
-                        loadImg.onerror = err => reject(err)
+                    loadImg.onload = () => {
+                        resolve(baseURL + res.picture1.url)
+                    }
+
+                    loadImg.onerror = err => reject(err)
                 }).then(() => setChecked(true))
                     .catch(err => console.log("Failed to load images", err))
             })
@@ -50,10 +50,14 @@ const CollectionHome = () => {
                     collection.map((collection, i) => {
                         return <React.Fragment key={collection.id}>
                             <SectionTextMedium value={collection.bigTitle}></SectionTextMedium>
-                            <hr style={{ border: '1px solid white', width: '45px', margin: 'auto', marginTop:10 }}></hr>
+                            <hr style={{ border: '1px solid #D2D2D2', width: 72, margin: 'auto', marginTop: 35, marginBottom: 15 }}></hr>
                             <br />
-                            <SectionParagraph value={collection.description}></SectionParagraph>
-                            <br/>
+                            <Container style={{padding:'0px 2rem'}}>
+                                <SectionParagraph value={collection.description}></SectionParagraph>
+                            </Container>
+                            <br />
+                            <br />
+                            <br />
                             <Grid container={true} spacing={2} >
                                 <Grid item xs={12} container={true}>
                                     <Fade in={checked} appear>
@@ -63,7 +67,7 @@ const CollectionHome = () => {
                                         <img src={baseURL + collection.picture3.url} className="image3" ></img>
                                     </Fade>
                                 </Grid>
-                                <Grid item  xs={12} container={true}>
+                                <Grid item xs={12} container={true}>
                                     <Fade in={checked} appear>
                                         <img src={baseURL + collection.picture2.url} className="image2" ></img>
                                     </Fade>

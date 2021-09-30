@@ -22,7 +22,7 @@ const Sidebar = ({ toggle, hamburgerOpen }) => {
                         duration={500}
                         offset={-100}
                     > */}
-                        <Link to='/collections'>
+                        <Link to='/collections' style={{textDecoration:'none'}}>
                             <SidebarLinkRoute onClick={toggle}>Collections</SidebarLinkRoute>
                         </Link>
                     {/* </ScrollLink> */}
@@ -36,7 +36,7 @@ const Sidebar = ({ toggle, hamburgerOpen }) => {
                         duration={500}
                         offset={-100}
                     > */}
-                    <Link to='/news'>
+                    <Link to='/news' style={{textDecoration:'none'}}>
                         <SidebarLinkRoute onClick={toggle}>News</SidebarLinkRoute>
                     </Link>
                     {/* </ScrollLink> */}
@@ -52,7 +52,7 @@ const Sidebar = ({ toggle, hamburgerOpen }) => {
                     >
                         <SidebarLinkRoute onClick={toggle}>Our Story</SidebarLinkRoute>
                     </ScrollLink> */}
-                    <Link to='/ourStory'>
+                    <Link to='/ourStory' style={{textDecoration:'none'}}>
                         <SidebarLinkRoute onClick={toggle}>Our Story</SidebarLinkRoute>
                     </Link>
                 </SidebarItem>

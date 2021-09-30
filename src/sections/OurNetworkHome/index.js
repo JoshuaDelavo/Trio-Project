@@ -20,7 +20,8 @@ const OurNetworkHome = () => {
         <Element id='ourNetwork' name='ourNetwork'>
             <div className="container-campaign">
                 <SectionTextMedium value="OUR NETWORK"></SectionTextMedium>
-                <hr style={{ border: '1px solid white', width: '45px', margin: 'auto', marginTop:10 }}></hr>
+                <hr style={{ border: '1px solid #D2D2D2', width: 72, margin: 'auto', marginTop:35, marginBottom:15 }}></hr>
+
                 <br />
                 <br/>
                 <br/>

@@ -36,12 +36,12 @@ const Footer = () => {
                 <br />
                 <br />
 
-                <SectionTextSmall value="VISIT OUR GALERY"></SectionTextSmall>
+                <SectionTextSmall value="VISIT OUR GALLERY"></SectionTextSmall>
                 <p className="container-p" style={{marginTop:10}}>{foot.address1}</p>
                 <p className="container-p">{foot.address2}</p>
                 <p className="container-p">{foot.address3}</p>
                 <a href="https://www.google.com/maps/place/Sebastian+Gunawan/@-6.1691677,106.8177892,15z/data=!4m5!3m4!1s0x0:0x9b19f00a6a2c2844!8m2!3d-6.1691994!4d106.8177996">
-                    <p className="container-link">VISIT OUR GALERY</p>
+                    <p className="container-link">VISIT OUR GALLERY</p>
                 </a>
                 <br />
                 <SectionTextSmall value="CONTACT US"></SectionTextSmall>
