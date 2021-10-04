@@ -50,12 +50,10 @@ const Header = () => {
     const hiddenStyle = shouldHideHeader ? 'hidden' : '';
 
     return (
-        <Fade in={!hiddenStyle}>
-            <div className={`header`}>
-                <Sidebar hamburgerOpen={hamburgerOpen} toggle={toggle}></Sidebar>
-                <NavbarRightLeft hamburgerOpen={hamburgerOpen} toggle={toggle} conciergeOpen={conciergeOpen} toggle2={toggle2}></NavbarRightLeft>
-            </div>
-        </Fade>
+        <div className={`header`}>
+            <Sidebar hamburgerOpen={hamburgerOpen} toggle={toggle}></Sidebar>
+            <NavbarRightLeft hamburgerOpen={hamburgerOpen} toggle={toggle} conciergeOpen={conciergeOpen} toggle2={toggle2}></NavbarRightLeft>
+        </div>
     )
 }
 

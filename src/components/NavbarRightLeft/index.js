@@ -22,7 +22,7 @@ import { Link } from "react-router-dom";
 import burgerMenuIcon from '../../images/burger_menu.svg'
 import conciergeIcon from '../../images/concierge_icon.svg'
 import Logos from '../../images/logo_sebastian.svg'
-import 'react-sticky-header/styles.css';
+import useDocumentScrollThrottled from '../Header/useDocumentScrollThrottled'
 // const ScrollLink = Scroll.Link;
 
 const NavbarRightLeft = ({ toggle, toggle2, hamburgerOpen, conciergeOpen }) => {
@@ -49,10 +49,31 @@ const NavbarRightLeft = ({ toggle, toggle2, hamburgerOpen, conciergeOpen }) => {
       setLogo(res);
     });
   }, []);
+
+  const [shouldHideHeader, setShouldHideHeader] = useState(false);
+  const [shouldShowShadow, setShouldShowShadow] = useState(false);
+
+  const MINIMUM_SCROLL = 80;
+  const TIMEOUT_DELAY = 400;
+
+  useDocumentScrollThrottled(callbackData => {
+    const { previousScrollTop, currentScrollTop } = callbackData;
+    const isScrolledDown = previousScrollTop < currentScrollTop;
+    const isMinimumScrolled = currentScrollTop > MINIMUM_SCROLL;
+    setShouldShowShadow(currentScrollTop > 2);
+
+    setTimeout(() => {
+      setShouldHideHeader(isScrolledDown && isMinimumScrolled);
+    }, TIMEOUT_DELAY);
+  });
+
+  // const shadowStyle = shouldShowShadow ? 'shadow' : '';
+  const hiddenStyle = shouldHideHeader ? 'hidden' : '';
+
   return (
-    <Nav>
+    <Nav style={hiddenStyle ? { backgroundColor: "rgba(1, 1, 1, 0.7)", backdropFilter: "blur(3px)" } : { backgroundColor: "transparent" }}>
       <Fade in={imgLoaded}>
-        <NavbarContainer>
+        <NavbarContainer style={hiddenStyle ? { borderBottom: 'none' } : { borderBottom: '1px solid rgba(111, 111, 111, 0.5)' }}>
           <NavBurgerIcon onClick={toggle}>
             <NavBurgerImage src={burgerMenuIcon} onClick={toggle}></NavBurgerImage>
             <NavBurgerText>MENU</NavBurgerText>

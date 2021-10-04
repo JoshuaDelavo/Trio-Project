@@ -7,7 +7,6 @@ export const Nav = styled.nav`
   position: fixed;
   width: 100%;
   top: 0;
-  padding: 3%;
   background: transparent;
   z-index: 100;
   height: auto;
@@ -19,10 +18,11 @@ export const NavbarContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid rgba(111, 111, 111, 0.5);
-  padding-bottom: 2%;
-  height: 100%;
   width: 100%;
-  height: 60px;
+  height: 70;
+  padding-top: 2%;
+  margin-right: 4%;
+  margin-left: 4%;
 
   @media screen and (max-width: 720px) {
     margin-top: 5%;
