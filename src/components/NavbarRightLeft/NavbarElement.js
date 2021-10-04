@@ -52,7 +52,6 @@ export const NavEditIcon = styled.div`
 export const NavLogo = styled(LinkR)`
   display: absolute;
   color: white;
-  padding-bottom: 10px;
   justify-content: center;
   text-decoration: none;
   font-size: 1.5rem;

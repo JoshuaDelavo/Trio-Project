@@ -21,12 +21,14 @@ import { Fade } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import burgerMenuIcon from '../../images/burger_menu.svg'
 import conciergeIcon from '../../images/concierge_icon.svg'
+import Logos from '../../images/logo_sebastian.svg'
+import 'react-sticky-header/styles.css';
 // const ScrollLink = Scroll.Link;
 
 const NavbarRightLeft = ({ toggle, toggle2, hamburgerOpen, conciergeOpen }) => {
   const [logo, setLogo] = useState({ logo: [""] });
   const [imgLoaded, setImgLoaded] = useState(false);
-
+  const [scroll, setScroll] = useState(0);
   useEffect(() => {
     CompanyApi.find().then((res) => {
       new Promise((resolve, reject) => {
@@ -56,12 +58,15 @@ const NavbarRightLeft = ({ toggle, toggle2, hamburgerOpen, conciergeOpen }) => {
             <NavBurgerText>MENU</NavBurgerText>
           </NavBurgerIcon>
           <NavLogo to="/">
-            <img src={baseURL + logo.logo.url} alt=""></img>
+            <img src={Logos} style={{
+              width: 175,
+              height: 100
+            }} alt=""></img>
           </NavLogo>
           <NavTulisan onClick={toggle2}>
-            <Link to="/Concierge" style={{ color: 'white', textDecoration:'none' }}>
-              <p style={{ fontSize: 14, float:"left", marginRight: 8}}>THE CONCIERGE</p>
-              <img src={conciergeIcon} onClick={toggle2} style={{marginTop:-5}}></img>
+            <Link to="/Concierge" style={{ color: 'white', textDecoration: 'none' }}>
+              <p style={{ fontSize: 14, float: "left", marginRight: 8 }}>THE CONCIERGE</p>
+              <img src={conciergeIcon} onClick={toggle2} style={{ marginTop: -5 }}></img>
             </Link>
           </NavTulisan>
           <NavEditIcon onClick={toggle2}>
