@@ -61,9 +61,15 @@ const NavbarRightLeft = ({ toggle, toggle2, hamburgerOpen, conciergeOpen }) => {
     const isScrolledDown = previousScrollTop < currentScrollTop;
     const isMinimumScrolled = currentScrollTop > MINIMUM_SCROLL;
     setShouldShowShadow(currentScrollTop > 2);
+    console.log("Top", currentScrollTop)
 
     setTimeout(() => {
-      setShouldHideHeader(isScrolledDown && isMinimumScrolled);
+      if (currentScrollTop <= 10) {
+        setShouldHideHeader(false);
+      }
+      else {
+        setShouldHideHeader(true);
+      }
     }, TIMEOUT_DELAY);
   });
 
@@ -71,7 +77,7 @@ const NavbarRightLeft = ({ toggle, toggle2, hamburgerOpen, conciergeOpen }) => {
   const hiddenStyle = shouldHideHeader ? 'hidden' : '';
 
   return (
-    <Nav style={hiddenStyle ? { backgroundColor: "rgba(1, 1, 1, 0.7)", backdropFilter: "blur(3px)" } : { backgroundColor: "transparent" }}>
+    <Nav id="navbar" style={hiddenStyle ? { backgroundColor: "rgba(1, 1, 1, 0.7)", backdropFilter: "blur(3px)" } : { backgroundColor: "transparent" }}>
       <Fade in={imgLoaded}>
         <NavbarContainer style={hiddenStyle ? { borderBottom: 'none' } : { borderBottom: '1px solid rgba(111, 111, 111, 0.5)' }}>
           <NavBurgerIcon onClick={toggle}>
