@@ -54,7 +54,7 @@ const NavbarRightLeft = ({ toggle, toggle2, hamburgerOpen, conciergeOpen }) => {
   const [shouldShowShadow, setShouldShowShadow] = useState(false);
 
   const MINIMUM_SCROLL = 80;
-  const TIMEOUT_DELAY = 400;
+  const TIMEOUT_DELAY = 100;
 
   useDocumentScrollThrottled(callbackData => {
     const { previousScrollTop, currentScrollTop } = callbackData;
@@ -77,7 +77,7 @@ const NavbarRightLeft = ({ toggle, toggle2, hamburgerOpen, conciergeOpen }) => {
   const hiddenStyle = shouldHideHeader ? 'hidden' : '';
 
   return (
-    <Nav id="navbar" style={hiddenStyle ? { backgroundColor: "rgba(1, 1, 1, 0.7)", backdropFilter: "blur(3px)" } : { backgroundColor: "transparent" }}>
+    <Nav id="navbar" style={hiddenStyle ? { backgroundColor: "rgba(1, 1, 1, 0.7)", backdropFilter: "blur(3px)", height: 100 } : { backgroundColor: "transparent" }}>
       <Fade in={imgLoaded}>
         <NavbarContainer style={hiddenStyle ? { borderBottom: 'none' } : { borderBottom: '1px solid rgba(111, 111, 111, 0.5)' }}>
           <NavBurgerIcon onClick={toggle}>
@@ -85,10 +85,15 @@ const NavbarRightLeft = ({ toggle, toggle2, hamburgerOpen, conciergeOpen }) => {
             <NavBurgerText>MENU</NavBurgerText>
           </NavBurgerIcon>
           <NavLogo to="/">
-            <img src={Logos} style={{
-              width: 175,
-              height: 100
-            }} alt=""></img>
+            <img src={Logos}
+              style=
+              {hiddenStyle ? {
+                width: 125,
+                height: 50
+              } : {
+                width: 175,
+                height: 100
+              }} alt=""></img>
           </NavLogo>
           <NavTulisan onClick={toggle2}>
             <Link to="/Concierge" style={{ color: 'white', textDecoration: 'none' }}>
