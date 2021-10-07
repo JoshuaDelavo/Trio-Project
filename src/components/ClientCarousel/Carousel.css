@@ -103,19 +103,16 @@ p {
 
   .slick-dots li.slick-active button:before {
     border: 10px solid rgb(243, 237, 237);
+  }
 
+  .slide {
+    transform: scale(0.1);
+    transition: transform 300ms;
   }
 
   .slick-dots li button:before {
     font-size: 10px;
   }
-  
-  /* .slick-dots li.slick-active button:before {
-    color: rgb(243, 237, 237);
-    border: 1px solid rgb(243, 237, 237);
-    border-radius: 50%;
-    font-size: 10px;
-  } */
   
 }
 
