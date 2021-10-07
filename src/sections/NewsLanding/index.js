@@ -16,6 +16,7 @@ import LazyLoad from "react-lazyload";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { ReactComponent as Arrow } from '../../images/arrow-sort.svg';
 import SectionTextSmall from '../../components/SectionTextSmall/index';
+import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 
 const NewsLanding = () => {
   // const [ourCollections, setOurCollections] = useState([]);
@@ -106,8 +107,8 @@ const NewsLanding = () => {
     <Element id="news" name="news">
       <div className="container-news-landing">
         <FormControl className={classes.formControl}>
-          <InputLabel id="select-type" className="select-selected2">
-            <SectionTextSmall value="Sort by:"></SectionTextSmall>
+          <InputLabel id="select-type" className="select-selected2" style={{ color: "White" }}>
+            Sort By :
             {/* <Arrow className="style-arrow-news" /> */}
           </InputLabel>
           <Select
@@ -132,6 +133,7 @@ const NewsLanding = () => {
             <MenuItem value={"id"}>Oldest to Latest</MenuItem>
           </Select>
         </FormControl>
+        {open ? <BsChevronUp color="white" style={{ display: "inline", marginTop: 20 }} /> : <BsChevronDown color="white" style={{ display: "inline", marginTop: 20 }} />}
         <br />
         <br />
         <Masonry
