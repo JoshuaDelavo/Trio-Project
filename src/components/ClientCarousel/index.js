@@ -48,7 +48,7 @@ const ClientCarousel = () => {
         celeb.map((cek, i) => {
           return (
             <div key={cek.photo[0].id} className={i === imageIndex ? "slide activeSlide" : "slide"}>
-              <img src={baseURL + (cek.photo[0].url)} ></img>
+              <img src={baseURL + cek.photo[0].url}></img>
               <SectionParagraph value={cek.name}></SectionParagraph>
             </div>
           )
