@@ -72,6 +72,10 @@ const NavbarRightLeft = ({ toggle, toggle2, hamburgerOpen, conciergeOpen }) => {
       }
     }, TIMEOUT_DELAY);
   });
+  const goHead = () => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
 
   // const shadowStyle = shouldShowShadow ? 'shadow' : '';
   const hiddenStyle = shouldHideHeader ? 'hidden' : '';
@@ -84,7 +88,7 @@ const NavbarRightLeft = ({ toggle, toggle2, hamburgerOpen, conciergeOpen }) => {
             <NavBurgerImage src={burgerMenuIcon} onClick={toggle}></NavBurgerImage>
             <NavBurgerText>MENU</NavBurgerText>
           </NavBurgerIcon>
-          <NavLogo to="/">
+          <NavLogo to="/" onClick={goHead}>
             <img src={Logos}
               style=
               {hiddenStyle ? {
