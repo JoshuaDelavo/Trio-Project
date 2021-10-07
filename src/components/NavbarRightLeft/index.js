@@ -79,7 +79,7 @@ const NavbarRightLeft = ({ toggle, toggle2, hamburgerOpen, conciergeOpen }) => {
   return (
     <Nav id="navbar" style={hiddenStyle ? { backgroundColor: "rgba(1, 1, 1, 0.7)", backdropFilter: "blur(3px)", height: 100 } : { backgroundColor: "transparent" }}>
       <Fade in={imgLoaded}>
-        <NavbarContainer style={hiddenStyle ? { borderBottom: 'none' } : { borderBottom: '1px solid rgba(111, 111, 111, 0.5)' }}>
+        <NavbarContainer style={hiddenStyle ? { borderBottom: 'none', paddingTop: 0 } : { borderBottom: '1px solid rgba(111, 111, 111, 0.5)' }}>
           <NavBurgerIcon onClick={toggle}>
             <NavBurgerImage src={burgerMenuIcon} onClick={toggle}></NavBurgerImage>
             <NavBurgerText>MENU</NavBurgerText>
