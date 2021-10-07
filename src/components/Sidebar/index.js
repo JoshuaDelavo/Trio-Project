@@ -10,8 +10,8 @@ const Sidebar = ({ toggle, hamburgerOpen }) => {
     return (
         <Nav hamburgerOpen={hamburgerOpen} onClick={toggle}>
             <NavBurgerIcon onClick={toggle}>
-                <img src={burgerMenuCloseIcon} onClick={toggle} style={{ width: 20, marginTop: -2, float: "left" }}></img>
-                <p style={{ marginLeft: 5, fontSize: 14, float: "left" }}>CLOSE</p>
+                <img src={burgerMenuCloseIcon} onClick={toggle} style={{ width: 20, marginTop: 16, float: "left" }}></img>
+                <p style={{ marginTop: 19, marginLeft: 5, fontSize: 14, float: "left" }}>CLOSE</p>
             </NavBurgerIcon>
             <SidebarMenu>
                 <SidebarItem>
