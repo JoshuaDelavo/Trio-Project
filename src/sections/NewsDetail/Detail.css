@@ -47,6 +47,14 @@
     line-height: 32px;
 }
 
+.container-news {
+    padding-top: 2em;
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    justify-content: center;
+}
+
 @media (max-width: 768px) {
     .iconContainer {
         display: none;
@@ -58,12 +66,8 @@
         margin-top:-20px;
         margin-bottom:20px;
     }
+    .container-news {
+    width: 80%;
+}
 }
 
-.container-news {
-    padding-top: 2em;
-    width: 50%;
-    margin: auto;
-    text-align: center;
-    justify-content: center;
-}
