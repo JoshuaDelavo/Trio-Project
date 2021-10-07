@@ -133,7 +133,7 @@ const NewsLanding = () => {
             <MenuItem value={"id"}>Oldest to Latest</MenuItem>
           </Select>
         </FormControl>
-        {open ? <BsChevronUp color="white" style={{ display: "inline", marginTop: 20 }} /> : <BsChevronDown color="white" style={{ display: "inline", marginTop: 20 }} />}
+        {open ? <BsChevronUp color="white" style={{ display: "inline", marginTop: 24 }} /> : <BsChevronDown color="white" style={{ display: "inline", marginTop: 24 }} />}
         <br />
         <br />
         <Masonry
