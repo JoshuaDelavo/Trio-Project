@@ -61,7 +61,6 @@ const NavbarRightLeft = ({ toggle, toggle2, hamburgerOpen, conciergeOpen }) => {
     const isScrolledDown = previousScrollTop < currentScrollTop;
     const isMinimumScrolled = currentScrollTop > MINIMUM_SCROLL;
     setShouldShowShadow(currentScrollTop > 2);
-    console.log("Top", currentScrollTop)
 
     setTimeout(() => {
       if (currentScrollTop <= 10) {
