@@ -11,7 +11,7 @@ body {
   height: 570px;
 }
 
-.slide-aboutUs1{
+.slide-aboutUs1 {
   transform: scale(1);
   transition: transform 300ms;
   opacity: 1;
@@ -22,12 +22,12 @@ body {
   margin-left: 3%;
 }
 
-.slide-title{
+.slide-title {
   width: 80%;
   margin-left: 10%;
 }
 
-.slide-title p{
+.slide-title p {
   font-size: 200%;
 }
 
@@ -67,40 +67,36 @@ p {
 }
 
 @media only screen and (max-width: 1024px) {
-
 }
 
 @media only screen and (max-width: 785px) {
-
-  .slide-aboutUs1  img {
+  .slide-aboutUs1 img {
     width: 95%;
     margin-left: 2.5%;
   }
 
-  .slide-aboutUs1  p {
+  .slide-aboutUs1 p {
     width: 110%;
     margin-left: -5%;
     margin-top: 5%;
   }
 
-  .slide-aboutUs1{
-    margin-left: 0%;
+  .slide-aboutUs1 {
+    margin-left: 98%;
   }
-  
+
   .app-aboutUs1 {
     width: 100%;
     margin-left: 0%;
-    
   }
   .disabled {
     cursor: not-allowed;
   }
-  .slick-next:not(.disabled):before, 
+  .slick-next:not(.disabled):before,
   .slick-prev:not(.disabled):before {
-    opacity:0;
+    opacity: 0;
   }
 }
 
 @media only screen and (min-width: 1024px) {
-
 }

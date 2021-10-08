@@ -1,14 +1,12 @@
-import React, { useEffect } from 'react'
-import AboutUs from '../../config/AboutUsApi';
-import { useState } from 'react';
-import { baseURL } from '../../config/';
+import React, { useEffect } from "react";
+import AboutUs from "../../config/AboutUsApi";
+import { useState } from "react";
+import { baseURL } from "../../config/";
 import Slider from "react-slick";
-import './Carousel1.css';
-import SectionParagraph from '../../components/SectionParagraph/index';
-import SectionTextBig from '../../components/SectionTextBig/index';
-import SectionTextMedium from '../../components/SectionTextMedium/index';
-
-
+import "./Carousel1.css";
+import SectionParagraph from "../../components/SectionParagraph/index";
+import SectionTextBig from "../../components/SectionTextBig/index";
+import SectionTextMedium from "../../components/SectionTextMedium/index";
 
 const AboutUsSlide1 = () => {
   const [slideOne, setSlideOne] = useState([]);
@@ -16,23 +14,20 @@ const AboutUsSlide1 = () => {
   const [imageIndex, setImageIndex] = useState(0);
   const showButton = () => {
     if (window.innerWidth < 768) {
-      setSlide(1)
-    }
-    else if (window.innerWidth >= 768 && window.innerWidth <= 1366) {
-      setSlide(3)
-    }
-
-    else {
-      setSlide(3)
+      setSlide(1);
+    } else if (window.innerWidth >= 768 && window.innerWidth <= 1366) {
+      setSlide(3);
+    } else {
+      setSlide(3);
     }
   };
-  
+
   useEffect(() => {
-    AboutUs.findSlider1().then(res => {
+    AboutUs.findSlider1().then((res) => {
       setSlideOne(res);
       showButton();
-    })
-  }, [])
+    });
+  }, []);
 
   const settings = {
     dots: true,
@@ -43,28 +38,44 @@ const AboutUsSlide1 = () => {
     beforeChange: (current, next) => setImageIndex(next),
   };
 
-  window.addEventListener('resize', showButton)
+  window.addEventListener("resize", showButton);
 
   return (
     <div className="app-aboutUs1">
-      <Slider {...settings}>{
-        slideOne.map((slideOne, i) => {
+      <Slider {...settings}>
+        {slideOne.map((slideOne, i) => {
           return (
-            <div key={slideOne.id} className={i === imageIndex ? "slide-aboutUs1 activeSlide" : "slide-aboutUs1 "}>
+            <div
+              key={slideOne.id}
+              className={
+                i === imageIndex
+                  ? "slide-aboutUs1 activeSlide"
+                  : "slide-aboutUs1 "
+              }
+            >
               <div>
-                <img src={baseURL + (slideOne.image.url)} ></img>
-                <SectionParagraph value={slideOne.smallTitle}></SectionParagraph>
+                <img
+                  style={{ width: 340 }}
+                  src={baseURL + slideOne.image.url}
+                ></img>
+                <br />
+                <SectionParagraph
+                  value={slideOne.smallTitle}
+                ></SectionParagraph>
+                <br />
                 <div className="slide-title">
-                  <SectionTextMedium value={slideOne.bigTitle}></SectionTextMedium>
+                  <SectionTextMedium
+                    value={slideOne.bigTitle}
+                  ></SectionTextMedium>
+                  <br />
                 </div>
               </div>
             </div>
-          )
-        })
-      }
+          );
+        })}
       </Slider>
-    </div >
-  )
-}
+    </div>
+  );
+};
 
-export default AboutUsSlide1
+export default AboutUsSlide1;
