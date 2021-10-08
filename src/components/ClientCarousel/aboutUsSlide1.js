@@ -7,6 +7,8 @@ import "./Carousel1.css";
 import SectionParagraph from "../../components/SectionParagraph/index";
 import SectionTextBig from "../../components/SectionTextBig/index";
 import SectionTextMedium from "../../components/SectionTextMedium/index";
+import arrowRight from "../../images/sliderArrowRight.svg";
+import arrowLeft from "../../images/sliderArrowLeft.svg";
 
 const AboutUsSlide1 = () => {
   const [slideOne, setSlideOne] = useState([]);
@@ -35,6 +37,26 @@ const AboutUsSlide1 = () => {
     speed: 300,
     slidesToShow: Slide,
     // centerMode: true,
+    nextArrow: (
+      <div>
+        <div className="next-slick-arrow">
+          <img
+            style={{ marginTop: -250, height: 24, width: 24 }}
+            src={arrowRight}
+          ></img>
+        </div>
+      </div>
+    ),
+    prevArrow: (
+      <div>
+        <div className="prev-slick-arrow">
+          <img
+            style={{ marginLeft: 25, height: 24, width: 24 }}
+            src={arrowLeft}
+          ></img>
+        </div>
+      </div>
+    ),
     beforeChange: (current, next) => setImageIndex(next),
   };
 
@@ -67,7 +89,9 @@ const AboutUsSlide1 = () => {
                   <SectionTextMedium
                     value={slideOne.bigTitle}
                   ></SectionTextMedium>
-                  <br /><br /><br /> 
+                  <br />
+                  <br />
+                  <br />
                 </div>
               </div>
             </div>

@@ -5,8 +5,8 @@ import { baseURL } from "../../config/";
 import Slider from "react-slick";
 import "./Carousel.css";
 import SectionParagraph from "../../components/SectionParagraph/index";
-import arrowRight from '../../images/sliderArrowRight.svg';
-import arrowLeft from '../../images/sliderArrowLeft.svg';
+import arrowRight from "../../images/sliderArrowRight.svg";
+import arrowLeft from "../../images/sliderArrowLeft.svg";
 
 const ClientCarousel = () => {
   const [celeb, setCeleb] = useState([]);
@@ -35,6 +35,26 @@ const ClientCarousel = () => {
     speed: 300,
     slidesToShow: Slide,
     centerMode: true,
+    nextArrow: (
+      <div>
+        <div className="next-slick-arrow">
+          <img
+            style={{ marginTop: 125, height: 24, width: 24 }}
+            src={arrowRight}
+          ></img>
+        </div>
+      </div>
+    ),
+    prevArrow: (
+      <div>
+        <div className="prev-slick-arrow">
+          <img
+            style={{ marginTop: 125, marginLeft: 25, height: 24, width: 24 }}
+            src={arrowLeft}
+          ></img>
+        </div>
+      </div>
+    ),
     beforeChange: (current, next) => setImageIndex(next),
   };
 
@@ -52,8 +72,6 @@ const ClientCarousel = () => {
               <img src={baseURL + cek.photo[0].url}></img>
               <div className="judulImage">
                 <SectionParagraph value={cek.name}></SectionParagraph>
-                <img src={arrowRight}></img>
-                <img src={arrowLeft}></img>
               </div>
             </div>
           );
