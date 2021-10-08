@@ -67,7 +67,7 @@ const AboutUsSlide1 = () => {
                   <SectionTextMedium
                     value={slideOne.bigTitle}
                   ></SectionTextMedium>
-                  <br />
+                  <br /><br /><br /> 
                 </div>
               </div>
             </div>
