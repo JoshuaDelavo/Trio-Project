@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react'
-import CelebritiesApi from '../../config/CelebritiesApi';
-import { useState } from 'react';
-import { baseURL } from '../../config/';
+import React, { useEffect } from "react";
+import CelebritiesApi from "../../config/CelebritiesApi";
+import { useState } from "react";
+import { baseURL } from "../../config/";
 import Slider from "react-slick";
-import './Carousel.css';
-import SectionParagraph from '../../components/SectionParagraph/index';
-
+import "./Carousel.css";
+import SectionParagraph from "../../components/SectionParagraph/index";
 
 const ClientCarousel = () => {
   const [celeb, setCeleb] = useState([]);
@@ -13,23 +12,20 @@ const ClientCarousel = () => {
   const [imageIndex, setImageIndex] = useState(0);
   const showButton = () => {
     if (window.innerWidth < 768) {
-      setSlide(1)
-    }
-    else if (window.innerWidth >= 768 && window.innerWidth <= 1366) {
-      setSlide(3)
-    }
-
-    else {
-      setSlide(5)
+      setSlide(1);
+    } else if (window.innerWidth >= 768 && window.innerWidth <= 1366) {
+      setSlide(3);
+    } else {
+      setSlide(5);
     }
   };
-  
+
   useEffect(() => {
-    CelebritiesApi.find().then(res => {
+    CelebritiesApi.find().then((res) => {
       setCeleb(res);
       showButton();
-    })
-  }, [])
+    });
+  }, []);
 
   const settings = {
     dots: true,
@@ -40,23 +36,27 @@ const ClientCarousel = () => {
     beforeChange: (current, next) => setImageIndex(next),
   };
 
-  window.addEventListener('resize', showButton)
+  window.addEventListener("resize", showButton);
 
   return (
     <div className="app">
-      <Slider {...settings}>{
-        celeb.map((cek, i) => {
+      <Slider {...settings}>
+        {celeb.map((cek, i) => {
           return (
-            <div key={cek.photo[0].id} className={i === imageIndex ? "slide activeSlide" : "slide"}>
+            <div
+              key={cek.photo[0].id}
+              className={i === imageIndex ? "slide activeSlide" : "slide"}
+            >
               <img src={baseURL + cek.photo[0].url}></img>
-              <SectionParagraph value={cek.name}></SectionParagraph>
+              <div className="judulImage">
+                <SectionParagraph value={cek.name}></SectionParagraph>
+              </div>
             </div>
-          )
-        })
-      }
+          );
+        })}
       </Slider>
-    </div >
-  )
-}
+    </div>
+  );
+};
 
-export default ClientCarousel
+export default ClientCarousel;

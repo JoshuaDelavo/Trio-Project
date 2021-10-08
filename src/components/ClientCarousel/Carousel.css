@@ -6,11 +6,11 @@ body {
 }
 
 .slick-slide {
-  outline: none
+  outline: none;
 }
 .slick-slide div {
   outline: none;
- }
+}
 
 .App {
   width: 50%;
@@ -89,34 +89,32 @@ p {
     margin: 0 -28px;
   }
 
-  .slide3 p{
+  .slide3 p {
     width: 100%;
   }
 
-  .slide3{
+  .slide3 {
     transform: scale(1);
   }
-
 }
 
 @media only screen and (max-width: 785px) {
-
   .slick-dots li.slick-active button:before {
     border: 10px solid rgb(243, 237, 237);
   }
-
   .slide {
-    transform: scale(0.1);
+    margin-left: -25%;
+    transform: scale(0.001);
     transition: transform 300ms;
   }
-
+  .judulImage {
+    width: 150%;
+    margin-left: 2%;
+  }
   .slick-dots li button:before {
     font-size: 10px;
   }
-  
 }
 
 @media only screen and (min-width: 1024px) {
-
-
 }
