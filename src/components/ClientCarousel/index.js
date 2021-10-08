@@ -5,6 +5,8 @@ import { baseURL } from "../../config/";
 import Slider from "react-slick";
 import "./Carousel.css";
 import SectionParagraph from "../../components/SectionParagraph/index";
+import arrowRight from '../../images/sliderArrowRight.svg';
+import arrowLeft from '../../images/sliderArrowLeft.svg';
 
 const ClientCarousel = () => {
   const [celeb, setCeleb] = useState([]);
@@ -50,6 +52,8 @@ const ClientCarousel = () => {
               <img src={baseURL + cek.photo[0].url}></img>
               <div className="judulImage">
                 <SectionParagraph value={cek.name}></SectionParagraph>
+                <img src={arrowRight}></img>
+                <img src={arrowLeft}></img>
               </div>
             </div>
           );
